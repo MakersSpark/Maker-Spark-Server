@@ -1,2 +1,1 @@
-This is on the development
-I love vincent
+This readme file is killing me
