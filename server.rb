@@ -1,5 +1,5 @@
 require 'sinatra'
 
 get "/"do 
-	'Welcome to SparkPrint'
+	erb :index
 end
