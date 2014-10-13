@@ -8,7 +8,6 @@ feature "User sign up" do
 		end
 		scenario "the form has the correct fields" do
 			visit '/'
-
 			expect(page).to have_selector("input[name=username]")
 			expect(page).to have_selector("input[name=password]")
 			expect(page).to have_selector("input[name=password_confirmation]")
