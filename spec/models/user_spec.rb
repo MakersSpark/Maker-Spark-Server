@@ -28,8 +28,7 @@ describe User do
 		end
 	end
 
-	context "a invalid user" do 
-
+	context "a invalid user" do
 		it "as user with mismatched passwords cannot be created in the database" do 
 			p ben.errors
 			expect(ben.errors[:password]).to eq ["Password does not match the confirmation"]
@@ -45,7 +44,5 @@ describe User do
 			albert
 			expect(albert2).not_to be_valid
 		end
-
-
 	end
 end
