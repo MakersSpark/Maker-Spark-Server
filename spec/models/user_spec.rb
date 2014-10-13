@@ -30,7 +30,6 @@ describe User do
 
 	context "a invalid user" do
 		it "as user with mismatched passwords cannot be created in the database" do 
-			p ben.errors
 			expect(ben.errors[:password]).to eq ["Password does not match the confirmation"]
 		end
 

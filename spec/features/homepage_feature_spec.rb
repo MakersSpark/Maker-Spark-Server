@@ -6,3 +6,4 @@ feature "For the first time a user visits the home page" do
 	end
 
 end
+

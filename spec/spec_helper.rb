@@ -3,8 +3,13 @@ ENV["RACK_ENV"] = 'test'
 require 'database_cleaner'
 require "capybara/rspec"
 require "factory_girl"
+require 'webmock/rspec'
+
 require_relative '../server.rb'
 require_relative 'factories.rb'
+
+include WebMock
+
 
 Capybara.app = Sinatra::Application.new
 
