@@ -1,10 +1,26 @@
 describe User do 
 
-	context "a valid user" do 
 
-		let(:albert) { User.create(email: "test@test.com", 
+	let(:albert) { User.create(email: "albert@test.com", 
+							   password: "oranges", 
+							   password_confirmation: "oranges") }
+
+	let(:ben) { User.create(email: "ben@test.com", 
+							   password: "oranges", 
+							   password_confirmation: "peaches") }
+
+	let(:albert2) { User.create(email: "albert@test.com", 
 								   password: "oranges", 
 								   password_confirmation: "oranges") }
+
+
+	let(:vincent) { User.create(email: "test.test.com", 
+							   password: "oranges", 
+							   password_confirmation: "peaches") }
+
+
+
+	context "a valid user" do 
 
 		it "can be created in the database" do 
 			albert
@@ -13,12 +29,6 @@ describe User do
 	end
 
 	context "a invalid user" do 
-		let(:ben) { User.create(email: "test@test.com", 
-								   password: "oranges", 
-								   password_confirmation: "peaches") }
-		let(:vincent) { User.create(email: "test.test.com", 
-								   password: "oranges", 
-								   password_confirmation: "peaches") }
 
 		it "as user with mismatched passwords cannot be created in the database" do 
 			p ben.errors
@@ -26,7 +36,16 @@ describe User do
 		end
 
 		it "as user with a non valid email cannot be created in the database" do
-			expect(vincent.errors[:email]).to eq ["Email is not valid"]
+			expect(vincent.errors[:email]).to eq ["Email has an invalid format"]
 		end
+	end
+
+	context "a duplicate user" do 
+		it "two users cant have the same email address" do 
+			albert
+			expect(albert2).not_to be_valid
+		end
+
+
 	end
 end
