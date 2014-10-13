@@ -6,13 +6,18 @@ feature "User sign up" do
 			visit '/'
 			expect(page).to have_selector("form.sign_up")
 		end
-		scenario "the form needs to have all this fields" do
+		scenario "the form has the correct fields" do
 			visit '/'
 
 			expect(page).to have_selector("input[name=username]")
 			expect(page).to have_selector("input[name=password]")
-			expect(page).to have_button("Submit")
-    end
+			expect(page).to have_selector("input[name=password_confirmation]")
+			expect(page).to have_button("Sign")
+    	end
+
+
+
+
 	end
 
 end
