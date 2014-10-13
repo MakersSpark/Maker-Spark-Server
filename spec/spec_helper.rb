@@ -1,6 +1,7 @@
 require "capybara/rspec"
+require_relative '../server.rb'
 
-Capybara.app = App.new
+Capybara.app = Sinatra::Application.new
 
 
 
