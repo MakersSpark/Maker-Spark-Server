@@ -24,6 +24,7 @@ end
 post "/print" do 
 	printer = Printer.new
 	printer.print_text(params[:formatbox], params[:messagebox])
+	redirect "/"
 end
 
 
