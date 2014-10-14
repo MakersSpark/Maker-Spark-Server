@@ -15,6 +15,11 @@ require_relative '../app/models/printer'
 include WebMock
 
 
+PRINT_URI = "https://api.spark.io/v1/devices/50ff75065067545639190387/print"
+
+
+
+
 Capybara.app = Sinatra::Application.new
 
 
