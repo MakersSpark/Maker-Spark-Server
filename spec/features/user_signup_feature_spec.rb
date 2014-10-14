@@ -6,6 +6,7 @@ feature "User sign up" do
 			visit '/sign_up'
 			expect(page).to have_selector("form.sign_up")
 		end
+		
 		scenario "the form has the correct fields" do
 			visit '/sign_up'
 			expect(page).to have_selector("input[name=email]")
