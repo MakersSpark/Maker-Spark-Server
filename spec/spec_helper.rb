@@ -4,9 +4,13 @@ require 'database_cleaner'
 require "capybara/rspec"
 require "factory_girl"
 require 'webmock/rspec'
+require 'json'
+
 
 require_relative '../app/server.rb'
 require_relative 'factories.rb'
+require_relative '../app/models/printer'
+
 
 include WebMock
 
