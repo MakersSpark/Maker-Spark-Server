@@ -5,7 +5,7 @@ require "capybara/rspec"
 require "factory_girl"
 require 'webmock/rspec'
 
-require_relative '../server.rb'
+require_relative '../app/server.rb'
 require_relative 'factories.rb'
 
 include WebMock

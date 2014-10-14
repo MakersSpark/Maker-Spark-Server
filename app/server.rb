@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'data_mapper'
 require 'sinatra/flash'
-require 'google_calendar'
 require_relative './models/user'
 
 require_relative './data_mapper_setup'
