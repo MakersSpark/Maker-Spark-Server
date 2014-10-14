@@ -22,7 +22,7 @@ end
 
 post "/print" do 
 	printer = Printer.new
-	printer.print_text("TEXT", params[:messagebox])
+	printer.print_text(params[:formatbox], params[:messagebox])
 end
 
 

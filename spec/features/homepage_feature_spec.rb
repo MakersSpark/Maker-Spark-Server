@@ -1,6 +1,7 @@
 feature "A user visits the home page" do
 	before do
-
+		stub_request(:post, "https://api.spark.io/v1/devices/50ff75065067545639190387/print").
+		with(:body => { access_token: "e91e5a05963c1bf996298213f0b892a8e33741e1", args: "TEXT=hello world/" })
 	end
 
 	scenario "sees a title containing a welcome message" do
@@ -19,12 +20,21 @@ feature "A user visits the home page" do
 	end
 
 	scenario "can type in messages and send them to the printer" do
-		stub_request(:post, "https://api.spark.io/v1/devices/50ff75065067545639190387/print").
-    		with(:body => { access_token: "e91e5a05963c1bf996298213f0b892a8e33741e1", args: "TEXT=hello world/" })
 		visit '/'
+		select 'Plain Text', :from => 'formatbox'
 		fill_in('messagebox', with: 'hello world')
 		click_button('Print')
 		expect(a_request(:post, "https://api.spark.io/v1/devices/50ff75065067545639190387/print").with(:body => { access_token: "e91e5a05963c1bf996298213f0b892a8e33741e1", args: "TEXT=hello world/" })).to have_been_made
+	end
+
+	scenario "can send formatted text to the printer" do 
+		stub_request(:post, "https://api.spark.io/v1/devices/50ff75065067545639190387/print").
+		with(:body => { access_token: "e91e5a05963c1bf996298213f0b892a8e33741e1", args: "BOLD=hello world/" })
+		visit '/'
+		select 'Bold', :from => 'formatbox'
+		fill_in('messagebox', with: 'hello world')
+		click_button('Print')
+		expect(a_request(:post, "https://api.spark.io/v1/devices/50ff75065067545639190387/print").with(:body => { access_token: "e91e5a05963c1bf996298213f0b892a8e33741e1", args: "BOLD=hello world/" })).to have_been_made
 	end
 end
 

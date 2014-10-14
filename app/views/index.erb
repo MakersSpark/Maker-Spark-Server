@@ -3,6 +3,10 @@
 
 
 <form action="/print" method="post">
-	<textarea class="message" name="messagebox" cols="4" rows="40"></textarea>
+	<select name="formatbox">
+		<option value="BOLD">Bold</option>
+		<option value="TEXT">Plain Text</option>
+	</select>
+	<textarea class="message" name="messagebox" cols="40" rows="4"></textarea>
 	<button class="print-hello-world">Print</button>
 </form>
