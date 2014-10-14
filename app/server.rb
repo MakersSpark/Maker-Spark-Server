@@ -3,6 +3,7 @@ require 'data_mapper'
 require 'sinatra/flash'
 require 'google_calendar'
 require 'json'
+require 'net/http'
 require_relative './models/user'
 require_relative './models/printer'
 
