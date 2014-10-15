@@ -1,6 +1,6 @@
 describe Forecast do 
 
-	let(:weather) { Forecast.new }
+	let(:weather) { Forecast.new("51.5231,-0.0871") }
 
 	context "the server can connect to the forecast.io api" do 
 		it "can get the forecast for London in JSON" do
