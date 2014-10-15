@@ -2,11 +2,12 @@ describe GithubData do
 
 	let(:github) { GithubData.new('byverdu') }
 
-	context "using the GithubStats gem" do\
+	context "using the GithubStats gem" do
 
 		before do 
 			stub_request(:get, "https://github.com/users/byverdu/contributions").
-         		to_return(:body => "'Contributions from byverdu'") 
+         		to_return(:body => "")
+         		# before { GithubData.file('../spec/githubstats.yml') } 
 		end
 
 		it 'it is initialized with the account name' do
@@ -16,6 +17,10 @@ describe GithubData do
 		it 'sends a get request to github for the data of contributions of the specified account' do
 			github.account.data
 			expect(a_request(:get, "https://github.com/users/byverdu/contributions")).to have_been_made
+		end
+
+		xit 'can get the current streak of the user' do 
+			expect(github.get_current_streak).to match Integer
 		end
 	end
 end
