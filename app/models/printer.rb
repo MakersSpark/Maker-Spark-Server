@@ -65,7 +65,11 @@ class Printer
 	end
 
 	def print_greeting
-		print_text("CENTREBIG","Good Morning")
+		if Time.now.strftime('%H.%M').to_f < 12.30 
+			print_text("CENTREBIG","Good Morning")
+		else
+			print_text("CENTREBIG","Good Afternoon")
+		end
 	end
 
 	def print_divider
@@ -75,11 +79,6 @@ class Printer
 	def personal_print
 		print_greeting
 		print_divider
-		print_text("BOLD","Makers Events today:")
-		print_text("TEXT","13:30  Larry Page is speaking about his boring company")
-		print_text("TEXT","16:30  YOGA")
-		print_text("TEXT","19:30  Karaoke - Albert is performing his Boys, Boys, Boys")
-
 	end
 
 

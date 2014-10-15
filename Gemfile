@@ -9,10 +9,11 @@ gem 'google_calendar'
 gem 'forecast_io'
 
 group :development, :test do 
-  	gem 'database_cleaner'
+  gem 'database_cleaner'
 	gem 'capybara'
 	gem 'rspec'
 	gem "factory_girl"
 	gem  "webmock"
+	gem "timecop"
 end
 

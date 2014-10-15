@@ -5,6 +5,7 @@ require "capybara/rspec"
 require "factory_girl"
 require 'webmock/rspec'
 require 'json'
+require 'timecop'
 
 require_relative "./helper_files"
 require_relative '../app/server.rb'

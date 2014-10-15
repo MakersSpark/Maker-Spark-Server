@@ -119,6 +119,7 @@ GEM
     stringex (1.5.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
+    timecop (0.7.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uuidtools (2.1.5)
@@ -144,5 +145,6 @@ DEPENDENCIES
   rspec
   sinatra
   sinatra-flash
+  timecop
   warden
   webmock
