@@ -3,12 +3,13 @@
 class GithubData
 	include GithubStats
 
-	attr_reader :account
+	attr_reader :account, :name
 
 	# file('../../spec/githubstats.yml')
 
 	def initialize(account_name)
 		@account = GithubStats.new(account_name)
+		@name = account_name
 	end
 
 	def score_today
@@ -16,11 +17,11 @@ class GithubData
 	end
 
 	def current_streak
-		@account.data.streak.score.count
+		@account.data.streak.count
 	end
 
 	def longest_streak
-		@account.data.longest_streak.score.count	
+		@account.data.longest_streak.count	
 	end
 
 	def highscore

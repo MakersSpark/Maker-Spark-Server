@@ -38,10 +38,7 @@ end
 get "/forecast" do 
 	weather = Forecast.new
 	printer = Printer.new
-	weather.summary
-	
-	# printer.print_text("BOLD",response['minutely']['summary'])
-	
+	weather.summary	
 end
 
 get '/github' do 

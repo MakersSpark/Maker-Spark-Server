@@ -3,6 +3,8 @@ describe Printer do
 	let(:printer) { Printer.new }
 	let(:chars_32) { 'Lorem ipsum dolor sit amet, cons' }
 	let(:chars_33) { 'Lorem ipsum dolor sit amet, consa' }
+	let(:github) { GithubData.new('kikrahau') }
+
 
 	context "the server can connect to the printer" do 
 		it "can send 'hello' plain text prints to the printer" do
@@ -41,18 +43,18 @@ describe Printer do
 			end
 			
 			it "it prints Good morning" do
-	    	printer.print_greeting
-	    	expect(a_http_request("CENTREBIG","Good Morning")).to have_been_made
-	    end
+		    	printer.print_greeting
+		    	expect(a_http_request("CENTREBIG","Good Morning")).to have_been_made
+	    	end
 
-	    it "has a wrapper for several prints" do
-	    	expect(printer.personal_print).not_to be nil
-	    end
+		    it "has a wrapper for several prints" do
+		    	expect(printer.personal_print).not_to be nil
+		    end
 
-	    it "has a line divider" do
-	    	printer.print_divider
-	    	expect(a_http_request("CENTREBIG","~")).to have_been_made
-	    end
+		    it "has a line divider" do
+		    	printer.print_divider
+		    	expect(a_http_request("CENTREBIG","~")).to have_been_made
+		    end
 		end
 
 		context 'generating time dependent prints' do
@@ -62,15 +64,27 @@ describe Printer do
 				Timecop.freeze(afternoon)
 				request_stub("CENTREBIG","Good Afternoon")
 				printer.print_greeting
-	    	expect(a_http_request("CENTREBIG","Good Afternoon")).to have_been_made
+	    		expect(a_http_request("CENTREBIG","Good Afternoon")).to have_been_made
+			end
+		end
+
+		context 'printing github data' do 
+			xit "can print the commit statistics of a user" do
+				request_stub("BOLD","kikrahau's GitHub Stats:")
+				request_stub("TEXT","Score today: 0")
+				request_stub("TEXT","Current streak: 0")
+				request_stub("TEXT","Longest streak: 0")
+				request_stub("TEXT","High score: 0")
+
+
+
+				stub_request(:get, "https://github.com/users/kikrahau/contributions")
+				printer.print_data_from(github)
+				expect(a_request(:get, "https://github.com/users/byverdu/contributions")).to have_been_made
 			end
 		end
 	end
 end
-
-
-
-
 
 
 
