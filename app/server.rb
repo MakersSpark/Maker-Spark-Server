@@ -35,9 +35,7 @@ post "/print" do
 	else 
 		flash[:notice] = "Printer had some problems"
 	end
-
 	redirect '/'
-
 end
 
 post "/forecast" do 

@@ -2,8 +2,8 @@ class Forecast
 
 	attr_accessor :location
 
-	def initialize(location)
-			@location = location	
+	def initialize(location = "51.5231,-0.0871")
+			@location = location
 	end
 	
 	def get_forecast
