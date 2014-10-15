@@ -26,9 +26,9 @@ class Printer
 	end
 
 	def print_text(format,text)
-		check_string_length(text)
-		response = send_message_to_spark_print(format, text)
-		process_print_response(response)		
+		response = ""
+		check_string_length(text).each {|text_snippet| response = send_message_to_spark_print(format, text_snippet)}
+    process_print_response(response)		
 	end
 
 	def parse_uri(uri)
@@ -40,7 +40,7 @@ class Printer
 	end
 
 	def process_print_response(response)
-		response_hash = JSON.parse(response.body)
+		puts response_hash = JSON.parse(response.body)
 		if response_hash["return_value"] == 1
 			return "Successfully sent to the printer!"
 		else 

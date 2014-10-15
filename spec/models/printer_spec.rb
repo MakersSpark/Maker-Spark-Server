@@ -36,6 +36,8 @@ describe Printer do
 			it "returns an array of the sliced strings, if the string is longer than 32 characters" do
 				printer.check_string_length(chars_33)
 				expect(printer.check_string_length(chars_33)).to eq ([chars_32,"a"])
+
+				
 			end
 
 		end
