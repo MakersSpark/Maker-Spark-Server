@@ -7,6 +7,7 @@ gem 'sinatra-flash'
 gem 'warden'
 gem 'google_calendar'
 gem 'forecast_io'
+gem 'githubstats'
 
 group :development, :test do 
   	gem 'database_cleaner'
