@@ -6,6 +6,7 @@ gem 'dm-postgres-adapter'
 gem 'sinatra-flash'
 gem 'warden'
 gem 'google_calendar'
+gem 'forecast_io'
 
 group :development, :test do 
   	gem 'database_cleaner'

@@ -4,8 +4,13 @@ require 'sinatra/flash'
 require 'google_calendar'
 require 'json'
 require 'net/http'
+require 'forecast_io'
+require 'open-uri'
+
 require_relative './models/user'
 require_relative './models/printer'
+require_relative './models/forecast'
+
 
 require_relative './data_mapper_setup'
 
@@ -23,15 +28,22 @@ end
 
 post "/print" do 
 	printer = Printer.new
-	printer.print_text(params[:formatbox], params[:messagebox])
-	redirect "/"
+	response = printer.print_text(params[:formatbox], params[:messagebox])
+	response_hash = JSON.parse(response.body)
+	if response_hash["return_value"] == 1
+		flash[:notice] = "Successfully sent to the printer!"
+	else 
+		flash[:notice] = "Printer had some problems"
+	end
+
+	redirect '/'
+
 end
 
-
-
-# def print_text(format, text)
-
-# 	uri = URI.parse("https://api.spark.io/v1/devices/50ff75065067545639190387/print")
-# 	res = Net::HTTP.post_form(uri, access_token: "e91e5a05963c1bf996298213f0b892a8e33741e1", args: "#{format}=#{text}/")
-
-# end
+post "/forecast" do 
+	weather = Forecast.new
+	printer = Printer.new
+	response = weather.get_forecast
+	printer.print_text("BOLD",response['minutely']['summary'])
+	redirect '/'
+end
