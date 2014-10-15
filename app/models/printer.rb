@@ -26,6 +26,7 @@ class Printer
 	end
 
 	def print_text(format,text)
+		check_string_length(text)
 		response = send_message_to_spark_print(format, text)
 		process_print_response(response)		
 	end
@@ -47,5 +48,20 @@ class Printer
 		end
 	end
 
+	def check_string_length(string)
+		if string.size < 33 
+			return [string]
+		else
+			return chop_text(string)
+		end
+	end
+
+	def chop_text(string)
+		number_of_texts = (string.length/32.0).ceil
+		text_array = []
+		split_string = string.split("")
+		number_of_texts.times { text_array << split_string.shift(32).join }	
+		text_array
+	end
 
 end
