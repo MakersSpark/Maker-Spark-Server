@@ -1,0 +1,4 @@
+- !ruby/struct:GithubStats
+  name: 'benjamintillett'
+  url: "https://github.com/users/benjamintillett/contributions"
+  data: "balbla"
