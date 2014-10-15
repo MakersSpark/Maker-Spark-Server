@@ -36,10 +36,51 @@ describe Printer do
 			it "returns an array of the sliced strings, if the string is longer than 32 characters" do
 				printer.check_string_length(chars_33)
 				expect(printer.check_string_length(chars_33)).to eq ([chars_32,"a"])
-
-				
 			end
+		end
 
+		context 'generating personalized prints containing several parts' do
+			before do
+				stub_request(:post, "#{ENV['SPARK_API_URI']}/print").
+	    		with(:body => { access_token: ENV['SPARK_TOKEN'], args: "CENTREBIG=Good Morning/" }).to_return(:body => "{\n  \"id\": \"#{ENV['SPARK_ID']}\",\n  \"name\": \"core1\",\n  \"last_app\": null,\n  \"connected\": true,\n  \"return_value\": 1\n}")
+			end
+			
+			it "it prints Good morning" do
+	    	printer.print_greeting
+	    	expect(a_request(:post, "#{ENV['SPARK_API_URI']}/print").with(:body => { access_token: ENV['SPARK_TOKEN'], args: "CENTREBIG=Good Morning/" })).to have_been_made
+	    end
+
+	    it "has a wrapper for several prints" do
+	    	expect(printer.personal_print).not_to be nil
+	    end
+
+	    it "has a line divider" do
+	    	stub_request(:post, "#{ENV['SPARK_API_URI']}/print").
+	    		with(:body => { access_token: ENV['SPARK_TOKEN'], args: "CENTREBIG=~/" }).to_return(:body => "{\n  \"id\": \"#{ENV['SPARK_ID']}\",\n  \"name\": \"core1\",\n  \"last_app\": null,\n  \"connected\": true,\n  \"return_value\": 1\n}")
+
+	    	printer.print_divider
+
+	    	expect(a_request(:post, "#{ENV['SPARK_API_URI']}/print").with(:body => { access_token: ENV['SPARK_TOKEN'], args: "CENTREBIG=~/" })).to have_been_made
+	    end
 		end
 	end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
