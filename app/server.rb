@@ -16,6 +16,7 @@ require_relative './data_mapper_setup'
 
 
 enable :sessions
+set :session_secret, 'We will only write positive messages'
 register Sinatra::Flash
 
 get '/' do
@@ -28,20 +29,15 @@ end
 
 post "/print" do 
 	printer = Printer.new
-	response = printer.print_text(params[:formatbox], params[:messagebox])
-	response_hash = JSON.parse(response.body)
-	if response_hash["return_value"] == 1
-		flash[:notice] = "Successfully sent to the printer!"
-	else 
-		flash[:notice] = "Printer had some problems"
-	end
+	flash[:notice] = printer.print_text(params[:formatbox], params[:messagebox])
 	redirect '/'
 end
 
-post "/forecast" do 
+get "/forecast" do 
 	weather = Forecast.new
 	printer = Printer.new
-	response = weather.get_forecast
-	printer.print_text("BOLD",response['minutely']['summary'])
-	redirect '/'
+	weather.summary
+	
+	# printer.print_text("BOLD",response['minutely']['summary'])
+	
 end
