@@ -29,7 +29,7 @@ end
 
 post "/print" do 
 	printer = Printer.new
-	flash[:notice] = printer.print_text(params[:formatbox], params[:messagebox])
+	flash[:notice] = printer.print_text("TEXT", params[:messagebox])
 	redirect '/'
 end
 

@@ -14,14 +14,14 @@ feature "A user visits the home page" do
 		expect(page).to have_css('textarea[name=messagebox]')
 	end
 
-	scenario "visiting the home page" do
-		visit '/'
-		expect(page).to have_selector('button.print-hello-world')
-	end
+	# scenario "visiting the home page" do
+	# 	visit '/'
+	# 	expect(page).to have_selector('button.print-hello-world')
+	# end
 
 	scenario "can type in messages and send them to the printer" do
 		visit '/'
-		select 'Plain Text', :from => 'formatbox'
+		#select 'Plain Text', :from => 'formatbox'
 		fill_in('messagebox', with: 'hello world')
 		click_button('Print')
 		expect(a_request(:post, "#{ENV['SPARK_API_URI']}/print").with(:body => { access_token: ENV['SPARK_TOKEN'], args: "TEXT=hello world/" })).to have_been_made
@@ -29,21 +29,21 @@ feature "A user visits the home page" do
 
 	scenario "can see a printed successfully message, when message was sent to the printer" do 
 		visit '/'
-		select 'Plain Text', :from => 'formatbox'
+		#select 'Plain Text', :from => 'formatbox'
 		fill_in('messagebox', with: 'hello world')
 		click_button('Print')
 		expect(page).to have_content("Successfully sent to the printer!")
 	end
 
-	scenario "can send formatted text to the printer" do 
-		stub_request(:post, "#{ENV['SPARK_API_URI']}/print").
-		with(:body => { access_token: ENV['SPARK_TOKEN'], args: "BOLD=hello world/" }).to_return(:body => "{\n  \"id\": \"50ff75065067545639190387\",\n  \"name\": \"core1\",\n  \"last_app\": null,\n  \"connected\": true,\n  \"return_value\": 1\n}")
-		visit '/'
-		select 'Bold', :from => 'formatbox'
-		fill_in('messagebox', with: 'hello world')
-		click_button('Print')
-		expect(a_request(:post, "#{ENV['SPARK_API_URI']}/print").with(:body => { access_token: ENV['SPARK_TOKEN'], args: "BOLD=hello world/" })).to have_been_made
-	end
+	# scenario "can send formatted text to the printer" do 
+	# 	stub_request(:post, "#{ENV['SPARK_API_URI']}/print").
+	# 	with(:body => { access_token: ENV['SPARK_TOKEN'], args: "BOLD=hello world/" }).to_return(:body => "{\n  \"id\": \"50ff75065067545639190387\",\n  \"name\": \"core1\",\n  \"last_app\": null,\n  \"connected\": true,\n  \"return_value\": 1\n}")
+	# 	visit '/'
+	# 	select 'Bold', :from => 'formatbox'
+	# 	fill_in('messagebox', with: 'hello world')
+	# 	click_button('Print')
+	# 	expect(a_request(:post, "#{ENV['SPARK_API_URI']}/print").with(:body => { access_token: ENV['SPARK_TOKEN'], args: "BOLD=hello world/" })).to have_been_made
+	# end
 
 end
 
