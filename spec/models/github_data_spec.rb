@@ -2,6 +2,7 @@ describe GithubData do
 
 	let(:github) { GithubData.new('byverdu') }
 
+	
 	context "using the GithubStats gem" do
 
 		before do 
@@ -14,13 +15,13 @@ describe GithubData do
 			expect(github.respond_to? :account).to eq true
 		end 
 
-		it 'sends a get request to github for the data of contributions of the specified account' do
+		it 'sends a get request to github' do
 			github.account.data
 			expect(a_request(:get, "https://github.com/users/byverdu/contributions")).to have_been_made
 		end
 
 		xit 'can get the current streak of the user' do 
-			expect(github.get_current_streak).to match Integer
+			expect(github.current_streak).to match Integer
 		end
 	end
 end
