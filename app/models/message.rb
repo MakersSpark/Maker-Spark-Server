@@ -1,4 +1,4 @@
-
+require_relative "./formatter"
 
 class Message
 	
@@ -6,16 +6,16 @@ class Message
 
 	def initialize
 		@lines = []
-		# @formatter = Fomatter.new
+		@formatter = Formatter.new
 	end
 
 
 	def add_greeting
 		if morning_time
 
-			lines << ["CENTREBIG","Good Morning"]
+			add_lines(["CENTREBIG","Good Morning"])
 		else
-			lines << ["CENTREBIG","Good Afternoon"]
+			add_lines(["CENTREBIG","Good Afternoon"])
 		end
 	end
 
@@ -25,7 +25,7 @@ class Message
 
 	def add_time_dependent_message
 		if morning_time
-			lines << ["TEXT","This will be the calander"]
+			add_lines(["TEXT","This will be the calander"])
 		else
 			add_forecast
 		end
@@ -40,15 +40,14 @@ class Message
 	end
 
 	def add_forecast 
-		lines << ["TEXT",Forecast.new.summary]
+		add_lines(["TEXT",Forecast.new.summary])
 	end
 
 	def morning_time
 		Time.now.strftime('%H.%M').to_f < 12.30
 	end
 
-	# def add_line(line)
-	# 	lines << formatter.format_line(line)
-
-	# end
+	def add_lines(line)
+		formatter.format_line(line).each { |line| lines << line }
+	end
 end
