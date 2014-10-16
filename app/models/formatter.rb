@@ -11,13 +11,3 @@ class Formatter
 		lines = split_string(line[1]).map {|string| [line[0],string] }
 	end
 end
-
-
- 
-
-
-# [
-#  ["CENTREBIG","Good Morning"],
-#  ["TEXT","This will be the calander and it is very long, because people don't know how to write short texts"],
-#  ["TEXT","This will be the calander"]
-# ]

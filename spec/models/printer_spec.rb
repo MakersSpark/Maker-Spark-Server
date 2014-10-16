@@ -9,19 +9,19 @@ describe Printer do
 
 	context "the server can connect to the printer" do 
 		it "can send 'hello' plain text prints to the printer" do
-			request_stub("TEXT","hello")
+			print_request_stub("TEXT","hello")
 			printer.print_text("TEXT","hello")
 			expect(a_http_request("TEXT","hello")).to have_been_made
 		end
 
 		it "prints the string, if it is not longer than 32 characters" do
-			request_stub("TEXT",chars_32)
+			print_request_stub("TEXT",chars_32)
 			expect(printer.check_string_length(chars_32)).to eq([chars_32])
 		end
 
 		context	"the string is longer than 32 characters" do
 			before do
-				request_stub("TEXT",chars_33)
+				print_request_stub("TEXT",chars_33)
 			end
 
 			it "split the string, if it is longer than 32 characters" do
@@ -39,8 +39,8 @@ describe Printer do
 			before do
 				morning = Time.local(2014,10,23,11,31)
 				Timecop.freeze(morning)
-				request_stub("CENTREBIG","Good Morning")
-				request_stub("CENTREBIG","~")
+				print_request_stub("CENTREBIG","Good Morning")
+				print_request_stub("CENTREBIG","~")
 			end
 			
 			it "it prints Good morning" do
@@ -62,13 +62,13 @@ describe Printer do
 			before do 
 				afternoon = Time.local(2014,10,23,19,31)
 				Timecop.freeze(afternoon)
-				request_stub("CENTREBIG","Good Afternoon")
-				request_stub("CENTREBIG","~")
+				print_request_stub("CENTREBIG","Good Afternoon")
+				print_request_stub("CENTREBIG","~")
 			end
 			
 			it "says Good Afternoon after 12:30" do
 				
-				request_stub("CENTREBIG","Good Afternoon")
+				print_request_stub("CENTREBIG","Good Afternoon")
 				printer.print_greeting
 	    		expect(a_http_request("CENTREBIG","Good Afternoon")).to have_been_made
 			end
@@ -84,11 +84,11 @@ describe Printer do
 
 		context 'printing github data' do 
 			xit "can print the commit statistics of a user" do
-				request_stub("BOLD","kikrahau's GitHub Stats:")
-				request_stub("TEXT","Score today: 0")
-				request_stub("TEXT","Current streak: 0")
-				request_stub("TEXT","Longest streak: 0")
-				request_stub("TEXT","High score: 0")
+				print_request_stub("BOLD","kikrahau's GitHub Stats:")
+				print_request_stub("TEXT","Score today: 0")
+				print_request_stub("TEXT","Current streak: 0")
+				print_request_stub("TEXT","Longest streak: 0")
+				print_request_stub("TEXT","High score: 0")
 				stub_request(:get, "https://github.com/users/kikrahau/contributions")
 				printer.print_data_from(github)
 				expect(a_request(:get, "https://github.com/users/byverdu/contributions")).to have_been_made

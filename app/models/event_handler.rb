@@ -13,4 +13,8 @@ class EventHandler
 		message.add_divider
 		message.add_time_dependent_message
 	end
+
+	def print_message(printer)
+		printer.print(message)
+	end
 end
