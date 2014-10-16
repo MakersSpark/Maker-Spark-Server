@@ -18,11 +18,16 @@ feature "User sign up" do
     scenario "The user can sign up" do
     		visit '/sign_up'
 			expect{ sign_up }.to change(User, :count).by(1)
-   			expect(page).to have_content('Welcome to SparkPrint Print')
 			expect(current_path).to eq('/')
+			expect(page).to have_content('Thank you for registering, byverdu@test.com')
 			expect(User.first.email).to eq('byverdu@test.com')
     	end
 	end
+
+	xscenario "the user gets a thank you message after signing up" do
+			sign_up
+	end
+
 
 end
 

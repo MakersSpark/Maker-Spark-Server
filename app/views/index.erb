@@ -6,6 +6,9 @@
 		</div>
 	<%end%>
 
+	<% if current_user %>
+		<p>Thank you for registering, <%= current_user.email %></p>
+	<%end%>		
 
 
 <form action="/print" method="post">
