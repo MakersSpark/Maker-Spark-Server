@@ -11,6 +11,9 @@ require_relative "./helper_files"
 require_relative '../app/server.rb'
 require_relative 'factories.rb'
 require_relative '../app/models/printer'
+require_relative './user_helpers.rb'
+
+
 
 
 include WebMock
