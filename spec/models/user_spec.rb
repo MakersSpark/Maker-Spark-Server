@@ -2,7 +2,8 @@ describe User do
 
 
 	let(:albert) { User.create(email: "albert@test.com",
-	               rfid_code: '41d21cd', 
+	               rfid_code: '41d21cd',
+	               github_user: 'byverdu', 
 							   password: "oranges", 
 							   password_confirmation: "oranges") }
 

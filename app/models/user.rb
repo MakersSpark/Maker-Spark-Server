@@ -9,6 +9,7 @@ class User
 
 	property :id,       				Serial
 	property :email,    				String
+	property :github_user,			String		
 	property :rfid_code,        String
 	property :password_digest,  Text
 	

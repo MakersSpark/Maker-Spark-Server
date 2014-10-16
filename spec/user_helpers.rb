@@ -1,10 +1,12 @@
 def sign_up(email                 =  'byverdu@test.com',
+	          github                = 'byverdu',
 	          password              = 's3cr3t',
 	          password_confirmation = 's3cr3t')
 
 	visit '/sign_up'
 
-	fill_in 'email',                  with: email
+	fill_in 'email',                 with: email
+	fill_in 'github',								 with: github
 	fill_in 'password',              with: password
 	fill_in 'password_confirmation', with: password_confirmation
 
