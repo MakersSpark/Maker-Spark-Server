@@ -66,8 +66,8 @@ post "/sign_in" do
 			flash[:notice]  = "Welcome back #{current_user.email}"
 			redirect '/'
 		else 		
-			flash[:errors] = ["The email or password in incorrect"]
-			erb :"sign_in"
+			flash[:errors] = ["This email is not registered", "This password is wrong"]
+			redirect "/sign_in"
 		end
 end
 

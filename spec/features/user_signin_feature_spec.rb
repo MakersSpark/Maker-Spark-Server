@@ -19,7 +19,7 @@ end
 
 feature "Users log out" do
 
-	before(:each) do
+	before do
 		sign_up
 		sign_in
 	end
@@ -28,4 +28,26 @@ feature "Users log out" do
 		click_button('Log out')
 		expect(page).to have_content("Good bye!")
 	end
+end
+
+feature "Error messages when signing in" do
+
+	before do
+		sign_up
+	end
+
+	scenario "with the wrong email" do
+
+		wrong_sign_in('by@test.com','s3cr3t')
+
+		expect(page).to have_content('This email is not registered')
+	end
+
+	scenario "with the wrong password" do
+
+		wrong_sign_in('byverdu@test.com','s3cr3t0')
+
+		expect(page).to have_content('This password is wrong')
+	end
+
 end
