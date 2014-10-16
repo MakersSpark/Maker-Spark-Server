@@ -73,7 +73,6 @@ post "/sign_in" do
 		end
 end
 
-
 post "/print" do 
 	printer = Printer.new
 	flash[:notice] = printer.print_text("TEXT", params[:messagebox])
@@ -81,9 +80,9 @@ post "/print" do
 end
 
 get "/forecast" do 
-	weather = Forecast.new
+	forecast = Forecast.new
 	printer = Printer.new
-	weather.summary	
+	forecast.summary	
 end
 
 get '/github' do 

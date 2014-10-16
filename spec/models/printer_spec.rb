@@ -4,6 +4,7 @@ describe Printer do
 	let(:chars_32) { 'Lorem ipsum dolor sit amet, cons' }
 	let(:chars_33) { 'Lorem ipsum dolor sit amet, consa' }
 	let(:github) { GithubData.new('kikrahau') }
+	let(:forecast) { Forecast.new }
 
 
 	context "the server can connect to the printer" do 
@@ -48,7 +49,7 @@ describe Printer do
 	    	end
 
 		    it "has a wrapper for several prints" do
-		    	expect(printer.personal_print).not_to be nil
+		    	expect(printer.respond_to? :personal_print)
 		    end
 
 		    it "has a line divider" do
@@ -58,13 +59,26 @@ describe Printer do
 		end
 
 		context 'generating time dependent prints' do
-			
-			it "says Good Afternoon after 12:30" do
+			before do 
 				afternoon = Time.local(2014,10,23,19,31)
 				Timecop.freeze(afternoon)
 				request_stub("CENTREBIG","Good Afternoon")
+				request_stub("CENTREBIG","~")
+			end
+			
+			it "says Good Afternoon after 12:30" do
+				
+				request_stub("CENTREBIG","Good Afternoon")
 				printer.print_greeting
 	    		expect(a_http_request("CENTREBIG","Good Afternoon")).to have_been_made
+			end
+
+			it "prints the weather summary after 12:30" do 
+				stub_request(:get, "https://api.forecast.io/forecast/967ecda5e55eea73c15e3a4ce315e508/51.5231,-0.0871")
+			.to_return(body: FORECAST_IO_JSON_RESPONE, status: 200)
+
+				printer.personal_print(github)
+				expect(a_request(:get, "https://api.forecast.io/forecast/967ecda5e55eea73c15e3a4ce315e508/51.5231,-0.0871")).to have_been_made
 			end
 		end
 
@@ -75,9 +89,6 @@ describe Printer do
 				request_stub("TEXT","Current streak: 0")
 				request_stub("TEXT","Longest streak: 0")
 				request_stub("TEXT","High score: 0")
-
-
-
 				stub_request(:get, "https://github.com/users/kikrahau/contributions")
 				printer.print_data_from(github)
 				expect(a_request(:get, "https://github.com/users/byverdu/contributions")).to have_been_made
