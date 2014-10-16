@@ -1,5 +1,3 @@
-
-
 <h1>Welcome to SparkPrint</h1>
 
 	<% if flash[:notice]%>
@@ -22,3 +20,8 @@
 
 <a href='/sign_in'>Sign in</a>
 <a href='/sign_up'>Sign up</a>
+
+<form action="/" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<button type="submit">Log out</button>
+</form>

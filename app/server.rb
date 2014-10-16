@@ -38,12 +38,6 @@ post "/sign_up" do
 
 	if @user.save
 
-
-		# puts '---------------'*8
-		# puts @user.email
-		# session[:id] = @user.id
-		# puts "ffffffff"*10
-		# puts session
 		redirect '/'
 	else
 		# flash[:errors] = @user.errors.full_messages
@@ -60,10 +54,6 @@ post "/sign_in" do
 		email, password = params[:email], params[:password]
 		user = User.authenticate(email, password)
 
-		# puts '***********'*8
-		# puts session
-		# puts user
-		# # redirect '/'
 		if user
 			session[:user_id] = user.id
 			redirect '/'
@@ -71,6 +61,14 @@ post "/sign_in" do
 			# flash[:errors] = ["The email or password in incorrect"]
 			erb :"sign_in"
 		end
+end
+
+delete '/' do
+
+	flash[:notice] = "Good bye!"
+	session[:user_id] = nil
+
+	redirect '/'
 end
 
 post "/print" do 
@@ -90,11 +88,11 @@ get '/github' do
 	puts stats.data.today 
 end
 
-helpers do
+
 	def current_user
 		@current_user ||= User.get(session[:id]) if session[:id]			
 	end
-end
+
 
 
 
