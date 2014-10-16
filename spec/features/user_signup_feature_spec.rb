@@ -12,16 +12,16 @@ feature "User sign up" do
 			expect(page).to have_selector("input[name=email]")
 			expect(page).to have_selector("input[name=password]")
 			expect(page).to have_selector("input[name=password_confirmation]")
-			expect(page).to have_button("Sign")
+			expect(page).to have_button("Sign up")
     end
 
     scenario "The user can sign up" do
-
-    	expect{ sign_up }.to change(User, :count).by(1)
-			expect(page).to have_content('Welcome byverdu@test.com')
+    		visit '/sign_up'
+			expect(current_path).to eq('/sign_up')
+			expect{ sign_up }.to change(User, :count).by(1)
+   			expect(page).to have_content('Welcome to SparkPrint Print')
 			expect(User.first.email).to eq('byverdu@test.com')
-
-    end
+    	end
 	end
 
 end

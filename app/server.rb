@@ -25,9 +25,18 @@ get '/' do
 	erb :index
 end
 
-get "/sign_up" do 
+get "/sign_up" do
+	@user = User.new 
 	erb :sign_up
 end
+
+post "/sign_up" do
+	@user = User.create(email: 					params[:email],
+						password:   			params[:password],	
+						password_confirmation: 	params[:password_confirmation])
+	redirect '/'
+end
+
 
 post "/print" do 
 	printer = Printer.new
