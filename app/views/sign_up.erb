@@ -1,4 +1,5 @@
 <form action="/sign_up" method="post" class="sign_up">
+		<input type="hidden" name="rfid_code" value="<%= params[:rfid_code] %>">
 		<input type="text" name="email" placeholder="E-mail">
 		<input type="password" name="password" placeholder="Password">
 		<input type="password" name="password_confirmation" placeholder="Password Confirmation">

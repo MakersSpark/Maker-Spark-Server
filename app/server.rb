@@ -36,10 +36,15 @@ get "/sign_up" do
 	erb :sign_up
 end
 
+get "/sign_up_with/:rfid_code" do
+	erb :sign_up
+end
+
 post "/sign_up" do
-	@user = User.create(email: 					params[:email],
-						password:   			params[:password],	
-						password_confirmation: 	params[:password_confirmation])
+	@user = User.create(email: 			           params[:email],
+		                  rfid_code:             params[:rfid_code],
+						          password:   			     params[:password],	
+						          password_confirmation: params[:password_confirmation])
 
 
 	if @user.save

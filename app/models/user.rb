@@ -9,6 +9,7 @@ class User
 
 	property :id,       				Serial
 	property :email,    				String
+	property :rfid_code,        String
 	property :password_digest,  Text
 	
 	validates_format_of       :email, as: :email_address
