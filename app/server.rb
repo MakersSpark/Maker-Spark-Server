@@ -41,9 +41,10 @@ post "/sign_up" do
 
 	if @user.save
 		session[:user_id] = @user.id
+		flash[:notice]    = "Thank you for registering, #{current_user.email}"
 		redirect '/'
 	else
-		# flash[:errors] = @user.errors.full_messages
+		flash[:errors] = @user.errors.full_messages
 		redirect '/sign_up'
 	end
 end
@@ -59,9 +60,10 @@ post "/sign_in" do
 
 		if user
 			session[:user_id] = user.id
+			flash[:notice]  = "Welcome back #{current_user.email}"
 			redirect '/'
 		else 		
-			# flash[:errors] = ["The email or password in incorrect"]
+			flash[:errors] = ["The email or password in incorrect"]
 			erb :"sign_in"
 		end
 end
