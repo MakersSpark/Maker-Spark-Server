@@ -55,7 +55,7 @@ end
 
 post "/sign_up" do
 	@user = User.create(email: 			           params[:email],
-		                  github_user:           params[:github],
+		                  github_user:           params[:github_user],
 		                  rfid_code:             params[:rfid_code],
 						          password:   			     params[:password],	
 						          password_confirmation: params[:password_confirmation])

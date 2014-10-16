@@ -14,9 +14,9 @@ class User
 	property :password_digest,  Text
 	
 	validates_format_of       :email, as: :email_address
-	validates_uniqueness_of   :email
+	validates_uniqueness_of   :email, :github_user
 	validates_confirmation_of :password
-	validates_presence_of     :email 
+	validates_presence_of     :email, :github_user 
 	validates_length_of       :password, min: 1
 	validates_length_of       :password_confirmation, min: 1
 

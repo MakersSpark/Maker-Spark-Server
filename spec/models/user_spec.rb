@@ -15,12 +15,18 @@ describe User do
 								   password: "oranges", 
 								   password_confirmation: "oranges") }
 
+	let(:henry) { User.create(email: "henry@test.com", 
+		               github_user: 'byverdu',
+								   password: "oranges", 
+								   password_confirmation: "oranges") }
+
 
 	let(:vincent) { User.create(email: "test.test.com", 
 							   password: "oranges", 
 							   password_confirmation: "peaches") }
 
 	let(:kevin) { User.create(email: "",
+		            github_user: "",
 							  password: "",
 							  password_confirmation: ""	) }
 
@@ -47,6 +53,10 @@ describe User do
 			expect(kevin.errors[:email]).to eq ["Email must not be blank"]
 		end
 
+		it "as user with blank github account" do
+			expect(kevin.errors[:github_user]).to eq ["Github user must not be blank"]
+		end
+
 
 		it "as user with blank passwords" do
 			expect(kevin.errors[:password]).to eq ["Password must be at least 1 characters long"]
@@ -61,6 +71,11 @@ describe User do
 		it "two users cant have the same email address" do 
 			albert
 			expect(albert2).not_to be_valid
+		end
+
+		it "two users cant have the same github user" do 
+			albert
+			expect(henry).not_to be_valid
 		end
 	end
 end
