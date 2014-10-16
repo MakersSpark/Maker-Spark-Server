@@ -7,6 +7,9 @@ require 'net/http'
 require 'forecast_io'
 require 'open-uri'
 require 'githubstats'
+require 'open-uri'
+require 'icalendar'
+require 'htmlentities'
 
 require_relative './models/user'
 require_relative './models/printer'
@@ -16,6 +19,8 @@ require_relative './models/github'
 require_relative './models/event_handler'
 require_relative './models/formatter'
 require_relative './models/message'
+require_relative './models/calendar'
+
 
 
 
