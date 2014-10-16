@@ -63,7 +63,7 @@ post "/sign_up" do
 
 	if @user.save
 		session[:user_id] = @user.id
-		flash[:notice]    = "Thank you for registering, #{current_user.email}"
+		flash[:notice]    = "Thank you for registering, #{current_user.github_user}"
 		redirect '/'
 	else
 		flash[:errors] = @user.errors.full_messages
@@ -77,15 +77,15 @@ end
 
 
 post "/sign_in" do
-		email, password = params[:email], params[:password]
-		user = User.authenticate(email, password)
+		github_user, password = params[:github_user], params[:password]
+		user = User.authenticate(github_user, password)
 
 		if user
 			session[:user_id] = user.id
-			flash[:notice]  = "Welcome back #{current_user.email}"
+			flash[:notice]  = "Welcome back #{current_user.github_user}"
 			redirect '/'
 		else 		
-			flash[:errors] = ["This email is not registered", "This password is wrong"]
+			flash[:errors] = ["This github user is not registered", "This password is wrong"]
 			redirect "/sign_in"
 		end
 end

@@ -9,11 +9,11 @@ feature "User sign in" do
 
 	scenario "User signs in" do
 			sign_up
-			expect(page).to have_content('Thank you for registering, byverdu@test.com')
+			expect(page).to have_content('Thank you for registering, byverdu')
 			sign_in
 			expect(current_path).to eq('/')
-			expect(page).not_to have_content('Thank you for registering, byverdu@test.com')
-			expect(page).to have_content('Welcome back byverdu@test.com')
+			expect(page).not_to have_content('Thank you for registering, byverdu')
+			expect(page).to have_content('Welcome back byverdu')
 	end
 end
 
@@ -38,14 +38,14 @@ feature "Error messages when signing in" do
 
 	scenario "with the wrong email" do
 
-		wrong_sign_in('by@test.com','s3cr3t')
+		wrong_sign_in('byver','s3cr3t')
 
-		expect(page).to have_content('This email is not registered')
+		expect(page).to have_content('This github user is not registered')
 	end
 
 	scenario "with the wrong password" do
 
-		wrong_sign_in('byverdu@test.com','s3cr3t0')
+		wrong_sign_in('byverdu','s3cr3t0')
 
 		expect(page).to have_content('This password is wrong')
 	end
