@@ -37,7 +37,6 @@ post "/sign_up" do
 	redirect '/'
 end
 
-
 post "/print" do 
 	printer = Printer.new
 	flash[:notice] = printer.print_text("TEXT", params[:messagebox])
