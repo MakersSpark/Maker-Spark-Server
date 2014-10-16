@@ -10,11 +10,11 @@ class Printer
 	def print_text(format,text)
 		response = ""
 		check_string_length(text).each {|text_snippet| response = send_message_to_spark_print(format, text_snippet)}
-    process_print_response(response)		
+    	process_print_response(response)		
 	end
 
 	def parse_uri(uri)
-			URI.parse(uri)
+		URI.parse(uri)
 	end
 
 	def send_message_to_spark_print(format, text)
@@ -28,6 +28,41 @@ class Printer
 		else 
 			return "Printer had some problems"
 		end
+	end
+
+	def print_greeting
+		if morning_time 
+			print_text("CENTREBIG","Good Morning")
+		else
+			print_text("CENTREBIG","Good Afternoon")
+		end
+	end
+
+
+	def print_divider
+		print_text("CENTREBIG","~")
+	end
+
+	def print_data_from(github)
+		print_text("BOLD","#{github.name}'s GitHub Stats:")
+		print_text("TEXT","Score today: #{github.score_today}")
+		print_text("TEXT","Current streak: #{github.current_streak}")
+		print_text("TEXT","Longest streak: #{github.longest_streak}")
+		print_text("TEXT","High score: #{github.highscore[0]} on #{github.highscore[1]}")
+	end
+
+	def personal_print(github_name)
+		print_greeting
+		print_divider
+		if morning_time
+			print_data_from(github_name)
+		else
+			Forecast.new.summary
+		end
+	end
+
+	def morning_time
+		Time.now.strftime('%H.%M').to_f < 12.30
 	end
 
 	def check_string_length(string)
@@ -46,30 +81,6 @@ class Printer
 		text_array
 	end
 
-	def print_greeting
-		if Time.now.strftime('%H.%M').to_f < 12.30 
-			print_text("CENTREBIG","Good Morning")
-		else
-			print_text("CENTREBIG","Good Afternoon")
-		end
-	end
-
-	def print_divider
-		print_text("CENTREBIG","~")
-	end
-
-	def print_data_from(github)
-		print_text("BOLD","#{github.name}'s GitHub Stats:")
-		print_text("TEXT","Score today: #{github.score_today}")
-		print_text("TEXT","Current streak: #{github.current_streak}")
-		print_text("TEXT","Longest streak: #{github.longest_streak}")
-		print_text("TEXT","High score: #{github.highscore[0]} on #{github.highscore[1]}")
-	end
-
-	def personal_print
-		print_greeting
-		print_divider
-	end
 end
 
 

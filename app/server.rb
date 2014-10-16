@@ -36,12 +36,12 @@ post "/print" do
 end
 
 get "/forecast" do 
-	weather = Forecast.new
+	forecast = Forecast.new
 	printer = Printer.new
-	weather.summary	
+	forecast.summary	
 end
 
-get '/github' do 
-	stats = GithubStats.new('kikrahau')
-	puts stats.data.today 
-end
+# post '/receive' do 
+# 	printer = Printer.new
+# 	printer.personal_print(GithuData.new('kikrahau'))
+# end
