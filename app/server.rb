@@ -7,6 +7,9 @@ require 'net/http'
 require 'forecast_io'
 require 'open-uri'
 require 'githubstats'
+require 'open-uri'
+require 'icalendar'
+require 'htmlentities'
 
 require_relative './models/user'
 require_relative './models/printer'
@@ -16,6 +19,8 @@ require_relative './models/github'
 require_relative './models/event_handler'
 require_relative './models/formatter'
 require_relative './models/message'
+require_relative './models/calendar'
+
 
 
 
@@ -45,10 +50,15 @@ get "/sign_up" do
 	erb :sign_up
 end
 
+get "/sign_up_with/:rfid_code" do
+	erb :sign_up
+end
+
 post "/sign_up" do
-	@user = User.create(email: 					params[:email],
-						password:   			params[:password],	
-						password_confirmation: 	params[:password_confirmation])
+	@user = User.create(email: 			           params[:email],
+		                  rfid_code:             params[:rfid_code],
+						          password:   			     params[:password],	
+						          password_confirmation: params[:password_confirmation])
 
 
 	if @user.save
@@ -75,8 +85,8 @@ post "/sign_in" do
 			flash[:notice]  = "Welcome back #{current_user.email}"
 			redirect '/'
 		else 		
-			flash[:errors] = ["The email or password in incorrect"]
-			erb :"sign_in"
+			flash[:errors] = ["This email is not registered", "This password is wrong"]
+			redirect "/sign_in"
 		end
 end
 

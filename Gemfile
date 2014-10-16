@@ -8,6 +8,8 @@ gem 'warden'
 gem 'google_calendar'
 gem 'forecast_io'
 gem 'githubstats'
+gem 'htmlentities'
+gem 'icalendar'
 
 group :development, :test do 
   gem 'database_cleaner'

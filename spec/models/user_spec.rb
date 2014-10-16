@@ -1,7 +1,8 @@
 describe User do 
 
 
-	let(:albert) { User.create(email: "albert@test.com", 
+	let(:albert) { User.create(email: "albert@test.com",
+	               rfid_code: '41d21cd', 
 							   password: "oranges", 
 							   password_confirmation: "oranges") }
 

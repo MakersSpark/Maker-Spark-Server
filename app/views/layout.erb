@@ -15,7 +15,17 @@
 
 	<% if flash[:errors]%>
 		<div class="errors">
-			<%= flash[:errors] %>
+			
+			<p>You have the following problems with your registration:</p>
+
+			<ul>
+
+			<% flash[:errors].each do |error| %>
+			
+				<li> <%= error %> </li>
+
+			<%end%>
+			</ul>
 		</div>
 	<%end%>
 
