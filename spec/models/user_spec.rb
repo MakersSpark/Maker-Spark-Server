@@ -18,6 +18,10 @@ describe User do
 							   password: "oranges", 
 							   password_confirmation: "peaches") }
 
+	let(:kevin) { User.create(email: "",
+							  password: "",
+							  password_confirmation: ""	) }
+
 
 
 	context "a valid user" do 
@@ -35,6 +39,19 @@ describe User do
 
 		it "as user with a non valid email cannot be created in the database" do
 			expect(vincent.errors[:email]).to eq ["Email has an invalid format"]
+		end
+
+		it "as user with blank email address" do
+			expect(kevin.errors[:email]).to eq ["Email must not be blank"]
+		end
+
+
+		it "as user with blank passwords" do
+			expect(kevin.errors[:password]).to eq ["Password must be at least 1 characters long"]
+		end
+
+		it "as user with blank password confirmation" do
+			expect(kevin.errors[:password_confirmation]).to eq ["Password confirmation must be at least 1 characters long"]
 		end
 	end
 

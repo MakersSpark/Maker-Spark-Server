@@ -12,7 +12,13 @@
 			<input type="hidden" name="_method" value="delete">
 			<button type="submit">Log out</button>
 		</form>
-<%end%>		
+	<%end%>		
+
+	<% if flash[:errors]%>
+		<div class="errors">
+			<%= flash[:errors] %>
+		</div>
+	<%end%>
 
 
 <form action="/print" method="post">
