@@ -20,13 +20,12 @@ feature "User sign up" do
 			expect{ sign_up }.to change(User, :count).by(1)
 			expect(current_path).to eq('/')
 			expect(page).to have_content('Thank you for registering, byverdu@test.com')
+			expect(page).to have_button('Log out')
 			expect(User.first.email).to eq('byverdu@test.com')
     	end
 	end
 
-	xscenario "the user gets a thank you message after signing up" do
-			sign_up
-	end
+	
 
 
 end

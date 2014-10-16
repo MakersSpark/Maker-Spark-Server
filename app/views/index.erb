@@ -8,7 +8,12 @@
 
 	<% if current_user %>
 		<p>Thank you for registering, <%= current_user.email %></p>
-	<%end%>		
+
+		<form action="/" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<button type="submit">Log out</button>
+		</form>
+<%end%>		
 
 
 <form action="/print" method="post">
@@ -24,7 +29,3 @@
 <a href='/sign_in'>Sign in</a>
 <a href='/sign_up'>Sign up</a>
 
-<form action="/" method="post">
-	<input type="hidden" name="_method" value="delete">
-	<button type="submit">Log out</button>
-</form>

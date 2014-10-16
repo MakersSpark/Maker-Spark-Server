@@ -22,7 +22,6 @@ feature "Users log out" do
 	end
 
 	scenario "A user can log out after signed in" do
-		expect(page).to have_button('Log out')
 		click_button('Log out')
 		expect(page).to have_content("Good bye!")
 	end
