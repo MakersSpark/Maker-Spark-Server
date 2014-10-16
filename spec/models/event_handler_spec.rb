@@ -22,7 +22,8 @@ describe EventHandler do
 		vincent_tap.build_message
 	end
 
-	it "" do 
+	it "can send messages to the formatter" do
+	 
 	end
 
 end

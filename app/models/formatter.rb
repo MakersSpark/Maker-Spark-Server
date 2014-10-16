@@ -7,39 +7,6 @@ class Formatter
 		string.chars.each_slice(32).map(&:join)
 	end
 
-
-
-
-	def check_string_length(string)
-		if string.size < 33 
-			return [string]
-		else
-			return chop_text(string)
-		end
-	end
-
-	def chop_text(string)
-		number_of_texts = (string.length/32.0).ceil
-		text_array = []
-		split_string = string.split("")
-		number_of_texts.times { text_array << split_string.shift(32).join }	
-		text_array
-	end
-
-	def split_string_recursively(string)
-		puts string
-		if string.length < 33
-		    string 
-		else 	
-			return [string.slice!(0,32) , split_string(string)]
-			# @strings << string.slice!(0,32)
-		end
-		 
-	end
-
-
-
-
 end
 
 
