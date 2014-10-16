@@ -12,6 +12,9 @@ require_relative './models/user'
 require_relative './models/printer'
 require_relative './models/forecast'
 require_relative './models/github'
+require_relative './models/event_handler'
+require_relative './models/formatter'
+
 
 
 require_relative './data_mapper_setup'
