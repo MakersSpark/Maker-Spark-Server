@@ -1,14 +1,18 @@
+
+
 class Message
 	
-	attr_accessor :lines
+	attr_accessor :lines, :formatter
 
 	def initialize
 		@lines = []
+		# @formatter = Fomatter.new
 	end
 
 
 	def add_greeting
-		if morning_time 
+		if morning_time
+
 			lines << ["CENTREBIG","Good Morning"]
 		else
 			lines << ["CENTREBIG","Good Afternoon"]
@@ -42,4 +46,9 @@ class Message
 	def morning_time
 		Time.now.strftime('%H.%M').to_f < 12.30
 	end
+
+	# def add_line(line)
+	# 	lines << formatter.format_line(line)
+
+	# end
 end

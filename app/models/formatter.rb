@@ -7,6 +7,9 @@ class Formatter
 		string.chars.each_slice(32).map(&:join)
 	end
 
+	def format_line(line)
+		split_string(line[1]).map {|string| [line[0],string] }
+	end
 end
 
 
