@@ -1,10 +1,6 @@
 <h1>Welcome to SparkPrint</h1>
 
-	<% if flash[:notice]%>
-		<div class="notice">
-			<%= flash[:notice] %>
-		</div>
-	<%end%>
+	
 
 	<% if current_user %>
 
@@ -12,7 +8,7 @@
 			<input type="hidden" name="_method" value="delete">
 			<button type="submit">Log out</button>
 		</form>
-<%end%>		
+	<%end%>		
 
 
 <form action="/print" method="post">
