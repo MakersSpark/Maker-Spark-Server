@@ -6,10 +6,12 @@ require 'json'
 require 'net/http'
 require 'forecast_io'
 require 'open-uri'
+require 'githubstats'
 
 require_relative './models/user'
 require_relative './models/printer'
 require_relative './models/forecast'
+require_relative './models/github'
 
 
 require_relative './data_mapper_setup'
@@ -36,8 +38,10 @@ end
 get "/forecast" do 
 	weather = Forecast.new
 	printer = Printer.new
-	weather.summary
-	
-	# printer.print_text("BOLD",response['minutely']['summary'])
-	
+	weather.summary	
+end
+
+get '/github' do 
+	stats = GithubStats.new('kikrahau')
+	puts stats.data.today 
 end
