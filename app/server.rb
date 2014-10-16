@@ -27,6 +27,15 @@ enable :sessions
 set :session_secret, 'We will only write positive messages'
 register Sinatra::Flash
 
+post "/" do 	 
+     card_info = JSON.parse(params[:data]) rescue  "The card was not read correctly"
+     event = EventHandler.new(card_info)
+     event.build_message
+     event.print_message(Printer2.new)
+     card_info["data"]
+end
+
+
 get '/' do
 	erb :index
 end

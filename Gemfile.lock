@@ -149,6 +149,7 @@ DEPENDENCIES
   forecast_io
   githubstats
   google_calendar
+  rack-test
   rspec
   sinatra
   sinatra-flash

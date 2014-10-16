@@ -11,6 +11,7 @@ gem 'githubstats'
 
 group :development, :test do 
   gem 'database_cleaner'
+	gem 'rack-test'
 	gem 'capybara'
 	gem 'rspec'
 	gem "factory_girl"

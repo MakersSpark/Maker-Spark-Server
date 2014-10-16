@@ -6,8 +6,10 @@ require "factory_girl"
 require 'webmock/rspec'
 require 'json'
 require 'timecop'
+require 'rack/test'
 
-require_relative "./helper_files"
+
+require_relative "./my_spec_helpers"
 require_relative '../app/server.rb'
 require_relative 'factories.rb'
 require_relative '../app/models/printer'
@@ -15,7 +17,9 @@ require_relative './user_helpers.rb'
 require_relative '../app/models/message'
 require_relative '../app/models/formatter'
 
-
+def app
+  Sinatra::Application.new
+end
 
 include WebMock
 
@@ -66,7 +70,7 @@ RSpec.configure do |config|
   end
 
   config.include FactoryGirl::Syntax::Methods
-
+  config.include Rack::Test::Methods
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
