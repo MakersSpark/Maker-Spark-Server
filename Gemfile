@@ -12,7 +12,7 @@ gem 'htmlentities'
 gem 'icalendar'
 gem 'ri_cal'
 gem 'ical'
-gem 'open-uri'
+
 
 group :development, :test do 
   gem 'database_cleaner'
