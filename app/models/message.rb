@@ -43,12 +43,18 @@ class Message
 	end
 
 	def add_rfid_url(rfid_code)
-		add_lines(["BOLD","Please sign up at:"])
-		add_lines(["TEXT","www.spark-print-staging.herokuapp.com/sign_up_with/#{rfid_code}"])
+		# add_lines(["CENTRE","You're not registered!"])
+		add_lines(["CENTRE","Please sign up at:"])
+		add_lines(["TEXT"," "])
+		add_lines(["CENTRE","spark-print-staging.herokuapp.com/sign_up_with/#{rfid_code}"])
 	end
 
 	def morning_time
 		Time.now.strftime('%H.%M').to_f < 12.30
+	end
+
+	def add_calendar(calendar)
+		add_lines(calendar.get_todays_events_formatted)
 	end
 
 	def add_lines(line)

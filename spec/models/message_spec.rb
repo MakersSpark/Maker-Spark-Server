@@ -26,7 +26,7 @@ describe Message do
 
 	it "can add a url with an rfid code" do
 		morning_message.add_rfid_url(rfid_code)
-		expect(morning_message.lines).to include(["TEXT", "p.com/sign_up_with/#{rfid_code}"])
+		expect(morning_message.lines).to include(["CENTRE", "m/sign_up_with/#{rfid_code}"])
 	end
 
 	context "in the morning" do 

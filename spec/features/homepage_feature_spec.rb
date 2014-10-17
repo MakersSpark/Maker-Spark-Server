@@ -33,22 +33,15 @@ feature "A user visits the home page" do
 		visit '/'
 		expect(page).to have_css('button.send-message')
 	end
+	
 
-	scenario "can type in messages and send them to the printer" do
-		visit '/'
-		#select 'Plain Text', :from => 'formatbox'
-		fill_in('messagebox', with: 'hello world')
-		click_button('Print')
-		expect(a_request(:post, "#{ENV['SPARK_API_URI']}/print").with(:body => { access_token: ENV['SPARK_TOKEN'], args: "TEXT=hello world/" })).to have_been_made
-	end
-
-	scenario "can see a printed successfully message, when message was sent to the printer" do 
-		visit '/'
-		#select 'Plain Text', :from => 'formatbox'
-		fill_in('messagebox', with: 'hello world')
-		click_button('Print')
-		expect(page).to have_content("Successfully sent to the printer!")
-	end
+	# scenario "can see a printed successfully message, when message was sent to the printer" do 
+	# 	visit '/'
+	# 	#select 'Plain Text', :from => 'formatbox'
+	# 	fill_in('messagebox', with: 'hello world')
+	# 	click_button('Print')
+	# 	expect(page).to have_content("Successfully sent to the printer!")
+	# end
 
 	scenario "a visitor can see the sign in and sign up" do
 		visit '/'

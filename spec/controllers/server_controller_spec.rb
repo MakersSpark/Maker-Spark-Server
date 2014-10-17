@@ -20,6 +20,9 @@ describe "WebsiteController" do
 			stub_printer("CENTREBIG","Good Afternoon")
 			stub_printer("CENTREBIG","~")
 			stub_printer("TEXT","Partly cloudy for the hour.")
+			stub_printer("TEXT","")
+
+			
 			post "/"
 			expect(a_http_request("CENTREBIG","Good Afternoon")).to have_been_made
 			expect(a_http_request("CENTREBIG","~")).to have_been_made
@@ -27,13 +30,15 @@ describe "WebsiteController" do
 		end
 
 		it "prints a url, if no user with that rfid_code exists" do
-			stub_printer("BOLD","Please sign up at:")
-			stub_printer("TEXT","www.spark-print-staging.herokuap")
-			stub_printer("TEXT","p.com/sign_up_with/#{rfid_code}")
+			stub_printer("CENTRE","Please sign up at:")
+			stub_printer("CENTRE", "spark-print-staging.herokuapp.co")
+			stub_printer("CENTRE", "m/sign_up_with/#{rfid_code}")
+			stub_printer("TEXT","")
+			stub_printer("TEXT"," ")
 			post "/"
-			expect(a_http_request("BOLD","Please sign up at:")).to have_been_made
-			expect(a_http_request("TEXT","www.spark-print-staging.herokuap")).to have_been_made
-			expect(a_http_request("TEXT","p.com/sign_up_with/#{rfid_code}")).to have_been_made
+			expect(a_http_request("CENTRE","Please sign up at:")).to have_been_made
+			expect(a_http_request("CENTRE","spark-print-staging.herokuapp.co")).to have_been_made
+			expect(a_http_request("CENTRE","m/sign_up_with/#{rfid_code}")).to have_been_made
 		end
 	end
 end

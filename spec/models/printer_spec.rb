@@ -14,6 +14,7 @@ describe Printer do
 	it "can print a message" do 
 		stub_printer("TEXT","hello")
 		stub_printer("BOLD","I love you")
+		stub_printer("TEXT","")
 		printer.print(message)
 		expect(a_http_request("TEXT","hello")).to have_been_made
 		expect(a_http_request("BOLD","I love you")).to have_been_made

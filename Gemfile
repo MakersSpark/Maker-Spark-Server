@@ -10,6 +10,8 @@ gem 'forecast_io'
 gem 'githubstats'
 gem 'htmlentities'
 gem 'icalendar'
+gem 'ri_cal'
+gem 'ical'
 
 group :development, :test do 
   gem 'database_cleaner'
