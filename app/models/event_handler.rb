@@ -12,7 +12,7 @@ class EventHandler
 		message.add_greeting
 		message.add_divider
 		message.add_time_dependent_message
-		
+		message.add_calendar(Calendar.new("https://www.google.com/calendar/ical/henrystanley.com_uh7l5drs1sfnju9eivnml389k8%40group.calendar.google.com/private-95d6172bf50f4f3783be77c8a0dfce42/basic.ics"))
 	end
 
 	def print_message(printer)

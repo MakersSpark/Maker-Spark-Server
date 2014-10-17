@@ -5,10 +5,11 @@ require 'google_calendar'
 require 'json'
 require 'net/http'
 require 'forecast_io'
-require 'open-uri'
 require 'githubstats'
+require 'open-uri'
 require 'icalendar'
 require 'htmlentities'
+
 
 require_relative './models/user'
 require_relative './models/printer'
