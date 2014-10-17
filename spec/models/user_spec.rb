@@ -1,6 +1,12 @@
 describe User do 
 
 
+	before do
+		stub_request(:any, "https://github.com/byverdu").to_return(:status => 200)
+		stub_request(:any, "https://github.com/").to_return(:status => 404)
+		stub_request(:any, "https://github.com/vincentxyz").to_return(:status => 404)
+	end
+
 	let(:albert) { User.create(email: "albert@test.com",
 	               rfid_code: '41d21cd',
 	               github_user: 'byverdu', 
@@ -24,6 +30,8 @@ describe User do
 	let(:vincent) { User.create(email: "test.test.com", 
 							   password: "oranges", 
 							   password_confirmation: "peaches") }
+
+	let(:vincent_wrong_github) { User.create(github_user: 'vincentxyz') }
 
 	let(:kevin) { User.create(email: "",
 		            github_user: "",
@@ -54,7 +62,7 @@ describe User do
 		end
 
 		it "as user with blank github account" do
-			expect(kevin.errors[:github_user]).to eq ["Github user must not be blank"]
+			expect(kevin.errors[:github_user]).to eq ["Github user must not be blank", "This github user doesn't exist"]
 		end
 
 
@@ -65,6 +73,15 @@ describe User do
 		it "as user with blank password confirmation" do
 			expect(kevin.errors[:password_confirmation]).to eq ["Password confirmation must be at least 1 characters long"]
 		end
+
+
+		it "as user with non existent github account" do
+			expect(vincent_wrong_github.errors[:github_user]).to eq ["This github user doesn't exist"]
+		end
+
+
+			
+
 	end
 
 	context "a duplicate user" do 

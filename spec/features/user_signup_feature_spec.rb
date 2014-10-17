@@ -1,5 +1,9 @@
 feature "User sign up" do
 
+	before do 
+		stub_request(:any, "https://github.com/byverdu")
+	end
+
 	context "a new user" do 
 
 		scenario "when visiting the home page a sign up form is displayed" do
@@ -20,7 +24,7 @@ feature "User sign up" do
     		visit '/sign_up'
 			expect{ sign_up }.to change(User, :count).by(1)
 			expect(current_path).to eq('/')
-			expect(page).to have_content('Thank you for registering, byverdu')
+			expect(page).to have_content('Thank you for registering, byverdu@test.com')
 			expect(page).to have_button('Log out')
     	end
 
@@ -30,7 +34,7 @@ feature "User sign up" do
 
     		sign_up
     		expect(current_path).to eq('/')
-    		expect(page).to have_content('Thank you for registering, byverdu')
+    		expect(page).to have_content('Thank you for registering, byverdu@test.com')
     	end
 	end
 
