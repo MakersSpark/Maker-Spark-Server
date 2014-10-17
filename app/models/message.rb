@@ -36,7 +36,7 @@ class Message
 		["TEXT","Score today: #{github_object.score_today}"],
 		["TEXT","Current streak: #{github_object.current_streak}"],
 		["TEXT","Longest streak: #{github_object.longest_streak}"],
-		["TEXT","High score: #{github_object.highscore[0]} on #{github_object.highscore[1]}"]].each { |line| lines << line }
+		["TEXT","High score: #{github_object.highscore[0]} on #{github_object.highscore[1]}"]].each { |line| add_lines(line) }
 	end
 
 	def add_forecast 
