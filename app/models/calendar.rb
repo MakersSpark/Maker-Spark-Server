@@ -15,6 +15,7 @@ class Calendar
     get_daily_events
     get_weekly_events
     get_monthly_events
+    nil
   end
 
   def get_todays_non_recurring_events
@@ -36,7 +37,21 @@ class Calendar
     @todays_events += @sanitised_events.select{ |event| event.rrule.first.frequency == "MONTHLY" && event.dtstart.strftime('%d') == DateTime.now.strftime('%d') }
   end
 
+  def get_todays_events_formatted
+    get_events
+    result = []
+    @todays_events.each do |e|
+      if Time.now.zone == "BST"
+        eventtime = e.dtstart + 3600
+        result << ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"]
+      else
+        eventtime = e.dtstart
+        result << ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"]
+      end
+    end
 
+    result.sort
+  end
 
 
 end

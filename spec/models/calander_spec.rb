@@ -53,10 +53,12 @@ describe Calendar do
 
   it "can return a list of today's events" do
     expect(alberts_calendar.get_todays_events_formatted).to eq(
-        "10:00  Learning FORTRAN with Enrique
-        11:30  Spark Printer team meeting
-        14:30  Lovis talks about teamwork
-        17:00  Demo: life at 1000WPM with Ethel"
+        [["TEXT", "09:00 Weekly event"],
+        ["TEXT", "10:00 Learning FORTRAN with Enrique"],
+        ["TEXT", "11:30 Spark Printer team meeting"],
+        ["TEXT", "14:30 Monthly event"],
+        ["TEXT", "15:30 Non-recurring event"],
+        ["TEXT", "17:15 Demo: life at 1000WPM with Ethel"]]
       )
   end 
 end 
