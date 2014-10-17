@@ -12,7 +12,7 @@ describe User do
 	               rfid_code: '41d21cd',
 	               github_user: 'byverdu', 
 							   password: "oranges", 
-							   password_confirmation: "oranges") }
+							   password_confirmation: "oranges")}
 
 	let(:ben) { User.create(email: "ben@test.com", 
 							   password: "oranges", 
@@ -85,7 +85,6 @@ describe User do
 
 		it "a user can edit his details" do
 				albert
-
 				albert.update(email: "byberdu@test.com",
 			               github_user: 'henryaj', 
 									   password: "bananas", 
@@ -108,4 +107,5 @@ describe User do
 			expect(henry).not_to be_valid
 		end
 	end
+
 end

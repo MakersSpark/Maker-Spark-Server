@@ -18,6 +18,8 @@ require_relative './models/github'
 require_relative './models/event_handler'
 require_relative './models/formatter'
 require_relative './models/message'
+require_relative './models/user_messages'
+
 require_relative './models/json_handler'
 
 require_relative './controllers/users'
