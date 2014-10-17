@@ -2,6 +2,9 @@ feature "A user visits the home page" do
 	before do
 		stub_request(:post, "#{ENV['SPARK_API_URI']}/print").
 		with(:body => { access_token: ENV['SPARK_TOKEN'], args: "TEXT=hello world/" }).to_return(:body => "{\n  \"id\": \"#{ENV['SPARK_ID']}\",\n  \"name\": \"core1\",\n  \"last_app\": null,\n  \"connected\": true,\n  \"return_value\": 1\n}")
+		stub_request(:any, "https://github.com/users/peter123/contributions")
+		User.create(email: "peter@test.com",rfid_code: '41d21cd',github_user: 'peter123', password: "oranges", password_confirmation: "oranges")
+
 	end
 
 	scenario "sees a title containing a welcome message" do
@@ -14,10 +17,13 @@ feature "A user visits the home page" do
 		expect(page).to have_css('textarea[name=messagebox]')
 	end
 
-	# scenario "visiting the home page" do
-	# 	visit '/'
-	# 	expect(page).to have_selector('button.print-hello-world')
-	# end
+	scenario "sees a checkbox populated with usernames" do
+		visit '/'
+		expect(page).to have_selector('.message-receiver')
+		within(:css, '.message-receiver') {
+			expect(page).to have_content('peter123')
+			}
+	end
 
 	scenario "can type in messages and send them to the printer" do
 		visit '/'

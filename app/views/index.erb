@@ -10,11 +10,12 @@
 
 
 <form action="/print" method="post">
-<!-- 	<select name="formatbox">
-		<option value="BOLD">Bold</option>
-		<option value="TEXT">Plain Text</option>
-	</select> -->
-
+	<span> Receiver:</span>
+	<select name="formatbox", class="message-receiver">
+	<% @users.each do |user| %>
+		<option value="<%= user.github_user%>" ><%= user.github_user%></option>
+	<%end%>
+	</select>
 	<textarea class="message" name="messagebox" cols="40" rows="4"></textarea>
 	<button class="print-hello-world" type="submit">Print</button>
 </form>

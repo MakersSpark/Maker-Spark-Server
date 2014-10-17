@@ -1,13 +1,5 @@
 describe User do 
 
-
-	before do
-		stub_request(:any, "https://github.com/users/byverdu/contributions")
-		stub_request(:any, "https://github.com/users/henryaj/contributions")
-		stub_request(:any, "https://github.com/users//contributions").to_return(:status => 404)
-		stub_request(:any, "https://github.com/users/vincentxyz/contributions").to_return(:status => 404)
-	end
-
 	let(:albert) { User.create(email: "albert@test.com",
 	               rfid_code: '41d21cd',
 	               github_user: 'byverdu', 
@@ -39,7 +31,18 @@ describe User do
 							  password: "",
 							  password_confirmation: ""	) }
 
+	let(:message_receiver) { User.create(email: "benjamino@test.com",
+	               rfid_code: '123124',
+							   password: "oranges", 
+							   password_confirmation: "oranges")}
 
+
+	before do
+		stub_request(:any, "https://github.com/users/byverdu/contributions")
+		stub_request(:any, "https://github.com/users/henryaj/contributions")
+		stub_request(:any, "https://github.com/users//contributions").to_return(:status => 404)
+		stub_request(:any, "https://github.com/users/vincentxyz/contributions").to_return(:status => 404)
+	end
 
 	context "a valid user" do 
 
@@ -108,4 +111,10 @@ describe User do
 		end
 	end
 
+	context "user sending messages" do
+		it "can send messages to a second user" do
+			albert.UserMessages.create(content: "I love you!!!!", sender_id: User.first.id, user_id: message_receiver.id)
+			expect(User.last.UserMessages.first.content).to eq "I love you!!!!"
+		end
+	end
 end
