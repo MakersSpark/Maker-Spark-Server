@@ -13,7 +13,6 @@ require 'htmlentities'
 
 require_relative './models/user'
 require_relative './models/printer'
-require_relative './models/printer2'
 require_relative './models/forecast'
 require_relative './models/github'
 require_relative './models/event_handler'
@@ -35,7 +34,7 @@ post "/" do
      card_info = JSON.parse(params[:data]) rescue  "The card was not read correctly"
      event = EventHandler.new(card_info)
      event.build_message
-     event.print_message(Printer2.new)
+     event.print_message(Printer.new)
      card_info["data"]
 end
 
@@ -100,7 +99,7 @@ end
 
 post "/print" do 
 	printer = Printer.new
-	flash[:notice] = printer.print_text("TEXT", params[:messagebox])
+	flash[:notice] = printer.print_line(["TEXT", params[:messagebox]])
 	redirect '/'
 end
 
