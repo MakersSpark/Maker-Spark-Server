@@ -19,10 +19,6 @@ require_relative './models/event_handler'
 require_relative './models/formatter'
 require_relative './models/message'
 
-
-
-
-
 require_relative './data_mapper_setup'
 
 
@@ -33,7 +29,7 @@ register Sinatra::Flash
 post "/" do 	 
 	card_info = JSON.parse(params[:data]) rescue  "The card was not read correctly"
 	event = EventHandler.new(card_info)
-	if User.first[rfid_code: card_info["data"]
+	if User.first(rfid_code: card_info["data"])
 		event.build_message
 	else
 		event.build_rfid_url_message
