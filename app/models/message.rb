@@ -12,7 +12,6 @@ class Message
 
 	def add_greeting
 		if morning_time
-
 			add_lines(["CENTREBIG","Good Morning"])
 		else
 			add_lines(["CENTREBIG","Good Afternoon"])
@@ -20,12 +19,12 @@ class Message
 	end
 
 	def add_divider
-		lines << ["CENTREBIG","~"]
+		add_lines(["CENTREBIG","~"])
 	end
 
 	def add_time_dependent_message
 		if morning_time
-			add_lines(["TEXT","This will be the calander"])
+			add_lines(["TEXT","This will be the calendar"])
 		else
 			add_forecast
 		end
@@ -41,6 +40,11 @@ class Message
 
 	def add_forecast 
 		add_lines(["TEXT",Forecast.new.summary])
+	end
+
+	def add_rfid_url(rfid_code)
+		add_lines(["BOLD","Please sign up at:"])
+		add_lines(["TEXT","www.spark-print-staging.herokuapp.com/sign_up_with/#{rfid_code}"])
 	end
 
 	def morning_time

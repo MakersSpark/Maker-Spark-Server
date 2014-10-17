@@ -1,11 +1,7 @@
-# require 'githubstats'
-
 class GithubData
 	include GithubStats
 
 	attr_reader :account, :name
-
-	# file('../../spec/githubstats.yml')
 
 	def initialize(account_name)
 		@account = GithubStats.new(account_name)

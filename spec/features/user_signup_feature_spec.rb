@@ -1,5 +1,9 @@
 feature "User sign up" do
 
+	before do 
+		stub_request(:any, "https://github.com/users/byverdu/contributions")
+	end
+
 	context "a new user" do 
 
 		scenario "when visiting the home page a sign up form is displayed" do
@@ -22,6 +26,7 @@ feature "User sign up" do
 			expect(current_path).to eq('/')
 			expect(page).to have_content('Thank you for registering, byverdu@test.com')
 			expect(page).to have_button('Log out')
+			expect(page).to have_link('Edit account')
     	end
 
     	scenario "the user can pass his rfid_code with the url" do

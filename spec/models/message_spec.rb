@@ -3,7 +3,7 @@ describe Message do
 	let(:morning_message) { Message.new }
 	let(:afternoon_message) { Message.new }
 	let(:github) { double :github, name: "benjamin", score_today: 1, current_streak: 4, longest_streak: 10, highscore: [1,2] }
-
+	let(:rfid_code) { "41d21cd" }
 
 
 
@@ -24,6 +24,11 @@ describe Message do
 		expect(morning_message.lines).to include(["TEXT","Partly cloudy for the hour."])
 	end
 
+	it "can add a url with an rfid code" do
+		morning_message.add_rfid_url(rfid_code)
+		expect(morning_message.lines).to include(["TEXT", "p.com/sign_up_with/#{rfid_code}"])
+	end
+
 	context "in the morning" do 
 
 		before do 
@@ -38,13 +43,12 @@ describe Message do
 
 		it "can add a time dependent message" do 
 			morning_message.add_time_dependent_message
-			expect(morning_message.lines).to include(["TEXT","This will be the calander"])
+			expect(morning_message.lines).to include(["TEXT","This will be the calendar"])
 		end
 	end
 
 
 	context "in the afteernoon" do 
-
 		before do 
 			afternoon = Time.local(2014,10,23,16,31)
 			Timecop.freeze(afternoon)
@@ -61,6 +65,4 @@ describe Message do
 			expect(afternoon_message.lines).to include(["TEXT","Partly cloudy for the hour."])
 		end
 	end
-
-
 end

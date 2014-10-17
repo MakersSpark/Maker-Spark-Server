@@ -1,0 +1,12 @@
+<h3>Editing the account</h3>
+
+<form action="/edit_user" method="post" class="edit_user">
+		<input type="text" name="email" value="<%= @user.email %>">
+		<input type="text" name="github_user" value="<%= @user.github_user %>">
+		<input type="password" name="password" placeholder="Password">
+		<input type="password" name="password_confirmation" placeholder="Password Confirmation">
+		<button type="submit">Edit User</button>
+		
+
+
+</form>

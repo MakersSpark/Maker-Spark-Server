@@ -1,5 +1,10 @@
 feature "User sign in" do
 
+	before do
+		stub_request(:any, "https://github.com/users/byverdu/contributions")
+	end
+
+
 	scenario "User is able to sign in" do
 			visit '/'
 			expect(page).to have_link('Sign in')
@@ -19,7 +24,10 @@ end
 
 feature "Users log out" do
 
+
+
 	before do
+		stub_request(:any, "https://github.com/users/byverdu/contributions")
 		sign_up
 		sign_in
 	end
@@ -33,12 +41,13 @@ end
 feature "Error messages when signing in" do
 
 	before do
+		stub_request(:any, "https://github.com/users/byverdu/contributions")
 		sign_up
 	end
 
 	scenario "with the wrong email" do
 
-		wrong_sign_in('by@test.com','s3cr3t')
+		wrong_sign_in('byve@test.com','s3cr3t')
 
 		expect(page).to have_content('This email is not registered')
 	end

@@ -19,6 +19,7 @@ class User
 	validates_presence_of     :email, :github_user 
 	validates_length_of       :password, min: 1
 	validates_length_of       :password_confirmation, min: 1
+	validates_with_method     :github_user, :method => :check_for_github_existence
 
 	def password=(password)
 		@password = password
@@ -32,6 +33,18 @@ class User
 		else
 			nil
 		end
+	end
+
+	def check_for_github_existence
+		uri = URI.parse("https://github.com/users/#{self.github_user}/contributions")
+		response = Net::HTTP.get_response(uri)
+
+		if response.code == "200"
+			return true
+		else 
+			[ false, "This github user doesn't exist"]
+		end
+
 	end
 
 end
