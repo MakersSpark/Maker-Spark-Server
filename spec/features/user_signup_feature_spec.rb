@@ -26,6 +26,7 @@ feature "User sign up" do
 			expect(current_path).to eq('/')
 			expect(page).to have_content('Thank you for registering, byverdu@test.com')
 			expect(page).to have_button('Log out')
+			expect(page).to have_link('Edit account')
     	end
 
     	scenario "the user can pass his rfid_code with the url" do

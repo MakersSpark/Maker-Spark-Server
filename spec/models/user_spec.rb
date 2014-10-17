@@ -3,6 +3,7 @@ describe User do
 
 	before do
 		stub_request(:any, "https://github.com/users/byverdu/contributions")
+		stub_request(:any, "https://github.com/users/henryaj/contributions")
 		stub_request(:any, "https://github.com/users//contributions").to_return(:status => 404)
 		stub_request(:any, "https://github.com/users/vincentxyz/contributions").to_return(:status => 404)
 	end
@@ -78,10 +79,22 @@ describe User do
 		it "as user with non existent github account" do
 			expect(vincent_wrong_github.errors[:github_user]).to eq ["This github user doesn't exist"]
 		end
+	end
 
+	context "editing user account" do
 
-			
+		it "a user can edit his details" do
+				albert
 
+				albert.update(email: "byberdu@test.com",
+			               github_user: 'henryaj', 
+									   password: "bananas", 
+									   password_confirmation: "bananas")
+
+				expect(albert.email).not_to eq('albert@test.com')
+				expect(albert.github_user).not_to eq('byverdu8')
+				expect(albert.password).not_to eq('oranges')
+			end		
 	end
 
 	context "a duplicate user" do 

@@ -89,6 +89,31 @@ post "/sign_in" do
 		end
 end
 
+get '/edit_user' do
+  @user = User.get(session[:user_id])	
+
+	erb :edit_user
+end
+
+post '/edit_user' do
+	@user = User.get(session[:user_id])
+
+	@user.update(email: 			         params[:email],
+		          github_user:           params[:github_user],
+						  password:   			     params[:password],	
+						  password_confirmation: params[:password_confirmation])
+
+	if @user.save 
+
+		session[:user_id] = @user.id
+		flash[:notice] = "Your details has been successfully updated"
+		redirect '/'
+	else
+		flash[:errors] = @user.errors.full_messages
+		redirect '/edit_user' 
+	end
+end
+
 delete '/' do
 
 	flash[:notice] = "Good bye!"

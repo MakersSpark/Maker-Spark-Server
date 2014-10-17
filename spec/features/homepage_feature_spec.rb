@@ -41,6 +41,7 @@ feature "A user visits the home page" do
 		expect(page).to have_link('Sign in')
 		expect(page).to have_link('Sign up')
 		expect(page).not_to have_button('Log out')
+		expect(page).not_to have_link('Edit account')	
 	end
 
 	# scenario "can send formatted text to the printer" do 

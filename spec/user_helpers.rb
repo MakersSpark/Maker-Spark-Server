@@ -22,6 +22,21 @@ def sign_in(email = 'byverdu@test.com',
 
 end
 
+def editing_user(email                 =  'alby@test.com',
+	               github_user           = 'henryaj',
+	               password              = 's3cr3t0',
+	               password_confirmation = 's3cr3t0')
+
+	visit '/edit_user'
+
+	fill_in 'email',                 with: email
+	fill_in 'github_user',					 with: github_user
+	fill_in 'password',              with: password
+	fill_in 'password_confirmation', with: password_confirmation
+
+	click_button 'Edit User'
+end
+
 def wrong_sign_in(email, password)
 
 	visit '/sign_in'
