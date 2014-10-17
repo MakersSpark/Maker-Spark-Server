@@ -39,7 +39,7 @@ post "/sign_in" do
 		flash[:notice]  = "Welcome back #{current_user.email}"
 		redirect '/'
 	else 		
-		flash[:errors] = ["This email is not registered", "This password is wrong"]
+		flash[:errors] = ["This email is not registered.", "This password is wrong."]
 		redirect "/sign_in"
 	end
 end
@@ -61,7 +61,7 @@ post '/edit_user' do
 	if @user.save 
 
 		session[:user_id] = @user.id
-		flash[:notice] = "Your details has been successfully updated"
+		flash[:notice] = "Your details have been successfully updated"
 		redirect '/'
 	else
 		flash[:errors] = @user.errors.full_messages

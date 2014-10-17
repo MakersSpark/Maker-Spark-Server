@@ -61,3 +61,16 @@ post "/print" do
 	flash[:notice] = printer.print_line(["TEXT", params[:messagebox]])
 	redirect '/'
 end
+
+post "/send_message" do
+     user = current_user 
+     message = user.UserMessages.create(content: params[:usermessagebox], sender_id: current_user.id, user_id: params[:receiver])
+     puts message.dirty?
+     puts current_user.inspect
+     if message.save     
+          flash[:notice] = "Message has been sent!"
+     else
+          flash[:notice] = "There has been a problem with your message!"
+     end
+     redirect '/'
+end

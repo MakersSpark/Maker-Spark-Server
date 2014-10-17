@@ -1,4 +1,31 @@
-	<% if current_user %>
+<!doctype html>
+<html lang='en'>
+
+	<head>
+    	<title>Spark Dashboard</title>
+    </head>
+      
+	
+	<body>
+	
+	<h1>Welcome to SparkPrint</h1>
+
+	
+
+	
+		<div class="errors">
+			
+			<p>You have the following problems with your registration:</p>
+
+			<ul>
+
+			
+			</ul>
+		</div>
+	
+
+
+		
 
 		<form action="/" method="post">
 			<input type="hidden" name="_method" value="delete">
@@ -6,7 +33,7 @@
 		</form>
 
 		<a href="/edit_user">Edit account</a>
-	<%end%>		
+			
 
 
 <form action="/print" method="post">
@@ -17,9 +44,11 @@
 <form action="/send_message" method="post">
 	<span> Receiver:</span>
 	<select name="receiver", class="message-receiver">
-	<% @users.each do |user| %>
-		<option value="<%= user.github_user%>" ><%= user.github_user%></option>
-	<%end%>
+	
+		<option value="peter123" >peter123</option>
+	
+		<option value="byverdu" >byverdu</option>
+	
 	</select>
 	<textarea class="user-message" name="usermessagebox" cols="40" rows="4"></textarea>
 	<button class="send-message" type="submit">Send Message</button>
@@ -31,3 +60,9 @@
 <a href='/sign_in'>Sign in</a>
 <a href='/sign_up'>Sign up</a>
 
+
+
+	</body>
+
+
+</html>

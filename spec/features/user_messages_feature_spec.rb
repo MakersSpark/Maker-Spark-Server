@@ -8,10 +8,12 @@ feature "User sends messages to another user" do
 
 	end
 
-
 	scenario "A user chooses the name of the receiver in a select box" do
 		visit '/'
-		
+		select 'peter123', :from => 'receiver'
+		fill_in('usermessagebox', with: 'Hi there!!!!')
+		click_button('Send Message')
+		expect(page).to have_content("Message has been sent!")
 	end
 
 end

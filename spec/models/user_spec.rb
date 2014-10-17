@@ -115,6 +115,7 @@ describe User do
 		it "can send messages to a second user" do
 			albert.UserMessages.create(content: "I love you!!!!", sender_id: User.first.id, user_id: message_receiver.id)
 			expect(User.last.UserMessages.first.content).to eq "I love you!!!!"
+			expect(User.last.UserMessages.first.dirty?).to eq false
 		end
 	end
 end
