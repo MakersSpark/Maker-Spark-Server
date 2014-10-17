@@ -1,7 +1,7 @@
 feature "User sign up" do
 
 	before do 
-		stub_request(:any, "https://github.com/byverdu")
+		stub_request(:any, "https://github.com/users/byverdu/contributions")
 	end
 
 	context "a new user" do 

@@ -2,9 +2,9 @@ describe User do
 
 
 	before do
-		stub_request(:any, "https://github.com/byverdu").to_return(:status => 200)
-		stub_request(:any, "https://github.com/").to_return(:status => 404)
-		stub_request(:any, "https://github.com/vincentxyz").to_return(:status => 404)
+		stub_request(:any, "https://github.com/users/byverdu/contributions")
+		stub_request(:any, "https://github.com/users//contributions").to_return(:status => 404)
+		stub_request(:any, "https://github.com/users/vincentxyz/contributions").to_return(:status => 404)
 	end
 
 	let(:albert) { User.create(email: "albert@test.com",

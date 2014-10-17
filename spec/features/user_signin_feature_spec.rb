@@ -1,7 +1,7 @@
 feature "User sign in" do
 
 	before do
-		stub_request(:any, "https://github.com/byverdu")
+		stub_request(:any, "https://github.com/users/byverdu/contributions")
 	end
 
 
@@ -27,7 +27,7 @@ feature "Users log out" do
 
 
 	before do
-		stub_request(:any, "https://github.com/byverdu")
+		stub_request(:any, "https://github.com/users/byverdu/contributions")
 		sign_up
 		sign_in
 	end
@@ -41,7 +41,7 @@ end
 feature "Error messages when signing in" do
 
 	before do
-		stub_request(:any, "https://github.com/byverdu")
+		stub_request(:any, "https://github.com/users/byverdu/contributions")
 		sign_up
 	end
 

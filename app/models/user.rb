@@ -36,7 +36,7 @@ class User
 	end
 
 	def check_for_github_existence
-		uri = URI.parse("https://github.com/#{self.github_user}")
+		uri = URI.parse("https://github.com/users/#{self.github_user}/contributions")
 		response = Net::HTTP.get_response(uri)
 
 		if response.code == "200"
