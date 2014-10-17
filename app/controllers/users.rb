@@ -68,3 +68,10 @@ post '/edit_user' do
 		redirect '/edit_user' 
 	end
 end
+
+
+delete '/' do
+	flash[:notice] = "Good bye!"
+	session[:user_id] = nil
+	redirect '/'
+end

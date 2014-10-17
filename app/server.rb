@@ -30,6 +30,10 @@ enable :sessions
 set :session_secret, 'We will only write positive messages'
 register Sinatra::Flash
 
+get '/' do
+	erb :index
+end
+
 post "/" do 	 
      card_info = JsonHandler.get_user_info(params[:data]) 
      user = User.first(rfid_code: card_info["data"])
@@ -41,16 +45,6 @@ post "/" do
      end	
      event.print_message(Printer.new)
      "sorry ben is stupid"
-end
-
-get '/' do
-	erb :index
-end
-
-delete '/' do
-	flash[:notice] = "Good bye!"
-	session[:user_id] = nil
-	redirect '/'
 end
 
 post "/print" do 
