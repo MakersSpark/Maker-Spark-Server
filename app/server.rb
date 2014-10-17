@@ -18,6 +18,11 @@ require_relative './models/github'
 require_relative './models/event_handler'
 require_relative './models/formatter'
 require_relative './models/message'
+require_relative './models/json_handler'
+
+
+
+
 
 require_relative './data_mapper_setup'
 
@@ -27,14 +32,16 @@ set :session_secret, 'We will only write positive messages'
 register Sinatra::Flash
 
 post "/" do 	 
-	card_info = JSON.parse(params[:data]) rescue  "The card was not read correctly"
-	event = EventHandler.new(card_info)
-	if User.first(rfid_code: card_info["data"])
-		event.build_message
-	else
-		event.build_rfid_url_message
-	end
-	event.print_message(Printer.new)
+     card_info = JsonHandler.get_user_info(params[:data]) 
+     user = User.first(rfid_code: card_info["data"])
+     event = EventHandler.new(card_info)
+     if user
+     	event.build_message
+     else
+     	event.build_rfid_url_message
+     end	
+     event.print_message(Printer.new)
+     card_info["data"]
 end
 
 
@@ -116,6 +123,10 @@ helpers do
 
 	def current_user
 		@current_user ||= User.get(session[:user_id]) if session[:user_id]			
+	end
+
+	def get_user_info(rfid_data) 
+		JSON.parse(rfid_data) rescue  "The card was not read correctly"
 	end
 
 end
