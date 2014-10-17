@@ -13,8 +13,14 @@ class Printer
 		check_printer_response(response)
 	end
 
+	def print_blank_line
+		response = Net::HTTP.post_form(print_uri, access_token: @spark_api_token , args: "TEXT=/") 
+		check_printer_response(response)
+	end
+
 	def print(message)
 		message.lines.each{|line| print_line(line)}
+		2.times { print_blank_line }
 	end
 
 	def check_printer_response(response)
