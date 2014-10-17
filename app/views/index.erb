@@ -10,15 +10,23 @@
 
 
 <form action="/print" method="post">
+	<textarea class="message" name="messagebox" cols="40" rows="4"></textarea>
+	<button class="print-hello-world" type="submit">Print</button>
+</form>
+
+<form action="/message" method="post">
 	<span> Receiver:</span>
 	<select name="formatbox", class="message-receiver">
 	<% @users.each do |user| %>
 		<option value="<%= user.github_user%>" ><%= user.github_user%></option>
 	<%end%>
 	</select>
-	<textarea class="message" name="messagebox" cols="40" rows="4"></textarea>
-	<button class="print-hello-world" type="submit">Print</button>
+	<textarea class="user-message" name="usermessagebox" cols="40" rows="4"></textarea>
+	<button class="send-message" type="submit">Send Message</button>
 </form>
+
+
+
 
 <a href='/sign_in'>Sign in</a>
 <a href='/sign_up'>Sign up</a>

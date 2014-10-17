@@ -4,7 +4,6 @@ feature "A user visits the home page" do
 		with(:body => { access_token: ENV['SPARK_TOKEN'], args: "TEXT=hello world/" }).to_return(:body => "{\n  \"id\": \"#{ENV['SPARK_ID']}\",\n  \"name\": \"core1\",\n  \"last_app\": null,\n  \"connected\": true,\n  \"return_value\": 1\n}")
 		stub_request(:any, "https://github.com/users/peter123/contributions")
 		User.create(email: "peter@test.com",rfid_code: '41d21cd',github_user: 'peter123', password: "oranges", password_confirmation: "oranges")
-
 	end
 
 	scenario "sees a title containing a welcome message" do
@@ -25,6 +24,16 @@ feature "A user visits the home page" do
 			}
 	end
 
+	scenario "have a box for sending messages to other users" do	
+		visit '/'
+		expect(page).to have_css('textarea[name=usermessagebox]')
+	end
+
+	scenario "have a button for sending messages to other users" do	
+		visit '/'
+		expect(page).to have_css('button.send-message')
+	end
+
 	scenario "can type in messages and send them to the printer" do
 		visit '/'
 		#select 'Plain Text', :from => 'formatbox'
@@ -43,7 +52,6 @@ feature "A user visits the home page" do
 
 	scenario "a visitor can see the sign in and sign up" do
 		visit '/'
-
 		expect(page).to have_link('Sign in')
 		expect(page).to have_link('Sign up')
 		expect(page).not_to have_button('Log out')
