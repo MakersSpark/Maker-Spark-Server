@@ -17,4 +17,8 @@ class EventHandler
 	def print_message(printer)
 		printer.print(message)
 	end
+
+	def build_rfid_url_message
+		message.add_rfid_url(@rfid_data["data"])
+	end
 end

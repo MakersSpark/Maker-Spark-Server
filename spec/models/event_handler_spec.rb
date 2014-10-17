@@ -4,6 +4,7 @@ describe EventHandler do
 	let(:vincents_message) { double :message }
 	let(:printer) { double :printer }
 	let(:event) { EventHandler.new(my_json) }
+	let(:rfid_code) { "41d21cd" }
 
 	
 
@@ -29,4 +30,9 @@ describe EventHandler do
 	 	event.print_message(printer)
 	end
 
+	it "can print a sign_up url, when a user swipes an unregistered rfid card" do 
+		allow(event).to receive(:message).and_return(vincents_message)
+		expect(vincents_message).to receive(:add_rfid_url).with(my_json["data"])
+	 	event.build_rfid_url_message
+	end
 end

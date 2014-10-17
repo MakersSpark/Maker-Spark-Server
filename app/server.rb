@@ -31,11 +31,14 @@ set :session_secret, 'We will only write positive messages'
 register Sinatra::Flash
 
 post "/" do 	 
-     card_info = JSON.parse(params[:data]) rescue  "The card was not read correctly"
-     event = EventHandler.new(card_info)
-     event.build_message
-     event.print_message(Printer.new)
-     card_info["data"]
+	card_info = JSON.parse(params[:data]) rescue  "The card was not read correctly"
+	event = EventHandler.new(card_info)
+	if User.first[rfid_code: card_info["data"]
+		event.build_message
+	else
+		event.build_rfid_url_message
+	end
+	event.print_message(Printer.new)
 end
 
 
@@ -90,10 +93,8 @@ post "/sign_in" do
 end
 
 delete '/' do
-
 	flash[:notice] = "Good bye!"
 	session[:user_id] = nil
-
 	redirect '/'
 end
 
@@ -103,16 +104,16 @@ post "/print" do
 	redirect '/'
 end
 
-get "/forecast" do 
-	forecast = Forecast.new
-	printer = Printer.new
-	forecast.summary	
-end
+# get "/forecast" do 
+# 	forecast = Forecast.new
+# 	printer = Printer.new
+# 	forecast.summary	
+# end
 
-get '/github' do 
-	stats = GithubStats.new('kikrahau')
-	puts stats.data.today 
-end
+# get '/github' do 
+# 	stats = GithubStats.new('kikrahau')
+# 	puts stats.data.today 
+# end
 
 helpers do
 
