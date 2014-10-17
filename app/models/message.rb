@@ -51,7 +51,7 @@ class Message
 		Time.now.strftime('%H.%M').to_f < 12.30
 	end
 
-	def add_calendar(calender)
+	def add_calendar(calendar)
 		add_lines(calendar.get_todays_events_formatted)
 	end
 
