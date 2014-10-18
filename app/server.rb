@@ -38,7 +38,9 @@ post "/" do
      user = User.first(rfid_code: card_info["data"])
      event = EventHandler.new(card_info)
      if user
-     	event.build_message
+          event.build_message
+          message = UserMessage.first(user_id: user.id)
+          event.build_user_message(message.content,user.github_name) if message
      else
      	event.build_rfid_url_message
      end	
