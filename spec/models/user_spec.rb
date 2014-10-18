@@ -33,12 +33,14 @@ describe User do
 
 	let(:message_receiver) { User.create(email: "benjamino@test.com",
 	               rfid_code: '123124',
+	               github_user: 'benjamintillett',
 							   password: "oranges", 
 							   password_confirmation: "oranges")}
 
 
 	before do
 		stub_request(:any, "https://github.com/users/byverdu/contributions")
+		stub_request(:any, "https://github.com/users/benjamintillett/contributions")
 		stub_request(:any, "https://github.com/users/henryaj/contributions")
 		stub_request(:any, "https://github.com/users//contributions").to_return(:status => 404)
 		stub_request(:any, "https://github.com/users/vincentxyz/contributions").to_return(:status => 404)
@@ -114,8 +116,8 @@ describe User do
 	context "user sending messages" do
 		it "can send messages to a second user" do
 			UserMessage.create(content: "I love you!!!!", sender_id: albert.id, user_id: message_receiver.id)
-			expect(User.last.UserMessages.first.content).to eq "I love you!!!!"
-			expect(User.last.UserMessages.first.dirty?).to eq false
+			expect(UserMessage.first.content).to eq "I love you!!!!"
+			expect(UserMessage.first.dirty?).to eq false
 		end
 	end
 end
