@@ -8,5 +8,7 @@ The server handles user signup and login, and parses and formats messages for pr
 
 * Ruby
 * Sinatra
-* [EventMachine](https://github.com/eventmachine/eventmachine) for processing inbound server-side events from Spark Printer
+* Postgres
+* DataMapper
+* node.js server for pushing RFID scans to the main Sinatra server for handling
 * RSpec and Capybara for testing
