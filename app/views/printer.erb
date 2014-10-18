@@ -1,56 +1,80 @@
-<h1>Welcome to SparkPrint</h1>
+<div class="header">
+     <!--  <ul class="nav nav-pills pull-right">
+        <li class="active"><a href="#top">top</a></li>
+        <li><a href="#calendar">calendar</a></li>
+        <li><a href="#tube">tube status</a></li>
+      </ul> -->
+  <h3 class="text-muted">Spark Printer Dashboard</h3>
+</div>
 
-	<% if flash[:notice]%>
-		<div class="notice">
-			<%= flash[:notice] %>
-		</div>
-	<%end%>
+<div class="container">
+      
+	<div class='spark'>
 
-	<% if flash[:errors]%>
-		<div class="errors">
-			
-			<p>You have the following problems with your registration:</p>
+		<h3>Welcome to SparkPrint</h3>
 
-			<ul>
-
-			<% flash[:errors].each do |error| %>
-			
-				<li> <%= error %> </li>
-
+			<% if flash[:notice]%>
+				<div class="notice">
+					<%= flash[:notice] %>
+				</div>
 			<%end%>
-			</ul>
-		</div>
-	<%end%>
-	<% if current_user %>
 
+			<% if flash[:errors]%>
+				<div class="errors">
+					
+					<p>You have the following problems with your registration:</p>
+
+					<ul>
+
+					<% flash[:errors].each do |error| %>
+					
+						<li> <%= error %> </li>
+
+					<%end%>
+					</ul>
+				</div>
+
+				<%end%>
+				<% if current_user %>
+
+		
 		<form action="/" method="post">
 			<input type="hidden" name="_method" value="delete">
 			<button type="submit">Log out</button>
 		</form>
 
-		<a href="/edit_user">Edit account</a>
-	<%end%>		
+		<a href="/edit_user">edit account</a>
+		<%end%>		
+	<br />
+		<form action="/print" method="post">
+			<textarea class="message" name="messagebox" cols="40" rows="4"></textarea></p>
+			<!-- <button class="print-hello-world" type="submit">Print</button> -->
+			<button type="button" type="submit" class="btn btn-sm btn-info">submit</button>
+		</form>
+		
+	</div>
+<br />
+	<div class='spark'>
+		<form action="/send_message" method="post"></p>
+			<span> Receiver:</span>
+			<select name="receiver", class="message-receiver">
+			<% @users.each do |user| %>
+				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
+			<%end%>
+			</select></p>
 
+			<textarea class="user-message" name="usermessagebox" cols="40" rows="4"></textarea></p>
+		<!-- 	<button class="send-message" type="submit">send message</button> -->
+			<button type="button" type="submit" class="btn btn-sm btn-info">send message</button>
+		</form>
 
-<form action="/print" method="post">
-	<textarea class="message" name="messagebox" cols="40" rows="4"></textarea>
-	<button class="print-hello-world" type="submit">Print</button>
-</form>
+		<!-- <a href='/sign_in'>Sign in</a>
+		<a href='/sign_up'>Sign up</a> -->
+	</div>
+<br />
+<div class="footer">
+	© SparkTeam 2014
+</div>
 
-<form action="/send_message" method="post">
-	<span> Receiver:</span>
-	<select name="receiver", class="message-receiver">
-	<% @users.each do |user| %>
-		<option value="<%= user.github_user%>" ><%= user.github_user%></option>
-	<%end%>
-	</select>
-	<textarea class="user-message" name="usermessagebox" cols="40" rows="4"></textarea>
-	<button class="send-message" type="submit">Send Message</button>
-</form>
-
-
-
-
-<a href='/sign_in'>Sign in</a>
-<a href='/sign_up'>Sign up</a>
+</div>
 

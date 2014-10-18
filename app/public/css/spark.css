@@ -1,6 +1,8 @@
+/*Spark CSS is based on Jumbotron */
+
 /* Space out content a bit */
 body {
-  padding-top: 20px;
+  padding-top: 80px;
   padding-bottom: 20px;
 }
 
@@ -44,7 +46,7 @@ body {
   margin: 30px 0;
 }
 
-.jumbotron td{
+.spark td{
   text-align: left;
 }
 
@@ -82,28 +84,28 @@ body {
 }
 
 /* Main marketing message and sign up button */
-.jumbotron {
+.spark {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
 
-.jumbotron p{
+.spark p{
   margin-top: 15px;
 }
 
-.jumbotron h3{
+.spark h3{
   margin-top:0px;
 }
 
-.jumbotron ul,li{
+.spark ul,li{
   list-style: none;
 }
 
-.jumbotron table{
+.spark table{
   margin-top: 35px;
 }
 
-.jumbotron .btn {
+.spark .btn-lg {
   padding: 14px 24px;
   font-size: 21px;
 }
@@ -130,7 +132,7 @@ body {
     margin-bottom: 30px;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
+  .spark {
     border-bottom: 0;
   }
 }
