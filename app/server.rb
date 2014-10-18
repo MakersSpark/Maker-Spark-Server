@@ -58,10 +58,8 @@ post "/print" do
 end
 
 post "/send_message" do
-     user = current_user 
-     message = user.UserMessages.create(content: params[:usermessagebox], sender_id: current_user.id, user_id: params[:receiver])
-     puts message.dirty?
-     puts current_user.inspect
+     receiver = User.first(github_user: params[:receiver])
+     message = UserMessage.create(content: params[:usermessagebox], sender_id: current_user.id, user_id: receiver.id)
      if message.save     
           flash[:notice] = "Message has been sent!"
      else

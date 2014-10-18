@@ -14,3 +14,8 @@ class UserMessage
 end
 
 
+# let(:albert) { User.create(email: "asdasd@test.com",
+# rfid_code: 'gfasdfsd',
+# github_user: 'kikrahau', 
+# password: "oranges", 
+# password_confirmation: "oranges")}
