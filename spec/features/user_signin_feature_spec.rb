@@ -49,14 +49,12 @@ feature "Error messages when signing in" do
 
 		wrong_sign_in('byve@test.com','s3cr3t')
 
-		expect(page).to have_content('This email is not registered')
+		expect(page).to have_content("We couldn't find that email address – make sure it's typed correctly.")
 	end
 
 	scenario "with the wrong password" do
-
 		wrong_sign_in('byverdu@test.com','s3cr3t0')
-
-		expect(page).to have_content('This password is wrong')
+		expect(page).to have_content("There's something wrong with your password.")
 	end
 
 end

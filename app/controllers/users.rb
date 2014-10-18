@@ -39,7 +39,7 @@ post "/sign_in" do
 		flash[:notice]  = "Welcome back #{current_user.email}"
 		redirect '/'
 	else 		
-		flash[:errors] = ["This email is not registered.", "This password is wrong."]
+		flash[:errors] = ["We couldn't find that email address – make sure it's typed correctly.", "There's something wrong with your password."]
 		redirect "/sign_in"
 	end
 end
