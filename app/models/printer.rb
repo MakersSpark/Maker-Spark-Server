@@ -20,6 +20,7 @@ class Printer
 
 	def print(message)
 		message.lines.each{|line| print_line(line)}
+		# two line feeds after each printout to give room to tear it off
 		2.times { print_blank_line }
 	end
 
