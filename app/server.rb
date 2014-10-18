@@ -34,7 +34,7 @@ enable :sessions
 set :session_secret, 'We will only write positive messages'
 register Sinatra::Flash
 
-get '/' do
+get '/printer' do
      @users = User.all
-  erb :index
+  erb :printer
 end

@@ -1,3 +1,26 @@
+<h1>Welcome to SparkPrint</h1>
+
+	<% if flash[:notice]%>
+		<div class="notice">
+			<%= flash[:notice] %>
+		</div>
+	<%end%>
+
+	<% if flash[:errors]%>
+		<div class="errors">
+			
+			<p>You have the following problems with your registration:</p>
+
+			<ul>
+
+			<% flash[:errors].each do |error| %>
+			
+				<li> <%= error %> </li>
+
+			<%end%>
+			</ul>
+		</div>
+	<%end%>
 	<% if current_user %>
 
 		<form action="/" method="post">
