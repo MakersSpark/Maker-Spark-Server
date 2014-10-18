@@ -10,7 +10,7 @@ describe GithubData do
 	context "requiring contributions from the GithubStats gem" do
 
 		before do 
-			GithubStats.stub(:new).and_return(stats)
+			expect(GithubStats).to receive(:new).and_return(stats)
 		end
 
 		it 'can get the current streak of the user' do 

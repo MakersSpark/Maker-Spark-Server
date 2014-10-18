@@ -35,13 +35,12 @@ feature "A user visits the home page" do
 	end
 	
 
-	# scenario "can see a printed successfully message, when message was sent to the printer" do 
-	# 	visit '/'
-	# 	#select 'Plain Text', :from => 'formatbox'
-	# 	fill_in('messagebox', with: 'hello world')
-	# 	click_button('Print')
-	# 	expect(page).to have_content("Successfully sent to the printer!")
-	# end
+	scenario "can see a printed successfully message, when message was sent to the printer" do 
+		visit '/'
+		fill_in('messagebox', with: 'hello world')
+		click_button('Print')
+		expect(page).to have_content("Successfully sent to the printer!")
+	end
 
 	scenario "a visitor can see the sign in and sign up" do
 		visit '/'

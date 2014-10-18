@@ -5,6 +5,8 @@ describe EventHandler do
 	let(:printer) { double :printer }
 	let(:event) { EventHandler.new(my_json) }
 	let(:rfid_code) { "41d21cd" }
+	let(:user_message) { double :user_message, content: "Would you like to pair with me?", sender_id: 1 }
+	let(:user) { double :user, github_user: "byverdu" }
 
 	
 
@@ -34,5 +36,13 @@ describe EventHandler do
 		allow(event).to receive(:message).and_return(vincents_message)
 		expect(vincents_message).to receive(:add_rfid_url).with(my_json["data"])
 	 	event.build_rfid_url_message
+	end
+
+	it "can print a mesage, if a user received a user message from another user" do
+		allow(event).to receive(:message).and_return(vincents_message)
+		allow(event).to receive(:user_message).and_return(user_message)
+		allow(user).to receive(:get).with(user_message.sender_id).and_return(user.github_user)
+		expect(vincents_message).to receive(:add_user_message).with(user_message.content,user.github_user)
+		event.build_user_message(user_message.content,user.github_user)
 	end
 end
