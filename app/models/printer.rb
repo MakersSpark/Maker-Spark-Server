@@ -27,7 +27,7 @@ class Printer
 		if JSON.parse(response.body)["return_value"] == 1 
 			"Successfully sent to the printer!"
 		else
-			"Sorry, something went wrong. Is the printer online?"
+			"Sorry, something went wrong. Check the printer is online."
 		end
 	end
 
