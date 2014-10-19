@@ -4609,10 +4609,13 @@ a.thumbnail.active {
   color: #333;
 }
 .alert {
-  padding: 15px;
+  padding: 10px;
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
 }
 .alert h4 {
   margin-top: 0;
