@@ -51,19 +51,46 @@ body {
 }
 
 .good_service {
-  color: #88A825;
+  color: #88A825; /* green */
 }
 
 .minor_delays {
-  color: #FF9800;
+  color: #FF9800; /* amber */
 }
 
 .severe_delays {
-  color: #CD2C24;
+  font-weight: bold;
+  color: #CD2C24; /* red */
 }
 
 .part_suspended{
-  color: #ABC8E2;
+  color: #ABC8E2; /* grey */
+}
+
+.part_closure{
+  color: #ABC8E2; /* grey */
+}
+
+.service_closed{
+  font-weight: bold;
+  color: #CD2C24; /* red */
+}
+
+.suspended{
+  font-weight: bold;
+  color:#FF9800; /* amber */
+}
+
+.planned_closure{
+  color:#FF9800; /* amber */
+}
+
+.reduced_service{
+  color:#FF9800; /* amber */
+}
+
+.bus_service{
+  color:#FF9800; /* amber */
 }
 
 .header{
