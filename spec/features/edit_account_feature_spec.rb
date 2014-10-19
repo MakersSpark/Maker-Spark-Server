@@ -5,7 +5,7 @@ feature "Editing a user account" do
 		stub_request(:any, "https://github.com/users/henryaj/contributions")
 		sign_up
 		sign_in
-		click_link('Edit account') 	
+		visit "/edit_user"	
 	end
 
 	scenario "should be able to see the form" do

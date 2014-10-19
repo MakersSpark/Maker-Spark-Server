@@ -24,8 +24,6 @@ end
 
 feature "Users log out" do
 
-
-
 	before do
 		stub_request(:any, "https://github.com/users/byverdu/contributions")
 		sign_up

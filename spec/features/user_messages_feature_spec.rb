@@ -12,7 +12,7 @@ feature "User sends messages to another user" do
 		visit '/'
 		select 'peter123', :from => 'receiver'
 		fill_in('usermessagebox', with: 'Hi there asdasdasd!!!!')
-		click_button('Send Message')
+		click_button('Send message')
 		expect(page).to have_content("Message has been sent!")
 	end
 

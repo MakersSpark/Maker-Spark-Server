@@ -31,7 +31,7 @@ feature "A user visits the home page" do
 
 	scenario "have a button for sending messages to other users" do	
 		visit '/'
-		expect(page).to have_css('button.send-message')
+		expect(page).to have_button('Send message')
 	end
 	
 
@@ -42,13 +42,13 @@ feature "A user visits the home page" do
 		expect(page).to have_content("Successfully sent to the printer!")
 	end
 
-	scenario "a visitor can see the sign in and sign up" do
-		visit '/'
-		expect(page).to have_link('Sign in')
-		expect(page).to have_link('Sign up')
-		expect(page).not_to have_button('Log out')
-		expect(page).not_to have_link('Edit account')	
-	end
+	# scenario "a visitor can see the sign in and sign up" do
+	# 	visit '/'
+	# 	expect(page).to have_link('Sign in')
+	# 	expect(page).to have_link('Sign up')
+	# 	expect(page).not_to have_button('Log out')
+	# 	expect(page).not_to have_link('Edit account')	
+	# end
 
 	# scenario "can send formatted text to the printer" do 
 	# 	stub_request(:post, "#{ENV['SPARK_API_URI']}/print").

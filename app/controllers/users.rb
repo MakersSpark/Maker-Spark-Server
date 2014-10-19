@@ -8,20 +8,20 @@ get "/sign_up_with/:rfid_code" do
 end
 
 post "/sign_up" do
-	@user = User.create(email: 			           params[:email],
-		                  github_user:           params[:github_user],
-		                  rfid_code:             params[:rfid_code],
-						          password:   			     params[:password],	
-						          password_confirmation: params[:password_confirmation])
+	@user = User.create(email: params[:email],
+		github_user:           params[:github_user],
+		rfid_code:             params[:rfid_code],
+		password:   		   params[:password],	
+		password_confirmation: params[:password_confirmation])
 
-		if @user.save
-			session[:user_id] = @user.id
-			flash[:notice]    = "Thank you for registering, #{current_user.email}"
-			redirect '/'
-		else
-			flash[:errors] = @user.errors.full_messages
-			redirect '/sign_up'
-		end
+	if @user.save
+		session[:user_id] = @user.id
+		flash[:notice]    = "Thank you for registering, #{current_user.email}"
+		redirect '/'
+	else
+		flash[:errors] = @user.errors.full_messages
+		redirect '/sign_up'
+	end
 
 
 end
@@ -45,18 +45,17 @@ post "/sign_in" do
 end
 
 get '/edit_user' do
-  @user = User.get(session[:user_id])	
-
+	@user = User.get(session[:user_id])	
 	erb :edit_user
 end
 
 post '/edit_user' do
 	@user = User.get(session[:user_id])
 
-	@user.update(email: 			         params[:email],
-		          github_user:           params[:github_user],
-						  password:   			     params[:password],	
-						  password_confirmation: params[:password_confirmation])
+	@user.update(email: 	   params[:email],
+		github_user:           params[:github_user],
+		password:   		   params[:password],	
+		password_confirmation: params[:password_confirmation])
 
 	if @user.save 
 
