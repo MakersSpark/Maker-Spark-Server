@@ -17,7 +17,7 @@ feature "printing from the website" do
       stub_offline_printer('TEXT', 'hello world')
       click_button('Print')
       expect(a_http_request('TEXT', 'hello world')).to have_been_made
-      expect(page).to have_text("Sorry, something went wrong. Is the printer online?")
+      expect(page).to have_text("Sorry, something went wrong. Check the printer is online.")
     end
 
   end

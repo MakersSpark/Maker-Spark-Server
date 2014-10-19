@@ -1,41 +1,27 @@
-<!doctype html>
-<html lang='en'>
+<!DOCTYPE html>
+	<html lang="en">
 
-	<head>
-    	<title>Spark Dashboard</title>
-    </head>
-      
+		<head>
+		  	<meta charset="UTF-8">
+			<title>Spark Dashboard</title>
+			<link href='http://fonts.googleapis.com/css?family=Halant' rel='stylesheet' type='text/css'>
+			<link rel='stylesheet' href='/css/bootstrap-responsive.css' />
+			<link rel='stylesheet' href='/css/bootstrap.css' />
+			<link rel='stylesheet' href='/css/spark.css' />
+
+		</head>
+
+
+		<%= partial :"partials/_errors" %>
+
+		<body>
+
+		<%= yield %>
+		
+		</body>
+
+	</html>
+
+
+
 	
-	<body>
-	
-	<h1>Welcome to SparkPrint</h1>
-
-	<% if flash[:notice]%>
-		<div class="notice">
-			<%= flash[:notice] %>
-		</div>
-	<%end%>
-
-	<% if flash[:errors]%>
-		<div class="errors">
-			
-			<p>You have the following problems with your registration:</p>
-
-			<ul>
-
-			<% flash[:errors].each do |error| %>
-			
-				<li> <%= error %> </li>
-
-			<%end%>
-			</ul>
-		</div>
-	<%end%>
-
-
-	<%= yield %>
-
-	</body>
-
-
-</html>

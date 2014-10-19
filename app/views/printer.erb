@@ -1,0 +1,64 @@
+<div class="header">
+     <!--  <ul class="nav nav-pills pull-right">
+        <li class="active"><a href="#top">top</a></li>
+        <li><a href="#calendar">calendar</a></li>
+        <li><a href="#tube">tube status</a></li>
+      </ul> -->
+  <h3 class="text-muted">Spark Printer Dashboard</h3>
+</div>
+
+		<% if current_user %>
+
+		
+		<form action="/users" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<button type="submit" class="btn btn-sm btn-info leftbutton">Log out</button>
+		</form>
+
+		<a href="/users/edit_user" class="btn btn-sm btn-info">Edit account</a>
+		
+		<%else%>
+
+			<a href='/users/sign_in' class="btn btn-sm btn-info leftbutton">Sign in</a>
+			<a href='/users/sign_up' class="btn btn-sm btn-info">Sign up</a>
+
+		<%end%>		
+
+<div class="container">
+      
+	<div class='spark'>
+
+		<h3>SparkPrint</h3>
+	<br />
+		<form action="/printer/print" method="post">
+			<textarea class="message" name="messagebox" cols="40" rows="4"></textarea></p>
+			<!-- <button class="print-hello-world" type="submit">Print</button> -->
+			<button type="submit" class="btn btn-sm btn-info">Print</button>
+		</form>
+		
+	</div>
+<br />
+	<div class='spark'>
+		<h3>Send message to a user</h3>
+		<form action="/messages/new" method="post"></p>
+			<span> Receiver:</span>
+			<select name="receiver", class="message-receiver">
+			<% @users.each do |user| %>
+				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
+			<%end%>
+			</select></p>
+
+			<textarea class="user-message" name="usermessagebox" cols="40" rows="4"></textarea></p>
+		<!-- 	<button class="send-message" type="submit">send message</button> -->
+			<button type="submit" class="btn btn-sm btn-info">Send message</button>
+		</form>
+
+
+	</div>
+<br />
+<div class="footer">
+	© SparkTeam 2014
+</div>
+
+</div>
+

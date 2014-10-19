@@ -1,18 +1,10 @@
 describe User do 
 
-
-	before do
-		stub_request(:any, "https://github.com/users/byverdu/contributions")
-		stub_request(:any, "https://github.com/users/henryaj/contributions")
-		stub_request(:any, "https://github.com/users//contributions").to_return(:status => 404)
-		stub_request(:any, "https://github.com/users/vincentxyz/contributions").to_return(:status => 404)
-	end
-
 	let(:albert) { User.create(email: "albert@test.com",
 	               rfid_code: '41d21cd',
 	               github_user: 'byverdu', 
 							   password: "oranges", 
-							   password_confirmation: "oranges") }
+							   password_confirmation: "oranges")}
 
 	let(:ben) { User.create(email: "ben@test.com", 
 							   password: "oranges", 
@@ -39,7 +31,20 @@ describe User do
 							  password: "",
 							  password_confirmation: ""	) }
 
+	let(:message_receiver) { User.create(email: "benjamino@test.com",
+	               rfid_code: '123124',
+	               github_user: 'benjamintillett',
+							   password: "oranges", 
+							   password_confirmation: "oranges")}
 
+
+	before do
+		stub_request(:any, "https://github.com/users/byverdu/contributions")
+		stub_request(:any, "https://github.com/users/benjamintillett/contributions")
+		stub_request(:any, "https://github.com/users/henryaj/contributions")
+		stub_request(:any, "https://github.com/users//contributions").to_return(:status => 404)
+		stub_request(:any, "https://github.com/users/vincentxyz/contributions").to_return(:status => 404)
+	end
 
 	context "a valid user" do 
 
@@ -85,7 +90,6 @@ describe User do
 
 		it "a user can edit his details" do
 				albert
-
 				albert.update(email: "byberdu@test.com",
 			               github_user: 'henryaj', 
 									   password: "bananas", 
@@ -106,6 +110,14 @@ describe User do
 		it "two users cant have the same github user" do 
 			albert
 			expect(henry).not_to be_valid
+		end
+	end
+
+	context "user sending messages" do
+		it "can send messages to a second user" do
+			UserMessage.create(content: "I love you!!!!", sender_id: albert.id, user_id: message_receiver.id)
+			expect(UserMessage.first.content).to eq "I love you!!!!"
+			expect(UserMessage.first.dirty?).to eq false
 		end
 	end
 end

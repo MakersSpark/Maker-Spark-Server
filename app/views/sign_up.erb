@@ -1,9 +1,55 @@
-<form action="/sign_up" method="post" class="sign_up">
-		<input type="hidden" name="rfid_code" value="<%= params[:rfid_code] %>">
-		<input type="text" name="email" placeholder="E-mail">
-		<input type="text" name="github_user" placeholder="Github Account">
-		<input type="password" name="password" placeholder="Password">
-		<input type="password" name="password_confirmation" placeholder="Password Confirmation">
-		<button type="submit">Sign up</button>
-		
-</form>
+<div class="header">
+     <!--  <ul class="nav nav-pills pull-right">
+        <li class="active"><a href="#top">top</a></li>
+        <li><a href="#calendar">calendar</a></li>
+        <li><a href="#tube">tube status</a></li>
+      </ul> -->
+      <h3 class="text-muted">Spark Printer Dashboard</h3>
+</div>
+
+		<a href='/' class="btn btn-sm btn-info leftbutton">Home</a>
+
+<div class="container">
+	<div class="spark">
+		<h2>sign up here</h2>
+		<br />
+			<form action="/users/sign_up" method="post" class="form-horizontal sign_up" role="form">
+					<input type="hidden" name="rfid_code" value="<%= params[:rfid_code] %>">
+				
+				<div class="form-group">
+				    <div class="input-group">
+				      <div class="input-group-addon">@</div>
+				      <input class="form-control" type="email" name="email" placeholder="Enter email">
+				    </div>
+				 </div>
+
+				<div class="form-group">
+					<div class="input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+					<input class="form-control" type="text" name="github_user" placeholder="Github Account">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon-fire"></span></div>
+					    <input class="form-control" type="password" name="password" placeholder="Password">
+					  </div>
+				</div>
+
+				<div class="form-group">
+					<div class="input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon-fire"></span></div>
+					  <input class="form-control" type="password" name="password_confirmation" placeholder="Password Confirmation">
+          </div>
+				</div>
+					<button type="submit" class="btn btn-sm btn-info">Sign up</button>		
+			</form>
+	</div>
+
+<br />
+
+<div class="footer">
+	© SparkTeam 2014
+</div>
+</div>

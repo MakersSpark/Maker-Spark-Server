@@ -9,7 +9,6 @@ class Message
 		@formatter = Formatter.new
 	end
 
-
 	def add_greeting
 		if morning_time
 			add_lines(["CENTREBIG","Good Morning"])
@@ -43,8 +42,15 @@ class Message
 	end
 
 	def add_rfid_url(rfid_code)
-		add_lines(["BOLD","Please sign up at:"])
-		add_lines(["TEXT","www.spark-print-staging.herokuapp.com/sign_up_with/#{rfid_code}"])
+		# add_lines(["CENTRE","You're not registered!"])
+		add_lines(["CENTRE","Please sign up at:"])
+		add_lines(["TEXT"," "])
+		add_lines(["CENTRE","spark-print-staging.herokuapp.com/users/sign_up_with/#{rfid_code}"])
+	end
+
+	def add_user_message(message_content,user_name)
+		add_lines(["TEXT","#{user_name} sent:"])
+		add_lines(["TEXT",message_content])
 	end
 
 	def morning_time

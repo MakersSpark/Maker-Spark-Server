@@ -2,8 +2,12 @@ describe Message do
 
 	let(:morning_message) { Message.new }
 	let(:afternoon_message) { Message.new }
+	let(:message) { Message.new }
 	let(:github) { double :github, name: "benjamin", score_today: 1, current_streak: 4, longest_streak: 10, highscore: [1,2] }
 	let(:rfid_code) { "41d21cd" }
+	let(:message_content) { "Would you like to pair with me?" }
+	let(:user_name) { "byverdu" }
+
 
 
 
@@ -26,7 +30,7 @@ describe Message do
 
 	it "can add a url with an rfid code" do
 		morning_message.add_rfid_url(rfid_code)
-		expect(morning_message.lines).to include(["TEXT", "p.com/sign_up_with/#{rfid_code}"])
+		expect(morning_message.lines).to include(["CENTRE", "m/users/sign_up_with/#{rfid_code}"])
 	end
 
 	context "in the morning" do 
@@ -47,7 +51,6 @@ describe Message do
 		end
 	end
 
-
 	context "in the afteernoon" do 
 		before do 
 			afternoon = Time.local(2014,10,23,16,31)
@@ -65,4 +68,12 @@ describe Message do
 			expect(afternoon_message.lines).to include(["TEXT","Partly cloudy for the hour."])
 		end
 	end
+
+	context "users sending messages" do 
+		it "can add a message, which was sent by a user to another user" do
+			message.add_user_message(message_content,user_name)
+			expect(message.lines).to include(["TEXT","Would you like to pair with me?"]) 
+		end
+	end
+
 end

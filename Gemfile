@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
 gem 'sinatra'
+gem 'sinatra-partial'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'sinatra-flash'
@@ -15,7 +16,8 @@ gem 'ical'
 
 
 group :development, :test do 
-  gem 'database_cleaner'
+  	gem 'database_cleaner'
+  	gem 'dm-transactions'
 	gem 'rack-test'
 	gem 'capybara'
 	gem 'rspec'

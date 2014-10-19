@@ -12,6 +12,8 @@ class User
 	property :github_user,			String		
 	property :rfid_code,        String
 	property :password_digest,  Text
+
+	has n, :UserMessages
 	
 	validates_format_of       :email, as: :email_address
 	validates_uniqueness_of   :email, :github_user

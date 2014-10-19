@@ -1,5 +1,19 @@
 module SpecHelpers
 
+  def stub_afternoon_message
+      stub_weather
+      stub_printer("CENTREBIG","Good Afternoon")
+      stub_printer("CENTREBIG","~")
+      stub_printer("TEXT","Partly cloudy for the hour.")
+      stub_printer("TEXT","")
+  end
+
+  def expect_afternoon_message_to_have_been_made
+      expect(a_http_request("CENTREBIG","Good Afternoon")).to have_been_made
+      expect(a_http_request("CENTREBIG","~")).to have_been_made
+      expect(a_http_request("TEXT","Partly cloudy for the hour.")).to have_been_made
+  end
+
 
   def stub_printer(format,text)
     stub_request(:post, "#{ENV['SPARK_API_URI']}/print").
