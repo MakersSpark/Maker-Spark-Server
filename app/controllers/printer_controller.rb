@@ -7,9 +7,10 @@ class PrinterController < SparkPrint
          user = User.first(rfid_code: card_info["data"])
          event = EventHandler.new(card_info)
          if user
-              event.build_message
-              message = UserMessage.first(user_id: user.id)
-              event.build_user_message(message.content,user.github_name) if message
+            UserMessage.all(user_id: user.id).each do |message|
+              event.build_user_message(message.content,user.github_name)
+              message.destroy
+            end
          else
           event.build_rfid_url_message
          end  
