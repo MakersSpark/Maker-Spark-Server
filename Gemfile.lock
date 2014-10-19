@@ -149,6 +149,7 @@ DEPENDENCIES
   data_mapper
   database_cleaner
   dm-postgres-adapter
+  dm-transactions
   factory_girl
   forecast_io
   githubstats
