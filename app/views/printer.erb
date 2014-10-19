@@ -12,15 +12,15 @@
 		
 		<form action="/" method="post">
 			<input type="hidden" name="_method" value="delete">
-			<button type="submit">Log out</button>
+			<button type="submit" class="btn btn-sm btn-info leftbutton">Log out</button>
 		</form>
 
-		<a href="/edit_user">Edit account</a>
+		<a href="/edit_user" class="btn btn-sm btn-info">Edit account</a>
 		
 		<%else%>
 
-			<a href='/sign_in'  class="btn btn-info">Sign in</a>
-			<a href='/sign_up'  class="btn btn-info">Sign up</a>
+			<a href='/sign_in' class="btn btn-sm btn-info">Sign in</a>
+			<a href='/sign_up' class="btn btn-sm btn-info">Sign up</a>
 
 		<%end%>		
 
@@ -28,7 +28,7 @@
       
 	<div class='spark'>
 
-		<h3>Welcome to SparkPrint</h3>
+		<h3>SparkPrint</h3>
 	<br />
 		<form action="/print" method="post">
 			<textarea class="message" name="messagebox" cols="40" rows="4"></textarea></p>
@@ -39,18 +39,19 @@
 	</div>
 <br />
 	<div class='spark'>
-		<form action="/send_message" method="post"></p>
-			<span> Receiver:</span>
-			<select name="receiver", class="message-receiver">
-			<% @users.each do |user| %>
-				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
-			<%end%>
-			</select></p>
+		<h3>SparkPrint</h3>
+			<form action="/send_message" method="post"></p>
+				<span> Receiver:</span>
+				<select name="receiver", class="message-receiver">
+				<% @users.each do |user| %>
+					<option value="<%= user.github_user%>" ><%= user.github_user%></option>
+				<%end%>
+				</select></p>
 
-			<textarea class="user-message" name="usermessagebox" cols="40" rows="4"></textarea></p>
-		<!-- 	<button class="send-message" type="submit">send message</button> -->
-			<button type="submit" class="btn btn-sm btn-info">Send message</button>
-		</form>
+				<textarea class="user-message" name="usermessagebox" cols="40" rows="4"></textarea></p>
+			<!-- 	<button class="send-message" type="submit">send message</button> -->
+				<button type="submit" class="btn btn-sm btn-info">Send message</button>
+			</form>
 
 
 	</div>
