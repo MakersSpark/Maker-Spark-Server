@@ -8,7 +8,7 @@ feature "A user visits the home page" do
 
 	scenario "sees a title containing a welcome message" do
 		visit '/'
-		expect(page).to have_content('Welcome to SparkPrint')
+		expect(page).to have_content('SparkPrint')
 	end
 
 	scenario "have a box for sending messages to the printer" do	
