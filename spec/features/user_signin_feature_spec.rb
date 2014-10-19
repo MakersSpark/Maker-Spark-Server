@@ -21,6 +21,13 @@ feature "User sign in" do
 			expect(page).not_to have_content('Thank you for registering, byverdu@test.com')
 			expect(page).to have_content('Welcome back byverdu@test.com')
 	end
+
+	scenario "clicking on Home button leads to the home page" do
+			visit "/sign_in"
+			expect(page).to have_link('Home')
+			click_link('Home')
+			expect(current_path).to eq('/')
+	end
 end
 
 feature "Users log out" do
