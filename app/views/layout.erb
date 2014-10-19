@@ -12,25 +12,7 @@
 		</head>
 
 
-			<% if flash[:notice]%>
-				<div class="notice">
-					<p class="alert alert-success"><%= flash[:notice] %></p>
-				</div>
-			<%end%>
-
-			<% if flash[:errors]%>
-				<div class="errors">
-					<ul>
-
-					<% flash[:errors].each do |error| %>
-					
-						<li class="alert alert-danger"> <%= error %> </li>
-
-					<%end%>
-					</ul>
-				</div>
-
-				<%end%>
+		<%= partial :"partials/_errors" %>
 
 		<body>
 
