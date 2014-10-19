@@ -42,10 +42,7 @@ class SparkPrint < Sinatra::Base
 
 
 
-	get "/sign_up" do
-		@user = User.new 
-		erb :sign_up
-	end
+	
 
 	get "/sign_up_with/:rfid_code" do
 		erb :sign_up
