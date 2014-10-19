@@ -1,13 +1,12 @@
 class EventHandler
 
-	attr_accessor :rfid_data, :message, :formatter, :user_messages, :user
+	attr_accessor :rfid_data, :message, :formatter, :user
 
 	def initialize(my_json, user)
 		@rfid_data = my_json
 		@message = Message.new
 		@formatter = Formatter.new
 		@user = user
-		@user_messages = user_messages
 	end
 
 	def build_message
