@@ -1,0 +1,24 @@
+<div class="header">
+
+	 <h3 class="text-muted">Spark Printer Dashboard</h3>
+				
+	<div class="rightnav">
+		<a href='/' class="btn btn-sm btn-info navbutton">Home</a>
+	  		
+	  	<% if current_user %>
+
+			<form action="/users" method="post">
+				<input type="hidden" name="_method" value="delete">
+				<button type="submit" class="btn btn-sm btn-info navbutton">Log out</button>
+			</form>
+
+			<a href="/users/edit_user" class="btn btn-sm btn-info navbutton">Edit account</a>
+		
+		<%else%>
+
+			<a href='/users/sign_in' class="btn btn-sm btn-info navbutton">Sign in</a>
+			<a href='/users/sign_up' class="btn btn-sm btn-info">Sign up</a>
+
+		<%end%>	
+	</div>
+</div>
