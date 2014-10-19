@@ -24,6 +24,12 @@ require_relative './models/calendar'
 require_relative './models/json_handler'
 require_relative './data_mapper_setup'
 
+require_relative './helpers/application_helper'
+require_relative './helpers/user_helper'
+require_relative './helpers/printer_helper'
+require_relative './helpers/message_helper'
+
+
 
 
 
@@ -32,6 +38,12 @@ class SparkPrint < Sinatra::Base
 	use Rack::MethodOverride
 	register Sinatra::Partial
 	register Sinatra::Flash
+
+	helpers PrinterHelper
+	helpers MessageHelper
+	helpers UserHelper
+	helpers ApplicationHelper
+
 
 	enable :sessions
 	set :session_secret, 'We will only write positive messages'
@@ -42,18 +54,6 @@ class SparkPrint < Sinatra::Base
 	get '/' do
 	  @users = User.all
 	  erb :printer
-	end
-
-	helpers do
-
-		def current_user
-			@current_user ||= User.get(session[:user_id]) if session[:user_id]			
-		end
-
-		def get_user_info(rfid_data) 
-			JSON.parse(rfid_data) rescue  "The card was not read correctly"
-		end
-
 	end
 
 	run! if app_file == $0
