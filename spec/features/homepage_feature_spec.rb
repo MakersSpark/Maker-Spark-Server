@@ -42,23 +42,23 @@ feature "A user visits the home page" do
 		expect(page).to have_content("Successfully sent to the printer!")
 	end
 
-	# scenario "a visitor can see the sign in and sign up" do
-	# 	visit '/'
-	# 	expect(page).to have_link('Sign in')
-	# 	expect(page).to have_link('Sign up')
-	# 	expect(page).not_to have_button('Log out')
-	# 	expect(page).not_to have_link('Edit account')	
-	# end
+	scenario "a visitor can see the sign in and sign up" do
+		visit '/'
+		expect(page).to have_link('Sign in')
+		expect(page).to have_link('Sign up')
+		expect(page).not_to have_button('Log out')
+		expect(page).not_to have_link('Edit account')	
+	end
 
-	# scenario "can send formatted text to the printer" do 
-	# 	stub_request(:post, "#{ENV['SPARK_API_URI']}/print").
-	# 	with(:body => { access_token: ENV['SPARK_TOKEN'], args: "BOLD=hello world/" }).to_return(:body => "{\n  \"id\": \"50ff75065067545639190387\",\n  \"name\": \"core1\",\n  \"last_app\": null,\n  \"connected\": true,\n  \"return_value\": 1\n}")
-	# 	visit '/'
-	# 	select 'Bold', :from => 'formatbox'
-	# 	fill_in('messagebox', with: 'hello world')
-	# 	click_button('Print')
-	# 	expect(a_request(:post, "#{ENV['SPARK_API_URI']}/print").with(:body => { access_token: ENV['SPARK_TOKEN'], args: "BOLD=hello world/" })).to have_been_made
-	# end
+	xscenario "can send formatted text to the printer" do 
+		stub_request(:post, "#{ENV['SPARK_API_URI']}/print").
+		with(:body => { access_token: ENV['SPARK_TOKEN'], args: "BOLD=hello world/" }).to_return(:body => "{\n  \"id\": \"50ff75065067545639190387\",\n  \"name\": \"core1\",\n  \"last_app\": null,\n  \"connected\": true,\n  \"return_value\": 1\n}")
+		visit '/'
+		select 'Bold', :from => 'formatbox'
+		fill_in('messagebox', with: 'hello world')
+		click_button('Print')
+		expect(a_request(:post, "#{ENV['SPARK_API_URI']}/print").with(:body => { access_token: ENV['SPARK_TOKEN'], args: "BOLD=hello world/" })).to have_been_made
+	end
 
 end
 

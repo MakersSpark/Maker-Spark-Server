@@ -15,6 +15,7 @@ feature "User sign in" do
 	scenario "User signs in" do
 			sign_up
 			expect(page).to have_content('Thank you for registering, byverdu@test.com')
+			expect(current_path).to eq('/')
 			sign_in
 			expect(current_path).to eq('/')
 			expect(page).not_to have_content('Thank you for registering, byverdu@test.com')
@@ -33,6 +34,9 @@ feature "Users log out" do
 	scenario "A user can log out after signed in" do
 		click_button('Log out')
 		expect(page).to have_content("Good bye!")
+		expect(current_path).to eq('/')
+		expect(page).to have_link('Sign up')
+		expect(page).to have_link('Sign in')
 	end
 end
 

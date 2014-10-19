@@ -7,35 +7,7 @@
   <h3 class="text-muted">Spark Printer Dashboard</h3>
 </div>
 
-<div class="container">
-      
-	<div class='spark'>
-
-		<h3>Welcome to SparkPrint</h3>
-
-			<% if flash[:notice]%>
-				<div class="notice">
-					<%= flash[:notice] %>
-				</div>
-			<%end%>
-
-			<% if flash[:errors]%>
-				<div class="errors">
-					
-					<p>You have the following problems with your registration:</p>
-
-					<ul>
-
-					<% flash[:errors].each do |error| %>
-					
-						<li> <%= error %> </li>
-
-					<%end%>
-					</ul>
-				</div>
-
-				<%end%>
-				<% if current_user %>
+		<% if current_user %>
 
 		
 		<form action="/" method="post">
@@ -43,8 +15,20 @@
 			<button type="submit">Log out</button>
 		</form>
 
-		<a href="/edit_user">edit account</a>
+		<a href="/edit_user">Edit account</a>
+		
+		<%else%>
+
+			<a href='/sign_in'>Sign in</a>
+			<a href='/sign_up'>Sign up</a>
+
 		<%end%>		
+
+<div class="container">
+      
+	<div class='spark'>
+
+		<h3>Welcome to SparkPrint</h3>
 	<br />
 		<form action="/printer/print" method="post">
 			<textarea class="message" name="messagebox" cols="40" rows="4"></textarea></p>
@@ -68,8 +52,7 @@
 			<button type="submit" class="btn btn-sm btn-info">Send message</button>
 		</form>
 
-		<!-- <a href='/sign_in'>Sign in</a> -->
-		<!-- <a href='/sign_up'>Sign up</a> -->
+
 	</div>
 <br />
 <div class="footer">
