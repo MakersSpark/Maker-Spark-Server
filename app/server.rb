@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'sinatra/partial'
 require 'data_mapper'
 require 'sinatra/flash'
 require 'google_calendar'
@@ -29,10 +30,14 @@ require_relative './data_mapper_setup'
 class SparkPrint < Sinatra::Base
 
 	use Rack::MethodOverride
+	register Sinatra::Partial
+	register Sinatra::Flash
 
 	enable :sessions
 	set :session_secret, 'We will only write positive messages'
-	register Sinatra::Flash
+	set :partial_template_engine, :erb
+	#enable :partial_underscores
+
 
 	get '/' do
 	  @users = User.all

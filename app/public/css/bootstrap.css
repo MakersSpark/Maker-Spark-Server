@@ -4610,11 +4610,10 @@ a.thumbnail.active {
 }
 .alert {
   padding: 10px;
-  margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
   width: 50%;
-  margin: 0 auto;
+  margin: 20px auto;
   text-align: center;
 }
 .alert h4 {
