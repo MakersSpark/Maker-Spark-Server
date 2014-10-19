@@ -9,7 +9,7 @@ describe "PrinterController" do
 
 	let(:my_json) { {"data"=>"41d21cd", "ttl"=>"60", "published_at"=>"2014-10-16T11:35:27.137Z", "coreid"=>"50ff75065067545639190387"} }
 	let(:rfid_code) { "41d21cd" }
-	let(:user) { double :user, id: 1, github_name: "benjamintillett"}
+	let(:user) { double :user, id: 1, github_user: "benjamintillett"}
 	let(:message) { double :message, content: "Hi, I love you!" }
 
 	before do
@@ -45,10 +45,10 @@ describe "PrinterController" do
 			allow(user).to receive(:id).and_return(1)
 			allow(UserMessage).to receive(:all).with(user_id: user.id).and_return([message])
 			stub_afternoon_message
-		 	stub_printer("TEXT","#{user.github_name} sent:")
+		 	stub_printer("TEXT","#{user.github_user} sent:")
 			stub_printer("TEXT", message.content)
 			post "/"
-			expect(a_http_request("TEXT","#{user.github_name} sent:")).to have_been_made
+			expect(a_http_request("TEXT","#{user.github_user} sent:")).to have_been_made
 			expect(a_http_request("TEXT", message.content)).to have_been_made
 		end
 	end

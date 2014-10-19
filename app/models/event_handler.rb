@@ -1,17 +1,24 @@
 class EventHandler
 
-	attr_accessor :rfid_data, :message, :formatter, :user_message
+	attr_accessor :rfid_data, :message, :formatter, :user_messages, :user
 
-	def initialize(my_json)
+	def initialize(my_json, user)
 		@rfid_data = my_json
 		@message = Message.new
 		@formatter = Formatter.new
+		@user = user
+		@user_messages = user_messages
 	end
 
 	def build_message
-		message.add_greeting
-		message.add_divider
-		message.add_time_dependent_message
+		if user
+			message.add_greeting
+			message.add_divider
+			message.add_time_dependent_message
+			build_user_message
+		else
+			build_rfid_url_message
+		end
 	end
 
 	def print_message(printer)
@@ -22,7 +29,12 @@ class EventHandler
 		message.add_rfid_url(@rfid_data["data"])
 	end
 
-	def build_user_message(message_content,user_name)
-		message.add_user_message(message_content,user_name)
+	def build_user_message
+		user_messages = UserMessage.all(user_id: user.id)
+		user_messages.each do |user_message|
+			message_content = user_message.content
+			user_name = user.github_user
+			message.add_user_message(message_content,user_name)
+		end
 	end
 end
