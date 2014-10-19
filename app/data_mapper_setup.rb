@@ -4,3 +4,4 @@ DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/spark_pr
 
 DataMapper.finalize
 
+DataMapper.auto_upgrade!

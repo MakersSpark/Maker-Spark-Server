@@ -56,9 +56,10 @@ class Message
 	def morning_time
 		Time.now.strftime('%H.%M').to_f < 12.30
 	end
-
+	
+    # NEED TO TEST
 	def add_calendar(calendar)
-		add_lines(calendar.get_todays_events_formatted)
+		calendar.get_todays_events_formatted.each { |line| add_lines(line) }
 	end
 
 	def add_lines(line)
