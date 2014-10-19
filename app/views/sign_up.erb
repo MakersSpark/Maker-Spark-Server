@@ -11,12 +11,36 @@
 	<div class="spark">
 		<h2>sign up here</h2>
 		<br />
-			<form action="/sign_up" method="post" class="sign_up">
+			<form action="/sign_up" method="post" class="form-horizontal sign_up" role="form">
 					<input type="hidden" name="rfid_code" value="<%= params[:rfid_code] %>">
-					<input type="text" name="email" placeholder="E-mail"></p>
-					<input type="text" name="github_user" placeholder="Github Account"></p>
-					<input type="password" name="password" placeholder="Password"></p>
-					<input type="password" name="password_confirmation" placeholder="Password Confirmation"></p>
+				
+				<div class="form-group">
+				    <div class="input-group">
+				      <div class="input-group-addon">@</div>
+				      <input class="form-control" type="email" placeholder="Enter email">
+				    </div>
+				 </div>
+
+				<div class="form-group">
+					<div class="input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+					<input class="form-control" type="text" name="github_user" placeholder="Github Account">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon-fire"></span></div>
+					    <input class="form-control" type="password" name="password" placeholder="Password">
+					  </div>
+				</div>
+
+				<div class="form-group">
+					<div class="input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon-fire"></span></div>
+					  <input class="form-control" type="password" name="password_confirmation" placeholder="Password Confirmation">
+          </div>
+				</div>
 					<button type="submit" class="btn btn-sm btn-info">Sign up</button>		
 			</form>
 	</div>
