@@ -41,7 +41,7 @@ feature "User sign up" do
     	end
 
     	scenario "clicking on Home button leads to the home page" do
-			visit "/sign_up"
+			visit "/users/sign_up"
 			expect(page).to have_link('Home')
 			click_link('Home')
 			expect(current_path).to eq('/')
