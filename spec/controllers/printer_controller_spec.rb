@@ -1,6 +1,9 @@
 require 'spec_helper'
-
 include SpecHelpers
+
+def app
+  PrinterController.new
+end
 
 describe "WebsiteController" do 
 
@@ -18,42 +21,30 @@ describe "WebsiteController" do
 	describe "POST /" do 
 		it "prints a message, if a user with the specific rfid_code exists" do
 			allow(User).to receive(:first).with(:rfid_code => rfid_code).and_return(user)
-			stub_weather
 			allow(user).to receive(:id).and_return(1)
-			stub_printer("CENTREBIG","Good Afternoon")
-			stub_printer("CENTREBIG","~")
-			stub_printer("TEXT","Partly cloudy for the hour.")
-			stub_printer("TEXT","")
-
-			
+			stub_afternoon_message
 			post "/"
-			expect(a_http_request("CENTREBIG","Good Afternoon")).to have_been_made
-			expect(a_http_request("CENTREBIG","~")).to have_been_made
-			expect(a_http_request("TEXT","Partly cloudy for the hour.")).to have_been_made
+			expect_afternoon_message_to_have_been_made
 		end
 
 		it "prints a url, if no user with that rfid_code exists" do
 			stub_weather
 			stub_printer("CENTRE","Please sign up at:")
 			stub_printer("CENTRE", "spark-print-staging.herokuapp.co")
-			stub_printer("CENTRE", "m/sign_up_with/#{rfid_code}")
+			stub_printer("CENTRE", "m/users/sign_up_with/#{rfid_code}")
 			stub_printer("TEXT","")
 			stub_printer("TEXT"," ")
 			post "/"
 			expect(a_http_request("CENTRE","Please sign up at:")).to have_been_made
 			expect(a_http_request("CENTRE","spark-print-staging.herokuapp.co")).to have_been_made
-			expect(a_http_request("CENTRE","m/sign_up_with/#{rfid_code}")).to have_been_made
+			expect(a_http_request("CENTRE","m/users/sign_up_with/#{rfid_code}")).to have_been_made
 		end
 
 		it "prints a usermessage, if a user received a message" do
 			allow(User).to receive(:first).with(:rfid_code => rfid_code).and_return(user)
 			allow(user).to receive(:id).and_return(1)
 			allow(UserMessage).to receive(:first).with(user_id: user.id).and_return(message)
-			stub_weather
-			stub_printer("CENTREBIG","Good Afternoon")
-			stub_printer("CENTREBIG","~")
-			stub_printer("TEXT","Partly cloudy for the hour.")
-			stub_printer("TEXT","")
+			stub_afternoon_message
 		 	stub_printer("TEXT","#{user.github_name} sent:")
 			stub_printer("TEXT", message.content)
 			post "/"

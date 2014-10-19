@@ -7,12 +7,12 @@ feature "User sign up" do
 	context "a new user" do 
 
 		scenario "when visiting the home page a sign up form is displayed" do
-			visit '/sign_up'
+			visit '/users/sign_up'
 			expect(page).to have_selector("form.sign_up")
 		end
 		
 		scenario "the form has the correct fields" do
-			visit '/sign_up'
+			visit '/users/sign_up'
 			expect(page).to have_selector("input[name=email]")
 			expect(page).to have_selector("input[name=github_user]")
 			expect(page).to have_selector("input[name=password]")
@@ -21,7 +21,7 @@ feature "User sign up" do
     end
 
     scenario "The user can sign up" do
-    		visit '/sign_up'
+    		visit '/users/sign_up'
 			expect{ sign_up }.to change(User, :count).by(1)
 			expect(current_path).to eq('/')
 			expect(page).to have_content('Thank you for registering, byverdu@test.com')
@@ -33,7 +33,7 @@ feature "User sign up" do
 
     	scenario "the user can pass his rfid_code with the url" do
 
-    		visit '/sign_up/41d21cd'
+    		visit '/users/sign_up/41d21cd'
 
     		sign_up
     		expect(current_path).to eq('/')

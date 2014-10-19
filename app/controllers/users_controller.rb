@@ -1,48 +1,15 @@
-require 'sinatra/base'
-require 'data_mapper'
-require 'sinatra/flash'
-require 'google_calendar'
-require 'json'
-require 'net/http'
-require 'forecast_io'
-require 'open-uri'
-require 'githubstats'
-require 'open-uri'
-require 'icalendar'
-require 'htmlentities'
+require_relative "../server.rb"
 
-require_relative './models/user'
-require_relative './models/printer'
-require_relative './models/forecast'
-require_relative './models/github'
-require_relative './models/event_handler'
-require_relative './models/formatter'
-require_relative './models/message'
-require_relative './models/user_messages'
-require_relative './models/calendar'
-require_relative './models/json_handler'
-require_relative './data_mapper_setup'
+class UsersController < SparkPrint
 
-
-
-
-class SparkPrint < Sinatra::Base
-
-	use Rack::MethodOverride
-
-	enable :sessions
-	set :session_secret, 'We will only write positive messages'
-	register Sinatra::Flash
-
-	get '/' do
-	  @users = User.all
-	  erb :printer
+	get "/" do 
+		"You for coffee?"
 	end
 
-
-
-
-	
+	get "/sign_up" do
+		@user = User.new 
+		erb :sign_up
+	end
 
 	get "/sign_up_with/:rfid_code" do
 		erb :sign_up
@@ -63,14 +30,11 @@ class SparkPrint < Sinatra::Base
 			flash[:errors] = @user.errors.full_messages
 			redirect '/sign_up'
 		end
-
-
 	end
 
 	get "/sign_in" do
 		erb :sign_in
 	end
-
 
 	post "/sign_in" do
 		email, password = params[:email], params[:password]
@@ -109,26 +73,10 @@ class SparkPrint < Sinatra::Base
 		end
 	end
 
-
 	delete '/' do
 		flash[:notice] = "Good bye!"
 		session[:user_id] = nil
 		redirect '/'
 	end
-
-
-	helpers do
-
-		def current_user
-			@current_user ||= User.get(session[:user_id]) if session[:user_id]			
-		end
-
-		def get_user_info(rfid_data) 
-			JSON.parse(rfid_data) rescue  "The card was not read correctly"
-		end
-
-	end
-
-	run! if app_file == $0
 
 end

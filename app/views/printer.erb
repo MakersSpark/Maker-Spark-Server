@@ -15,12 +15,12 @@
 			<button type="submit" class="btn btn-sm btn-info leftbutton">Log out</button>
 		</form>
 
-		<a href="/edit_user" class="btn btn-sm btn-info">Edit account</a>
+		<a href="/users/edit_user" class="btn btn-sm btn-info">Edit account</a>
 		
 		<%else%>
 
-			<a href='/sign_in' class="btn btn-sm btn-info leftbutton">Sign in</a>
-			<a href='/sign_up' class="btn btn-sm btn-info">Sign up</a>
+			<a href='/users/sign_in' class="btn btn-sm btn-info leftbutton">Sign in</a>
+			<a href='/users/sign_up' class="btn btn-sm btn-info">Sign up</a>
 
 		<%end%>		
 
@@ -30,7 +30,7 @@
 
 		<h3>SparkPrint</h3>
 	<br />
-		<form action="/print" method="post">
+		<form action="/printer/print" method="post">
 			<textarea class="message" name="messagebox" cols="40" rows="4"></textarea></p>
 			<!-- <button class="print-hello-world" type="submit">Print</button> -->
 			<button type="submit" class="btn btn-sm btn-info">Print</button>
@@ -39,19 +39,19 @@
 	</div>
 <br />
 	<div class='spark'>
-		<h3>SparkMessage</h3>
-			<form action="/send_message" method="post"></p>
-				<span> Receiver:</span>
-				<select name="receiver", class="message-receiver">
-				<% @users.each do |user| %>
-					<option value="<%= user.github_user%>" ><%= user.github_user%></option>
-				<%end%>
-				</select></p>
+		<h3>Send message to a user</h3>
+		<form action="/messages/new" method="post"></p>
+			<span> Receiver:</span>
+			<select name="receiver", class="message-receiver">
+			<% @users.each do |user| %>
+				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
+			<%end%>
+			</select></p>
 
-				<textarea class="user-message" name="usermessagebox" cols="40" rows="4"></textarea></p>
-			<!-- 	<button class="send-message" type="submit">send message</button> -->
-				<button type="submit" class="btn btn-sm btn-info">Send message</button>
-			</form>
+			<textarea class="user-message" name="usermessagebox" cols="40" rows="4"></textarea></p>
+		<!-- 	<button class="send-message" type="submit">send message</button> -->
+			<button type="submit" class="btn btn-sm btn-info">Send message</button>
+		</form>
 
 
 	</div>
