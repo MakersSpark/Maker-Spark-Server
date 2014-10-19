@@ -28,6 +28,8 @@ require_relative './data_mapper_setup'
 
 class SparkPrint < Sinatra::Base
 
+	use Rack::MethodOverride
+
 	enable :sessions
 	set :session_secret, 'We will only write positive messages'
 	register Sinatra::Flash
@@ -39,22 +41,6 @@ class SparkPrint < Sinatra::Base
 
 
 
-	  post "/print" do 
-	    printer = Printer.new
-	    flash[:notice] = printer.print_line(["TEXT", params[:messagebox]])
-	    redirect '/'
-	  end
-
-	  post "/send_message" do
-	       receiver = User.first(github_user: params[:receiver])
-	       message = UserMessage.create(content: params[:usermessagebox], sender_id: current_user.id, user_id: receiver.id)
-	       if message.save     
-	            flash[:notice] = "Message has been sent!"
-	       else
-	            flash[:notice] = "There has been a problem with your message!"
-	       end
-	       redirect '/'
-	  end
 
 	get "/sign_up" do
 		@user = User.new 

@@ -39,7 +39,8 @@
 	</div>
 <br />
 	<div class='spark'>
-		<form action="/send_message" method="post"></p>
+		<h3>Send message to a user</h3>
+		<form action="/messages/new" method="post"></p>
 			<span> Receiver:</span>
 			<select name="receiver", class="message-receiver">
 			<% @users.each do |user| %>
