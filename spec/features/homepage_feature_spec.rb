@@ -1,8 +1,8 @@
 feature "A user visits the home page" do
 	before do
 		stub_printer("TEXT","hello world")
-		stub_request(:any, "https://github.com/users/peter123/contributions")
-		User.create(email: "peter@test.com",rfid_code: '41d21cd',github_user: 'peter123', password: "oranges", password_confirmation: "oranges")
+		stub_request(:any, "https://github.com/users/byverdu/contributions")
+		create(:valid_user)
 	end
 
 	scenario "sees a title containing a welcome message" do
@@ -19,7 +19,7 @@ feature "A user visits the home page" do
 		visit '/'
 		expect(page).to have_selector('.message-receiver')
 		within(:css, '.message-receiver') {
-			expect(page).to have_content('peter123')
+			expect(page).to have_content('byverdu')
 			}
 	end
 

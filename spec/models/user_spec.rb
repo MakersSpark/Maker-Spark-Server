@@ -1,18 +1,13 @@
 describe User do 
 
-	let(:albert) { User.create(email: "albert@test.com",
-	               rfid_code: '41d21cd',
-	               github_user: 'byverdu', 
-							   password: "oranges", 
-							   password_confirmation: "oranges")}
+	let(:albert) { create(:valid_user) }
+
 
 	let(:ben) { User.create(email: "ben@test.com", 
 							   password: "oranges", 
 							   password_confirmation: "peaches") }
 
-	let(:albert2) { User.create(email: "albert@test.com", 
-								   password: "oranges", 
-								   password_confirmation: "oranges") }
+	let(:albert2) { create(:duplicate_user) }
 
 	let(:henry) { User.create(email: "henry@test.com", 
 		               github_user: 'byverdu',
