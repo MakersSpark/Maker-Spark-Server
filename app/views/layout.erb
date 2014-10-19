@@ -11,10 +11,10 @@
 
 		</head>
 
-		
+
 			<% if flash[:notice]%>
 				<div class="notice">
-					<%= flash[:notice] %>
+					<p class="alert alert-success"><%= flash[:notice] %></p>
 				</div>
 			<%end%>
 
@@ -27,7 +27,7 @@
 
 					<% flash[:errors].each do |error| %>
 					
-						<li> <%= error %> </li>
+						<li class="alert alert-danger"> <%= error %> </li>
 
 					<%end%>
 					</ul>

@@ -12,9 +12,22 @@
 	<div class="spark">
 		<h2>please sign in</h2>
 		<br />
-			<form action="/sign_in" method="post" class="sign_in">
-				<input type="text" name="email" placeholder="Email"></p>
-				<input type="password" name="password" placeholder="Password"></p>
+			<form action="/sign_in" method="post" class="form-horizontal sign_in" role='form'>
+				
+				<div class="form-group">
+				    <div class="input-group">
+				      <div class="input-group-addon">@</div>
+				      <input class="form-control" type="email" name="email" placeholder="Enter email">
+				    </div>
+				 </div>
+				
+				<div class="form-group">
+					<div class="input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon-fire"></span></div>
+					    <input class="form-control" type="password" name="password" placeholder="Password">
+					  </div>
+				</div>
+
 				<button type="submit" class="btn btn-sm btn-info">Sign in</button>
 			</form>
 	</div>

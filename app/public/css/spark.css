@@ -116,6 +116,12 @@ body {
   border-bottom: 1px solid #e5e5e5;
 }
 
+.leftbutton{
+    float: left;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 .spark p{
   margin-top: 15px;
 }

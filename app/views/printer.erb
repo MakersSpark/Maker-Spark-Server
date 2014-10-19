@@ -12,15 +12,15 @@
 		
 		<form action="/" method="post">
 			<input type="hidden" name="_method" value="delete">
-			<button type="submit">Log out</button>
+			<button type="submit" class="btn btn-sm btn-info leftbutton">Log out</button>
 		</form>
 
-		<a href="/edit_user">Edit account</a>
+		<a href="/edit_user" class="btn btn-sm btn-info">Edit account</a>
 		
 		<%else%>
 
-			<a href='/sign_in'>Sign in</a>
-			<a href='/sign_up'>Sign up</a>
+			<a href='/sign_in' class="btn btn-sm btn-info leftbutton">Sign in</a>
+			<a href='/sign_up' class="btn btn-sm btn-info">Sign up</a>
 
 		<%end%>		
 
@@ -28,7 +28,7 @@
       
 	<div class='spark'>
 
-		<h3>Welcome to SparkPrint</h3>
+		<h3>SparkPrint</h3>
 	<br />
 		<form action="/printer/print" method="post">
 			<textarea class="message" name="messagebox" cols="40" rows="4"></textarea></p>
