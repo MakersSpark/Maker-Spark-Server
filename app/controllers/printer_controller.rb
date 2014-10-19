@@ -15,9 +15,4 @@ class PrinterController < SparkPrint
       flash[:notice] = printer.print_line(["TEXT", params[:messagebox]])
       redirect '/'
     end
-
-    get "/" do 
-      "hello from the print contro"
-    end
-
 end
