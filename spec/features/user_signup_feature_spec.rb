@@ -27,6 +27,8 @@ feature "User sign up" do
 			expect(page).to have_content('Thank you for registering, byverdu@test.com')
 			expect(page).to have_button('Log out')
 			expect(page).to have_link('Edit account')
+			expect(page).not_to have_link('Sign up')
+			expect(page).not_to have_link('Sign in')
     	end
 
     	scenario "the user can pass his rfid_code with the url" do
