@@ -3,7 +3,7 @@ require_relative "../server.rb"
 class UsersController < SparkPrint
 
 	get "/" do 
-		"You for coffee?"
+		redirect '/users/sign_up'
 	end
 
 	get "/sign_up" do
@@ -28,7 +28,7 @@ class UsersController < SparkPrint
 			redirect '/'
 		else
 			flash[:errors] = @user.errors.full_messages
-			redirect '/sign_up'
+			redirect '/users/sign_up'
 		end
 	end
 
@@ -45,7 +45,7 @@ class UsersController < SparkPrint
 			redirect '/'
 		else 		
 			flash[:errors] = ["We couldn't find that email address – make sure it's typed correctly.", "There's something wrong with your password."]
-			redirect "/sign_in"
+			redirect "/users/sign_in"
 		end
 	end
 
@@ -69,7 +69,7 @@ class UsersController < SparkPrint
 			redirect '/'
 		else
 			flash[:errors] = @user.errors.full_messages
-			redirect '/edit_user' 
+			redirect '/users/edit_user' 
 		end
 	end
 
