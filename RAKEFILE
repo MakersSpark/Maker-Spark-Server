@@ -1,3 +1,5 @@
+require 'database_cleaner'
+require 'dm-transactions'
 require 'data_mapper'
 require './app/data_mapper_setup'
 
@@ -20,3 +22,8 @@ task :auto_migrate do
 end
 # Finally, don't forget that before you do any of that stuff,
 # you need to create a database first.
+
+task :reset_db do 
+  DatabaseCleaner.strategy = :truncation
+  DatabaseCleaner.clean
+end
