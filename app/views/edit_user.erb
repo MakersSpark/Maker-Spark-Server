@@ -1,12 +1,50 @@
-<h3>Editing the account</h3>
+<div class="header">
+     <!--  <ul class="nav nav-pills pull-right">
+        <li class="active"><a href="#top">top</a></li>
+        <li><a href="#calendar">calendar</a></li>
+        <li><a href="#tube">tube status</a></li>
+      </ul> -->
+      <h3 class="text-muted">Spark Printer Dashboard</h3>
+</div>
 
-<form action="/edit_user" method="post" class="edit_user">
-		<input type="text" name="email" value="<%= @user.email %>">
-		<input type="text" name="github_user" value="<%= @user.github_user %>">
-		<input type="password" name="password" placeholder="Password">
-		<input type="password" name="password_confirmation" placeholder="Password Confirmation">
-		<button type="submit">Edit User</button>
-		
+<div class="container">
+	<div class="spark">
 
+		<h3>Editing the account</h3>
 
-</form>
+		<form action="/edit_user" method="post" class="form-horizontal edit_user" role="form">
+				
+				<div class="form-group">
+				    <div class="input-group">
+				      <div class="input-group-addon">@</div>
+				      <input class="form-control" type="email" value="<%= @user.email %>" name="email" placeholder="Enter email">
+				    </div>
+				 </div>
+
+				<div class="form-group">
+					<div class="input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+					<input class="form-control" type="text" value="<%= @user.github_user %>" name="github_user" placeholder="Github Account">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon-fire"></span></div>
+					    <input class="form-control" type="password" name="password" placeholder="Password">
+					  </div>
+				</div>
+
+				<div class="form-group">
+					<div class="input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon-fire"></span></div>
+					  <input class="form-control" type="password" name="password_confirmation" placeholder="Password Confirmation">
+          </div>
+				</div>
+					<button type="submit" class="btn btn-sm btn-info">Edit User</button>		
+			</form>
+	</div>
+<div class="footer">
+	© SparkTeam 2014
+</div>
+</div>
