@@ -14,7 +14,8 @@ gem 'ri_cal'
 gem 'ical'
 
 group :development, :test do 
-  gem 'database_cleaner'
+  	gem 'database_cleaner'
+  	gem 'dm-transactions'
 	gem 'rack-test'
 	gem 'capybara'
 	gem 'rspec'
