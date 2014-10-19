@@ -15,6 +15,7 @@ feature "User sign in" do
 	scenario "User signs in" do
 			sign_up
 			expect(page).to have_content('Thank you for registering, byverdu@test.com')
+			expect(current_path).to eq('/')
 			sign_in
 			expect(current_path).to eq('/')
 			expect(page).not_to have_content('Thank you for registering, byverdu@test.com')
