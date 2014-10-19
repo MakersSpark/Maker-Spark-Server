@@ -8,8 +8,6 @@ class PrinterController < SparkPrint
          if user            
             message = UserMessage.first(user_id: user.id)
             event.build_user_message(message.content,user.github_name) if message
-            # .all(user_id: user.id).each do |message|
-            #   event.build_user_message(message.content,user.github_name)
          else
           event.build_rfid_url_message
          end  
