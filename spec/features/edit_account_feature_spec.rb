@@ -28,4 +28,12 @@ feature "Editing a user account" do
 		expect(page).to have_content('Your details have been successfully updated')
 		expect(current_path).to eq('/')
 	end
+
+	scenario "clicking on Home button leads to the home page" do
+		visit "/edit_user"
+		expect(page).to have_link('Home')
+		click_link('Home')
+		expect(current_path).to eq('/')
+	end
+
 end

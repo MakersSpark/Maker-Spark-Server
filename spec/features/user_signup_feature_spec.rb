@@ -39,6 +39,13 @@ feature "User sign up" do
     		expect(current_path).to eq('/')
     		expect(page).to have_content('Thank you for registering, byverdu@test.com')
     	end
+
+    	scenario "clicking on Home button leads to the home page" do
+			visit "/sign_up"
+			expect(page).to have_link('Home')
+			click_link('Home')
+			expect(current_path).to eq('/')
+		end
 	end
 
 	
