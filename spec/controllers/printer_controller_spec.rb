@@ -31,13 +31,13 @@ describe "WebsiteController" do
 			stub_weather
 			stub_printer("CENTRE","Please sign up at:")
 			stub_printer("CENTRE", "spark-print-staging.herokuapp.co")
-			stub_printer("CENTRE", "m/sign_up_with/#{rfid_code}")
+			stub_printer("CENTRE", "m/users/sign_up_with/#{rfid_code}")
 			stub_printer("TEXT","")
 			stub_printer("TEXT"," ")
 			post "/"
 			expect(a_http_request("CENTRE","Please sign up at:")).to have_been_made
 			expect(a_http_request("CENTRE","spark-print-staging.herokuapp.co")).to have_been_made
-			expect(a_http_request("CENTRE","m/sign_up_with/#{rfid_code}")).to have_been_made
+			expect(a_http_request("CENTRE","m/users/sign_up_with/#{rfid_code}")).to have_been_made
 		end
 
 		it "prints a usermessage, if a user received a message" do

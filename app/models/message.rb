@@ -45,7 +45,7 @@ class Message
 		# add_lines(["CENTRE","You're not registered!"])
 		add_lines(["CENTRE","Please sign up at:"])
 		add_lines(["TEXT"," "])
-		add_lines(["CENTRE","spark-print-staging.herokuapp.com/sign_up_with/#{rfid_code}"])
+		add_lines(["CENTRE","spark-print-staging.herokuapp.com/users/sign_up_with/#{rfid_code}"])
 	end
 
 	def add_user_message(message_content,user_name)
