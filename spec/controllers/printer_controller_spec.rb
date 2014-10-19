@@ -19,13 +19,13 @@ describe "PrinterController" do
 	end
 
 	describe "POST /" do 
-	# 	it "prints a message, if a user with the specific rfid_code exists" do
-	# 		allow(User).to receive(:first).with(:rfid_code => rfid_code).and_return(user)
-	# 		allow(user).to receive(:id).and_return(1)
-	# 		stub_afternoon_message
-	# 		post "/"
-	# 		expect_afternoon_message_to_have_been_made
-	# 	end
+		it "prints a message, if a user with the specific rfid_code exists" do
+			allow(User).to receive(:first).with(:rfid_code => rfid_code).and_return(user)
+			allow(user).to receive(:id).and_return(1)
+			stub_afternoon_message
+			post "/"
+			expect_afternoon_message_to_have_been_made
+		end
 
 		it "prints a url, if no user with that rfid_code exists" do
 			stub_weather
@@ -43,7 +43,7 @@ describe "PrinterController" do
 		it "prints a usermessage, if a user received a message" do
 			allow(User).to receive(:first).with(:rfid_code => rfid_code).and_return(user)
 			allow(user).to receive(:id).and_return(1)
-			allow(UserMessage).to receive(:first).with(user_id: user.id).and_return(message)
+			allow(UserMessage).to receive(:all).with(user_id: user.id).and_return([message])
 			stub_afternoon_message
 		 	stub_printer("TEXT","#{user.github_name} sent:")
 			stub_printer("TEXT", message.content)
