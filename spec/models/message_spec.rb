@@ -55,7 +55,7 @@ describe Message do
 
 		it "can add a time dependent message" do 
 			morning_message.add_time_dependent_message
-			expect(morning_message.lines).to include(["TEXT","This will be the calendar"])
+			expect(morning_message.lines).to include(calendar_events.first)
 		end
 
 		it "prints out the Makers Academy calendar" do
