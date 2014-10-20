@@ -3,7 +3,7 @@ def sign_up(email                 	= 'byverdu@test.com',
 	          password              = 's3cr3t',
 	          password_confirmation = 's3cr3t')
 
-visit '/users/sign_up'
+visit '/users/sign_up_with/aabbccdd'
 	fill_in 'email',                 with: email
 	fill_in 'github_user',			 with: github_user
 	fill_in 'password',              with: password
