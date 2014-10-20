@@ -34,7 +34,9 @@ class UsersController < SparkPrint
 
 	end
 
-	get '/edit_user' do 
+	get '/edit_user' do
+		flash[:notice] = "Sorry, you need to sign in or sign up before doing that."
+		redirect '/users/sign_up' unless @user
 		erb :edit_user
 	end
 
