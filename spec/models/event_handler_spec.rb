@@ -57,10 +57,29 @@ describe EventHandler do
 			expect(vincents_message).to receive(:add_user_message).with(user_message2.content,user.github_user)
 			event.build_user_message
 		end
+
 		it "prints 'No messages today.', if a user has not received any user messages" do
 			allow(UserMessage).to receive(:all).and_return(no_user_messages) 
 			expect(vincents_message).to receive(:add_lines).with(["CENTRE","No messages today."])
 			event.build_user_message
 		end
+
+		it "deletes the user's messages after they are successfully printed" do
+			expect(printer).to receive(:response).and_return("Successfully sent to the printer!")
+			expect(user).to receive(:destroy_all_user_messages).and_return([])
+			event.delete_user_messages(printer.response)
+		end
+
+		it "does not delete the user's messages if they are not successfully printed" do
+			expect(printer).to receive(:response).and_return("AAAAAAARGH")
+			expect(user).not_to receive(:destroy_all_user_messages)
+			event.delete_user_messages(printer.response)
+		end
+
 	end	
 end
+
+
+
+
+

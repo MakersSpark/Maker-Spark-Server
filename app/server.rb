@@ -55,7 +55,8 @@ class SparkPrint < Sinatra::Base
       user = User.first(rfid_code: card_info["data"])
       event = EventHandler.new(card_info, user)
       event.build_message           
-      event.print_message(Printer.new)
+      response = event.print_message(Printer.new)
+      event.delete_user_messages(response)
       "sorry ben is stupid"
     end
     
