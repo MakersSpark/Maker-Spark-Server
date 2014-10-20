@@ -8,14 +8,11 @@
     $scope.loadData = function() {
       return $scope.items = $scope.data.people;
     };
-    $scope.addData = function() {
-      return $scope.users = $scope.items;
+    $scope.addGitData = function() {
+      return $scope.messages.splice(0, 0, $scope.gitItems);
     };
     $scope.loadGitData = function() {
       return $scope.gitItems = $scope.data.gitData;
-    };
-    $scope.addGitData = function() {
-      return $scope.gits = $scope.gitItems;
     };
     $scope.loadForecast = function() {
       return $scope.forecasts = [$scope.data.forecast];
@@ -23,9 +20,13 @@
     $scope.loadCalendar = function() {
       return $scope.events = $scope.data.calendar;
     };
+    $scope.addCalendarData = function() {
+      return $scope.messages.splice(0, 0, $scope.events);
+    };
     $scope.init = function($scope, $http) {
       return $http.get('http://localhost:9292/angular/jsons').success(function(data) {
-        return $scope.data = data;
+        $scope.data = data;
+        return $scope.messages = [];
       });
     };
     $scope.init($scope, $http);
