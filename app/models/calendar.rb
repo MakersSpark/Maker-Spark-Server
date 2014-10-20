@@ -9,6 +9,7 @@ class Calendar
     @uri = uri
     @data = Icalendar.parse(open(@uri)).first
     @todays_events = []
+    get_events
   end
 
   def get_events
@@ -21,6 +22,9 @@ class Calendar
   end
 
   def get_todays_non_recurring_events
+    puts "----"*10
+    puts data
+    puts "----"
     @todays_events += data.events.select{ |event| event.rrule == [] && event.dtstart.today? } # gets events that do not repeat and are today
   end
 
@@ -40,7 +44,6 @@ class Calendar
   end
 
   def get_todays_events_formatted
-    get_events
     result = []
     @todays_events.each do |e|
       if Time.now.zone == "BST"
@@ -51,8 +54,11 @@ class Calendar
         result << ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"]
       end
     end
-
     result.sort
+  end
+
+  def json_of_todays_events
+
   end
 
 

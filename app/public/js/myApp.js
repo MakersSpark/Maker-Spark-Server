@@ -6,20 +6,23 @@
 
   app.controller("MyCtrl", function($scope, $http) {
     $scope.loadData = function() {
-      return $http.get('http://localhost:9292/angular/jsons').success(function(data) {
-        return $scope.items = data.people;
-      });
+      return $scope.items = $scope.data.people;
     };
     $scope.loadGitData = function() {
-      return $http.get("https://api.github.com/users/benjamintillett?access_token=38bff0b3c9fb460aa58a4a5ea270e3b7af8c0cde").success(function(gitData) {
-        return $scope.gitItems = [gitData];
-      });
+      return $scope.gitItems = $scope.initGitData;
     };
     $scope.loadForecast = function() {
+      return $scope.forecasts = [$scope.data.forecast];
+    };
+    $scope.init = function($scope, $http) {
+      $http.get("https://api.github.com/users/benjamintillett?access_token=38bff0b3c9fb460aa58a4a5ea270e3b7af8c0cde").success(function(data) {
+        return $scope.initGitData = [data];
+      });
       return $http.get('http://localhost:9292/angular/jsons').success(function(data) {
-        return $scope.forecasts = [data.forecast];
+        return $scope.data = data;
       });
     };
+    $scope.init($scope, $http);
   });
 
 }).call(this);

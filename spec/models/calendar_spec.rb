@@ -4,13 +4,13 @@ describe Calendar do
   let(:invalid_uri) { "https://www.google.com/calendar/ical/henrystanley.com_uh7l5drs1sfnju9eivnml389k8%40group.calendar.google.com/private-95d6172bf50f4f3783be77c8a0dfce42/basic.xml"}
   # let(:ical) { Icalendar.new('byverdu') }
   let(:calendar_file) { File.open("spec/assets/calendar.ics") }
-
+  let(:calendar_file_two) { File.open("spec/assets/calendar.ics") }
   let(:alberts_calendar) { Calendar.new(valid_uri) }
 
   before do
     stub_request(:get, valid_uri).to_return(:body => calendar_file)
     stub_request(:get, invalid_uri)
-    stub_request(:get, Calendar::MAKERS_CALENDAR_URI)
+    stub_request(:get, Calendar::MAKERS_CALENDAR_URI).to_return(:body => calendar_file_two)
     now = Time.local(2014,10,17)
     Timecop.freeze(now)
   end
@@ -67,4 +67,19 @@ describe Calendar do
         ["TEXT", "17:15 Demo: life at 1000WPM with Ethel"]]
       )
   end 
+
+  it "can return a json of today's events" do 
+    expect(alberts_calendar.json_of_todays_events).to eq (
+        [ 
+          { format: "TEXT", description: "09:00 Weekly event"},
+          { format: "TEXT", description: "10:00 Learning FORTRAN with Enrique"},
+          { format: "TEXT", description: "11:30 Spark Printer team meeting"},
+          { format: "TEXT", description: "14:30 Monthly event"},
+          { format: "TEXT", description: "15:30 Non-recurring event"},
+          { format: "TEXT", description: "17:15 Demo: life at 1000WPM with Ethel"}
+        ]
+      ) 
+    end   
+
+
 end 

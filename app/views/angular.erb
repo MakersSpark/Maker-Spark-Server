@@ -3,7 +3,7 @@
   <head>
   	<link rel='stylesheet' href='/css/bootstrap-responsive.css' />
 	<link rel='stylesheet' href='/css/bootstrap.css' />
-    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script src="./js/angular.js"></script>
     <script src="./js/myApp.js"></script>
   </head>
 
@@ -20,7 +20,7 @@
     	<button class="btn" ng-click="loadGitData()">Load GitHub Data</button>
 	    <div class="well">
 		    <ul>
-		         <li ng-repeat="gitItem in gitItems">Login: {{gitItem.login}}, repos {{item.public_repos}}, Following: {{item.following}}</li>
+		         <li ng-repeat="gitItem in gitItems">Login: {{gitItem.login}}, repos {{gitItem.public_repos}}, Following: {{gitItem.following}}</li>
 		    </ul>
 	  	</div>
   	</div>

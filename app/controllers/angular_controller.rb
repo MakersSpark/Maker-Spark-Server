@@ -5,7 +5,7 @@ require_relative "../server.rb"
 
 class AngularController < SparkPrint
 
-	get "/" do 
+	get "/" 	do 
 		erb :angular, :layout => false
 	end
 
