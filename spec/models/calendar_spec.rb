@@ -71,12 +71,12 @@ describe Calendar do
   it "can return a json of today's events" do 
     expect(alberts_calendar.calendar_json).to eq (
         [ 
-          { format: "TEXT", description: "09:00 Weekly event"},
-          { format: "TEXT", description: "10:00 Learning FORTRAN with Enrique"},
-          { format: "TEXT", description: "11:30 Spark Printer team meeting"},
-          { format: "TEXT", description: "14:30 Monthly event"},
-          { format: "TEXT", description: "15:30 Non-recurring event"},
-          { format: "TEXT", description: "17:15 Demo: life at 1000WPM with Ethel"}
+          { format: "TEXT", text: "09:00 Weekly event"},
+          { format: "TEXT", text: "10:00 Learning FORTRAN with Enrique"},
+          { format: "TEXT", text: "11:30 Spark Printer team meeting"},
+          { format: "TEXT", text: "14:30 Monthly event"},
+          { format: "TEXT", text: "15:30 Non-recurring event"},
+          { format: "TEXT", text: "17:15 Demo: life at 1000WPM with Ethel"}
         ]
       ) 
     end   

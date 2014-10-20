@@ -38,10 +38,11 @@
 	  	</div>
 
 	  	<div class="col-md-12">
-	    	<button class="btn" ng-click="loadCalendar()">Load calander</button>
+	    	<button class="btn" ng-click="loadCalendar()">Load calendar</button>
+		    <button class="btn btn-primary" ng-click="addCalendarData()">add calendar</button>
 		    <div class="well">
 			    <ul>
-			         <li ng-repeat="event in events">{{event.description}}</li>
+			         <li ng-repeat="event in events">{{event.text}}</li>
 			    </ul>
 		  	</div>
 		</div>	 
@@ -49,9 +50,13 @@
 	  
 	  <div class="col-md-6 well">
 		<ul>
-	         <li ng-repeat="user in users">Email: {{user.email}}<br> age: {{user.age}}<br> Name: {{user.name}}</li>
-	         <li ng-repeat="git in gits">{{git.text}}</li>
+	         <div ng-repeat="message in messages"><br>
+	         	<li ng-repeat="line in message">{{line.text}}</li>
+	         </div>
 	    </ul>
+	  </div>
+	  <div class="col-md-3">    
+
 	  </div>
 	  
 	  
