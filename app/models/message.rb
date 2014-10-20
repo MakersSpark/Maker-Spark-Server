@@ -9,12 +9,13 @@ class Message
 		@formatter = Formatter.new
 	end
 
-	def add_greeting
+	def add_greeting(user_name)
 		if morning_time
 			add_lines(["CENTREBIG","Good Morning"])
 		else
 			add_lines(["CENTREBIG","Good Afternoon"])
 		end
+		add_lines(["CENTREMED",user_name])
 	end
 
 	def add_divider

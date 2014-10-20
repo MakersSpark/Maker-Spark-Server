@@ -33,7 +33,7 @@ describe EventHandler do
 			allow(UserMessage).to receive(:all).and_return(user_messages) 
 			allow(vincents_message).to receive(:add_user_message).with(user_message1.content,user.github_user)
 			allow(vincents_message).to receive(:add_user_message).with(user_message2.content,user.github_user)
-			expect(vincents_message).to receive(:add_greeting)
+			expect(vincents_message).to receive(:add_greeting).with(user.github_user)
 			expect(vincents_message).to receive(:add_divider)
 			expect(vincents_message).to receive(:add_divider)
 			expect(vincents_message).to receive(:add_divider)

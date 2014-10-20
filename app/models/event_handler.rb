@@ -11,7 +11,7 @@ class EventHandler
 
 	def build_message
 		if user
-			message.add_greeting
+			message.add_greeting(user.github_user)
 			message.add_divider
 			message.add_time_dependent_message
 			message.add_divider

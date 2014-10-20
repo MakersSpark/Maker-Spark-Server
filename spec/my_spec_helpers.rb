@@ -5,6 +5,7 @@ module SpecHelpers
       stub_printer("CENTREBIG","Good Afternoon")
       stub_printer("CENTREBIG","~")
       stub_printer("TEXT","Partly cloudy for the hour.")
+      stub_printer("CENTREMED","benjamintillett")
       stub_printer("CENTREBIG","~")
       stub_printer("CENTREBIG","~")
       stub_printer("CENTREBIG","~")

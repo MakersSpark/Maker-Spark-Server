@@ -49,8 +49,9 @@ describe Message do
 		end
 
 		it "can add a morning greeting" do 
-			morning_message.add_greeting
+			morning_message.add_greeting(user_name)
 			expect(morning_message.lines).to include(["CENTREBIG","Good Morning"])
+			expect(morning_message.lines).to include(["CENTREMED","#{user_name}"])
 		end
 
 		it "can add a time dependent message" do 
@@ -71,8 +72,10 @@ describe Message do
 		end
 
 		it "can add a afternoon greeting" do 
-			afternoon_message.add_greeting
+			afternoon_message.add_greeting(user_name)
 			expect(afternoon_message.lines).to include(["CENTREBIG","Good Afternoon"])
+			expect(afternoon_message.lines).to include(["CENTREMED","#{user_name}"])
+
 		end
 
 		it "can add a time dependent message" do
