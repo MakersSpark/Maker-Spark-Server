@@ -11,6 +11,7 @@ require 'open-uri'
 require 'icalendar'
 require 'htmlentities'
 require 'shorturl'
+require 'service_disruption'
 
 require "twitter"
 
@@ -27,6 +28,7 @@ require_relative './models/user_messages'
 require_relative './models/calendar'
 require_relative './models/json_handler'
 require_relative './models/guardian_news'
+require_relative './models/tube_status'
 require_relative './data_mapper_setup'
 
 require_relative './helpers/application_helper'
