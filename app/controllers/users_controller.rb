@@ -16,6 +16,10 @@ class UsersController < SparkPrint
 	end
 
 	get "/sign_up_with/:rfid_code" do
+		if @user
+			flash[:notice] = "You're already a registered user!"
+			redirect '/'
+		end
 		erb :sign_up
 	end
 
@@ -35,8 +39,10 @@ class UsersController < SparkPrint
 	end
 
 	get '/edit_user' do
-		flash[:notice] = "Sorry, you need to sign in or sign up before doing that."
-		redirect '/users/sign_up' unless @user
+		unless @user # do this if a user isn't logged in
+			flash[:notice] = "Sorry, you need to sign in or sign up before doing that."
+			redirect '/users/sign_up'
+		end
 		erb :edit_user
 	end
 

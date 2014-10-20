@@ -48,8 +48,19 @@ feature "User sign up" do
 		end
 	end
 
-	
+  context "an existing user" do
+    before do
+      stub_request(:any, "https://github.com/users/byverdu/contributions")
+      sign_up
+      sign_in
+    end
 
+    scenario "sees an error when accessing the signup form" do
+      visit('/users/sign_up_with/aabbccdd')
+      expect(page).to have_content("You're already a registered user!")
+      expect(current_path).to eq('/')
+    end
+  end
 
 end
 
