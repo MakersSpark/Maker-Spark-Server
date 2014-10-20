@@ -1,6 +1,6 @@
 feature "printing from the website" do 
 
-  context "a user prints a message from the website" do
+  context "a guest prints a message from the website" do
 
     scenario "successfully sending a message to the printer" do
       visit '/'
@@ -22,6 +22,11 @@ feature "printing from the website" do
       click_button('Print')
       expect(a_http_request('TEXT', 'hello world')).to have_been_made
       expect(page).to have_text("Sorry, something went wrong. Check the printer is online.")
+    end
+
+    scenario "guests cannot send messages to other users" do
+      visit '/'
+      expect(page).not_to have_css("textarea[name='usermessagebox']")
     end
 
   end

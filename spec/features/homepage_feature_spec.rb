@@ -1,4 +1,4 @@
-feature "A user visits the home page" do
+feature "a guest on the home page" do
 	before do
 		stub_printer("TEXT","hello world")
 		stub_printer("TEXT","")
@@ -17,24 +17,6 @@ feature "A user visits the home page" do
 		expect(page).to have_css('textarea[name=messagebox]')
 	end
 
-	scenario "sees a checkbox populated with usernames" do
-		visit '/'
-		expect(page).to have_selector('.message-receiver')
-		within(:css, '.message-receiver') {
-			expect(page).to have_content('byverdu')
-			}
-	end
-
-	scenario "have a box for sending messages to other users" do	
-		visit '/'
-		expect(page).to have_css('textarea[name=usermessagebox]')
-	end
-
-	scenario "have a button for sending messages to other users" do	
-		visit '/'
-		expect(page).to have_button('Send message')
-	end
-	
 
 	scenario "can see a printed successfully message, when message was sent to the printer" do 
 		visit '/'
@@ -59,6 +41,38 @@ feature "A user visits the home page" do
 		fill_in('messagebox', with: 'hello world')
 		click_button('Print')
 		expect(a_request(:post, "#{ENV['SPARK_API_URI']}/print").with(:body => { access_token: ENV['SPARK_TOKEN'], args: "BOLD=hello world/" })).to have_been_made
+	end
+
+end
+
+feature "a signed in user on the homepage" do
+
+	before do
+		stub_printer("TEXT","hello world")
+		stub_printer("TEXT","")
+		stub_printer("TEXT","")
+		stub_request(:any, "https://github.com/users/byverdu/contributions")
+		sign_up
+		sign_in
+	end
+
+
+	scenario "sees a checkbox populated with usernames" do
+		visit '/'
+		expect(page).to have_selector('.message-receiver')
+		within(:css, '.message-receiver') {
+			expect(page).to have_content('byverdu')
+			}
+	end
+
+	scenario "have a box for sending messages to other users" do	
+		visit '/'
+		expect(page).to have_css('textarea[name=usermessagebox]')
+	end
+
+	scenario "have a button for sending messages to other users" do	
+		visit '/'
+		expect(page).to have_button('Send message')
 	end
 
 end

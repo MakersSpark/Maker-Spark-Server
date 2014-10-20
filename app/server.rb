@@ -77,6 +77,7 @@ class SparkPrint < Sinatra::Base
     
 	get '/' do
 	  @users = User.all
+    @user = current_user
 	  erb :printer
 	end
 
