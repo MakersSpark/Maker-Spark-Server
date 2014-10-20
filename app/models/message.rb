@@ -15,7 +15,7 @@ class Message
 		else
 			add_lines(["CENTREBIG","Good Afternoon"])
 		end
-		add_lines(["CENTREMED",user_name])
+		add_lines(["CENTREMED","#{user_name}"])
 	end
 
 	def add_divider
