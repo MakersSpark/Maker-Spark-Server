@@ -17,4 +17,7 @@ class Forecast
 end
 
 
+# loo = client.trends_closest(options = {lat:51.5231,long:-0.0871})
 
+
+# 51.5231,-0.0871
