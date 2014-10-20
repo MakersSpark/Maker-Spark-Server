@@ -17,9 +17,9 @@ describe GuardianNews do
 		# 	expect(news.headlines).to eq ("Dowler family ‘horrified’ if Sun body story came from police tipoff, trial hears")
 		# end
 
-		it "returns a list of headlines and date" do
+		it "returns a list of headlines and formatted date of publication" do
 			stub_news
-			expect(news.headlines).to eq ("Dowler family ‘horrified’ if Sun body story came from police tipoff, trial hears (2014-10-20T13:26:55Z)")
+			expect(news.headlines).to eq ("Dowler family ‘horrified’ if Sun body story came from police tipoff, trial hears (20 October)")
 		end
 
 	end
