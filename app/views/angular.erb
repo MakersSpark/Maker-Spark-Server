@@ -3,6 +3,7 @@
   <head>
   	<link rel='stylesheet' href='/css/bootstrap-responsive.css' />
 	<link rel='stylesheet' href='/css/bootstrap.css' />
+    <link rel='stylesheet' href='/css/spark.css' />
     <script src="./js/angular.js"></script>
     <script src="./js/myApp.js"></script>
   </head>
@@ -20,10 +21,10 @@
 	  	</div>
 	  	<div class="col-md-12">
 	    	<button class="btn" ng-click="loadGitData()">Load GitHub Data</button>
-
+	    	<button class="btn btn-primary" ng-click="addGitData()">Add</button>
 		    <div class="well">
 			    <ul>
-			         <li ng-repeat="gitItem in gitItems">Login: {{gitItem.login}}<br> repos {{gitItem.public_repos}}<br>Following: {{gitItem.following}}</li>
+			         <li ng-repeat="gitItem in gitItems">{{gitItem.text}}</li>
 			    </ul>
 		  	</div>
 	  	</div>
@@ -49,7 +50,8 @@
 	  <div class="col-md-6 well">
 	  	Hello
 		<ul>
-	         <li ng-repeat="message in messages">Email: {{message.email}}<br> age: {{message.age}}<br> Name: {{message.name}}</li>
+	         <li ng-repeat="user in users">Email: {{user.email}}<br> age: {{user.age}}<br> Name: {{user.name}}</li>
+	         <li ng-repeat="git in gits">{{git.text}}</li>
 	    </ul>
 	  </div>
 	  

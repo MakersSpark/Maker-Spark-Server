@@ -15,6 +15,9 @@ gem 'ri_cal'
 gem 'ical'
 gem 'json'
 gem 'rest-client'
+gem "twitter"
+
+
 
 group :development, :test do 
   	gem 'database_cleaner'

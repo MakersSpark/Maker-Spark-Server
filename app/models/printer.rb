@@ -2,6 +2,8 @@ class Printer
 
 	attr_accessor :print_uri, :spark_api_token
 
+	attr_reader :response
+
 	def initialize
 		@print_uri = URI.parse("#{ENV['SPARK_API_URI']}/print")
 		@spark_api_token = ENV['SPARK_TOKEN']
@@ -19,7 +21,7 @@ class Printer
 	end
 
 	def print(message)
-		message.lines.each{|line| print_line(line)}
+		@response = message.lines.each{|line| print_line(line)}
 		# two line feeds after each printout to give room to tear it off
 		2.times { print_blank_line }
 	end

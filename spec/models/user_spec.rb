@@ -114,5 +114,12 @@ describe User do
 			expect(UserMessage.first.content).to eq "I love you!!!!"
 			expect(UserMessage.first.dirty?).to eq false
 		end
+
+		it "can delete all a user's messages" do
+			UserMessage.create(content: "I love you!!!!", sender_id: albert.id, user_id: message_receiver.id)
+			expect(UserMessage.first.content).to eq "I love you!!!!"
+			albert.destroy_all_user_messages
+			expect(albert.UserMessages.any?).to eq false
+		end
 	end
 end

@@ -1,6 +1,6 @@
 class EventHandler
 
-	attr_accessor :rfid_data, :message, :formatter, :user
+	attr_accessor :rfid_data, :message, :formatter, :user, :user_messages
 
 	def initialize(my_json, user)
 		@rfid_data = my_json
@@ -11,7 +11,7 @@ class EventHandler
 
 	def build_message
 		if user
-			message.add_greeting
+			message.add_greeting(user.github_user)
 			message.add_divider
 			message.add_time_dependent_message
 			message.add_divider
@@ -37,5 +37,11 @@ class EventHandler
 			user_name = user.github_user
 			message.add_user_message(message_content,user_name)
 		end
+		message.add_lines(["CENTRE","No messages today."]) if user_messages == []
 	end
+
+	def delete_user_messages(response)
+		user.destroy_all_user_messages if response == "Successfully sent to the printer!"
+	end
+
 end
