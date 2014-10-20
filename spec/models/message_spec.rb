@@ -7,6 +7,13 @@ describe Message do
 	let(:rfid_code) { "41d21cd" }
 	let(:message_content) { "Would you like to pair with me?" }
 	let(:user_name) { "byverdu" }
+	let(:calendar_events) { [["TEXT", "09:00 Weekly event"],
+        ["TEXT", "10:00 Learning FORTRAN with Enrique"],
+        ["TEXT", "11:30 Spark Printer team meeting"],
+        ["TEXT", "14:30 Monthly event"],
+        ["TEXT", "15:30 Non-recurring event"],
+        ["TEXT", "17:15 Demo: life at 1000WPM with Ethel"]] }
+  let(:calendar) { double :calendar, get_todays_events_formatted: calendar_events  }
 
 
 
@@ -38,16 +45,23 @@ describe Message do
 		before do 
 			morning = Time.local(2014,10,23,11,31)
 			Timecop.freeze(morning)
+			allow(Calendar).to receive(:new).and_return(calendar)
 		end
 
 		it "can add a morning greeting" do 
-			morning_message.add_greeting
+			morning_message.add_greeting(user_name)
 			expect(morning_message.lines).to include(["CENTREBIG","Good Morning"])
+			expect(morning_message.lines).to include(["CENTREMED","#{user_name}"])
 		end
 
 		it "can add a time dependent message" do 
 			morning_message.add_time_dependent_message
-			expect(morning_message.lines).to include(["TEXT","This will be the calendar"])
+			expect(morning_message.lines).to include(calendar_events.first)
+		end
+
+		it "prints out the Makers Academy calendar" do
+			morning_message.add_calendar # by default, the calendar should pull in the Makers Calendar ics file
+			expect(morning_message.lines).to include(["TEXT", "14:30 Monthly event"])
 		end
 	end
 
@@ -58,8 +72,10 @@ describe Message do
 		end
 
 		it "can add a afternoon greeting" do 
-			afternoon_message.add_greeting
+			afternoon_message.add_greeting(user_name)
 			expect(afternoon_message.lines).to include(["CENTREBIG","Good Afternoon"])
+			expect(afternoon_message.lines).to include(["CENTREMED","#{user_name}"])
+
 		end
 
 		it "can add a time dependent message" do

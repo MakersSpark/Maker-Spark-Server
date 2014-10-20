@@ -10,12 +10,18 @@ describe Calendar do
   before do
     stub_request(:get, valid_uri).to_return(:body => calendar_file)
     stub_request(:get, invalid_uri)
+    stub_request(:get, Calendar::MAKERS_CALENDAR_URI)
     now = Time.local(2014,10,17)
     Timecop.freeze(now)
   end
 
    it "is can be initialized with a valid url" do 
      expect(alberts_calendar.uri).to eq valid_uri
+   end
+
+   it "by default, uses the hard-coded Makers Academy calendar" do
+    calendar = Calendar.new
+    expect(calendar.uri).to eq(Calendar::MAKERS_CALENDAR_URI)
    end
 
    ### This validation should be done at the database and feature level!
