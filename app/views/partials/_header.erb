@@ -1,24 +1,57 @@
-<div class="header">
+<div class="navbar navbar-default" role="navigation">
+		<div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <div class="form-group">
+					<% if current_user %>
 
-	 <h3 class="text-muted">Spark Printer Dashboard</h3>
-				
-	<div class="rightnav">
-		<a href='/' class="btn btn-sm btn-info navbutton">Home</a>
-	  		
-	  	<% if current_user %>
+						<form>
+							<input type="hidden" name="_method" value="delete">
+							<button type="submit" class="btn btn-default">Log out</button>
+						</form>
 
-			<form action="/users" method="post">
-				<input type="hidden" name="_method" value="delete">
-				<button type="submit" class="btn btn-sm btn-info navbutton">Log out</button>
-			</form>
+						<form>
+							<a href="/users/edit_user" class="btn btn-info">Edit account</a>
+						</form>
 
-			<a href="/users/edit_user" class="btn btn-sm btn-info navbutton">Edit account</a>
-		
-		<%else%>
+          <% else %>
 
-			<a href='/users/sign_in' class="btn btn-sm btn-info navbutton">Sign in</a>
-			<a href='/users/sign_up' class="btn btn-sm btn-info navbutton">Sign up</a>
+	          <form>
+		          <a href='/users/sign_in' class="btn btn-sm btn-info navbutton">Sign in</a>
+	          </form>
+	          <form>
+		          <a href='/users/sign_up' class="btn btn-sm btn-info navbutton">Sign up</a>
+	          </form>
 
-		<%end%>	
-	</div>
-</div>
+					<% end %>
+					</div>	
+          </button>
+          <a class="navbar-brand" href="/">Spark Printer Dashboard</a>
+        </div>
+        <div class="navbar-collapse collapse">
+	        <div class="form-group">
+					<% if current_user %>
+
+						<form class="navbar-form navbar-right" role="form" action="/users" method="post">
+							<input type="hidden" name="_method" value="delete">
+							<button type="submit" class="btn btn-default">Log out</button>
+						</form>
+
+						<form class="navbar-form navbar-right">
+							<a href="/users/edit_user" class="btn btn-info">Edit account</a>
+						</form>
+
+          <% else %>
+
+	          <form class="navbar-form navbar-right">
+		          <a href='/users/sign_in' class="btn btn-sm btn-info navbutton">Sign in</a>
+	          </form>
+	          <form class="navbar-form navbar-right">
+		          <a href='/users/sign_up' class="btn btn-sm btn-info navbutton">Sign up</a>
+	          </form>
+
+					<% end %>
+					</div>	
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>

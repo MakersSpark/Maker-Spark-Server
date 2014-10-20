@@ -2,7 +2,6 @@
 include SpecHelpers
 
 
-
 describe Forecast do 
 
 	let(:weather) { Forecast.new("51.5231,-0.0871") }

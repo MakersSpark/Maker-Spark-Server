@@ -11,6 +11,9 @@ require 'open-uri'
 require 'icalendar'
 require 'htmlentities'
 
+require "twitter"
+
+
 
 require_relative './models/user'
 require_relative './models/printer'
@@ -22,6 +25,7 @@ require_relative './models/message'
 require_relative './models/user_messages'
 require_relative './models/calendar'
 require_relative './models/json_handler'
+require_relative './models/guardian_news'
 require_relative './data_mapper_setup'
 
 require_relative './helpers/application_helper'
@@ -63,9 +67,15 @@ class SparkPrint < Sinatra::Base
     
 	get '/' do
 	  @users = User.all
+
 	  erb :printer
 	end
 
 	run! if app_file == $0
 
 end
+
+
+
+
+

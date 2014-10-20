@@ -13,6 +13,7 @@ gem 'htmlentities'
 gem 'icalendar'
 gem 'ri_cal'
 gem 'ical'
+gem "twitter"
 
 
 group :development, :test do 
