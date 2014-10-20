@@ -17,7 +17,9 @@ describe Message do
   let(:calendar) { double :calendar, get_todays_events_formatted: calendar_events  }
 
 
-
+	before do 
+		 allow(ShortURL).to receive(:shorten).with("http://spark-print-staging.herokuapp.com/users/sign_up_with/#{rfid_code}", :tinyurl).and_return("http://tinyurl.com/3xc6c2")
+	end
 
 	it "can add a divider" do 
 		morning_message.add_divider
@@ -45,6 +47,11 @@ describe Message do
 	it "can add a url with an rfid code" do
 		morning_message.add_rfid_url(rfid_code)
 		expect(morning_message.lines).to include(["CENTRE", "m/users/sign_up_with/#{rfid_code}"])
+	end
+
+	it "can convert the url in a tinyurl" do
+		 allow(ShortURL).to receive(:shorten).with("http://spark-print-staging.herokuapp.com/users/sign_up_with/#{rfid_code}", :tinyurl).and_return("http://tinyurl.com/3xc6c2")
+		expect(morning_message.shorten_url(rfid_code)).to eq ("http://tinyurl.com/3xc6c2")
 	end
 
 	context "in the morning" do 

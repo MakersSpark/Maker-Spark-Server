@@ -14,6 +14,7 @@ gem 'icalendar'
 gem 'ri_cal'
 gem 'ical'
 gem "twitter"
+gem "shorturl"
 
 
 group :development, :test do 

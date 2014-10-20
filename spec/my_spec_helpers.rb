@@ -18,6 +18,9 @@ module SpecHelpers
       expect(a_http_request("TEXT","Partly cloudy for the hour.")).to have_been_made
   end
 
+  def stub_tiny_url
+    stub_request(:get, "http://tinyurl.com/api-create.php?url=http://spark-print-staging.herokuapp.com/users/sign_up_with/41d21cd")
+  end
 
   def stub_printer(format,text)
     stub_request(:post, "#{ENV['SPARK_API_URI']}/print").
