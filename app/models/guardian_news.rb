@@ -9,7 +9,7 @@ class GuardianNews
 	def headlines
 
 		@headlines = get_newsstories["response"]['results'][0]['webTitle'] + ' (' + DateTime.parse(get_newsstories["response"]['results'][0]['webPublicationDate']).strftime('%_d %_B, %H:%M') + ')'
-		
+	
 	end
 
 end

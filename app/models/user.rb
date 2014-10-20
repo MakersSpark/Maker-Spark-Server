@@ -49,4 +49,8 @@ class User
 
 	end
 
+	def destroy_all_user_messages
+		self.UserMessages.all.destroy
+	end
+
 end

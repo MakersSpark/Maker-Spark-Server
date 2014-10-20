@@ -54,18 +54,28 @@ class SparkPrint < Sinatra::Base
 	set :partial_template_engine, :erb
 	#enable :partial_underscores
 
-    post "/" do 
-      card_info = JsonHandler.get_user_info(params[:data]) 
-      user = User.first(rfid_code: card_info["data"])
-      event = EventHandler.new(card_info, user)
-      event.build_message           
-      event.print_message(Printer.new)
-      "sorry ben is stupid"
+  set(:auth) do |*roles|   # <- notice the splat here
+    condition do
+      unless logged_in? && roles.any? {|role| current_user.in_role? role }
+      redirect "/login/", 303
+      end
     end
+  end
+
+  post "/" do 
+    card_info = JsonHandler.get_user_info(params[:data]) 
+    user = User.first(rfid_code: card_info["data"])
+    event = EventHandler.new(card_info, user)
+    printer = Printer.new
+    event.build_message           
+    event.print_message(printer)
+    event.delete_user_messages(printer.response)
+    "sorry ben is stupid"
+  end
+
     
 	get '/' do
 	  @users = User.all
-
 	  erb :printer
 	end
 

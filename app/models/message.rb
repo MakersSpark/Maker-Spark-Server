@@ -9,12 +9,13 @@ class Message
 		@formatter = Formatter.new
 	end
 
-	def add_greeting
+	def add_greeting(user_name)
 		if morning_time
-			add_lines(["CENTREBIG","Good Morning"])
+			add_lines(["CENTREBIG","  Good Morning  #{user_name}!"])
 		else
-			add_lines(["CENTREBIG","Good Afternoon"])
+			add_lines(["CENTREBIG"," Good Afternoon #{user_name}!"])
 		end
+		# add_lines(["CENTREBIG","#{user_name}"])
 	end
 
 	def add_divider
@@ -23,7 +24,7 @@ class Message
 
 	def add_time_dependent_message
 		if morning_time
-			add_lines(["TEXT","This will be the calendar"])
+			add_calendar
 		else
 			add_forecast
 		end
@@ -38,7 +39,7 @@ class Message
 	end
 
 	def add_forecast 
-		add_lines(["TEXT",Forecast.new.summary])
+		add_lines(["CENTRE",Forecast.new.summary])
 	end
 
 	def add_rfid_url(rfid_code)
@@ -58,11 +59,21 @@ class Message
 	end
 	
     # NEED TO TEST
-	def add_calendar(calendar)
+	def add_calendar(*uri)
+		calendar = Calendar.new(*uri)
 		calendar.get_todays_events_formatted.each { |line| add_lines(line) }
 	end
 
 	def add_lines(line)
 		formatter.format_line(line).each { |line| lines << line }
 	end
+
+	def add_popular_tweets(search_term)
+		tweets = TwitterData.new.grab_top3_tweets(search_term)
+		tweets.each do |tweet|
+			add_lines( ["TEXT", tweet[:tweet] ])
+			add_lines( ["TEXT","- by @#{tweet[:name]}" ])
+		end
+	end
+
 end

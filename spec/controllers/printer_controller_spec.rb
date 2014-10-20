@@ -23,6 +23,7 @@ describe "PrinterController" do
 			allow(User).to receive(:first).with(:rfid_code => rfid_code).and_return(user)
 			allow(user).to receive(:id).and_return(1)
 			stub_afternoon_message
+			stub_printer("CENTRE","No messages today.")
 			post "/"
 			expect_afternoon_message_to_have_been_made
 		end
