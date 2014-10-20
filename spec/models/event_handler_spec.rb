@@ -59,7 +59,7 @@ describe EventHandler do
 		end
 		it "prints 'No messages today.', if a user has not received any user messages" do
 			allow(UserMessage).to receive(:all).and_return(no_user_messages) 
-			expect(vincents_message).to receive(:add_lines).with(["TEXT","No messages today."])
+			expect(vincents_message).to receive(:add_lines).with(["CENTRE","No messages today."])
 			event.build_user_message
 		end
 	end	

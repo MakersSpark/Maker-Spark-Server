@@ -1,6 +1,8 @@
 feature "A user visits the home page" do
 	before do
 		stub_printer("TEXT","hello world")
+		stub_printer("TEXT","")
+		stub_printer("TEXT","")
 		stub_request(:any, "https://github.com/users/byverdu/contributions")
 		create(:valid_user)
 	end

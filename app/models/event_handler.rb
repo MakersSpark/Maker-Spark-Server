@@ -37,6 +37,6 @@ class EventHandler
 			user_name = user.github_user
 			message.add_user_message(message_content,user_name)
 		end
-		message.add_lines(["TEXT","No messages today."]) if user_messages == []
+		message.add_lines(["CENTRE","No messages today."]) if user_messages == []
 	end
 end
