@@ -39,7 +39,7 @@ class Message
 	end
 
 	def add_forecast 
-		add_lines(["TEXT",Forecast.new.summary])
+		add_lines(["CENTRE",Forecast.new.summary])
 	end
 
 	def add_rfid_url(rfid_code)
