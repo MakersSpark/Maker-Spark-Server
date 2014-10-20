@@ -40,6 +40,7 @@ describe TwitterData do
 		before do 
 			allow(Twitter::REST::Client).to receive(:new).with(config)
 	 		allow(twitter_data).to receive(:client).and_return(client)
+	  		allow(client).to receive(:search).with(search_term,options={result_type: 'popular'}).and_return(search_results)
 		end
 
 
@@ -49,7 +50,6 @@ describe TwitterData do
 	  end
 
 	  it "can grab the first 3 most popular tweets and put them in a hash" do
-	  	allow(client).to receive(:search).with(search_term,options={result_type: 'popular'}).and_return(search_results)
 	  	expect(twitter_data.grab_top3_tweets()).to eq [{name: user1.name ,tweet: search_result1.text}, {name: user2.name ,tweet: search_result2.text},{name: user3.name ,tweet: search_result3.text}]	
 	  end
 
@@ -58,10 +58,8 @@ describe TwitterData do
 	  # 		twitter_data.search_trending_hashtags
 	  # end
 
+	 it "can create a JSON hash for the printer" do 
+		expect(twitter_data.json).to eq [{:format=>"TEXT", :text=>"Programming is shit - by @Albertino"},{:format=>"TEXT", :text=>"Programming is super cool - by @BenjaminoTilleto"},{:format=>"TEXT",:text=>"Albert, the programmer, should get well soon! - by @vinzenzo"}]
+		end
 	end
-
-
-
-
-
 end

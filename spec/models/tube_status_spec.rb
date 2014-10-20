@@ -23,7 +23,7 @@ describe TubeStatus do
 	end
 
 	it "can create a JSON hash for the printer" do 
-		expect(tube.json).to eq [{:format=>"TEXT", :text=>"City Line: Minor Delays)"}]
+		expect(tube.json).to eq [{:format=>"TEXT", :text=>"City Line: Minor Delays"}]
 	end
 
 

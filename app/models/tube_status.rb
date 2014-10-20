@@ -17,11 +17,9 @@ class TubeStatus
 	end
 
 	def json
-		json_hash = []
-		get_status_of_delayed_tubes.each do |line|
-			json_hash << Hash[:format, "TEXT", :text, "#{line[:line_name]}: #{line[:status]})"]
+		get_status_of_delayed_tubes.map do |line|
+			Hash[:format, "TEXT", :text, "#{line[:line_name]}: #{line[:status]}"]
 		end
-		json_hash
 	end
 
 end
