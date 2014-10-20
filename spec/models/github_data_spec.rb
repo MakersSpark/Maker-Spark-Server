@@ -2,11 +2,12 @@ describe GithubData do
 
 	let(:github) { GithubData.new('byverdu') }
 	let(:stats)  { double :github_stats }
-	let(:streak) { double :streak }
-	let(:longest_streak) { double :longest_streak }
-	let(:max) { double :max }
-	let(:data) { double :data, streak: streak, longest_streak: longest_streak, max: max }
+	let(:streak) { double :streak,  count: 4567 } 
+	let(:longest_streak) { double :longest_streak,  count: 666 } 
+	let(:max) { double :max, score: 999, date: "05/05/2014" }
+	let(:data) { double :data, streak: streak, longest_streak: longest_streak, max: max, today: 89 }
 	
+
 	context "requiring contributions from the GithubStats gem" do
 
 		before do 
@@ -38,5 +39,46 @@ describe GithubData do
 			expect(max).to receive(:date)
 			github.highscore
 		end
+	
+
+	
+
+		it 'can get git hub data as a json' do
+			allow(stats).to receive(:data).and_return(data)
+			allow(stats).to receive(:name).and_return("ben")
+			expect(github.json).to eq [
+				{ format: "BOLD", text: "byverdu's GitHub Stats:"},
+				{ format: "TEXT", text: "Score today: 89"},
+				{ format: "TEXT", text: "Current streak: 4567"},
+				{ format: "TEXT", text: "Longest streak: 666"},
+				{ format: "TEXT", text: "High score: 999 on 05/05/2014"}
+			]
+		end
 	end
 end
+
+
+
+# allow(stats).to receive(:score_today).and_return(89)
+# 			allow(stats).to receive(:score_today).and_return(89)
+# 			allow(stats).to receive(:name).and_return("ben")
+# 			allow(stats).to receive(:current_streak).and_return(4567)
+# 			allow(stats).to receive(:longest_streak).and_return(4567)
+# 			allow(stats).to receive(:highscore).and_return(["999", "05/05/2014"])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

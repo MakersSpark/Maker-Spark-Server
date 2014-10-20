@@ -45,7 +45,7 @@ class Calendar
     @todays_events.map { |e| ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"] }.sort
   end
 
-  def todays_events_hashed
+  def calendar_json
     @todays_events.map { |e| {format: "TEXT", description: "#{e.dtstart.strftime("%H:%M")} #{e.summary}"}  }.sort { |a,b| a[:description] <=> b[:description] }
   end
 

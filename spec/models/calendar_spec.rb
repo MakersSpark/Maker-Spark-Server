@@ -69,7 +69,7 @@ describe Calendar do
   end 
 
   it "can return a json of today's events" do 
-    expect(alberts_calendar.todays_events_hashed).to eq (
+    expect(alberts_calendar.calendar_json).to eq (
         [ 
           { format: "TEXT", description: "09:00 Weekly event"},
           { format: "TEXT", description: "10:00 Learning FORTRAN with Enrique"},
