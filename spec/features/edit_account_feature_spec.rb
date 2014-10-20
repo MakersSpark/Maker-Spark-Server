@@ -12,7 +12,7 @@ feature "Editing a user account" do
 
 		expect(current_path).to eq('/users/edit_user')
 		expect(page).to have_selector("form.edit_user")
-		expect(page).to have_content('Editing the account')
+		expect(page).to have_content('Change account details')
 	end
 
 	scenario "Email and github user will be displayed" do

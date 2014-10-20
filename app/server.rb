@@ -50,7 +50,15 @@ class SparkPrint < Sinatra::Base
 	set :partial_template_engine, :erb
 	#enable :partial_underscores
 
-
+    post "/" do 
+      card_info = JsonHandler.get_user_info(params[:data]) 
+      user = User.first(rfid_code: card_info["data"])
+      event = EventHandler.new(card_info, user)
+      event.build_message           
+      event.print_message(Printer.new)
+      "sorry ben is stupid"
+    end
+    
 	get '/' do
 	  @users = User.all
 	  erb :printer
