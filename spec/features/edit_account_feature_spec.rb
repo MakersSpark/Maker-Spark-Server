@@ -30,9 +30,19 @@ feature "Editing a user account" do
 
 	scenario "clicking on Home button leads to the home page" do
 		visit "/users/edit_user"
-		expect(page).to have_link('Home')
-		click_link('Home')
+		expect(page).to have_link('Spark Printer Dashboard')
+		click_link('Spark Printer Dashboard')
 		expect(current_path).to eq('/')
+	end
+
+end
+
+feature "Guests accessing the edit user page" do
+
+	scenario "cannot see the edit page and are redirected to the login page instead" do
+		visit "/users/edit_user"
+		expect(page).to have_text("Sorry, you need to sign in or sign up before doing that.")
+		expect(current_path).to eq('/users/sign_up')
 	end
 
 end

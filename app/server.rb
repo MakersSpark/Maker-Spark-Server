@@ -55,6 +55,13 @@ class SparkPrint < Sinatra::Base
 	set :partial_template_engine, :erb
 	#enable :partial_underscores
 
+  set(:auth) do |*roles|   # <- notice the splat here
+    condition do
+      unless logged_in? && roles.any? {|role| current_user.in_role? role }
+      redirect "/login/", 303
+      end
+    end
+  end
 
   post "/" do 
     card_info = JsonHandler.get_user_info(params[:data]) 
