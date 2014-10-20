@@ -67,4 +67,13 @@ class Message
 	def add_lines(line)
 		formatter.format_line(line).each { |line| lines << line }
 	end
+
+	def add_popular_tweets(search_term)
+		tweets = TwitterData.new.grab_top3_tweets(search_term)
+		tweets.each do |tweet|
+			add_lines( ["TEXT", tweet[:tweet] ])
+			add_lines( ["TEXT","- by @#{tweet[:name]}" ])
+		end
+	end
+
 end

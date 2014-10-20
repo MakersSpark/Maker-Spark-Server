@@ -7,6 +7,7 @@ describe Message do
 	let(:rfid_code) { "41d21cd" }
 	let(:message_content) { "Would you like to pair with me?" }
 	let(:user_name) { "byverdu" }
+	let(:tweets) { [{:name=>"Albertino", :tweet=>"Programming is shit"}, {:name=>"BenjaminoTilleto", :tweet=>"Programming is super cool"}, {:name=>"vinzenzo", :tweet=>"Albert, the programmer, should get well soon!"}] }
 	let(:calendar_events) { [["TEXT", "09:00 Weekly event"],
         ["TEXT", "10:00 Learning FORTRAN with Enrique"],
         ["TEXT", "11:30 Spark Printer team meeting"],
@@ -33,6 +34,12 @@ describe Message do
 		Forecast.any_instance.stub(summary: "Partly cloudy for the hour.")
 		morning_message.add_forecast
 		expect(morning_message.lines).to include(["CENTRE","Partly cloudy for the hour."])
+	end
+
+	it "can add the 3 most popular tweets for" do 
+		TwitterData.any_instance.stub(grab_top3_tweets: tweets )
+		morning_message.add_popular_tweets("programming")
+		expect(morning_message.lines).to include(["TEXT", "Programming is super cool" ])
 	end
 
 	it "can add a url with an rfid code" do
@@ -64,7 +71,7 @@ describe Message do
 		end
 	end
 
-	context "in the afteernoon" do 
+	context "in the afternoon" do 
 		before do 
 			afternoon = Time.local(2014,10,23,16,31)
 			Timecop.freeze(afternoon)
