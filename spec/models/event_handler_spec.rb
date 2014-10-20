@@ -9,6 +9,7 @@ describe EventHandler do
 	let(:user_messages) { [user_message1, user_message2] }
 	let(:user) { double :user, github_user: "byverdu", id: 1 }
 	let(:event) { EventHandler.new(my_json, user) }
+	let(:no_user_messages) { [] }
 
 
 	context "on initialization" do 
@@ -28,7 +29,8 @@ describe EventHandler do
 		end
 
 
-		it "can build a message" do 
+		it "can build a message" do
+			allow(UserMessage).to receive(:all).and_return(user_messages) 
 			allow(vincents_message).to receive(:add_user_message).with(user_message1.content,user.github_user)
 			allow(vincents_message).to receive(:add_user_message).with(user_message2.content,user.github_user)
 			expect(vincents_message).to receive(:add_greeting)
@@ -50,8 +52,14 @@ describe EventHandler do
 		end
 
 		it "can print a message, if a user received a user message from another user" do
+			allow(UserMessage).to receive(:all).and_return(user_messages)
 			expect(vincents_message).to receive(:add_user_message).with(user_message1.content,user.github_user)
 			expect(vincents_message).to receive(:add_user_message).with(user_message2.content,user.github_user)
+			event.build_user_message
+		end
+		it "prints 'No messages today.', if a user has not received any user messages" do
+			allow(UserMessage).to receive(:all).and_return(no_user_messages) 
+			expect(vincents_message).to receive(:add_lines).with(["TEXT","No messages today."])
 			event.build_user_message
 		end
 	end	
