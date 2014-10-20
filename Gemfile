@@ -16,6 +16,7 @@ gem 'ical'
 gem 'json'
 gem 'rest-client'
 gem "twitter"
+gem "shorturl"
 
 
 

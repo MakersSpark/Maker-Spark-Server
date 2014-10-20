@@ -11,7 +11,10 @@
 		</form>
 		
 	</div>
-<br />
+
+	<br />
+
+	<% if @user %>
 	<div class='spark'>
 		<h3>Send message to a user</h3>
 		<form action="/messages/new" method="post"></p>
@@ -22,10 +25,14 @@
 			<%end%>
 			</select></p>
 
+			
 			<textarea class="user-message" name="usermessagebox" cols="40" rows="4"></textarea></p>
 		<!-- 	<button class="send-message" type="submit">send message</button> -->
 			<button type="submit" class="btn btn-sm btn-info">Send message</button>
 		</form>
+		
 
 
 	</div>
+
+	<% end %>

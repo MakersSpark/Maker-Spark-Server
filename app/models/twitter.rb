@@ -26,7 +26,4 @@ class TwitterData
 		search_result[0..2]
 	end
 
-	# def search_trending_hashtags(WOEID=44418)
-	# 	client.trends(id= WOEID).first
-	# end
 end
