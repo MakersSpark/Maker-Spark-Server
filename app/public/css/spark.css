@@ -6,6 +6,11 @@ body {
   padding-bottom: 20px;
 }
 
+/*.container{
+  max-width: none !important;
+  width: 970px;
+}*/
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -15,14 +20,15 @@ body {
 }
 
 /* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
+.navbar {
+  border-bottom: 1px solid aliceblue;
 }
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
-  padding-bottom: 19px;
+/*  padding-bottom: 19px;
   margin-top: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 0px;*/
   /*line-height: 40px;*/
 }
 
@@ -41,10 +47,10 @@ body {
 @media (min-width: 768px) {
   .container {
     max-width: 730px;
-    margin-top: 70px;
+    /*margin-top: 70px;*/
     top: -120px;/*
-    padding-top: 120px; */
-  }
+    padding-top: 120px; 
+  }*/
 }
 .container-narrow > hr {
   margin: 30px 0;
@@ -97,7 +103,7 @@ body {
   color:#FF9800; /* amber */
 }
 
-.header{
+.navbar{
     position: fixed; 
     top: 0px;
     background-color: aliceblue;
@@ -105,7 +111,7 @@ body {
 }
 
 .header h3{
-  padding: 20px;
+  /*padding: 20px;*/
 }
 
 .link_wrapper{
