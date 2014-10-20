@@ -1,8 +1,8 @@
 describe UserMessage do 
 
 	let(:sending_user) { double :user, id: 1 }
-	let(:receiving_user) { double :user, id: 2}
-	let(:message) { UserMessage.create(content: "Hi there, wanna pair tomorrow?", sender_id: sending_user.id) }
+	let(:receiving_user) { create(:valid_user) }
+	let(:message) { UserMessage.create(content: "Hi there, wanna pair tomorrow?", sender_id: sending_user.id, user_id: receiving_user.id) }
 	let(:too_long_message) { UserMessage.create(content: "Acceptance tests for your application may require that a test user be logged in. To do this in your application you can either sign in the user using capybara by visiting the sign in url and entering valid credentials", sender_id: sending_user.id ) }
 	let(:no_sender_id_message) { UserMessage.create(content: "F*** YOU!" ) }
 
@@ -19,8 +19,8 @@ describe UserMessage do
 			expect(message.sender_id).to eq 1
 		end
 
-		xit "belongs to a user" do 
-			expect(message.user_id).to eq 2
+		it "belongs to a user" do 
+			expect(message.user_id).to eq receiving_user.id
 		end
 	end
 
