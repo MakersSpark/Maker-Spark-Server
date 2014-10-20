@@ -18,7 +18,6 @@ class Calendar
     get_daily_events
     get_weekly_events
     get_monthly_events
-    nil
   end
 
   def get_todays_non_recurring_events
@@ -43,21 +42,11 @@ class Calendar
   end
 
   def get_todays_events_formatted
-    result = []
-    @todays_events.each do |e|
-      if Time.now.zone == "BST"
-        eventtime = e.dtstart + 3600
-        result << ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"]
-      else
-        eventtime = e.dtstart
-        result << ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"]
-      end
-    end
-    result.sort
+    @todays_events.map { |e| ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"] }.sort
   end
 
-  def json_of_todays_events
-
+  def todays_events_hashed
+    @todays_events.map { |e| {format: "TEXT", description: "#{e.dtstart.strftime("%H:%M")} #{e.summary}"}  }.sort { |a,b| a[:description] <=> b[:description] }
   end
 
 

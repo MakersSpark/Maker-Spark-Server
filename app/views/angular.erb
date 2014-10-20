@@ -8,31 +8,52 @@
   </head>
 
   <body ng-controller="MyCtrl">
-    <div class="col-md-3">
-    	<button class="btn" ng-click="loadData()">Load Data From Server</button>
-	    <div class="well">
-		    <ul>
-		         <li ng-repeat="item in items">Email: {{item.email}}, age: {{item.age}}, Name: {{item.name}}</li>
-		    </ul>
+	<div class="col-md-3">    
+	    <div class="col-md-12">
+	    	<button class="btn" ng-click="loadData()">Load Data From Server</button>
+	    	<button class="btn btn-primary" ng-click="addData()">Add</button>
+		    <div class="well">
+			    <ul>
+			         <li ng-repeat="item in items">Email: {{item.email}}<br> age: {{item.age}}<br> Name: {{item.name}}</li>
+			    </ul>
+		  	</div>
 	  	</div>
-  	</div>
-  	<div class="col-md-3">
-    	<button class="btn" ng-click="loadGitData()">Load GitHub Data</button>
-	    <div class="well">
-		    <ul>
-		         <li ng-repeat="gitItem in gitItems">Login: {{gitItem.login}}, repos {{gitItem.public_repos}}, Following: {{gitItem.following}}</li>
-		    </ul>
-	  	</div>
-  	</div>
-  	<div class="col-md-3">
-    	<button class="btn" ng-click="loadForecast()">Load Forecast</button>
-	    <div class="well">
-		    <ul>
-		         <li ng-repeat="forecast in forecasts">Forecast: {{forecast}}</li>
-		    </ul>
-	  	</div>
-  	<div>
+	  	<div class="col-md-12">
+	    	<button class="btn" ng-click="loadGitData()">Load GitHub Data</button>
 
+		    <div class="well">
+			    <ul>
+			         <li ng-repeat="gitItem in gitItems">Login: {{gitItem.login}}<br> repos {{gitItem.public_repos}}<br>Following: {{gitItem.following}}</li>
+			    </ul>
+		  	</div>
+	  	</div>
+	  	<div class="col-md-12">
+	    	<button class="btn" ng-click="loadForecast()">Load Forecast</button>
+		    <div class="well">
+			    <ul>
+			         <li ng-repeat="forecast in forecasts">Forecast: {{forecast}}</li>
+			    </ul>
+		  	</div>
+	  	</div>
+
+	  	<div class="col-md-12">
+	    	<button class="btn" ng-click="loadCalendar()">Load calander</button>
+		    <div class="well">
+			    <ul>
+			         <li ng-repeat="event in events">{{event.description}}</li>
+			    </ul>
+		  	</div>
+		</div>	 
+	  </div>
+	  
+	  <div class="col-md-6 well">
+	  	Hello
+		<ul>
+	         <li ng-repeat="message in messages">Email: {{message.email}}<br> age: {{message.age}}<br> Name: {{message.name}}</li>
+	    </ul>
+	  </div>
+	  
+	  
   </body>
 
 </html>
