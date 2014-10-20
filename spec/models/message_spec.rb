@@ -32,7 +32,7 @@ describe Message do
 	it "can add the weather summary" do
 		Forecast.any_instance.stub(summary: "Partly cloudy for the hour.")
 		morning_message.add_forecast
-		expect(morning_message.lines).to include(["TEXT","Partly cloudy for the hour."])
+		expect(morning_message.lines).to include(["CENTRE","Partly cloudy for the hour."])
 	end
 
 	it "can add a url with an rfid code" do
@@ -50,8 +50,7 @@ describe Message do
 
 		it "can add a morning greeting" do 
 			morning_message.add_greeting(user_name)
-			expect(morning_message.lines).to include(["CENTREBIG","Good Morning"])
-			expect(morning_message.lines).to include(["CENTREMED","#{user_name}"])
+			expect(morning_message.lines).to include(["CENTREBIG","  Good Morning  byverdu!"])
 		end
 
 		it "can add a time dependent message" do 
@@ -73,15 +72,14 @@ describe Message do
 
 		it "can add a afternoon greeting" do 
 			afternoon_message.add_greeting(user_name)
-			expect(afternoon_message.lines).to include(["CENTREBIG","Good Afternoon"])
-			expect(afternoon_message.lines).to include(["CENTREMED","#{user_name}"])
+			expect(afternoon_message.lines).to include(["CENTREBIG", " Good Afternoon byverdu!"])
 
 		end
 
 		it "can add a time dependent message" do
 			Forecast.any_instance.stub(summary: "Partly cloudy for the hour.") 
 			afternoon_message.add_time_dependent_message
-			expect(afternoon_message.lines).to include(["TEXT","Partly cloudy for the hour."])
+			expect(afternoon_message.lines).to include(["CENTRE","Partly cloudy for the hour."])
 		end
 	end
 

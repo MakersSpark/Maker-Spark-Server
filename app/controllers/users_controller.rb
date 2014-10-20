@@ -7,7 +7,7 @@ class UsersController < SparkPrint
 	end
 
 	get "/" do 
-		redirect '/users/sign_up'
+		redirect '/'
 	end
 
 	get "/sign_up" do
