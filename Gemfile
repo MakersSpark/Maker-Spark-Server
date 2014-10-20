@@ -17,7 +17,7 @@ gem 'json'
 gem 'rest-client'
 gem "twitter"
 gem "shorturl"
-
+gem "service_disruption"
 
 
 group :development, :test do 
