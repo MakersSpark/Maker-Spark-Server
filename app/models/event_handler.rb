@@ -14,7 +14,9 @@ class EventHandler
 			message.add_greeting
 			message.add_divider
 			message.add_time_dependent_message
+			message.add_divider
 			build_user_message
+			message.add_divider
 		else
 			build_rfid_url_message
 		end

@@ -22,10 +22,9 @@ class Calendar
   end
 
   def get_todays_non_recurring_events
-    puts "----"*10
-    puts data
-    puts "----"
-    @todays_events += data.events.select{ |event| event.rrule == [] && event.dtstart.today? } # gets events that do not repeat and are today
+
+    @todays_events += data.events.select{ |event| event.rrule == [] && event.dtstart.to_date == Time.now.to_date } # gets events that do not repeat and are today
+
   end
 
   def reject_non_recurring_events

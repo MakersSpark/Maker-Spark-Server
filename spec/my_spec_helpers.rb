@@ -5,12 +5,15 @@ module SpecHelpers
       stub_printer("CENTREBIG","Good Afternoon")
       stub_printer("CENTREBIG","~")
       stub_printer("TEXT","Partly cloudy for the hour.")
+      stub_printer("CENTREBIG","~")
+      stub_printer("CENTREBIG","~")
+      stub_printer("CENTREBIG","~")
       stub_printer("TEXT","")
   end
 
   def expect_afternoon_message_to_have_been_made
       expect(a_http_request("CENTREBIG","Good Afternoon")).to have_been_made
-      expect(a_http_request("CENTREBIG","~")).to have_been_made
+      expect(a_http_request("CENTREBIG","~")).to have_been_made.times(3)
       expect(a_http_request("TEXT","Partly cloudy for the hour.")).to have_been_made
   end
 

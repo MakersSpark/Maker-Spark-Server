@@ -33,6 +33,8 @@ describe EventHandler do
 			allow(vincents_message).to receive(:add_user_message).with(user_message2.content,user.github_user)
 			expect(vincents_message).to receive(:add_greeting)
 			expect(vincents_message).to receive(:add_divider)
+			expect(vincents_message).to receive(:add_divider)
+			expect(vincents_message).to receive(:add_divider)
 			expect(vincents_message).to receive(:add_time_dependent_message)
 			event.build_message
 		end

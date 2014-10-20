@@ -23,7 +23,6 @@ class Message
 
 	def add_time_dependent_message
 		if morning_time
-			add_lines(["TEXT","This will be the calendar"])
 			add_calendar
 		else
 			add_forecast
