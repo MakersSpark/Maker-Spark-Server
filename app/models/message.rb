@@ -11,9 +11,9 @@ class Message
 
 	def add_greeting(user_name)
 		if morning_time
-			add_lines(["CENTREBIG","  Good Morning  #{user_name}"])
+			add_lines(["CENTREBIG","  Good Morning  #{user_name}!"])
 		else
-			add_lines(["CENTREBIG"," Good Afternoon #{user_name}"])
+			add_lines(["CENTREBIG"," Good Afternoon #{user_name}!"])
 		end
 		# add_lines(["CENTREBIG","#{user_name}"])
 	end
