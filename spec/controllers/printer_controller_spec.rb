@@ -11,11 +11,14 @@ describe "PrinterController" do
 	let(:rfid_code) { "41d21cd" }
 	let(:user) { double :user, id: 1, github_user: "benjamintillett"}
 	let(:message) { double :message, content: "Hi, I love you!" }
+	let(:tiny_url) {"http://tinyurl.com/3xc6c2"  }
 
 	before do
 		afternoon = Time.local(2014,10,23,15,31)
 		Timecop.freeze(afternoon)
 		allow(JsonHandler).to receive(:get_user_info).and_return(my_json)
+		stub_tiny_url
+		allow(ShortURL).to receive(:shorten).with("http://spark-print-staging.herokuapp.com/users/sign_up_with/#{rfid_code}", :tinyurl).and_return(tiny_url)
 	end
 
 	describe "POST /" do 
@@ -31,14 +34,12 @@ describe "PrinterController" do
 		it "prints a url, if no user with that rfid_code exists" do
 			stub_weather
 			stub_printer("CENTRE","Please sign up at:")
-			stub_printer("CENTRE", "spark-print-staging.herokuapp.co")
-			stub_printer("CENTRE", "m/users/sign_up_with/#{rfid_code}")
+			stub_printer("CENTRE", tiny_url)
 			stub_printer("TEXT","")
 			stub_printer("TEXT"," ")
 			post "/"
 			expect(a_http_request("CENTRE","Please sign up at:")).to have_been_made
-			expect(a_http_request("CENTRE","spark-print-staging.herokuapp.co")).to have_been_made
-			expect(a_http_request("CENTRE","m/users/sign_up_with/#{rfid_code}")).to have_been_made
+			expect(a_http_request("CENTRE",tiny_url)).to have_been_made
 		end
 
 		it "prints a usermessage, if a user received a message" do

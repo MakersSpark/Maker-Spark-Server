@@ -10,6 +10,7 @@ require 'githubstats'
 require 'open-uri'
 require 'icalendar'
 require 'htmlentities'
+require 'shorturl'
 
 require "twitter"
 

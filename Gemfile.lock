@@ -128,6 +128,7 @@ GEM
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
     safe_yaml (1.0.4)
+    shorturl (1.0.0)
     simple_oauth (0.2.0)
     sinatra (1.4.5)
       rack (~> 1.4)
@@ -182,6 +183,7 @@ DEPENDENCIES
   rack-test
   ri_cal
   rspec
+  shorturl
   sinatra
   sinatra-flash
   sinatra-partial
