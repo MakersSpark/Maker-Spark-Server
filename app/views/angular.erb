@@ -1,0 +1,38 @@
+<html ng-app="myApp">
+
+  <head>
+  	<link rel='stylesheet' href='/css/bootstrap-responsive.css' />
+	<link rel='stylesheet' href='/css/bootstrap.css' />
+    <script src="http://code.angularjs.org/snapshot/angular.js"></script>
+    <script src="./js/myApp.js"></script>
+  </head>
+
+  <body ng-controller="MyCtrl">
+    <div class="col-md-3">
+    	<button class="btn" ng-click="loadData()">Load Data From Server</button>
+	    <div class="well">
+		    <ul>
+		         <li ng-repeat="item in items">Email: {{item.email}}, age: {{item.age}}, Name: {{item.name}}</li>
+		    </ul>
+	  	</div>
+  	</div>
+  	<div class="col-md-3">
+    	<button class="btn" ng-click="loadGitData()">Load GitHub Data</button>
+	    <div class="well">
+		    <ul>
+		         <li ng-repeat="gitItem in gitItems">Login: {{gitItem.login}}, repos {{item.public_repos}}, Following: {{item.following}}</li>
+		    </ul>
+	  	</div>
+  	</div>
+  	<div class="col-md-3">
+    	<button class="btn" ng-click="loadForecast()">Load Forecast</button>
+	    <div class="well">
+		    <ul>
+		         <li ng-repeat="forecast in forecasts">Forecast: {{forecast}}</li>
+		    </ul>
+	  	</div>
+  	<div>
+
+  </body>
+
+</html>

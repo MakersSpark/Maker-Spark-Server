@@ -13,7 +13,8 @@ gem 'htmlentities'
 gem 'icalendar'
 gem 'ri_cal'
 gem 'ical'
-
+gem 'json'
+gem 'rest-client'
 
 group :development, :test do 
   	gem 'database_cleaner'

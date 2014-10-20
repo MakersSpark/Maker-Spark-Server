@@ -106,6 +106,8 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     ri_cal (0.8.8)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
@@ -159,7 +161,9 @@ DEPENDENCIES
   htmlentities
   ical
   icalendar
+  json
   rack-test
+  rest-client
   ri_cal
   rspec
   sinatra
