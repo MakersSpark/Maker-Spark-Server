@@ -3,7 +3,7 @@ class Calendar
   attr_accessor :uri, :todays_events
   attr_reader :data
 
-  MAKERS_CALENDAR_URI = 'https://www.google.com/calendar/ical/henrystanley.com_v09bl6o0si3av15se25d0iepd4%40group.calendar.google.com/private-8e59b060473ca9902362c0312e7e5728/basic.ics'
+  MAKERS_CALENDAR_URI = 'https://www.google.com/calendar/ical/makersacademy.com_jf3r3c3vu43mslp07ddsh7e570%40group.calendar.google.com/public/basic.ics'
 
   def initialize(uri = MAKERS_CALENDAR_URI)
     @uri = uri
