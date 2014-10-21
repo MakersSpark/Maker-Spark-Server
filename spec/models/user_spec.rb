@@ -52,7 +52,7 @@ describe User do
 
 		it "can have an 'options' field as Text" do
 			albert
-			albert.add_options
+			albert.options = options 
 			expect(albert.options).to eq(options)
 		end
 	end
