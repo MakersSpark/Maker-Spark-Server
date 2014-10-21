@@ -16,7 +16,7 @@ feature "using the dashboard" do
 		expect(page).to have_css("img[src*='cloud.svg']")
 	end
 
-	scenario "the user sees an unchecked weather selector" do
+	xscenario "the user sees an unchecked weather selector" do
 		find(:css, "#test[value='weather']").set(false)
 	end
 	

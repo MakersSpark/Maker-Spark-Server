@@ -12,7 +12,7 @@ class User
 	property :github_user,		String		
 	property :rfid_code,        String
 	property :password_digest,  Text
-	property :options, 			Text
+	property :options, 			Text, :lazy => false, :default => { order: [:Calendar, :Forecast, :GitHubData, :TubeStatus, :TwitterData, :GuardianNews] }.to_json
 
 	has n, :UserMessages
 	
@@ -23,6 +23,7 @@ class User
 	validates_length_of       :password, min: 1
 	validates_length_of       :password_confirmation, min: 1
 	validates_with_method     :github_user, :method => :check_for_github_existence
+
 
 	def password=(password)
 		@password = password

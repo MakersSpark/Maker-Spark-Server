@@ -50,10 +50,16 @@ describe User do
 			expect(User.count).to eq 1
 		end
 
-		it "can have an 'options' field as Text" do
+		it "has an 'options' field as Text" do
 			albert
 			albert.options = options 
 			expect(albert.options).to eq(options)
+		end
+
+		it "has an 'order' field as Text when created" do
+			albert
+			p albert
+			expect(albert.options).to eq({order: [:Calendar, :Forecast, :GitHubData, :TubeStatus, :TwitterData, :GuardianNews]}.to_json)
 		end
 	end
 

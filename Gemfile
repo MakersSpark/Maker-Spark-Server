@@ -30,5 +30,6 @@ group :development, :test do
 	gem "factory_girl"
 	gem  "webmock"
 	gem "timecop"
+	gem "rack_session_access"
 end
 

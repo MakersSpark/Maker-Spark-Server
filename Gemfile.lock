@@ -122,6 +122,9 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rack_session_access (0.1.1)
+      builder (>= 2.0.0)
+      rack (>= 1.0.0)
     rainbow (2.0.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
@@ -209,6 +212,7 @@ DEPENDENCIES
   icalendar
   json
   rack-test
+  rack_session_access
   rest-client
   ri_cal
   rspec
