@@ -16,10 +16,11 @@ class Printer
 	def print_blank_line
 		http_response = Net::HTTP.post_form(print_uri, access_token: @spark_api_token , args: "TEXT=/") 
 		check_printer_response(http_response)
+		sleep 1 
 	end
 
 	def print(message)
-		message.lines.each{|line| print_line(line) ; sleep 0.5 }
+		message.lines.each{|line| print_line(line) }
 		# two line feeds after each printout to give room to tear it off
 		print_blank_line
 		print_blank_line
