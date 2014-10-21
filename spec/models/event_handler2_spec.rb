@@ -9,6 +9,8 @@ describe EventHandler2 do
 	let(:github) { GithubData}
 	let(:user_json) { user.options_hash}
 	let(:github_data) { double :GithubData, json: "hello"}
+	let(:printer) { double :printer }
+
 
 	before do 
 		stub_request(:get, "https://github.com/users/byverdu/contributions")
@@ -43,5 +45,10 @@ describe EventHandler2 do
 		end
 	end
 
+	it "can tell the printer to print messages" do
+		allow(Message).to receive(:new).and_return(vincents_message)
+ 		expect(printer).to receive(:print).with(vincents_message)
+	 	event.print_message(printer)
+	end
 end
 

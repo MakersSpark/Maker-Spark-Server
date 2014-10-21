@@ -24,4 +24,7 @@ class EventHandler2
 		eval("#{print_key}.new(*'#{param}')")
 	end
 
+	def print_message(printer)
+		printer.print(message)
+	end
 end
