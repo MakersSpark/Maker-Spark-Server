@@ -13,7 +13,7 @@ class EventHandler
 		if user
 			message.add_greeting(user.github_user)
 			message.add_divider
-			message.add_time_dependent_message
+			message.add_time_dependent_message(user.github_user)
 			message.add_divider
 			build_user_message
 			message.add_divider
