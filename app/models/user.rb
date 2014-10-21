@@ -55,4 +55,11 @@ class User
 		self.UserMessages.all.destroy
 	end
 
+	def options_hash
+		JSON.parse(options)
+	end
+
+	def options_hash=(hash)
+		self.options = hash.to_json
+	end
 end
