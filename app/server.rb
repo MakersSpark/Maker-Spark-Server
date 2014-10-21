@@ -12,6 +12,7 @@ require 'icalendar'
 require 'htmlentities'
 require 'shorturl'
 require 'service_disruption'
+require 'twilio-ruby'
 
 require "twitter"
 
@@ -76,6 +77,17 @@ class SparkPrint < Sinatra::Base
     event.print_message(printer)
     event.delete_user_messages(printer.response)
     "sorry ben is stupid"
+  end
+
+  get "/smsprint" do
+    message = params[:Body]
+    sender = params[:From]
+    printer = Printer.new
+    printer.print_blank_line
+    printer.print_line(["BOLD","#{sender} says:"])
+    printer.print_line(["TEXT","#{message}"])
+    printer.print_blank_line
+    printer.print_blank_line
   end
 
     
