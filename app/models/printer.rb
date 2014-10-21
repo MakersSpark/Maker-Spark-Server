@@ -19,7 +19,7 @@ class Printer
 	end
 
 	def print(message)
-		message.lines.each{|line| print_line(line)}
+		message.lines.each{|line| print_line(line) ; sleep 0.5 }
 		# two line feeds after each printout to give room to tear it off
 		print_blank_line
 		print_blank_line
