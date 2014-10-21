@@ -1,6 +1,6 @@
 describe User do 
 
-	let(:options) { {github: true, weather: true, tube_status: false} }
+	let(:options) { {"github" => true, "weather" => true, "tube_status" => false} }
 
 	let(:albert) { create(:valid_user) }
 
@@ -50,17 +50,26 @@ describe User do
 			expect(User.count).to eq 1
 		end
 
+		it "parses the options json into a hash" do
+			albert
+			expect(albert.options_hash.class).to eq Hash 
+		end
+
+		it " can save a hash as an options json" do 
+			albert.options_hash = options
+			expect(albert.options_hash).to eq options
+		end
+
 		it "has an 'options' field as Text" do
 			albert
 			albert.options = options 
 			expect(albert.options).to eq(options)
 		end
 
-		it "has an 'order' field as Text when created" do
-			albert
-			p albert
+		it "has an order array in its options filed when created" do
 			expect(albert.options).to eq({order: [:Calendar, :Forecast, :GitHubData, :TubeStatus, :TwitterData, :GuardianNews]}.to_json)
 		end
+
 	end
 
 
