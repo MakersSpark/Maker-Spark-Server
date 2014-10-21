@@ -10,6 +10,10 @@ app.controller "MyCtrl", ($scope, $http)->
 
 	$scope.loadGitData = ->
 		$scope.gitItems = $scope.data.gitData
+
+	$scope.toggleGit = ->
+		$scope.gitState.show = !$scope.gitState.show
+
 		
 	$scope.loadForecast = ->
 			$scope.forecasts =  [$scope.data.forecast]
@@ -20,13 +24,37 @@ app.controller "MyCtrl", ($scope, $http)->
 	$scope.addCalendarData = ->
 		$scope.messages.splice(0,0,$scope.events )
 
+	$scope.loadTube = ->
+			$scope.tubes =  $scope.data.tube
+
+	$scope.addTube = ->
+		$scope.messages.splice(0,0,$scope.tubes )
+
+
 
 	$scope.init = ($scope,$http)->
+ 		$scope.messages = []
+ 		$scope.gitState = { show: true}
  		$http.get('http://localhost:9292/angular/jsons').success (data)->
  			$scope.data = data
- 			$scope.messages = []
+
  	$scope.init($scope,$http)
  	return
+
+app.controller "GitController", ($scope,$http)->
+
+	$scope.loadGitData = ->
+		$scope.gitItems = "aaaaa"
+
+	$scope.init = ($scope,$http)->
+ 		$scope.messages = []
+ 		$scope.gitState = { show: true}
+ 		$http.get('http://localhost:9292/angular/jsons').success (data)->
+ 			$scope.data = data
+
+ 	$scope.init($scope,$http)
+ 	return
+
 
 
 

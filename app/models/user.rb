@@ -5,13 +5,14 @@ class User
 	include DataMapper::Resource
 
 	attr_reader 	  :password
-	attr_accessor 	:password_confirmation
+	attr_accessor 	:password_confirmation, :options
 
-	property :id,       				Serial
-	property :email,    				String
-	property :github_user,			String		
+	property :id,       		Serial
+	property :email,    		String
+	property :github_user,		String		
 	property :rfid_code,        String
 	property :password_digest,  Text
+	property :options, 			Text
 
 	has n, :UserMessages
 	

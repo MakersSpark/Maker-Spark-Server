@@ -1,5 +1,7 @@
 describe User do 
 
+	let(:options) { {github: true, weather: true, tube_status: false} }
+
 	let(:albert) { create(:valid_user) }
 
 
@@ -47,7 +49,15 @@ describe User do
 			albert
 			expect(User.count).to eq 1
 		end
+
+		it "can have an 'options' field as Text" do
+			albert
+			albert.options = options 
+			expect(albert.options).to eq(options)
+		end
 	end
+
+
 
 	context "a invalid user" do
 		it "as user with mismatched passwords cannot be created in the database" do 

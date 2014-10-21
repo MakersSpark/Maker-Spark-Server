@@ -14,6 +14,9 @@
     $scope.loadGitData = function() {
       return $scope.gitItems = $scope.data.gitData;
     };
+    $scope.toggleGit = function() {
+      return $scope.gitState.show = !$scope.gitState.show;
+    };
     $scope.loadForecast = function() {
       return $scope.forecasts = [$scope.data.forecast];
     };
@@ -23,10 +26,35 @@
     $scope.addCalendarData = function() {
       return $scope.messages.splice(0, 0, $scope.events);
     };
+    $scope.loadTube = function() {
+      return $scope.tubes = $scope.data.tube;
+    };
+    $scope.addTube = function() {
+      return $scope.messages.splice(0, 0, $scope.tubes);
+    };
     $scope.init = function($scope, $http) {
+      $scope.messages = [];
+      $scope.gitState = {
+        show: true
+      };
       return $http.get('http://localhost:9292/angular/jsons').success(function(data) {
-        $scope.data = data;
-        return $scope.messages = [];
+        return $scope.data = data;
+      });
+    };
+    $scope.init($scope, $http);
+  });
+
+  app.controller("GitController", function($scope, $http) {
+    $scope.loadGitData = function() {
+      return $scope.gitItems = "aaaaa";
+    };
+    $scope.init = function($scope, $http) {
+      $scope.messages = [];
+      $scope.gitState = {
+        show: true
+      };
+      return $http.get('http://localhost:9292/angular/jsons').success(function(data) {
+        return $scope.data = data;
       });
     };
     $scope.init($scope, $http);
