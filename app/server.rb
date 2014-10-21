@@ -75,9 +75,6 @@ class SparkPrint < Sinatra::Base
     event.build_message           
     event.print_message(printer)
     event.delete_user_messages(printer.response)
-    puts "-------------------------------"
-    puts printer.response
-    puts "-------------------------------"
     "sorry ben is stupid"
   end
 
