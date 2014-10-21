@@ -22,10 +22,12 @@ class Message
 		add_lines(["CENTREBIG","~"])
 	end
 
-	def add_time_dependent_message
+	def add_time_dependent_message(github_name)
 		if morning_time
 			add_calendar
+			add_data_from_github(GithubData.new(github_name))
 		else
+			add_data_from_github(GithubData.new(github_name))
 			add_forecast
 		end
 	end
