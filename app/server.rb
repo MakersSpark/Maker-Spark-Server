@@ -82,16 +82,16 @@ class SparkPrint < Sinatra::Base
     "sorry ben is stupid"
   end
 
-  get "/smsprint" do
-    message = params[:Body]
-    sender = params[:From]
-    printer = Printer.new
-    printer.print_blank_line
-    printer.print_line(["BOLD","#{sender} says:"])
-    printer.print_line(["TEXT","#{message}"])
-    printer.print_blank_line
-    printer.print_blank_line
-  end
+  # get "/smsprint" do
+  #   message = params[:Body]
+  #   sender = params[:From]
+  #   printer = Printer.new
+  #   printer.print_blank_line
+  #   printer.print_line(["BOLD","#{sender} says:"])
+  #   printer.print_line(["TEXT","#{message}"])
+  #   printer.print_blank_line
+  #   printer.print_blank_line
+  # end
 
     
 	get '/' do
