@@ -1,34 +1,23 @@
-	<div class="container">
-      
-	<div class='spark'>
+<div class="container">
+<div class='spark'>
+		<h3>Select what you want to print</h3>
+		<form type='checkbox' action="/users/update" method="post">
 
-	<% if @user %>
-			you are logged in as <% @users.each do |user| %>
-				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
-			<%end%>
-		</p>
-		
-		<h3>select what you want to print</h3>
-<form type='checkbox' action="/users/update" method="post"></p>
-			<img src="images/calendar.svg"><input type="checkbox" name="Calendar" value="true"> today's Makers appointments
+			<img src="images/calendar.svg"><input type="checkbox" name="Calendar" value="true"> Makers Calendar<br />
 
-			<img src="images/cloud.svg"><input id="test"type="checkbox" name="Forecast" value="true"> weather forecast<br />
+			<img src="images/cloud.svg"><input id="test"type="checkbox" name="Forecast" value="true"> Forecast<br />
 			
-			<img src="images/map.svg"><input type="checkbox" name="GitHubData" value="true"> walking directions
+			<img src="images/map.svg"><input type="checkbox" name="GitHubData" value="true"> GitHub stats<br />
 			
-			<img src="images/news.svg"><input type="checkbox" name="GuardianNews" value="true"> latest news<br />
+			<img src="images/news.svg"><input type="checkbox" name="GuardianNews" value="true"> Latest headlines<br />
 
-			<img src="images/news.svg"><input type="checkbox" name="TwitterData" value="true"> latest news<br />
+			<img src="images/news.svg"><input type="checkbox" name="TwitterData" value="true"> Trending on Twitter<br />
 
-			<img src="images/news.svg"><input type="checkbox" name="TubeStatus" value="true"> latest news<br />
-		</p>
-		<button type="submit" class="btn btn-sm btn-info">Submit</button>
+			<img src="images/news.svg"><input type="checkbox" name="TubeStatus" value="true"> Tube status<br />
+
+			<button type="submit" class="btn btn-sm btn-info">Submit</button>
 			
 		</form>
-		
 
-
-	<% end %>
-
- 	</div>
-
+</div>
+</div>
