@@ -4,8 +4,13 @@
 body {
   padding-top: 80px;
   padding-bottom: 20px;
+  font-family: 'Varela Round', sans-serif;
 }
 
+.navbar-brand{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+}
 /*.container{
   max-width: none !important;
   width: 970px;

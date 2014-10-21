@@ -19,14 +19,15 @@ class TwitterData
 	end
 
 	def grab_top3_tweets(search_term="programming")
-		search_result = []
-		search_popular_tweets(search_term).each do |tweet|
-			search_result << Hash[:name, tweet.user.name , :tweet , tweet.text]
+		tweets = search_popular_tweets(search_term).map do |tweet|
+			Hash[:name, tweet.user.name , :tweet , tweet.text]
 		end
-		search_result[0..2]
+		tweets[0..2]
 	end
 
-	# def search_trending_hashtags(WOEID=44418)
-	# 	client.trends(id= WOEID).first
-	# end
+	def json
+		grab_top3_tweets.map do |tweet|
+			Hash[:format, "TEXT", :text, "#{tweet[:tweet]} - by @#{tweet[:name]}"]
+		end
+	end
 end

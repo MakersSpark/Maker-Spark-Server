@@ -10,6 +10,8 @@ require 'githubstats'
 require 'open-uri'
 require 'icalendar'
 require 'htmlentities'
+require 'shorturl'
+require 'service_disruption'
 
 require "twitter"
 
@@ -26,6 +28,7 @@ require_relative './models/user_messages'
 require_relative './models/calendar'
 require_relative './models/json_handler'
 require_relative './models/guardian_news'
+require_relative './models/tube_status'
 require_relative './data_mapper_setup'
 
 require_relative './helpers/application_helper'
@@ -54,20 +57,29 @@ class SparkPrint < Sinatra::Base
 	set :partial_template_engine, :erb
 	#enable :partial_underscores
 
-    post "/" do 
-      card_info = JsonHandler.get_user_info(params[:data]) 
-      user = User.first(rfid_code: card_info["data"])
-      event = EventHandler.new(card_info, user)
-      printer = Printer.new
-      event.build_message           
-      event.print_message(printer)
-      event.delete_user_messages(printer.response)
-      "sorry ben is stupid"
+  set(:auth) do |*roles|   # <- notice the splat here
+    condition do
+      unless logged_in? && roles.any? {|role| current_user.in_role? role }
+      redirect "/login/", 303
+      end
     end
+  end
+
+  post "/" do 
+    card_info = JsonHandler.get_user_info(params[:data]) 
+    user = User.first(rfid_code: card_info["data"])
+    event = EventHandler.new(card_info, user)
+    printer = Printer.new
+    event.build_message           
+    event.print_message(printer)
+    event.delete_user_messages(printer.response)
+    "sorry ben is stupid"
+  end
+
     
 	get '/' do
 	  @users = User.all
-
+    @user = current_user
 	  erb :printer
 	end
 

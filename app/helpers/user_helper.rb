@@ -23,6 +23,10 @@ module UserHelper
 		end
 	end
 
+	def on_signup_page
+		request.path_info == "/users/sign_up"
+	end
+
 	def success_or_error_for(cause,user)
 		if cause == "sign_in"
 			if user

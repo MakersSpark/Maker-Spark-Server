@@ -3,12 +3,13 @@ class Calendar
   attr_accessor :uri, :todays_events
   attr_reader :data
 
-  MAKERS_CALENDAR_URI = 'https://www.google.com/calendar/ical/henrystanley.com_v09bl6o0si3av15se25d0iepd4%40group.calendar.google.com/private-8e59b060473ca9902362c0312e7e5728/basic.ics'
+  MAKERS_CALENDAR_URI = 'https://www.google.com/calendar/ical/makersacademy.com_jf3r3c3vu43mslp07ddsh7e570%40group.calendar.google.com/public/basic.ics'
 
   def initialize(uri = MAKERS_CALENDAR_URI)
     @uri = uri
     @data = Icalendar.parse(open(@uri)).first
     @todays_events = []
+    get_events
   end
 
   def get_events
@@ -17,11 +18,12 @@ class Calendar
     get_daily_events
     get_weekly_events
     get_monthly_events
-    nil
   end
 
   def get_todays_non_recurring_events
+
     @todays_events += data.events.select{ |event| event.rrule == [] && event.dtstart.to_date == Time.now.to_date } # gets events that do not repeat and are today
+
   end
 
   def reject_non_recurring_events
@@ -40,19 +42,11 @@ class Calendar
   end
 
   def get_todays_events_formatted
-    get_events
-    result = []
-    @todays_events.each do |e|
-      if Time.now.zone == "BST"
-        eventtime = e.dtstart + 3600
-        result << ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"]
-      else
-        eventtime = e.dtstart
-        result << ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"]
-      end
-    end
+    @todays_events.map { |e| ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"] }.sort
+  end
 
-    result.sort
+  def calendar_json
+    @todays_events.map { |e| {format: "TEXT", text: "#{e.dtstart.strftime("%H:%M")} #{e.summary}"}  }.sort { |a,b| a[:text] <=> b[:text] }
   end
 
 

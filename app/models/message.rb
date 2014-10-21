@@ -46,7 +46,7 @@ class Message
 		# add_lines(["CENTRE","You're not registered!"])
 		add_lines(["CENTRE","Please sign up at:"])
 		add_lines(["TEXT"," "])
-		add_lines(["CENTRE","spark-print-staging.herokuapp.com/users/sign_up_with/#{rfid_code}"])
+		add_lines(["CENTRE", shorten_url(rfid_code)])
 	end
 
 	def add_user_message(message_content,user_name)
@@ -66,5 +66,17 @@ class Message
 
 	def add_lines(line)
 		formatter.format_line(line).each { |line| lines << line }
+	end
+
+	def add_popular_tweets(search_term)
+		tweets = TwitterData.new.grab_top3_tweets(search_term)
+		tweets.each do |tweet|
+			add_lines( ["TEXT", tweet[:tweet] ])
+			add_lines( ["TEXT","- by @#{tweet[:name]}" ])
+		end
+	end
+
+	def shorten_url(rfid_code)
+		ShortURL.shorten("http://spark-print-staging.herokuapp.com/users/sign_up_with/#{rfid_code}", :tinyurl)
 	end
 end

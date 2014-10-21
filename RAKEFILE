@@ -26,4 +26,5 @@ end
 task :reset_db do 
   DatabaseCleaner.strategy = :truncation
   DatabaseCleaner.clean
+  puts "The db was reset"
 end

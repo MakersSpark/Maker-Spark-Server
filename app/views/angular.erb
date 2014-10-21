@@ -1,0 +1,65 @@
+<html ng-app="myApp">
+
+  <head>
+  	<link rel='stylesheet' href='/css/bootstrap-responsive.css' />
+	<link rel='stylesheet' href='/css/bootstrap.css' />
+    <link rel='stylesheet' href='/css/spark.css' />
+    <script src="./js/angular.js"></script>
+    <script src="./js/myApp.js"></script>
+  </head>
+
+  <body ng-controller="MyCtrl">
+	<div class="col-md-3">    
+	    <div class="col-md-12">
+	    	<button class="btn" ng-click="loadData()">Load Data From Server</button>
+	    	<button class="btn btn-primary" ng-click="addData()">Add</button>
+		    <div class="well">
+			    <ul>
+			         <li ng-repeat="item in items">Email: {{item.email}}<br> age: {{item.age}}<br> Name: {{item.name}}</li>
+			    </ul>
+		  	</div>
+	  	</div>
+	  	<div class="col-md-12">
+	    	<button class="btn" ng-click="loadGitData()">Load GitHub Data</button>
+	    	<button class="btn btn-primary" ng-click="addGitData()">Add</button>
+		    <div class="well">
+			    <ul>
+			         <li ng-repeat="gitItem in gitItems">{{gitItem.text}}</li>
+			    </ul>
+		  	</div>
+	  	</div>
+	  	<div class="col-md-12">
+	    	<button class="btn" ng-click="loadForecast()">Load Forecast</button>
+		    <div class="well">
+			    <ul>
+			         <li ng-repeat="forecast in forecasts">Forecast: {{forecast}}</li>
+			    </ul>
+		  	</div>
+	  	</div>
+
+	  	<div class="col-md-12">
+	    	<button class="btn" ng-click="loadCalendar()">Load calendar</button>
+		    <button class="btn btn-primary" ng-click="addCalendarData()">add calendar</button>
+		    <div class="well">
+			    <ul>
+			         <li ng-repeat="event in events">{{event.text}}</li>
+			    </ul>
+		  	</div>
+		</div>	 
+	  </div>
+	  
+	  <div class="col-md-6 well">
+		<ul>
+	         <div ng-repeat="message in messages"><br>
+	         	<li ng-repeat="line in message">{{line.text}}</li>
+	         </div>
+	    </ul>
+	  </div>
+	  <div class="col-md-3">    
+
+	  </div>
+	  
+	  
+  </body>
+
+</html>

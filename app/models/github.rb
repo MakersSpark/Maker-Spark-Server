@@ -23,5 +23,15 @@ class GithubData
 	def highscore
 		[@account.data.max.score, @account.data.max.date]
 	end
+
+	def json
+		[
+			{format: "BOLD", text: "#{name}'s GitHub Stats:"},
+			{format: "TEXT", text: "Score today: #{score_today}"},
+			{format: "TEXT", text: "Current streak: #{current_streak}"},
+			{format: "TEXT", text: "Longest streak: #{longest_streak}"},
+			{format: "TEXT", text: "High score: #{highscore[0]} on #{highscore[1]}"}
+		]
+	end
 end
 

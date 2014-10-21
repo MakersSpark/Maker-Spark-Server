@@ -5,3 +5,4 @@ map('/') { run SparkPrint }
 map('/users') { run UsersController }
 map('/printer') { run PrinterController }
 map('/messages') { run MessagesController }
+map('/angular') { run AngularController }

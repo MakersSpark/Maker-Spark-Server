@@ -13,7 +13,11 @@ gem 'htmlentities'
 gem 'icalendar'
 gem 'ri_cal'
 gem 'ical'
+gem 'json'
+gem 'rest-client'
 gem "twitter"
+gem "shorturl"
+gem "service_disruption"
 
 
 group :development, :test do 
