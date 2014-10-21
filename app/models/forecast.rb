@@ -14,6 +14,7 @@ class Forecast
 	def summary	
 		@forecast = get_forecast['minutely']['summary']
 	end
+	
 end
 
 
