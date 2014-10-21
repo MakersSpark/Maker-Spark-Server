@@ -34,8 +34,8 @@ class EventHandler
 		user_messages = UserMessage.all(user_id: user.id)
 		user_messages.each do |user_message|
 			message_content = user_message.content
-			user_name = user.github_user
-			message.add_user_message(message_content,user_name)
+			sender = User.get(user_message.sender_id)
+			message.add_user_message(message_content, sender.github_user )
 		end
 		message.add_lines(["CENTRE","No messages today."]) if user_messages == []
 	end
