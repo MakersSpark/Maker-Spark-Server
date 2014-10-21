@@ -192,3 +192,29 @@ body {
     border-bottom: 0;
   }
 }
+
+[class^="icon-"], [class*=" icon-"] {
+  display: inline-block;
+  color: #000000;
+  fill: currentColor;
+}
+.icon-map {
+  width: 32px;
+  height: 32px;
+}
+.icon-calendar {
+  width: 32px;
+  height: 32px;
+}
+.icon-print {
+  width: 32px;
+  height: 32px;
+}
+.icon-cloud {
+  width: 32px;
+  height: 32px;
+}
+.icon-news {
+  width: 32px;
+  height: 32px;
+}

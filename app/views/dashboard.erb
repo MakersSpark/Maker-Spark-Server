@@ -1,0 +1,28 @@
+	<div class="container">
+      
+	<div class='spark'>
+
+	<% if @user %>
+			you are logged in as <% @users.each do |user| %>
+				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
+			<%end%>
+		</p>
+		
+		<h3>select what you want to print</h3>
+		<form type='checkbox' action="" method=""></p>
+			<img src="images/calendar.svg"><input type="checkbox" name="calendar" value="calendar"> today's Makers appointments
+
+			<img src="images/cloud.svg"><input id="test"type="checkbox" name="weather" value="weather"> weather forecast<br />
+			
+			<img src="images/map.svg"><input type="checkbox" name="directions" value="tube"> walking directions
+			
+			<img src="images/news.svg"><input type="checkbox" name="news" value="news"> latest news<br />
+		</p>
+		</form>
+		
+		<button type="submit" class="btn btn-sm btn-info">Submit</button>
+
+
+	<% end %>
+
+ 	</div>

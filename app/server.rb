@@ -90,6 +90,12 @@ class SparkPrint < Sinatra::Base
 
 	run! if app_file == $0
 
+  get '/dashboard' do
+    @users = User.all
+    @user = current_user
+    erb :dashboard
+  end
+  
 end
 
 
