@@ -19,6 +19,9 @@ describe Message do
 
 	before do 
 		 allow(ShortURL).to receive(:shorten).with("http://spark-print-staging.herokuapp.com/users/sign_up_with/#{rfid_code}", :tinyurl).and_return("http://tinyurl.com/3xc6c2")
+		 stub_request(:get, "https://github.com/users/byverdu/contributions")
+		 GithubData.any_instance.stub(name: "byverdu", score_today: 3, longest_streak: 2, highscore: [11,12])
+
 	end
 
 	it "can add a divider" do 
@@ -29,7 +32,7 @@ describe Message do
 
 	it "can add data from github" do 
 		morning_message.add_data_from_github(github)
-		expect(morning_message.lines).to include(["TEXT","Longest streak: 10"])
+		expect(morning_message.lines).to include(["TEXT","Longest streak: 10 days"])
 	end
 
 	it "can add the weather summary" do
@@ -68,7 +71,7 @@ describe Message do
 		end
 
 		it "can add a time dependent message" do 
-			morning_message.add_time_dependent_message
+			morning_message.add_time_dependent_message(user_name)
 			expect(morning_message.lines).to include(calendar_events.first)
 		end
 
@@ -92,7 +95,7 @@ describe Message do
 
 		it "can add a time dependent message" do
 			Forecast.any_instance.stub(summary: "Partly cloudy for the hour.") 
-			afternoon_message.add_time_dependent_message
+			afternoon_message.add_time_dependent_message(user_name)
 			expect(afternoon_message.lines).to include(["CENTRE","Partly cloudy for the hour."])
 		end
 	end
