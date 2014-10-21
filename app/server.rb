@@ -83,10 +83,11 @@ class SparkPrint < Sinatra::Base
   end
 
   get "/smsprint" do
-    twiml = Twilio::TwiML::Response.new do |r|
-      r.Message "Hey Monkey. Thanks for the message!"
-      end
-    twiml.text
+    message = params[:Body]
+    sender = params[:From]
+    printer = Printer.new
+    printer.print_line(["BOLD","#{sender} says:"])
+    printer.print_line(message)
   end
 
     
