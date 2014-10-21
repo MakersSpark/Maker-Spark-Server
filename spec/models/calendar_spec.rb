@@ -2,14 +2,18 @@ describe Calendar do
 
   let(:valid_uri) { "https://www.google.com/calendar/ical/henrystanley.com_uh7l5drs1sfnju9eivnml389k8%40group.calendar.google.com/private-95d6172bf50f4f3783be77c8a0dfce42/basic.ics"}
   let(:invalid_uri) { "https://www.google.com/calendar/ical/henrystanley.com_uh7l5drs1sfnju9eivnml389k8%40group.calendar.google.com/private-95d6172bf50f4f3783be77c8a0dfce42/basic.xml"}
+  let(:no_events_uri) { "https://www.google.com/calendar/ical/henrystanley.com_uh7l5drs1sfnju9eivnml389k8%40group.calendar.google.com/private-95d6172bf50f4f3783be77c8a0dfce42/empty.ics"}
   # let(:ical) { Icalendar.new('byverdu') }
   let(:calendar_file) { File.open("spec/assets/calendar.ics") }
   let(:calendar_file_two) { File.open("spec/assets/calendar.ics") }
+  let(:empty_calendar_file) { File.open("spec/assets/empty_calendar.ics") }
   let(:alberts_calendar) { Calendar.new(valid_uri) }
+  let(:empty_calendar) { Calendar.new(no_events_uri) }
 
   before do
     stub_request(:get, valid_uri).to_return(:body => calendar_file)
     stub_request(:get, invalid_uri)
+    stub_request(:get, no_events_uri).to_return(:body => empty_calendar_file)
     stub_request(:get, Calendar::MAKERS_CALENDAR_URI).to_return(:body => calendar_file_two)
     now = Time.local(2014,10,17)
     Timecop.freeze(now)
@@ -79,7 +83,13 @@ describe Calendar do
           { format: "TEXT", text: "17:15 Demo: life at 1000WPM with Ethel"}
         ]
       ) 
-    end   
+    end 
+
+  it "returns 'No Makers events today.' if there are no events" do
+    expect(empty_calendar.get_todays_events_formatted).to eq(
+      ["TEXT", "No Makers events today."]
+    )
+  end  
 
 
 end 

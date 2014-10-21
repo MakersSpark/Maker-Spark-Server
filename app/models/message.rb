@@ -22,19 +22,23 @@ class Message
 		add_lines(["CENTREBIG","~"])
 	end
 
-	def add_time_dependent_message
+	def add_time_dependent_message(github_name)
 		if morning_time
 			add_calendar
+			add_divider
+			add_data_from_github(GithubData.new(github_name))
 		else
+			add_data_from_github(GithubData.new(github_name))
+			add_divider
 			add_forecast
 		end
 	end
 
 	def add_data_from_github(github_object)
 		[["BOLD","#{github_object.name}'s GitHub Stats:"],
-		["TEXT","Score today: #{github_object.score_today}"],
-		["TEXT","Current streak: #{github_object.current_streak}"],
-		["TEXT","Longest streak: #{github_object.longest_streak}"],
+		["TEXT","Score today: #{github_object.score_today} commits"],
+		["TEXT","Current streak: #{github_object.current_streak} days"],
+		["TEXT","Longest streak: #{github_object.longest_streak} days"],
 		["TEXT","High score: #{github_object.highscore[0]} on #{github_object.highscore[1]}"]].each { |line| add_lines(line) }
 	end
 

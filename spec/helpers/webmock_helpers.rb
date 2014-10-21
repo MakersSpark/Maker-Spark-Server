@@ -1,4 +1,4 @@
-def stub_afternoon_message
+def stub_afternoon_message(github_object)
       stub_weather
       # expect(a_http_request("CENTREBIG"," Good Afternoon benjamintillett!")).to have_been_made
       stub_printer("CENTREBIG","~")
@@ -8,11 +8,16 @@ def stub_afternoon_message
       stub_printer("CENTREBIG","~")
       stub_printer("CENTREBIG","~")
       stub_printer("TEXT","")
+      stub_printer("BOLD","#{github_object.name}'s GitHub Stats:")
+      stub_printer("TEXT","Score today: #{github_object.score_today} commits")
+      stub_printer("TEXT","Current streak: #{github_object.current_streak} days")
+      stub_printer("TEXT","Longest streak: #{github_object.longest_streak} days")
+      stub_printer("TEXT","High score: #{github_object.highscore[0]} on #{github_object.highscore[1]}")
   end
 
   def expect_afternoon_message_to_have_been_made
       expect(a_http_request("CENTREBIG"," Good Afternoon benjamintillett!")).to have_been_made
-      expect(a_http_request("CENTREBIG","~")).to have_been_made.times(3)
+      expect(a_http_request("CENTREBIG","~")).to have_been_made.times(4)
       expect(a_http_request("CENTRE","Partly cloudy for the hour.")).to have_been_made
   end
 
@@ -37,6 +42,10 @@ def stub_afternoon_message
 
   def stub_news
       stub_request(:get, "http://content.guardianapis.com/search?api-key=test&order-by=newest&section=uk-news").to_return(body: GUARDIANNEWS_JSON_RESPONSE, status: 200)
+  end
+
+  def stub_github(username)
+    stub_request(:get, "https://github.com/users/#{username}/contributions")
   end
 
   def a_http_request(format, text)

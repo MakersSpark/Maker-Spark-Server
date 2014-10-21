@@ -15,9 +15,11 @@ class Calendar
   def get_events
     get_todays_non_recurring_events
     reject_non_recurring_events
-    get_daily_events
-    get_weekly_events
-    get_monthly_events
+    #### these seem to be breaking things - commenting them out for now
+    # get_daily_events
+    # get_weekly_events
+    # get_monthly_events
+    ####
   end
 
   def get_todays_non_recurring_events
@@ -27,26 +29,42 @@ class Calendar
   end
 
   def reject_non_recurring_events
-    @sanitised_events = data.events.reject{ |event| event.rrule == [] }
+    @sanitised_events = data.events
+    @sanitised_events.reject! { |event| event.rrule == [] }
+    @sanitised_events.reject! { |event| event.rrule.first.count != nil }
+    @sanitised_events.reject! { |event| event.rrule.first.until != nil && event.rrule.first.until < DateTime.now }
+    @todays_events += @sanitised_events
   end
 
-  def get_daily_events
-    @todays_events += @sanitised_events.select{ |event| event.rrule.first.frequency == "DAILY"  }
-  end
-  def get_weekly_events
-    @todays_events += @sanitised_events.select{ |event| event.rrule.first.frequency == "WEEKLY" && event.dtstart.strftime('%A') == DateTime.now.strftime('%A') }
-  end
+  #### these seem to be breaking things - commenting them out for now
+  # def get_daily_events
+  #   @todays_events += @sanitised_events.select{ |event| event.rrule.first.frequency == "DAILY"  }
+  # end
+  # def get_weekly_events
+  #   @todays_events += @sanitised_events.select{ |event| event.rrule.first.frequency == "WEEKLY" && event.dtstart.strftime('%A') == DateTime.now.strftime('%A') }
+  # end
 
-  def get_monthly_events
-    @todays_events += @sanitised_events.select{ |event| event.rrule.first.frequency == "MONTHLY" && event.dtstart.strftime('%d') == DateTime.now.strftime('%d') }
-  end
+  # def get_monthly_events
+  #   @todays_events += @sanitised_events.select{ |event| event.rrule.first.frequency == "MONTHLY" && event.dtstart.strftime('%d') == DateTime.now.strftime('%d') }
+  # end
+  ####
 
   def get_todays_events_formatted
-    @todays_events.map { |e| ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"] }.sort
+    if @todays_events.any?
+      events = @todays_events.map { |e| ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"] }.sort
+    else
+      events = ["TEXT","No Makers events today."]
+    end
+    events
   end
 
   def calendar_json
-    @todays_events.map { |e| {format: "TEXT", text: "#{e.dtstart.strftime("%H:%M")} #{e.summary}"}  }.sort { |a,b| a[:text] <=> b[:text] }
+    if @todays_events.any?
+      events = @todays_events.map { |e| {format: "TEXT", text: "#{e.dtstart.strftime("%H:%M")} #{e.summary}"}  }.sort { |a,b| a[:text] <=> b[:text] }
+    else
+      events = [{format: "TEXT", text: "No Makers events today."}]
+    end
+    events
   end
 
 
