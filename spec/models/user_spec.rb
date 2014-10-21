@@ -89,7 +89,6 @@ describe User do
 			               github_user: 'henryaj', 
 									   password: "bananas", 
 									   password_confirmation: "bananas")
-
 				expect(albert.email).not_to eq('albert@test.com')
 				expect(albert.github_user).not_to eq('byverdu8')
 				expect(albert.password).not_to eq('oranges')
