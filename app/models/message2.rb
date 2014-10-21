@@ -10,6 +10,28 @@ class Message2
 		formatter.format_line(array_of_lines).each { |line| lines << line }
 	end
 
+	def add_divider
+		add_lines([{format: "CENTREBIG", text: "~~~~~"}])
+	end
+
+	def add_greeting(user_name)
+		if morning_time
+			add_lines(["CENTREBIG","  Good Morning  #{user_name}!"])
+		else
+			add_lines(["CENTREBIG"," Good Afternoon #{user_name}!"])
+		end
+		add_divider
+	end
+
+	def add_rfid_url(rfid_code)
+		add_lines([{format: "CENTRE", text: "Please sign up at:"},
+			{format: "TEXT", text: " "},
+			{format: "CENTRE", text: formatter.shorten("http://spark-print-staging.herokuapp.com/users/sign_up_with/#{rfid_code}")}])
+	end
+
+	def morning_time
+		Time.now.strftime('%H.%M').to_f < 12.30
+	end
 end
 
 

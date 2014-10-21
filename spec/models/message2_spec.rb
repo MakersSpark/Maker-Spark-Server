@@ -25,6 +25,17 @@ describe Message2 do
 		message.add_lines(alberts_messages)
 		expect(message.lines).to include({format: "TEXT", text: "ITse meee again! I am writing a "})
 	end
+
+	it "can add a divider" do 
+		message.add_divider
+		expect(message.lines).to include({format: "CENTREBIG", text: "~~~~~"})
+	end
+
+	it "can add a url with an rfid code" do
+		allow(message.formatter).to receive(:shorten).and_return("http://tinyurl.com/3xc6c2")
+		message.add_rfid_url("4fdcsdd")
+		expect(message.lines).to include({format: "CENTRE", text: "http://tinyurl.com/3xc6c2"})
+	end
 end
 
 

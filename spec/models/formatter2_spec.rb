@@ -18,4 +18,9 @@ describe Formatter2 do
 
 		expect(formatter.format_line(alberts_messages)).to eq [{:format=>"TEXT", :text=>"HI,there!"}, {:format=>"TEXT", :text=>"ITse meee again! I am writing a "}, {:format=>"TEXT", :text=>"veeery long message!"}]
 	end
+	
+	it "can convert a url in a tinyurl" do
+		 allow(ShortURL).to receive(:shorten).with("http://spark-print-staging.herokuapp.com/users/sign_up_with/fasdasd", :tinyurl).and_return("http://tinyurl.com/3xc6c2")
+		expect(formatter.shorten("http://spark-print-staging.herokuapp.com/users/sign_up_with/fasdasd")).to eq ("http://tinyurl.com/3xc6c2")
+	end
 end

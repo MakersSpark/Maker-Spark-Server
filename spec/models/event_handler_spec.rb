@@ -8,8 +8,13 @@ describe EventHandler do
 	let(:user_message2) { double :user_message, content: "I love you", sender_id: 1 }
 	let(:user_messages) { [user_message1, user_message2] }
 	let(:user) { double :user, github_user: "byverdu", id: 1 }
+	let(:sender) { double :user, github_user: "byverdu" } 
 	let(:event) { EventHandler.new(my_json, user) }
 	let(:no_user_messages) { [] }
+
+	before do 
+		allow(User).to receive(:get).and_return(sender)
+	end
 
 
 	context "on initialization" do 
@@ -31,8 +36,8 @@ describe EventHandler do
 
 		it "can build a message" do
 			allow(UserMessage).to receive(:all).and_return(user_messages) 
-			allow(vincents_message).to receive(:add_user_message).with(user_message1.content,user.github_user)
-			allow(vincents_message).to receive(:add_user_message).with(user_message2.content,user.github_user)
+			allow(vincents_message).to receive(:add_user_message).with(user_message1.content,sender.github_user)
+			allow(vincents_message).to receive(:add_user_message).with(user_message2.content,sender.github_user)
 			expect(vincents_message).to receive(:add_greeting).with(user.github_user)
 			expect(vincents_message).to receive(:add_divider)
 			expect(vincents_message).to receive(:add_divider)
@@ -53,8 +58,8 @@ describe EventHandler do
 
 		it "can print a message, if a user received a user message from another user" do
 			allow(UserMessage).to receive(:all).and_return(user_messages)
-			expect(vincents_message).to receive(:add_user_message).with(user_message1.content,user.github_user)
-			expect(vincents_message).to receive(:add_user_message).with(user_message2.content,user.github_user)
+			expect(vincents_message).to receive(:add_user_message).with(user_message1.content,sender.github_user)
+			expect(vincents_message).to receive(:add_user_message).with(user_message2.content,sender.github_user)
 			event.build_user_message
 		end
 

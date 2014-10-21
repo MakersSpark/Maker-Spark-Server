@@ -10,4 +10,9 @@ class Formatter2
 		end
 		arrays.flatten
 	end
+	
+	def shorten(url)
+		ShortURL.shorten(url, :tinyurl)
+	end
+	
 end
