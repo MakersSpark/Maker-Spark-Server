@@ -50,11 +50,21 @@ class Calendar
   ####
 
   def get_todays_events_formatted
-    @todays_events.map { |e| ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"] }.sort
+    if @todays_events.any?
+      events = @todays_events.map { |e| ["TEXT","#{e.dtstart.strftime("%H:%M")} #{e.summary}"] }.sort
+    else
+      events = ["TEXT","No Makers events today."]
+    end
+    events
   end
 
   def calendar_json
-    @todays_events.map { |e| {format: "TEXT", text: "#{e.dtstart.strftime("%H:%M")} #{e.summary}"}  }.sort { |a,b| a[:text] <=> b[:text] }
+    if @todays_events.any?
+      events = @todays_events.map { |e| {format: "TEXT", text: "#{e.dtstart.strftime("%H:%M")} #{e.summary}"}  }.sort { |a,b| a[:text] <=> b[:text] }
+    else
+      events = [{format: "TEXT", text: "No Makers events today."}]
+    end
+    events
   end
 
 
