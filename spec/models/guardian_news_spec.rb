@@ -1,5 +1,3 @@
-include SpecHelpers
-
 describe GuardianNews do
 
 	let(:news) {GuardianNews.new}

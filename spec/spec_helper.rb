@@ -9,14 +9,16 @@ require 'timecop'
 require 'rack/test'
 
 
-require_relative "./my_spec_helpers"
-require_relative '../app/server.rb'
 require_relative 'factories.rb'
+require_relative './helpers/user_helpers.rb'
+require_relative './helpers/json_mock_helpers.rb'
+require_relative './helpers/webmock_helpers'
+require_relative '../app/server.rb'
 require_relative '../app/models/printer'
-require_relative './user_helpers.rb'
 require_relative '../app/models/message'
 require_relative '../app/models/formatter'
 require_relative '../app/controllers/printer_controller'
+
 
 def app
   SparkPrinter.new

@@ -1,6 +1,4 @@
 require 'spec_helper'
-include SpecHelpers
-
 def app
   PrinterController.new
 end

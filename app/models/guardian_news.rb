@@ -7,11 +7,11 @@ class GuardianNews
 	end
 
 	def headlines
-		news_storys = get_newsstories["response"]['results'].map do |headline|
+		news_stories = get_newsstories["response"]['results'].map do |headline|
 			publication_date = DateTime.parse(headline['webPublicationDate']).strftime('%_d %_B, %H:%M')
 			Hash[:webtitle, headline['webTitle'] , :publication_date , publication_date]
 		end
-		news_storys[0..2]
+		news_stories[0..2]
 	end
 
 	def json
@@ -19,4 +19,5 @@ class GuardianNews
 			Hash[:format, "TEXT", :text, "#{headline[:webtitle]} (#{headline[:publication_date]})"]
 		end
 	end
+	
 end
