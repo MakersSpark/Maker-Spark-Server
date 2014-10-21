@@ -4,15 +4,16 @@
   	<link rel='stylesheet' href='/css/bootstrap-responsive.css' />
 	<link rel='stylesheet' href='/css/bootstrap.css' />
     <link rel='stylesheet' href='/css/spark.css' />
-    <script src="./js/angular.js"></script>
-    <script src="./js/myApp.js"></script>
+    <link rel='stylesheet' href='/css/dashboard.css' />
+    <script src="./js/angular/angular.js"></script>
+    <script src="./js/angular/myApp.js"></script>
   </head>
 
   <body ng-controller="MyCtrl">
 	<div class="col-md-3">    
 	    <div class="col-md-12">
-	    	<button class="btn" ng-click="loadData()">Load Data From Server</button>
-	    	<button class="btn btn-primary" ng-click="addData()">Add</button>
+	    	<button class="btn btn-sm" ng-click="loadData()">Load Data From Server</button>
+	    	<button class="btn btn-sm btn-primary" ng-click="addData()">Add</button>
 		    <div class="well">
 			    <ul>
 			         <li ng-repeat="item in items">Email: {{item.email}}<br> age: {{item.age}}<br> Name: {{item.name}}</li>
@@ -20,16 +21,17 @@
 		  	</div>
 	  	</div>
 	  	<div class="col-md-12">
-	    	<button class="btn" ng-click="loadGitData()">Load GitHub Data</button>
-	    	<button class="btn btn-primary" ng-click="addGitData()">Add</button>
-		    <div class="well">
+	    	<button class="btn btn-sm" ng-click="loadGitData()">Load GitHub Data</button>
+	    	<button class="btn btn-sm btn-primary" ng-click="addGitData()">Add</button>
+	    	<button class="btn btn-sm btn-success" ng-click="toggleGit()">Toggle</button>
+		    <div ng-show="gitState.show" class="well">
 			    <ul>
 			         <li ng-repeat="gitItem in gitItems">{{gitItem.text}}</li>
 			    </ul>
 		  	</div>
 	  	</div>
 	  	<div class="col-md-12">
-	    	<button class="btn" ng-click="loadForecast()">Load Forecast</button>
+	    	<button class="btn btn-sm" ng-click="loadForecast()">Load Forecast</button>
 		    <div class="well">
 			    <ul>
 			         <li ng-repeat="forecast in forecasts">Forecast: {{forecast}}</li>
@@ -38,8 +40,8 @@
 	  	</div>
 
 	  	<div class="col-md-12">
-	    	<button class="btn" ng-click="loadCalendar()">Load calendar</button>
-		    <button class="btn btn-primary" ng-click="addCalendarData()">add calendar</button>
+	    	<button class="btn btn-sm" ng-click="loadCalendar()">Load calendar</button>
+		    <button class="btn btn-sm btn-primary" ng-click="addCalendarData()">add calendar</button>
 		    <div class="well">
 			    <ul>
 			         <li ng-repeat="event in events">{{event.text}}</li>
@@ -56,6 +58,18 @@
 	    </ul>
 	  </div>
 	  <div class="col-md-3">    
+	  	<div class="col-md-12">
+	    	<button class="btn btn-sm" ng-click="loadTube()">Load tube</button>
+		    <button class="btn btn-sm btn-primary" ng-click="addTube()">add tube</button>
+		    <div class="well">
+			    <ul>
+			         <li ng-repeat="tube in tubes">{{tube.text}}</li>
+			    </ul>
+		  	</div>
+		</div>	
+
+
+
 
 	  </div>
 	  
