@@ -11,16 +11,21 @@ feature "using the dashboard" do
 				visit '/dashboard'
 		end
 
-		xscenario "is logged in" do
+		scenario "is logged in" do
 			expect(page).to have_button('Log out')
 		end
 
-		scenario "the user sees a weather icon on the dashboard page" do
-			expect(page).to have_css("img[src*='cloud.svg']")
+		scenario "the user sees welcome message and a form with the preferences" do
+			expect(page).to have_css("form")
+			expect(page).to have_content("Select what you want to print")
 		end
 
-		xscenario "the user sees an unchecked weather selector" do
-			find(:css, "#test[name='weather']").set(false)
+		scenario "the user sees an unchecked boxes for all the possible preferences" do
+			find(:css, "input[name='Calendar']"   ).set(false)
+			find(:css, "input[name='Forecast']"   ).set(false)
+			find(:css, "input[name='GitHubData']" ).set(false)
+			find(:css, "input[name='TwitterData']").set(false)
+			find(:css, "input[name='TubeStatus']" ).set(false)
 		end
 	
 	end
