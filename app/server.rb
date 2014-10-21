@@ -12,6 +12,7 @@ require 'icalendar'
 require 'htmlentities'
 require 'shorturl'
 require 'service_disruption'
+require 'twilio-ruby'
 
 require "twitter"
 
@@ -79,6 +80,13 @@ class SparkPrint < Sinatra::Base
     puts printer.response
     puts "-------------------------------"
     "sorry ben is stupid"
+  end
+
+  get "/smsprint" do
+    twiml = Twilio::TwiML::Response.new do |r|
+      r.Message "Hey Monkey. Thanks for the message!"
+      end
+    twiml.text
   end
 
     
