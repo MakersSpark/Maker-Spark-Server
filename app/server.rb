@@ -29,6 +29,8 @@ require_relative './models/calendar'
 require_relative './models/json_handler'
 require_relative './models/guardian_news'
 require_relative './models/tube_status'
+require_relative './models/json_processor'
+
 require_relative './data_mapper_setup'
 
 require_relative './helpers/application_helper'
