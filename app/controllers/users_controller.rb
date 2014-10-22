@@ -74,9 +74,8 @@ class UsersController < SparkPrint
 			end
 		end
 		@user.options_hash = user_options
-		
-		
-
+	flash[:notice] = "Thanks – your preferences have been saved."
+	redirect '/dashboard'
 	end
 
 end
