@@ -88,6 +88,7 @@ class SparkPrint < Sinatra::Base
     
 	get '/' do
 	  @users = User.all
+    redirect '/dashboard' if @user
 	  erb :printer
 	end
 
