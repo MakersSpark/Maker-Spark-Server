@@ -36,7 +36,7 @@ feature "Users changing their print settings" do
 		uncheck 'TwitterData'
 		uncheck 'GuardianNews'
 		click_button 'Submit'
-		p page.body
+		# p page.body
 		expect(User.find(email:'byverdu@test.com').options).to eq(
 			{Calendar: {print: false, option: nil},
 			 Twitter: {print: false, option: nil}, 
