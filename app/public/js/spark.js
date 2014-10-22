@@ -1,11 +1,19 @@
 $(document).ready(function() {
+
+	// Removing flash error/notice
+
+	window.setTimeout(function() {
+        $(".alert").fadeTo(4500, 0).slideUp(500, function(){
+            $(this).remove();
+        });
+    }, 4000);
   
-	// elastic jquery plugin for textarea
+	// Elastic jquery plugin for textarea
 
   $('.paper_printer').elastic();
 
 
-  // word counting for textarea
+  // Word counting for textarea
 
   $('.paper_printer').on('keyup',function(){
 
@@ -23,7 +31,7 @@ $(document).ready(function() {
 
   });
 
-  // place name github user selected
+  // Add selected Github user to textarea
 
   $( ".paper_printer" ).focus(function() {
   	
@@ -31,11 +39,14 @@ $(document).ready(function() {
 	});
 
 
-	// Removing flash error/notice
+  // Collapsing input for search term
 
-	window.setTimeout(function() {
-        $(".alert").fadeTo(4500, 0).slideUp(500, function(){
-            $(this).remove();
-        });
-    }, 4000);
+  $('#SearchTerm').hide();
+
+  $('#TwitterData').click(function() {
+  	$('#SearchTerm').fadeIn('slow').toggle(this.checked);
+  });
+
 });
+
+
