@@ -16,9 +16,12 @@ class Message2
 
 	def add_greeting(user_name)
 		if morning_time
-			add_lines([{format: "CENTREBIG", text: "Good Morning  #{user_name}!"}])
+			add_lines([{format: "CENTREBIG", text: "Good Morning"}])
+			add_lines([{format: "CENTREBIG", text: "#{user_name}"}])
 		else
-			add_lines([{ format: "CENTREBIG", text: "Good Afternoon #{user_name}!"}])
+			add_lines([{ format: "CENTREBIG", text: "Good Afternoon"}])
+			add_lines([{format: "CENTREBIG", text: "#{user_name}"}])
+
 		end
 		add_divider
 	end

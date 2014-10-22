@@ -10,7 +10,6 @@ class EventHandler2
 	end
 
 	def print_message(printer)
-		puts message.lines
 		printer.print(message)
 	end
 
@@ -26,9 +25,6 @@ class EventHandler2
 
 	def eval_user_preferences
 		options = user.preferences.options_hash
-		puts "------------"
-		puts options
-		puts "------------"
 		options["order"].each do |print_key|
 			if options[print_key]["print"]
 				instance = create_class_instance(print_key,options)

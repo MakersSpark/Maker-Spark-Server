@@ -19,7 +19,7 @@ describe Forecast do
 
 
 		it "can create a JSON hash for the printer" do 
-			expect(weather.json).to eq [{format: "text", text: "Partly cloudy for the hour." }]
+			expect(weather.json).to eq [{format: "TEXT", text: "Partly cloudy for the hour." }]
 		end
 	end
 end
