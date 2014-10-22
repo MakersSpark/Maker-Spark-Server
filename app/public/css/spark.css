@@ -173,13 +173,13 @@ body.holding-page {
   margin-top:0px;
 }
 
-.spark h2{
+/*.spark h2{
   position: absolute;
 top: 60px;
 left: 290px;
 color: whitesmoke;
 z-index: 10;
-}
+}*/
 
 .spark ul,li{
   list-style: none;
@@ -204,6 +204,14 @@ z-index: 10;
 
 /* Styling forms */
 
+.header_format{
+  color: whitesmoke;
+  text-align: center;
+}
+
+.header_format:not(h1){
+  color: black
+}
 
 textarea{
   resize: none;
