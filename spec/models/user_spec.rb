@@ -67,7 +67,7 @@ describe User do
 		end
 
 		it "has an order array in its options filed when created" do
-			expect(albert.options).to eq({order: [:Calendar, :Forecast, :GitHubData, :TubeStatus, :TwitterData, :GuardianNews]}.to_json)
+			expect(albert.options).to eq({order: [:Calendar, :Forecast, :GithubData, :TubeStatus, :TwitterData, :GuardianNews]}.to_json)
 		end
 
 	end

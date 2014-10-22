@@ -2,7 +2,11 @@ feature "printing from the website" do
 
   context "a guest prints a message from the website" do
 
-    scenario "successfully sending a message to the printer" do
+    ### THESE TESTS ARE NOW DEPRECATED as sending messages
+    ### to the printer can no longer be done from the 
+    ### homepage
+
+    xscenario "successfully sending a message to the printer" do
       visit '/'
       fill_in('messagebox', with: 'hello world')
       stub_printer('TEXT', 'hello world')
@@ -13,7 +17,7 @@ feature "printing from the website" do
       expect(page).to have_text("Successfully sent to the printer!")
     end
 
-    scenario "unsuccessfully sending a message to the printer when it is offline" do
+    xscenario "unsuccessfully sending a message to the printer when it is offline" do
       visit '/'
       fill_in('messagebox', with: 'hello world')
       stub_offline_printer('TEXT', 'hello world')

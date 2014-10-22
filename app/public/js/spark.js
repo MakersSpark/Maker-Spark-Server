@@ -19,9 +19,7 @@ $(document).ready(function() {
 
     total_count.text('Words left ' + actual_count);
 
-    if(actual_count<10) total_count.css('color', 'red');
-
-    if(actual_count === 0)  event.stopPropagation();
+    if(actual_count <= 10) total_count.css('color', 'red');
 
   });
 
@@ -43,28 +41,3 @@ $(document).ready(function() {
 
   
 });
-
-  // $('.modal_main textarea').on('keyup',function(){
-
-  //   var count, total_count, actual_count;
-
-  //   count        = $(this).val().length;
-    
-  //   total_count  = $('.modal_footer .total_count');
-        
-  //   actual_count = (140-count);
-
-  //   total_count.text(actual_count);
-
-  //   if(actual_count<0) total_count.css('color', 'red');
-
-  //   $('button.send_tweet').css('opacity', '1');
-  //   $('button.send_tweet').attr('disabled', false)
-
-  //   if(actual_count===140){
-
-  //     $('button.send_tweet').css('opacity', '0.4');
-  //     $('button.send_tweet').attr('disabled', true)
-  //   } 
-      
-  // })

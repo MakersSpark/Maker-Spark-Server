@@ -12,7 +12,7 @@ class User
 	property :github_user,		String		
 	property :rfid_code,        String
 	property :password_digest,  Text
-	property :options, 			Text, :lazy => false, :default => { order: [:Calendar, :Forecast, :GitHubData, :TubeStatus, :TwitterData, :GuardianNews] }.to_json
+	property :options, 			Text, :lazy => false, :default => { order: [:Calendar, :Forecast, :GithubData, :TubeStatus, :TwitterData, :GuardianNews] }.to_json
 
 	has n, :UserMessages
 	

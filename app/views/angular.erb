@@ -5,6 +5,9 @@
 	<link rel='stylesheet' href='/css/bootstrap.css' />
     <link rel='stylesheet' href='/css/spark.css' />
     <link rel='stylesheet' href='/css/dashboard.css' />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="./js/angular/bower_components/angular-dragdrop/src/angular-dragdrop.min.js"></script>
     <script src="./js/angular/angular.js"></script>
     <script src="./js/angular/myApp.js"></script>
   </head>
@@ -67,13 +70,16 @@
 			    </ul>
 		  	</div>
 		</div>	
-
-
-
-
 	  </div>
 	  
-	  
+	  <!-- THIS IS TEST THIS IS TEST THIS IS TEST THIS IS TEST-->
+	  <div class="col-md-12" <body ng-controller="OverviewCtrl">
+		  <div class="btn btn-primary" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-hide="!list1.title">Hello</div>
+		<div class="thumbnail" data-drop="true" data-jqyoui-options ng-model="list2" jqyoui-droppable style='height:50px;'>
+  		<div class="btn btn-success" data-drag="false" data-jqyoui-options ng-model="list2" jqyoui-draggable ng-hide="!list2.title">{{list2.title}}</div>
+		</div>
+	</div>
+	  <!-- THIS IS TEST THIS IS TEST THIS IS TEST THIS IS TEST-->
   </body>
 
 </html>

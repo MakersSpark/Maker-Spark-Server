@@ -12,20 +12,18 @@ feature "User sign in" do
 			expect(current_path).to eq('/users/sign_in')
 	end
 
-	scenario "User signs in" do
+	scenario "User signs in and sees a thank you" do
 			sign_up
-			expect(page).to have_content('Thank you for registering, byverdu@test.com')
-			expect(current_path).to eq('/')
 			sign_in
-			expect(current_path).to eq('/')
+			expect(current_path).to eq('/dashboard')
 			expect(page).not_to have_content('Thank you for registering, byverdu@test.com')
 			expect(page).to have_content('Welcome back byverdu@test.com')
 	end
 
-	scenario "clicking on Home button leads to the home page" do
-			visit "/users/sign_in"
-			expect(page).to have_link('Spark Printer Dashboard')
-			click_link('Spark Printer Dashboard')
+	xscenario "clicking on Home button leads to the home page" do
+			visit "/users/sign_in_with/aabbccdd"
+			expect(page).to have_link('Spark Printer')
+			click_link('Spark Printer')
 			expect(current_path).to eq('/')
 	end
 end
@@ -42,7 +40,6 @@ feature "Users log out" do
 		click_button('Log out')
 		expect(page).to have_content("Good bye!")
 		expect(current_path).to eq('/')
-		expect(page).to have_link('Sign up')
 		expect(page).to have_link('Sign in')
 	end
 end

@@ -35,7 +35,7 @@ feature "User sign up" do
     scenario "The user can sign up" do
     		visit '/users/sign_up_with/aabbccdd'
 			expect{ sign_up }.to change(User, :count).by(1)
-			expect(current_path).to eq('/')
+			expect(current_path).to eq('/dashboard')
 			expect(page).to have_content('Thank you for registering, byverdu@test.com')
 			expect(page).to have_button('Log out')
 			expect(page).to have_link('Edit account')
@@ -48,14 +48,14 @@ feature "User sign up" do
     		visit '/users/sign_up/41d21cd'
 
     		sign_up
-    		expect(current_path).to eq('/')
+    		expect(current_path).to eq('/dashboard')
     		expect(page).to have_content('Thank you for registering, byverdu@test.com')
     	end
 
     	scenario "clicking on Home button leads to the home page" do
 			visit "/users/sign_up"
-			expect(page).to have_link('Spark Printer Dashboard')
-			click_link('Spark Printer Dashboard')
+			expect(page).to have_link('Spark Printer')
+			click_link('Spark Printer')
 			expect(current_path).to eq('/')
 		end
 	end
@@ -70,7 +70,7 @@ feature "User sign up" do
     scenario "sees an error when accessing the signup form" do
       visit('/users/sign_up_with/aabbccdd')
       expect(page).to have_content("You're already a registered user!")
-      expect(current_path).to eq('/')
+      expect(current_path).to eq('/dashboard')
     end
   end
 

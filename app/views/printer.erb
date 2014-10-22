@@ -1,39 +1,19 @@
+
+<body class="holding-page">
 <div class="container">
+
       
-	<div class='spark'>
+	<div class='spark spark-translucent'>
 
-		<h2>SparkPrint</h2>
+		<h2>Welcome to Spark Printer</h2>
 
-		<div class="fake_printer"></div>
-			<form class="form_print" action="/printer/print" method="post">
-				<textarea class="form-control paper_printer" name="messagebox" cols="1" rows="2" maxlength="96"></textarea>
-				<button type="submit" class="btn btn-sm btn-info">Print</button>
-			</form>
-		
-		<span class="total_count">Words left 96</span>
-		
-	</div>
+		<h3>The tiny, Wi-Fi connected, RFID printer.</h3>
+
+		<p>Tap your card on the reader to get your calendar events, GitHub streak, and more. In the afternoon, the printer tells you useful information for your journey home, like weather for the next hour and reported transit delays.</p>
 
 
-	<% if @user %>
-	<div class='spark'>
-		<h3>Send message to a user</h3>
-		<form class="form_print" action="/messages/new" method="post">
-			<span> Receiver:</span>
-			<select name="receiver", class="message-receiver">
-			<% @users.each do |user| %>
-				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
-			<%end%>
-			</select>
-
-			
-			<textarea class="form-control paper_printer" name="usermessagebox" cols="20" rows="8"></textarea>
-		<!-- 	<button class="send-message" type="submit">send message</button> -->
-			<button type="submit" class="btn btn-sm btn-info">Send message</button>
-		</form>
-		
-
+		<br /><em><p>To sign up, go to your nearest Spark Printer and tap an RFID card on the reader.</p></em>
 
 	</div>
-
-	<% end %>
+</div>
+</body>
