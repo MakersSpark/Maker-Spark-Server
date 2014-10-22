@@ -13,7 +13,7 @@ class GuardianNews
 
 	def headlines
 		news_stories = get_newsstories["response"]['results'].map do |headline|
-			publication_date = DateTime.parse(headline['webPublicationDate']).strftime('%_d %_B, %H:%M')
+			publication_date = DateTime.parse(headline['webPublicationDate']).strftime('%H:%M')
 			Hash[:webtitle, headline['webTitle'] , :publication_date , publication_date]
 		end
 		news_stories[0..2]

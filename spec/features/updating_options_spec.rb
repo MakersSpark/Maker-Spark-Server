@@ -38,12 +38,12 @@ feature "Users changing their print settings" do
 		click_button 'Submit'
 		# p page.body
 		expect(Preferences.first.options_hash).to eq(
-			{"Calendar" => {print: false, option: nil},
-			 "Forecast" => {print: false, option: nil}, 
-			 "GithubData" => {print: false, option: nil}, 
-			 "TubeStatus" => {print: false, option: nil}, 
-			 "TwitterData" => {print: true, option: nil}, 
-			 "GuardianNews" => {print: true, option: nil},
+			{"Calendar" => {"print" => false, "option" => nil},
+			 "Forecast" => {"print" => false, "option" => nil}, 
+			 "GithubData" => {"print" => false, "option" => "byverdu"}, 
+			 "TubeStatus" => {"print" => false, "option" => nil}, 
+			 "TwitterData" => {"print" => true, "option" => nil}, 
+			 "GuardianNews" => {"print" =>true, "option" => nil},
 			 "order" => ["Calendar", "Forecast", "GithubData", "TubeStatus", "TwitterData", "GuardianNews"]}
 			 )
 	end

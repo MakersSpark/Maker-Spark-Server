@@ -35,7 +35,7 @@ feature "User sign up" do
     scenario "The user can sign up" do
     	visit '/users/sign_up_with/aabbccdd'
 			expect{ sign_up }.to change(User, :count).by(1)
-      expect(User.first.preferences.options["GithubData"]["option"]).to eq 'byverdu'
+      # expect(User.first.preferences.options["GithubData"]["option"]).to eq 'byverdu'
 			expect(current_path).to eq('/dashboard')
 			expect(page).to have_content('Thank you for registering, byverdu@test.com')
 			expect(page).to have_button('Log out')

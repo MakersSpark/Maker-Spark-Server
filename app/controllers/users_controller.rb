@@ -65,18 +65,14 @@ class UsersController < SparkPrint
 
 	post "/update" do
 		user_preferences = Preferences.first(:user_id => current_user.id)
-		# user_preferences.update_option("Forecast", "print", false)
-		# p user_preferences.save
-		p user_preferences.options_hash
-		user_preferences.options_hash["order"].each do |setting|
-				user_preferences.update_option(setting, "print", false)
+		user_preferences.options_hash["order"].each do |setting|			
+			user_preferences.update_option(setting, "print", false)
 		end
-
 		params.each do |key,value|
-				user_preferences.update_option(key, "print", value)
+			user_preferences.update_option(key, "print", true)
 		end
-
 		current_user.preferences.save
+		p user_preferences.options_hash
 		flash[:notice] = "Thanks – your preferences have been saved."
 		redirect '/dashboard'
 	end

@@ -83,10 +83,6 @@ describe User do
 			expect(albert.options).to eq(options_hash.to_json)
 		end
 
-		it "can update a user preference" do 
-			albert.update_options("GithubData", true, "superman")
-			expect(albert.options_hash["GithubData"]).to eq({ "print" => true, "option" => "superman" })
-		end
 
 	end
 
@@ -159,7 +155,7 @@ describe User do
 			expect(albert.preferences.class).to eq Preferences
 		end
 
-		
+
 
 		# it "can change its preferences" do 
 		# 	albert.preferences = Preferences.create

@@ -1,16 +1,15 @@
 describe EventHandler2 do 
 
 	let(:my_json) { {"data"=>"41d21cd", "ttl"=>"60", "published_at"=>"2014-10-16T11:35:27.137Z", "coreid"=>"50ff75065067545639190387"} }
-	let(:user) { double :user, github_user: "byverdu", id: 1, options_hash: {
-			 "GithubData"=> {"print"=> true, "option"=> "byverdu"}, 
-			 "order"=> ["GithubData"]} }
+	let(:user) { double :user, github_user: "byverdu", id: 1, preferences: preferences }
+	let(:preferences) { double :preferences, options_hash: { "GithubData"=> {"print"=> true, "option"=> "byverdu"}, "order"=> ["GithubData"]}}
  	let(:vincents_message) { double :message }
 	let(:event) { EventHandler2.new(my_json, user) }
 	let(:github) { GithubData}
 	let(:user_message1) { double :user_message, content: "Would you like to pair with me?", sender_id: 1 }
 	let(:user_message2) { double :user_message, content: "I love you", sender_id: 1 }
 	let(:user_messages) { [user_message1, user_message2] }
-	let(:user_json) { user.options_hash}
+	let(:user_json) { preferences.options_hash}
 	let(:github_data) { double :GithubData, json: "hello"}
 	let(:printer) { double :printer }
 
@@ -39,7 +38,7 @@ describe EventHandler2 do
 
 		it "can get the print options of the user and send the jsons to the message class" do 
 			allow(event).to receive(:user).and_return(user)
-			allow(user).to receive(:options_hash).and_return(user_json)
+			allow(preferences).to receive(:options_hash).and_return(user_json)
 			allow(github_data).to receive(:json)
 			allow(vincents_message).to receive(:add_divider)
 			expect(vincents_message).to receive(:add_lines)

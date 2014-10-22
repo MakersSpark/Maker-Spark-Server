@@ -16,7 +16,7 @@ class Forecast
 	end
 
 	def json 
-		[{format: "text", text: summary }]
+		[{format: "TEXT", text: summary }]
 	end
 	
 end
