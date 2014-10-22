@@ -41,19 +41,19 @@ app.controller "MyCtrl", ($scope, $http)->
  	$scope.init($scope,$http)
  	return
 
-app.controller "GitController", ($scope,$http)->
+# app.controller "GitController", ($scope,$http)->
 
-	$scope.loadGitData = ->
-		$scope.gitItems = "aaaaa"
+# 	$scope.loadGitData = ->
+# 		$scope.gitItems = "aaaaa"
 
-	$scope.init = ($scope,$http)->
- 		$scope.messages = []
- 		$scope.gitState = { show: true}
- 		$http.get('http://localhost:9292/angular/jsons').success (data)->
- 			$scope.data = data
+# 	$scope.init = ($scope,$http)->
+#  		$scope.messages = []
+#  		$scope.gitState = { show: true}
+#  		$http.get('http://localhost:9292/angular/jsons').success (data)->
+#  			$scope.data = data
 
- 	$scope.init($scope,$http)
- 	return
+#  	$scope.init($scope,$http)
+#  	return
 
 
 

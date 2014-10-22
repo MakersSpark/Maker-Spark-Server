@@ -4,6 +4,13 @@
 
   app = angular.module("myApp", []);
 
+  app.controller('OverviewCtrl', function($scope) {
+    $scope.list1 = {title: 'AngularJS - Drag Me'};
+    $scope.list2 = {};
+  });
+
+
+
   app.controller("MyCtrl", function($scope, $http) {
     $scope.loadData = function() {
       return $scope.items = $scope.data.people;
@@ -31,22 +38,6 @@
     };
     $scope.addTube = function() {
       return $scope.messages.splice(0, 0, $scope.tubes);
-    };
-    $scope.init = function($scope, $http) {
-      $scope.messages = [];
-      $scope.gitState = {
-        show: true
-      };
-      return $http.get('http://localhost:9292/angular/jsons').success(function(data) {
-        return $scope.data = data;
-      });
-    };
-    $scope.init($scope, $http);
-  });
-
-  app.controller("GitController", function($scope, $http) {
-    $scope.loadGitData = function() {
-      return $scope.gitItems = "aaaaa";
     };
     $scope.init = function($scope, $http) {
       $scope.messages = [];

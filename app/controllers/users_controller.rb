@@ -64,9 +64,7 @@ class UsersController < SparkPrint
 	end
 
 	post "/update" do 
-		# puts "-------"*10
-		# p params
-		user_options = JSON.parse(current_user.options)
+		user_options = current_user.options_hash
 		options_order = user_options["order"]
 		options_order.each do |option| 
 			if params.include? option
@@ -75,14 +73,9 @@ class UsersController < SparkPrint
 				user_options[option] = { print: false}
 			end
 		end
-
-		# current_user.options = user_options.to_json
-		@user.update(:options => user_options.to_json)
-		# current_user.save
-		# puts "----current user from the controller---"
-		# p current_user
-		puts "-------"*10
-		@user.email
+		@user.options_hash = user_options
+		
+		
 
 	end
 
