@@ -8,7 +8,7 @@ class Printer
 	end
 
 	def print_line(line)
-		format, text = line[0], line[1]
+		format, text = line[:format], line[:text]
 		response = Net::HTTP.post_form(print_uri, access_token: @spark_api_token , args: "#{format}=#{text}/") 
 		check_printer_response(response)
 	end

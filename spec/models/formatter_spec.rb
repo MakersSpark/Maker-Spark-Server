@@ -12,7 +12,7 @@ describe Formatter do
 															])
 	end
 
-	it "takes line from a message and formats it" do 
+	it "takes a line from a message and formats it" do 
 		expect(formatter.format_line(long_line)).to eq 	 [["TEXT","This will be the calander and it"],
 														 ["TEXT"," is very long, because people do"],
 														 ["TEXT","n't know how to write short text"],

@@ -1,8 +1,8 @@
 describe Printer do 
 
 	let(:printer) { Printer.new }
-	let(:line) { ["TEXT", "hello"] }
-	let(:message) { double :message, lines: [["TEXT","hello"],["BOLD","I love you"]] }
+	let(:line) { {format:"TEXT", text:"hello"} }
+	let(:message) { double :message, lines: [{format:"TEXT", text:"hello"},{format:"BOLD", text:"I love you"}] }
 	
 
 	it "can print a line" do
