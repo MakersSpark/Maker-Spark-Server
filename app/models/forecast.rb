@@ -12,12 +12,11 @@ class Forecast
 	end
 
 	def summary	
-		@forecast = get_forecast['minutely']['summary']
+		get_forecast['minutely']['summary']
 	end
+
+	def json 
+		[{format: "text", text: summary }]
+	end
+	
 end
-
-
-# loo = client.trends_closest(options = {lat:51.5231,long:-0.0871})
-
-
-# 51.5231,-0.0871

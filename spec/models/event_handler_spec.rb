@@ -8,7 +8,7 @@ describe EventHandler do
 	let(:user_message2) { double :user_message, content: "I love you", sender_id: 1 }
 	let(:user_messages) { [user_message1, user_message2] }
 	let(:user) { double :user, github_user: "byverdu", id: 1 }
-	let(:sender) { double :user, github_user: "kikrahau" } 
+	let(:sender) { double :user, github_user: "byverdu" } 
 	let(:event) { EventHandler.new(my_json, user) }
 	let(:no_user_messages) { [] }
 

@@ -2,7 +2,8 @@ class TubeStatus
 
 	attr_accessor :status
 
-	def initialize
+	def initialize(option = nil)
+		@option = option
 		@status = ServiceDisruption.network
 	end
 

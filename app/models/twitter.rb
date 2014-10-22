@@ -8,17 +8,18 @@ class TwitterData
              access_token_secret: "I3E20lo6bnZHlCsNiljByM60MMmPEyKvrkfTsCaTM0dqU"
            }
 
-	attr_accessor :client
+	attr_accessor :client, :search_term
 
-	def initialize
+	def initialize(search_term = "programming")
+		@search_term = search_term
 		@client = Twitter::REST::Client.new(TWITTER_CONFIG)
 	end
 
-	def search_popular_tweets(search_term="programming")
+	def search_popular_tweets(search_term)
 		client.search(search_term,options={result_type: 'popular'})
 	end
 
-	def grab_top3_tweets(search_term="programming")
+	def grab_top3_tweets
 		tweets = search_popular_tweets(search_term).map do |tweet|
 			Hash[:name, tweet.user.name , :tweet , tweet.text]
 		end

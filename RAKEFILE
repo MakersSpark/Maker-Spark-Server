@@ -28,3 +28,6 @@ task :reset_db do
   DatabaseCleaner.clean
   puts "The db was reset"
 end
+
+
+
