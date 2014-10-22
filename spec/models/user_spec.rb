@@ -4,6 +4,19 @@ describe User do
 
 	let(:albert) { create(:valid_user) }
 
+	let(:options_hash) do 
+			{Calendar: {print: true, option: nil},
+			 Forecast: {print: true, option: nil}, 
+			 GithubData: {print: true, option: nil}, 
+			 TubeStatus: {print: true, option: nil}, 
+			 TwitterData: {print: true, option: nil}, 
+			 GuardianNews: {print: true, option: nil},
+			 order: [:Calendar, :Forecast, :GithubData, :TubeStatus, :TwitterData, :GuardianNews]}
+	end
+
+
+
+
 
 	let(:ben) { User.create(email: "ben@test.com", 
 							   password: "oranges", 
@@ -66,8 +79,13 @@ describe User do
 			expect(albert.options).to eq(options)
 		end
 
-		it "has an order array in its options filed when created" do
-			expect(albert.options).to eq({order: [:Calendar, :Forecast, :GithubData, :TubeStatus, :TwitterData, :GuardianNews]}.to_json)
+		it "has all preferences set to true on creation" do 
+			expect(albert.options).to eq(options_hash.to_json)
+		end
+
+		it "can update a user preference" do 
+			albert.update_options("GithubData", true, "superman")
+			expect(albert.options_hash["GithubData"]).to eq({ "print" => true, "option" => "superman" })
 		end
 
 	end
@@ -131,6 +149,30 @@ describe User do
 			expect(henry).not_to be_valid
 		end
 	end
+
+
+
+	context "user preferences" do
+
+		it "is can have a preference object" do 
+			albert.preferences = Preferences.create
+			expect(albert.preferences.class).to eq Preferences
+		end
+
+		
+
+		# it "can change its preferences" do 
+		# 	albert.preferences = Preferences.create
+		# 	albert.preferences.set_options("ben")
+		# 	expect(Preferences.first.options).not_to eq options_hash 
+		# 	# p albert.preferences.save
+		# 	# p albert.preferences.errors
+		# 	# p Preferences.first
+		# end
+
+	end
+
+
 
 	context "user sending messages" do
 		it "can send messages to a second user" do

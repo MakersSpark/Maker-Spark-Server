@@ -1,3 +1,4 @@
+
 require 'bcrypt'
 
 class User 
@@ -12,9 +13,16 @@ class User
 	property :github_user,		String		
 	property :rfid_code,        String
 	property :password_digest,  Text
-	property :options, 			Text, :lazy => false, :default => { order: [:Calendar, :Forecast, :GithubData, :TubeStatus, :TwitterData, :GuardianNews] }.to_json
+	property :options, 			Text, :lazy => false, :default => {Calendar: {print: true, option: nil},
+			 Forecast: {print: true, option: nil}, 
+			 GithubData: {print: true, option: nil }, 
+			 TubeStatus: {print: true, option: nil}, 
+			 TwitterData: {print: true, option: nil}, 
+			 GuardianNews: {print: true, option: nil},
+			 order: [:Calendar, :Forecast, :GithubData, :TubeStatus, :TwitterData, :GuardianNews]}.to_json
 
 	has n, :UserMessages
+	has 1, :preferences
 	
 	validates_format_of       :email, as: :email_address
 	validates_uniqueness_of   :email, :github_user
@@ -62,4 +70,9 @@ class User
 	def options_hash=(hash)
 		self.options = hash.to_json
 	end
+
+
+
+
+
 end

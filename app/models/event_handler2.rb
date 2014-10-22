@@ -6,8 +6,7 @@ class EventHandler2
 		@rfid_data = my_json
 		@user = user
 		@message = Message2.new
-		@formatter = Formatter.new
-		@user_messages = UserMessage.all(user_id: user.id)
+		@formatter = Formatter2.new
 	end
 
 	def print_message(printer)
@@ -25,7 +24,7 @@ class EventHandler2
 	end
 
 	def eval_user_preferences
-		options = user.options_hash
+		options = user.preferences.options_hash
 		options["order"].each do |print_key|
 			if options[print_key]["print"]
 				instance = create_class_instance(print_key,options)
@@ -37,10 +36,16 @@ class EventHandler2
 
 	def create_class_instance(print_key,options)
 		param = options[print_key]["option"]
-		eval("#{print_key}.new(*'#{param}')")
+		p param
+		if param 
+			eval("#{print_key}.new('#{param}')")
+		else 
+			eval("#{print_key}.new")
+		end
 	end
 
 	def build_user_messages
+		user_messages = UserMessage.all(user_id: user.id)
 		user_messages.each do |user_message|
 			sender= User.get(user_message.sender_id)
 			message.add_user_message(user_message.content,sender)

@@ -6,7 +6,7 @@ class Formatter2
 
 	def format_line(array_of_hashes)
 		arrays = array_of_hashes.map do |hash|
-			split_string(hash[:text]).map {|string| Hash[ :format,hash[:format], :text, string ] }
+			split_string(hash[:text]).map {|string| Hash[:format,hash[:format], :text, string ] }
 		end
 		arrays.flatten
 	end

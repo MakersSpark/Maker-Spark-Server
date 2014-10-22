@@ -19,10 +19,12 @@ require "twitter"
 
 
 require_relative './models/user'
+require_relative './models/preferences'
 require_relative './models/printer'
 require_relative './models/forecast'
 require_relative './models/github'
 require_relative './models/event_handler'
+require_relative './models/event_handler2'
 require_relative './models/formatter'
 require_relative './models/formatter2'
 require_relative './models/message'
@@ -75,7 +77,7 @@ class SparkPrint < Sinatra::Base
   post "/" do 
     card_info = JsonHandler.get_user_info(params[:data]) 
     user = User.first(rfid_code: card_info["data"])
-    event = EventHandler.new(card_info, user)
+    event = EventHandler2.new(card_info, user)
     printer = Printer.new
     event.build_message           
     event.print_message(printer)

@@ -35,8 +35,10 @@ module UserHelper
 				redirect "/users/#{cause}"
 			end
 		else
-			if user.save 
+			if user.save
 				session[:user_id] = user.id
+				user_preferences = Preferences.create(user_id: user.id)
+				user_preferences.set_options(user.github_user)
 				user_flash_notice(cause)			
 				redirect '/'
 			else

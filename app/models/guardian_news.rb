@@ -1,5 +1,10 @@
 class GuardianNews
 
+	def initialize(option = nil)
+			@option = option
+	end
+
+
 	def get_newsstories
 		news_string = open("http://content.guardianapis.com/search?section=uk-news&order-by=newest&api-key=test").read
 		news = JSON.parse(news_string) rescue "There was an error getting the latest news stories"
