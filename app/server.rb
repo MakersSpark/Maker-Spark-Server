@@ -90,20 +90,25 @@ class SparkPrint < Sinatra::Base
   #   printer.print_blank_line
   # end
 
+  before do 
+    @user = current_user 
+  end
     
 	get '/' do
 	  @users = User.all
-    @user = current_user
 	  erb :printer
 	end
 
-	run! if app_file == $0
-
   get '/dashboard' do
-    @users = User.all
-    @user = current_user
+    unless @user # do this if a user isn't logged in
+      flash[:notice] = "Sorry, you need to sign in or sign up before doing that."
+      redirect '/users/sign_in'
+    end
     erb :dashboard
   end
+  
+  run! if app_file == $0
+
   
 end
 

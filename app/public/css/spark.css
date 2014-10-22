@@ -193,11 +193,36 @@ body {
   }
 }
 
-[class^="icon-"], [class*=" icon-"] {
-  display: inline-block;
-  color: #000000;
-  fill: currentColor;
+/* Styling the select boxes */
+
+input[type=checkbox] {
+position: absolute;
+top: -9999px;
+left: -9999px;
 }
+
+input[type=checkbox] + label{
+  
+  color: #FF542F
+}
+
+input[type=checkbox]:checked + label{
+
+  color: #61FF3A;  
+  
+}
+
+.all_options li:nth-child(even) label{
+  float: left;
+  position: relative;
+  top: -30px;
+}
+
+.all_options li:nth-child(odd):first-child label{
+  position: relative;
+  left: 60px;
+}
+
 .icon-map {
   width: 32px;
   height: 32px;
@@ -205,6 +230,7 @@ body {
 .icon-calendar {
   width: 32px;
   height: 32px;
+  color: red
 }
 .icon-print {
   width: 32px;
