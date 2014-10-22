@@ -7,31 +7,6 @@ body {
   font-family: 'Varela Round', sans-serif;
 }
 
-body.holding-page {
-  background-image: url(/images/background_blurred_desaturated.jpg);
-  background-position: center center;
-  background-size: cover;
-  background-repeat:no-repeat;
-  filter: grayscale(100%);
-}
-
-.spark-translucent {
-  /*filter: blur(50px);*/
-  opacity: 0.8;
-  margin-top: 100px;
-  top:50%;
-}
-
-.vertical-pull-down-container {
-  position:relative
-}
-
-/*.vcenter {
-    display: inline-block;
-    vertical-align: bottom;
-    float: none;
-}*/
-
 .navbar-brand{
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
@@ -40,6 +15,12 @@ body.holding-page {
   max-width: none !important;
   width: 970px;
 }*/
+
+.progress_image{
+  background-image:url('/images/Spark_core_bg.jpg');
+  height: 484px;
+  margin: 0 auto;
+}
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
