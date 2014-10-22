@@ -2,30 +2,32 @@
       
 	<div class='spark'>
 
-		<h3>SparkPrint</h3>
-	<br />
-		<form action="/printer/print" method="post">
-			<textarea class="message" name="messagebox" cols="40" rows="4"></textarea></p>
-			<button type="submit" class="btn btn-sm btn-info">Print</button>
-		</form>
+		<h2>SparkPrint</h2>
+
+		<div class="fake_printer"></div>
+			<form class="form_print" action="/printer/print" method="post">
+				<textarea class="form-control paper_printer" name="messagebox" cols="1" rows="2" maxlength="96"></textarea>
+				<button type="submit" class="btn btn-sm btn-info">Print</button>
+			</form>
+		
+		<span class="total_count">Words left 96</span>
 		
 	</div>
 
-	<br />
 
 	<% if @user %>
 	<div class='spark'>
 		<h3>Send message to a user</h3>
-		<form action="/messages/new" method="post"></p>
+		<form class="form_print" action="/messages/new" method="post">
 			<span> Receiver:</span>
 			<select name="receiver", class="message-receiver">
 			<% @users.each do |user| %>
 				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
 			<%end%>
-			</select></p>
+			</select>
 
 			
-			<textarea class="user-message" name="usermessagebox" cols="40" rows="4"></textarea></p>
+			<textarea class="form-control paper_printer" name="usermessagebox" cols="20" rows="8"></textarea>
 		<!-- 	<button class="send-message" type="submit">send message</button> -->
 			<button type="submit" class="btn btn-sm btn-info">Send message</button>
 		</form>

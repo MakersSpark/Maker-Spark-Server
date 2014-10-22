@@ -23,7 +23,7 @@ feature "using the dashboard" do
 		scenario "the user sees an unchecked boxes for all the possible preferences" do
 			find(:css, "input[name='Calendar']"   ).set(false)
 			find(:css, "input[name='Forecast']"   ).set(false)
-			find(:css, "input[name='GitHubData']" ).set(false)
+			find(:css, "input[name='GithubData']" ).set(false)
 			find(:css, "input[name='TwitterData']").set(false)
 			find(:css, "input[name='TubeStatus']" ).set(false)
 		end
