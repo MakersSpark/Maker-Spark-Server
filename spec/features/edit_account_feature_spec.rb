@@ -32,7 +32,7 @@ feature "Editing a user account" do
 		visit "/users/edit_user"
 		expect(page).to have_link('Spark Printer')
 		click_link('Spark Printer')
-		expect(current_path).to eq('/')
+		expect(current_path).to eq('/dashboard')
 	end
 
 end

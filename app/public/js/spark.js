@@ -23,6 +23,15 @@ $(document).ready(function() {
 
   });
 
+  // place name github user selected
+
+  $( ".paper_printer" ).focus(function() {
+  	
+  	$(this).text('Hi ' + $('select').val()+ '!! ')
+	});
+
+
+
 
   
   function hide_alert(){

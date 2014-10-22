@@ -125,11 +125,13 @@ body.holding-page {
 }
 
 .navbar{
-    position: fixed; 
-    top: 0px;
-    background-color: aliceblue;
-    width: 100%;
-    z-index: 600;
+  position: fixed; 
+  top: 0px;
+  background-color: aliceblue;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  z-index: 600;
+  box-shadow: 0 0 1px;
 }
 
 .header h3{
@@ -145,8 +147,11 @@ body.holding-page {
 /* Main marketing message and sign up button */
 .spark {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+  /*border-bottom: 1px solid #e5e5e5;*/
   position: relative;
+  border-radius: 5px;
+  background: rgba(240,248,255,0.6);
+  box-shadow: 0 0 2px;
 }
 
 .navbutton{
@@ -225,15 +230,30 @@ textarea{
   font-family: 'Cutive Mono';
   font-size: 18px !important;
   position: absolute;
-  top: 205px;
+  top: 243px;
   left: 247px;
   z-index: 20;
+}
+
+textarea:focus::-webkit-input-placeholder {
+  color: transparent;
 }
 
 textarea.form-control:focus{
   outline: none !important;
   box-shadow: 0 0 0;
   border: 1px solid black;
+}
+
+.send_message{
+  position: relative;
+  top: -30px;
+}
+
+select{
+  position: relative;
+  top: -60px;
+  left: 240px;
 }
 
 .fake_printer{
@@ -243,7 +263,7 @@ textarea.form-control:focus{
   width: 390px;
   height: 250px;
   position: relative;
-  top: -50px;
+  top: -70px;
   margin: 0 auto
 }
 
@@ -252,8 +272,11 @@ textarea.form-control:focus{
 }
 
 .total_count{
-  margin-right: 400px;
   color: green;
+  position: relative;
+  top: 300px;
+  font-size: 20px;
+  left: -240px;
 }
 
 
