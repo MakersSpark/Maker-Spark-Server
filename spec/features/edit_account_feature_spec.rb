@@ -25,7 +25,7 @@ feature "Editing a user account" do
 	scenario "can change all his personal details" do
 		editing_user
 		expect(page).to have_content('Your details have been successfully updated')
-		expect(current_path).to eq('/')
+		expect(current_path).to eq('/dashboard')
 	end
 
 	scenario "clicking on Home button leads to the home page" do
