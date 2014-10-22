@@ -14,6 +14,9 @@ class TubeStatus
 				tube_status <<  Hash[:line_name, line.name, :status ,line.status.status_description]
 			end
 		end
+		if !tube_status
+			tube_status << {:format, "TEXT", :text, "All lines running fine!"}
+		end
 		tube_status
 	end
 
