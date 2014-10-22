@@ -30,8 +30,8 @@ feature "Editing a user account" do
 
 	scenario "clicking on Home button leads to the home page" do
 		visit "/users/edit_user"
-		expect(page).to have_link('Spark Printer Dashboard')
-		click_link('Spark Printer Dashboard')
+		expect(page).to have_link('Spark Printer')
+		click_link('Spark Printer')
 		expect(current_path).to eq('/')
 	end
 

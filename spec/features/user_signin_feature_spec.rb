@@ -24,8 +24,8 @@ feature "User sign in" do
 
 	scenario "clicking on Home button leads to the home page" do
 			visit "/users/sign_in"
-			expect(page).to have_link('Spark Printer Dashboard')
-			click_link('Spark Printer Dashboard')
+			expect(page).to have_link('Spark Printer')
+			click_link('Spark Printer')
 			expect(current_path).to eq('/')
 	end
 end
@@ -42,7 +42,6 @@ feature "Users log out" do
 		click_button('Log out')
 		expect(page).to have_content("Good bye!")
 		expect(current_path).to eq('/')
-		expect(page).to have_link('Sign up')
 		expect(page).to have_link('Sign in')
 	end
 end
