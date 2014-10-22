@@ -10,7 +10,7 @@ feature "Users changing their print settings" do
 		visit '/dashboard'
 		check 'Calendar'
 		check 'Forecast'
-		check 'GitHubData'
+		check 'GithubData'
 		check 'TubeStatus'
 		check 'TwitterData'
 		check 'GuardianNews'
@@ -19,7 +19,7 @@ feature "Users changing their print settings" do
 			{Calendar: {print: true, option: nil},
 			 Twitter: {print: true, option: nil}, 
 			 Forecast: {print: true, option: nil}, 
-			 GitHubData: {print: true, option: nil}, 
+			 GithubData: {print: true, option: nil}, 
 			 TubeStatus: {print: true, option: nil}, 
 			 TwitterData: {print: true, option: nil}, 
 			 GuardianNews: {print: true, option: nil},
@@ -31,7 +31,7 @@ feature "Users changing their print settings" do
 		visit '/dashboard'
 		uncheck 'Calendar'
 		uncheck 'Forecast'
-		uncheck 'GitHubData'
+		uncheck 'GithubData'
 		uncheck 'TubeStatus'
 		uncheck 'TwitterData'
 		uncheck 'GuardianNews'
@@ -41,11 +41,11 @@ feature "Users changing their print settings" do
 			{Calendar: {print: false, option: nil},
 			 Twitter: {print: false, option: nil}, 
 			 Forecast: {print: false, option: nil}, 
-			 GitHubData: {print: false, option: nil}, 
+			 GithubData: {print: false, option: nil}, 
 			 TubeStatus: {print: false, option: nil}, 
 			 TwitterData: {print: false, option: nil}, 
 			 GuardianNews: {print: false, option: nil},
-			 order: [:Calendar, :Forecast, :GitHubData, :TubeStatus, :TwitterData, :GuardianNews]}
+			 order: [:Calendar, :Forecast, :GithubData, :TubeStatus, :TwitterData, :GuardianNews]}
 			 )
 	end
 
