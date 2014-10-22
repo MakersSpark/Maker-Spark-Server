@@ -27,26 +27,15 @@ $(document).ready(function() {
 
   $( ".paper_printer" ).focus(function() {
   	
-  	$(this).text('Hi ' + $('select').val()+ '!! ')
+  	$(this).text('Hi ' + $('select').val()+ '!!')
 	});
 
 
+	// Removing flash error/notice
 
-
-  
-  function hide_alert(){
-
-    console.log('done')
-    $('.alert').hide();
-
-  }
-
-  $('.btn').on('click',function(){
-
-      setTimeout( function(){ $('.alert').hide();},10000 )
-
-  })
-
-
-  
+	window.setTimeout(function() {
+        $(".alert").fadeTo(4500, 0).slideUp(500, function(){
+            $(this).remove();
+        });
+    }, 4000);
 });
