@@ -1,7 +1,9 @@
-<div class="container">
+<body class="dashboard_page">
 
- 	<div class='spark'>
-		<h3>Select what you want to print</h3>
+<div class="container-fluid">
+
+ 	<div class='spark col-md-offset-1 col-md-3 hard_height'>
+		<h3>Select what to print</h3>
 		<form action="/users/update" method="post">
 		
 		<ul class="all_options">
@@ -40,29 +42,29 @@
 	</div>
 
 
-	<div class="wrapper_printer">
+	<div class="spark col-md-offset-1 col-md-6 col-md-offset-1 hard_height">
 
-		<div class="fake_printer"><span class="total_count">Words left 96</span></div>
+<!-- 		<div class="fake_printer"><span class="total_count">Words left 96</span></div>
 			<form class="form_print" action="/printer/print" method="post">
 				<textarea class="form-control paper_printer" name="messagebox" cols="1" rows="2" maxlength="96"></textarea>
 				<button type="submit" class="btn btn-sm btn-info">Print</button>
-			</form>
+			</form> -->
 		
 		
 			<% if @user %>
-	<div class='spark'>
-		<h3>Send message to a user</h3>
+	<div class="fake_printer">
+			<span class="total_count">Words left 96</span>
+		<h3 class="send_message">Send message to a user <i class="fa fa-hand-o-right"></i></h3>
 		<form class="form_print" action="/messages/new" method="post">
-			<span> Receiver:</span>
-			<select name="receiver", class="message-receiver">
+			<select name="receiver" class="message-receiver">
+				<option></option>
 			<% @users.each do |user| %>
 				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
 			<%end%>
 			<%end%>
 			</select>
 
-			
-			<textarea class="form-control paper_printer" name="usermessagebox" cols="20" rows="8"></textarea>
+			<textarea class="form-control paper_printer" name="usermessagebox" cols="20" rows="2" maxlength="96" placeholder="Type here!!"></textarea>
 		<!-- 	<button class="send-message" type="submit">send message</button> -->
 			<button type="submit" class="btn btn-sm btn-info">Send message</button>
 		</form>
@@ -75,6 +77,7 @@
 			<button type="submit" class="btn btn-sm btn-info">Send message</button>
 		</form> -->
 
-	</div>
+
 
 </div>
+</body>

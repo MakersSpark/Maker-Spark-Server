@@ -9,6 +9,8 @@
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<link rel='stylesheet' href='/css/spark.css' />
 
+		<link rel="shortcut icon" href="/images/blue.ico" type="image/x-icon">
+
 		<link href='http://fonts.googleapis.com/css?family=Varela+Round|Montserrat:400,700' rel='stylesheet' type='text/css'>
 
 	</head>
@@ -20,8 +22,12 @@
 	<%= partial :"partials/_errors" %>
 	
 	<%= yield %>
+
+	<% if request.path_info != "/dashboard" %>
 	
-	<%= partial :"partials/_footer" %>		
+	<%= partial :"partials/_footer" %>
+
+	<% end %>		
 
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="js/spark.js"></script>

@@ -23,21 +23,19 @@ $(document).ready(function() {
 
   });
 
+  // place name github user selected
 
-  
-  function hide_alert(){
-
-    console.log('done')
-    $('.alert').hide();
-
-  }
-
-  $('.btn').on('click',function(){
-
-      setTimeout( function(){ $('.alert').hide();},10000 )
-
-  })
+  $( ".paper_printer" ).focus(function() {
+  	
+  	$(this).text('Hi ' + $('select').val()+ '!!')
+	});
 
 
-  
+	// Removing flash error/notice
+
+	window.setTimeout(function() {
+        $(".alert").fadeTo(4500, 0).slideUp(500, function(){
+            $(this).remove();
+        });
+    }, 4000);
 });

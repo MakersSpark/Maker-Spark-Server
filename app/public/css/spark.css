@@ -9,6 +9,11 @@ body {
   font-family: 'Varela Round', sans-serif;
 }
 
+body.dashboard_page{
+  background: url(http://wallpaperest.com/wallpapers/wood-background-texture_780987.jpg) no-repeat center center fixed; 
+  background-size: cover;
+}
+
 .navbar-brand{
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
@@ -125,11 +130,13 @@ body.holding-page {
 }
 
 .navbar{
-    position: fixed; 
-    top: 0px;
-    background-color: aliceblue;
-    width: 100%;
-    z-index: 600;
+  position: fixed; 
+  top: 0px;
+  background-color: aliceblue;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  z-index: 600;
+  box-shadow: 0 0 1px;
 }
 
 .header h3{
@@ -145,8 +152,10 @@ body.holding-page {
 /* Main marketing message and sign up button */
 .spark {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
   position: relative;
+  border-radius: 5px;
+  background: rgba(240,248,255,0.6);
+  box-shadow: 0 0 2px;
 }
 
 .navbutton{
@@ -202,8 +211,9 @@ z-index: 10;
 
 /* Styling forms */
 
-.wrapper_printer{
-  position: relative;
+
+.hard_height{
+  height: 450px;
 }
 
 .header_format{
@@ -225,15 +235,30 @@ textarea{
   font-family: 'Cutive Mono';
   font-size: 18px !important;
   position: absolute;
-  top: 205px;
-  left: 247px;
+  top: 208px;
+  left: 93px;
   z-index: 20;
+}
+
+textarea:focus::-webkit-input-placeholder {
+  color: transparent;
 }
 
 textarea.form-control:focus{
   outline: none !important;
   box-shadow: 0 0 0;
   border: 1px solid black;
+}
+
+.send_message{
+  position: relative;
+  top: -50px;
+}
+
+select{
+  position: relative;
+  top: -85px;
+  left: 250px;
 }
 
 .fake_printer{
@@ -243,17 +268,21 @@ textarea.form-control:focus{
   width: 390px;
   height: 250px;
   position: relative;
-  top: -50px;
+  top: -10px;
   margin: 0 auto
 }
 
 .form_print button{
-  margin-left: 460px 
+  margin-left: 410px;
+  margin-top: 212px; 
 }
 
 .total_count{
-  margin-right: 400px;
   color: green;
+  position: relative;
+  top: 300px;
+  font-size: 20px;
+  left: -240px;
 }
 
 
@@ -267,12 +296,12 @@ left: -9999px;
 
 input[type=checkbox] + label{
   
-  color: #FF542F
+  color: red
 }
 
 input[type=checkbox]:checked + label{
 
-  color: #61FF3A;  
+  color: green;  
   
 }
 
