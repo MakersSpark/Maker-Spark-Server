@@ -1,5 +1,7 @@
 /*Spark CSS is based on Jumbotron */
 
+@import url(http://fonts.googleapis.com/css?family=Cutive+Mono);
+
 /* Space out content a bit */
 body {
   padding-top: 80px;
@@ -70,15 +72,7 @@ body.holding-page {
   float: right;
 }
 
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-    /*margin-top: 70px;*/
-    top: -120px;/*
-    padding-top: 120px; 
-  }*/
-}
+
 .container-narrow > hr {
   margin: 30px 0;
 }
@@ -151,6 +145,7 @@ body.holding-page {
 .spark {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  position: relative;
 }
 
 .navbutton{
@@ -175,6 +170,14 @@ body.holding-page {
   margin-top:0px;
 }
 
+/*.spark h2{
+  position: absolute;
+top: 60px;
+left: 290px;
+color: whitesmoke;
+z-index: 10;
+}*/
+
 .spark ul,li{
   list-style: none;
 }
@@ -196,24 +199,58 @@ body.holding-page {
   margin-top: 28px;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .spark {
-    border-bottom: 0;
-  }
+/* Styling forms */
+
+.header_format{
+  color: whitesmoke;
+  text-align: center;
 }
+
+.header_format:not(h1){
+  color: black
+}
+
+textarea{
+  resize: none;
+  width: 235px !important;
+  margin: 0 auto;
+  background-image: url(/images/paper_printer.jpg);
+  background-size: 260px 239px;
+  background-position: center;
+  font-family: 'Cutive Mono';
+  font-size: 18px !important;
+  position: absolute;
+  top: 205px;
+  left: 247px;
+  z-index: 20;
+}
+
+.form-control:focus{
+  outline: none !important;
+  box-shadow: 0 0 0;
+  border: 1px solid black;
+}
+
+.fake_printer{
+  background-image: url(/images/printer.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 390px;
+  height: 250px;
+  position: relative;
+  top: -50px;
+  margin: 0 auto
+}
+
+.form_print button{
+  margin-left: 460px 
+}
+
+.total_count{
+  margin-right: 400px;
+  color: green;
+}
+
 
 /* Styling the select boxes */
 
@@ -265,4 +302,32 @@ input[type=checkbox]:checked + label{
 .icon-news {
   width: 32px;
   height: 32px;
+}
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .spark {
+    border-bottom: 0;
+  }
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+    /*margin-top: 70px;*/
+    top: -120px;/*
+    padding-top: 120px; 
+  }*/
 }
