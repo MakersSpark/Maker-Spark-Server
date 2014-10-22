@@ -23,7 +23,7 @@ class UsersController < SparkPrint
 	get "/sign_up_with/:rfid_code" do
 		if @user
 			flash[:notice] = "You're already a registered user!"
-			redirect '/'
+			redirect '/dashboard'
 		end
 		@user = User.new
 		erb :sign_up
@@ -74,9 +74,8 @@ class UsersController < SparkPrint
 			end
 		end
 		@user.options_hash = user_options
-		
-		
-
+	flash[:notice] = "Thanks – your preferences have been saved."
+	redirect '/dashboard'
 	end
 
 end

@@ -1,22 +1,37 @@
 <div class="container">
-      
-	<div class='spark'>
+
+ 	<div class='spark'>
 		<h3>Select what you want to print</h3>
 		<form action="/users/update" method="post">
 		
 		<ul class="all_options">
 		
-			<img src="images/calendar.svg"><input type="checkbox" name="Calendar" value="true"> Makers Calendar<br />
+		<li>
+		  <input type="checkbox" id="Calendar" name="Calendar" value="true">
+			<label for="Calendar"><i class="fa fa-calendar fa-2x"></i><span> Makers Calendar</span></label>
+		</li>
 
-			<img src="images/cloud.svg"><input id="test"type="checkbox" name="Forecast" value="true"> Forecast<br />
-			
-			<img src="images/map.svg"><input type="checkbox" name="GithubData" value="true"> GitHub stats<br />
-			
-			<img src="images/news.svg"><input type="checkbox" name="GuardianNews" value="true"> Latest headlines<br />
-
-			<img src="images/news.svg"><input type="checkbox" name="TwitterData" value="true"> Trending on Twitter<br />
-
-			<img src="images/news.svg"><input type="checkbox" name="TubeStatus" value="true"> Tube status<br />
+		<li>	
+			<input type="checkbox" id="Forecast" name="Forecast" value="true">
+			<label for="Forecast"><i class="fa fa-cloud fa-2x"></i> <span>Forecast</span></label>  
+    </li>
+		<li>	
+			<input type="checkbox" id="GithubData" name="GithubData" value="true">
+			<label for="GithubData"><i class="fa fa-github fa-2x"></i> <span>GitHub stats</span></label>
+    </li>
+		<li>	
+			<input type="checkbox" id="GuardianNews"  name="GuardianNews" value="true">
+			<label for="GuardianNews"><i class="fa fa-newspaper-o fa-2x"></i> <span>Latest headlines</span></label>
+    </li>	
+		<li>	
+			<input type="checkbox" id="TwitterData" name="TwitterData" value="true">
+			<label for="TwitterData"><i class="fa fa-twitter fa-2x"></i> <span>Trending on Twitter</span></label>
+    </li>	
+		<li>	
+			<input type="checkbox" id="TubeStatus" name="TubeStatus" value="true">
+			<label for="TubeStatus"><i class="fa fa-bus fa-2x"></i> <span> Tube status</span></label>
+    </li>
+		</ul>
 
 			<button type="submit" class="btn btn-sm btn-info">Submit</button>
 			
@@ -25,3 +40,41 @@
 	</div>
 
 
+	<div class="wrapper_printer">
+
+		<div class="fake_printer"><span class="total_count">Words left 96</span></div>
+			<form class="form_print" action="/printer/print" method="post">
+				<textarea class="form-control paper_printer" name="messagebox" cols="1" rows="2" maxlength="96"></textarea>
+				<button type="submit" class="btn btn-sm btn-info">Print</button>
+			</form>
+		
+		
+			<% if @user %>
+	<div class='spark'>
+		<h3>Send message to a user</h3>
+		<form class="form_print" action="/messages/new" method="post">
+			<span> Receiver:</span>
+			<select name="receiver", class="message-receiver">
+			<% @users.each do |user| %>
+				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
+			<%end%>
+			<%end%>
+			</select>
+
+			
+			<textarea class="form-control paper_printer" name="usermessagebox" cols="20" rows="8"></textarea>
+		<!-- 	<button class="send-message" type="submit">send message</button> -->
+			<button type="submit" class="btn btn-sm btn-info">Send message</button>
+		</form>
+
+
+
+			
+<!-- 			<textarea class="form-control paper_printer" name="usermessagebox" cols="20" rows="8"></textarea>
+			<button class="send-message" type="submit">send message</button>
+			<button type="submit" class="btn btn-sm btn-info">Send message</button>
+		</form> -->
+
+	</div>
+
+</div>

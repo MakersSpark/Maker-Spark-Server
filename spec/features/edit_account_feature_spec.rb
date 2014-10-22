@@ -25,13 +25,13 @@ feature "Editing a user account" do
 	scenario "can change all his personal details" do
 		editing_user
 		expect(page).to have_content('Your details have been successfully updated')
-		expect(current_path).to eq('/')
+		expect(current_path).to eq('/dashboard')
 	end
 
 	scenario "clicking on Home button leads to the home page" do
 		visit "/users/edit_user"
-		expect(page).to have_link('Spark Printer Dashboard')
-		click_link('Spark Printer Dashboard')
+		expect(page).to have_link('Spark Printer')
+		click_link('Spark Printer')
 		expect(current_path).to eq('/')
 	end
 

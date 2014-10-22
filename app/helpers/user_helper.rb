@@ -8,7 +8,7 @@ module UserHelper
 		user = User.authenticate(email,password)
 		if user 
 			session[:user_id] = user.id
-			flash[:notice]  = "Welcome back #{current_user.email}"
+			flash[:notice]  = "Welcome back, #{current_user.email}"
 		else
 			flash[:errors] = ["We couldn't find that email address – make sure it's typed correctly.", "There's something wrong with your password."]
 		end
@@ -30,7 +30,7 @@ module UserHelper
 	def success_or_error_for(cause,user)
 		if cause == "sign_in"
 			if user
-				redirect '/'  		
+				redirect '/dashboard'  		
 			else
 				redirect "/users/#{cause}"
 			end
@@ -40,7 +40,7 @@ module UserHelper
 				user_preferences = Preferences.create(user_id: user.id)
 				user_preferences.set_options(user.github_user)
 				user_flash_notice(cause)			
-				redirect '/'
+				redirect '/dashboard'
 			else
 				flash[:errors] = @user.errors.full_messages
 				redirect "/users/#{cause}" 

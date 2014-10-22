@@ -9,7 +9,7 @@ feature "User sends messages to another user" do
 	end
 
 	scenario "A user chooses the name of the receiver in a select box" do
-		visit '/'
+		visit '/dashboard'
 		select 'peter123', :from => 'receiver'
 		fill_in('usermessagebox', with: 'Hi there asdasdasd!!!!')
 		click_button('Send message')

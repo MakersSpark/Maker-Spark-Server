@@ -66,14 +66,6 @@ class SparkPrint < Sinatra::Base
 	set :partial_template_engine, :erb
 	#enable :partial_underscores
 
-  set(:auth) do |*roles|   # <- notice the splat here
-    condition do
-      unless logged_in? && roles.any? {|role| current_user.in_role? role }
-      redirect "/login/", 303
-      end
-    end
-  end
-
   post "/" do 
     card_info = JsonHandler.get_user_info(params[:data]) 
     user = User.first(rfid_code: card_info["data"])
@@ -102,10 +94,12 @@ class SparkPrint < Sinatra::Base
     
 	get '/' do
 	  @users = User.all
+    redirect '/dashboard' if @user
 	  erb :printer
 	end
 
   get '/dashboard' do
+    @users = User.all
     unless @user # do this if a user isn't logged in
       flash[:notice] = "Sorry, you need to sign in or sign up before doing that."
       redirect '/users/sign_in'
