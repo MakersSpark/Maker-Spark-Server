@@ -1,37 +1,18 @@
+
+<body class="holding-page">
 <div class="container">
+
       
-	<div class='spark'>
+	<div class='spark spark-translucent'>
 
-		<h3>SparkPrint</h3>
-	<br />
-		<form action="/printer/print" method="post">
-			<textarea class="message" name="messagebox" cols="40" rows="4"></textarea></p>
-			<button type="submit" class="btn btn-sm btn-info">Print</button>
-		</form>
-		
-	</div>
+		<h2>Welcome to Spark Printer</h2>
 
-	<br />
+		<h3>The tiny, Wi-Fi connected, RFID printer.</h3>
 
-	<% if @user %>
-	<div class='spark'>
-		<h3>Send message to a user</h3>
-		<form action="/messages/new" method="post"></p>
-			<span> Receiver:</span>
-			<select name="receiver", class="message-receiver">
-			<% @users.each do |user| %>
-				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
-			<%end%>
-			</select></p>
+		<p>Tap your card on the reader to get your calendar events, GitHub streak, and more. In the afternoon, the printer tells you useful information for your journey home, like weather for the next hour and reported transit delays.</p>
 
-			
-			<textarea class="user-message" name="usermessagebox" cols="40" rows="4"></textarea></p>
-		<!-- 	<button class="send-message" type="submit">send message</button> -->
-			<button type="submit" class="btn btn-sm btn-info">Send message</button>
-		</form>
-		
-
+		<br /><em><p>To sign up, go to your nearest Spark Printer and tap an RFID card on the reader.</p></em>
 
 	</div>
-
-	<% end %>
+</div>
+</body>
