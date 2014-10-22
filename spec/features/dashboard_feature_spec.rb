@@ -19,22 +19,22 @@ feature "using the dashboard" do
 
 		scenario "sees welcome message and a form with the preferences" do
 			expect(page).to have_css("form")
-			expect(page).to have_content("Select what you want to print")
+			expect(page).to have_content("Select what to print")
 		end
 
-		scenario "sees a box for sending messages to the printer" do
+		xscenario "sees a box for sending messages to the printer" do
 			expect(page).to have_css('textarea[name=messagebox]')
 		end
 
 
-		scenario "can see a printed successfully message, when message was sent to the printer" do 
+		xscenario "can see a printed successfully message, when message was sent to the printer" do 
 			visit '/'
 			fill_in('messagebox', with: 'hello world')
 			click_button('Print')
 			expect(page).to have_content("Successfully sent to the printer!")
 		end
 
-		scenario "can send formatted text to the printer" do 
+		xscenario "can send formatted text to the printer" do 
 			visit '/'
 			fill_in('messagebox', with: 'hello world')
 			click_button('Print')
