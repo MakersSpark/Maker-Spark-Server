@@ -1,3 +1,5 @@
+![Screenshot of server splash page](screenshot.jpg)
+
 # Spark Printer
 
 A tiny, wireless, RFID-enabled, open source personal printing platform.
