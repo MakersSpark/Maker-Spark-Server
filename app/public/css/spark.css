@@ -113,6 +113,7 @@ body {
     top: 0px;
     background-color: aliceblue;
     width: 100%;
+    z-index: 600;
 }
 
 .header h3{
@@ -185,6 +186,10 @@ z-index: 10;
 
 /* Styling forms */
 
+.wrapper_printer{
+  position: relative;
+}
+
 .header_format{
   color: whitesmoke;
   text-align: center;
@@ -209,7 +214,7 @@ textarea{
   z-index: 20;
 }
 
-.form-control:focus{
+textarea.form-control:focus{
   outline: none !important;
   box-shadow: 0 0 0;
   border: 1px solid black;
@@ -255,7 +260,12 @@ input[type=checkbox]:checked + label{
   
 }
 
-.all_options li:nth-child(even) label{
+ul.all_options {
+  text-align: left;
+}
+
+
+/*.all_options li:nth-child(even) label{
   float: left;
   position: relative;
   top: -30px;
@@ -264,7 +274,7 @@ input[type=checkbox]:checked + label{
 .all_options li:nth-child(odd):first-child label{
   position: relative;
   left: 60px;
-}
+}*/
 
 .icon-map {
   width: 32px;
