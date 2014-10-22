@@ -51,8 +51,9 @@ describe Preferences do
 		end
 
 		it "can update a user preference" do 
-			alberts_preferences.update_options("GithubData", true, "superman")
-			expect(alberts_preferences.options_hash["GithubData"]).to eq({ "print" => true, "option" => "superman" })
+			alberts_preferences.update_option("GithubData", "print", false)
+			expect(alberts_preferences.options_hash["GithubData"]).to eq({ "print" => false, "option" => nil })
+			p expect(alberts_preferences.options_hash)
 		end
 
 		it "can set the options" do

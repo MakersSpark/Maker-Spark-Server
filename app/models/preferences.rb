@@ -26,14 +26,16 @@ class Preferences
 
 	def set_options(github_username)
 		self.options = DEFAULT_OPTIONS
-		update_options("GithubData", true, github_username)
+		update_option("GithubData", "option", github_username )
 		self.save
 	end
 
-	def update_options(field, print, option)
+	def update_option(field, option_key, option_value)
 		options_hash = JSON.parse(self.options)
-		options_hash[field] = { print: print, option: option }
+		options_hash[field][option_key] = option_value 
 		self.options_hash = options_hash 
 		self.save
 	end
+
+
 end
