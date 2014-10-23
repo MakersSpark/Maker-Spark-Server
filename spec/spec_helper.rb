@@ -8,6 +8,7 @@ require 'json'
 require 'timecop'
 require 'rack/test'
 
+require "codeclimate-test-reporter"
 
 
 require_relative 'factories.rb'
@@ -30,6 +31,7 @@ include WebMock
 PRINT_URI = "https://api.spark.io/v1/devices/50ff75065067545639190387/print"
 
 
+CodeClimate::TestReporter.start
 
 Capybara.app = Rack::Builder.parse_file(File.expand_path('../../config.ru', __FILE__)).first 
 

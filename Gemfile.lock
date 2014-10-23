@@ -20,6 +20,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    codeclimate-test-reporter (0.4.1)
+      simplecov (>= 0.7.1, < 1.0.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     curb (0.8.6)
@@ -74,6 +76,7 @@ GEM
       dm-core (~> 1.2.0)
     do_postgres (0.10.14)
       data_objects (= 0.10.14)
+    docile (1.1.5)
     equalizer (0.0.9)
     eventmachine (1.0.3)
     factory_girl (4.4.0)
@@ -154,6 +157,11 @@ GEM
       thor
     shorturl (1.0.0)
     simple_oauth (0.2.0)
+    simplecov (0.9.1)
+      docile (~> 1.1.0)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -199,6 +207,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  codeclimate-test-reporter
   data_mapper
   database_cleaner
   dm-postgres-adapter

@@ -31,5 +31,6 @@ group :development, :test do
 	gem  "webmock"
 	gem "timecop"
 	gem "rack_session_access"
+	gem "codeclimate-test-reporter"
 end
 
