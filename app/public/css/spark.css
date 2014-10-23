@@ -42,11 +42,6 @@ body.holding-page .spark{
 }
 
 
-.progress_image{
-  background-image:url('/images/Spark_core_bg.jpg');
-  height: 484px;
-  margin: 0 auto;
-}
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
@@ -89,54 +84,13 @@ body.holding-page .spark{
   text-align: left;
 }
 
-.good_service {
-  color: #88A825; /* green */
-}
-
-.minor_delays {
-  color: #FF9800; /* amber */
-}
-
-.severe_delays {
-  font-weight: bold;
-  color: #CD2C24; /* red */
-}
-
-.part_suspended{
-  color: #ABC8E2; /* grey */
-}
-
-.part_closure{
-  color: #ABC8E2; /* grey */
-}
-
-.service_closed{
-  font-weight: bold;
-  color: #CD2C24; /* red */
-}
-
-.suspended{
-  font-weight: bold;
-  color:#FF9800; /* amber */
-}
-
-.planned_closure{
-  color:#FF9800; /* amber */
-}
-
-.reduced_service{
-  color:#FF9800; /* amber */
-}
-
-.bus_service{
-  color:#FF9800; /* amber */
-}
-
 .navbar{
   position: fixed; 
-  top: 0px;
+  top: 0;
+  left: 0;
   background-color: aliceblue;
   width: 100%;
+  margin: 0 auto;
   border-bottom: 1px solid grey;
   z-index: 600;
   box-shadow: 0 0 1px;
@@ -212,6 +166,10 @@ body.holding-page .spark{
 
 .hard_height{
   height: 450px;
+}
+
+.hard_height:nth-child(2){
+  min-width: 550px;
 }
 
 .dashboard_page button[name=checkbox_btn]{
@@ -338,32 +296,16 @@ ul.all_options li label span{
   font-size: 35px
 }
 
+/* tricky  styles */
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .spark {
-    border-bottom: 0;
-  }
+.btn-group{
+  display: flex !important;
+}
+.btn-group .btn{
+  margin-left: 10px
 }
 
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-    /*margin-top: 70px;*/
-    top: -120px;/*
-    padding-top: 120px; 
-  }*/
-}
+
+
+
+
