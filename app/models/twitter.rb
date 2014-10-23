@@ -10,7 +10,7 @@ class TwitterData
 
 	attr_accessor :client, :search_term
 
-	def initialize(search_term = "programming")
+	def initialize(search_term = "news")
 		@search_term = search_term
 		@client = Twitter::REST::Client.new(TWITTER_CONFIG)
 	end

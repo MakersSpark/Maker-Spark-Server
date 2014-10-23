@@ -48,4 +48,14 @@ module UserHelper
 		end
 	end
 
+	def set_user_preferences
+		user_preferences = Preferences.first(:user_id => current_user.id)
+		user_preferences.options_hash["order"].map do |setting|			
+			if user_preferences.options_hash[setting]["print"] == true
+				"checked"
+			else
+				""
+			end
+		end
+	end
 end

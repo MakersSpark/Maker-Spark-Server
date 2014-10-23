@@ -12,8 +12,8 @@ class Preferences
 
 
 	property :id,       		Serial
-	property :options, 			Text,      :lazy => false, :default => {Calendar: {print: true, option: nil} }.to_json
-	
+	property :options, 			Text,      :lazy => false, :default => DEFAULT_OPTIONS
+	property :Calendar, String
 	belongs_to :user
 
 	def options_hash

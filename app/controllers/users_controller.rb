@@ -72,7 +72,6 @@ class UsersController < SparkPrint
 			user_preferences.update_option(key, "print", true)
 		end
 		current_user.preferences.save
-		p user_preferences.options_hash
 		flash[:notice] = "Thanks – your preferences have been saved."
 		redirect '/dashboard'
 	end

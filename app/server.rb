@@ -101,6 +101,7 @@ class SparkPrint < Sinatra::Base
       flash[:notice] = "Sorry, you need to sign in or sign up before doing that."
       redirect '/users/sign_in'
     end
+    
     erb :dashboard
   end
   

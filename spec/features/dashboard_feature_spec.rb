@@ -1,5 +1,4 @@
-feature "using the dashboard" do
-	
+feature "using the dashboard" do	
 	context "a signed in user on the homepage" do
 
 		before do
@@ -65,6 +64,13 @@ feature "using the dashboard" do
 			find(:css, "input[name='GithubData']" ).set(false)
 			find(:css, "input[name='TwitterData']").set(false)
 			find(:css, "input[name='TubeStatus']" ).set(false)
+		end
+
+		scenario "a user checks the makers calendar and submits, he returns to the page and finds the makers calendar ckecked" do 
+			find(:css, "input[name='Calendar']"   ).set(true)
+			click_button('Submit')
+			visit '/dashboard'
+			expect(find("input[name='Calendar']")).to be_checked 
 		end
 	
 	end
