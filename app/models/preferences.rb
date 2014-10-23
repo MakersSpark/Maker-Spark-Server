@@ -2,12 +2,12 @@ class Preferences
 
 	include DataMapper::Resource
 
-	DEFAULT_OPTIONS = {Calendar: {print: true, option: nil},
-			 Forecast: {print: true, option: nil}, 
-			 GithubData: {print: true, option: nil}, 
-			 TubeStatus: {print: true, option: nil}, 
-			 TwitterData: {print: true, option: nil}, 
-			 GuardianNews: {print: true, option: nil},
+	DEFAULT_OPTIONS = {Calendar: {print: false, option: nil},
+			 Forecast: {print: false, option: nil}, 
+			 GithubData: {print: false, option: nil}, 
+			 TubeStatus: {print: false, option: nil}, 
+			 TwitterData: {print: false, option: nil}, 
+			 GuardianNews: {print: false, option: nil},
 			 order: [:Calendar, :Forecast, :GithubData, :TubeStatus, :TwitterData, :GuardianNews]}.to_json 
 
 

@@ -10,8 +10,9 @@ describe EventHandler2 do
 	let(:user_message2) { double :user_message, content: "I love you", sender_id: 1 }
 	let(:user_messages) { [user_message1, user_message2] }
 	let(:user_json) { preferences.options_hash}
-	let(:github_data) { double :GithubData, json: "hello"}
+	let(:github_data) { double :GithubData, json: "hello" }
 	let(:printer) { double :printer }
+	let(:sender)  { double :user, github_user: "kikrahau" }
 
 
 	before do 
@@ -28,7 +29,7 @@ describe EventHandler2 do
 	context "building messages" do
 		before do 
 			allow(Message2).to receive(:new).and_return(vincents_message)
-			allow(User).to receive(:get).and_return("kikrahau")
+			allow(User).to receive(:get).and_return(sender)
 
 		end
 
@@ -69,7 +70,7 @@ describe EventHandler2 do
 	context "user messsages" do
 		before do 
 			allow(Message2).to receive(:new).and_return(vincents_message)
-			allow(User).to receive(:get).and_return("kikrahau")
+			allow(User).to receive(:get).and_return(sender)
 			allow(vincents_message).to receive(:add_divider)
 		end
 		it "can print a message, if a user received a user message from another user" do

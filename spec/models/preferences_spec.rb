@@ -13,12 +13,12 @@ describe Preferences do
 	end 
 
 	let(:options_with_username) do  
-		    {Calendar: {print: true, option: nil},
-			 Forecast: {print: true, option: nil}, 
-			 GithubData: {print: true, option: "byverdu"}, 
-			 TubeStatus: {print: true, option: nil}, 
-			 TwitterData: {print: true, option: nil}, 
-			 GuardianNews: {print: true, option: nil},
+		    {Calendar: {print: false, option: nil},
+			 Forecast: {print: false, option: nil}, 
+			 GithubData: {print: false, option: "byverdu"}, 
+			 TubeStatus: {print: false, option: nil}, 
+			 TwitterData: {print: false, option: nil}, 
+			 GuardianNews: {print: false, option: nil},
 			 order: [:Calendar, :Forecast, :GithubData, :TubeStatus, :TwitterData, :GuardianNews]}.to_json 			 
 	end 
 
