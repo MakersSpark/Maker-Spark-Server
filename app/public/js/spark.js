@@ -25,18 +25,19 @@ $(document).ready(function() {
         
     actual_count = (96-count);
 
-    total_count.text('Words left ' + actual_count);
+    total_count.text(actual_count + ' characters left');
 
     if(actual_count <= 10) total_count.css('color', 'red');
 
   });
 
-  // Add selected Github user to textarea
 
-  $( ".paper_printer" ).focus(function() {
+ //  // Add selected Github user to textarea
+
+ //  $( ".paper_printer" ).focus(function() {
   	
-  	$(this).text('Hi ' + $('select').val()+ '!!')
-	});
+ //  	$(this).text('Hi ' + $('select').val()+ '!!')
+	// });
 
 
   // Collapsing input for search term
@@ -44,7 +45,7 @@ $(document).ready(function() {
   $('#SearchTerm').hide();
 
   $('#TwitterData').click(function() {
-  	$('#SearchTerm').fadeIn('slow').toggle(this.checked);
+  	$('#SearchTerm').fadeIn('slow').toggle(this.checked)
   });
 
 });

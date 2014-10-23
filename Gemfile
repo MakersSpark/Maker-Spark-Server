@@ -17,7 +17,7 @@ gem 'json'
 gem 'rest-client'
 gem "twitter"
 gem "shorturl"
-gem "service_disruption"
+gem "service_disruption", "0.1.0"
 gem 'twilio-ruby'
 
 

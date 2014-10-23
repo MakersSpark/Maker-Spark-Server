@@ -10,9 +10,10 @@ body {
 }
 
 body.dashboard_page{
-  background: url(http://wallpaperest.com/wallpapers/wood-background-texture_780987.jpg) no-repeat center center fixed; 
+  background: url(/images/back_dash.jpg);
+    background-position: center center;
   background-size: cover;
-  min-width: 620px;
+  background-repeat:no-repeat; 
 }
 
 .navbar-brand{
@@ -28,6 +29,11 @@ body.holding-page {
   filter: grayscale(100%);
 }
 
+body.holding-page .spark{
+  background: rgba(240,248,255,0.9);
+  color: black;
+}
+
 .spark-translucent {
   /*filter: blur(50px);*/
   opacity: 0.8;
@@ -35,16 +41,7 @@ body.holding-page {
   top:50%;
 }
 
-/*.container{
-  max-width: none !important;
-  width: 970px;
-}*/
 
-.progress_image{
-  background-image:url('/images/Spark_core_bg.jpg');
-  height: 484px;
-  margin: 0 auto;
-}
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
@@ -87,54 +84,13 @@ body.holding-page {
   text-align: left;
 }
 
-.good_service {
-  color: #88A825; /* green */
-}
-
-.minor_delays {
-  color: #FF9800; /* amber */
-}
-
-.severe_delays {
-  font-weight: bold;
-  color: #CD2C24; /* red */
-}
-
-.part_suspended{
-  color: #ABC8E2; /* grey */
-}
-
-.part_closure{
-  color: #ABC8E2; /* grey */
-}
-
-.service_closed{
-  font-weight: bold;
-  color: #CD2C24; /* red */
-}
-
-.suspended{
-  font-weight: bold;
-  color:#FF9800; /* amber */
-}
-
-.planned_closure{
-  color:#FF9800; /* amber */
-}
-
-.reduced_service{
-  color:#FF9800; /* amber */
-}
-
-.bus_service{
-  color:#FF9800; /* amber */
-}
-
 .navbar{
   position: fixed; 
-  top: 0px;
+  top: 0;
+  left: 0;
   background-color: aliceblue;
   width: 100%;
+  margin: 0 auto;
   border-bottom: 1px solid grey;
   z-index: 600;
   box-shadow: 0 0 1px;
@@ -155,8 +111,9 @@ body.holding-page {
   text-align: center;
   position: relative;
   border-radius: 5px;
-  background: rgba(240,248,255,0.6);
+  background: rgba(0,0,0,0.2);
   box-shadow: 0 0 2px;
+  color: whitesmoke;
 }
 
 .navbutton{
@@ -181,13 +138,7 @@ body.holding-page {
   margin-top:0px;
 }
 
-/*.spark h2{
-  position: absolute;
-top: 60px;
-left: 290px;
-color: whitesmoke;
-z-index: 10;
-}*/
+      
 
 .spark ul,li{
   list-style: none;
@@ -217,8 +168,12 @@ z-index: 10;
   height: 450px;
 }
 
-.hard_height button:first-of-type(){
-  margin-left:  15px
+.hard_height:nth-child(2){
+  min-width: 550px;
+}
+
+.dashboard_page button[name=checkbox_btn]{
+  margin-top:  30px;
 }
 
 .header_format{
@@ -257,7 +212,7 @@ textarea.form-control:focus{
 
 .send_message{
   position: relative;
-  top: -90px;
+  top: -88px;
   left: -60px
 }
 
@@ -274,7 +229,7 @@ select{
   width: 390px;
   height: 250px;
   position: relative;
-  top: 30px;
+  top: 60px;
   margin: 0 auto
 }
 
@@ -285,12 +240,14 @@ select{
 }
 
 .total_count{
-  color: green;
+  color: #80FF00; 
   position: relative;
   top: -25px;
   font-size: 20px;
-  left: -145px;
+  left: -125px;
 }
+
+
 
 
 /* Styling the select boxes */
@@ -301,93 +258,54 @@ top: -9999px;
 left: -9999px;
 }
 
-input[type=checkbox] + label{
+input[type=checkbox] + label i{
   
-  color: red
+  color: #999999;
 }
 
-input[type=checkbox]:checked + label{
+input[type=checkbox]:checked + label i{
 
-  color: green;  
+  color: #80FF00;  
   
 }
 
 ul.all_options {
   text-align: left;
-  width: 210px;
+  width: 180px;
   margin: 0 auto;
+  padding: 0px;
 }
 
-
-/*.all_options li:nth-child(even) label{
-  float: left;
-  position: relative;
-  top: -30px;
-}
-
-.all_options li:nth-child(odd):first-child label{
-  position: relative;
-  left: 60px;
-}*/
-
-.icon-map {
-  width: 32px;
-  height: 32px;
-}
-.icon-calendar {
-  width: 32px;
-  height: 32px;
-  color: red
-}
-.icon-print {
-  width: 32px;
-  height: 32px;
-}
-.icon-cloud {
-  width: 32px;
-  height: 32px;
-}
-.icon-news {
-  width: 32px;
-  height: 32px;
-}
-
-/*@media screen and (max-width: 1000px){
-
-  ul.all_options {
-  text-align: center;
-  }
-
-  ul.all_options li {
+ul.all_options li label span{
+  margin-left: 15px;
   text-align: left;
-  }
-}*/
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .spark {
-    border-bottom: 0;
-  }
+  display: inline;
 }
 
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-    /*margin-top: 70px;*/
-    top: -120px;/*
-    padding-top: 120px; 
-  }*/
+.fa-calendar,
+.fa-twitter {
+  font-size: 33px
 }
+
+.fa-newspaper{
+  font-size: 27px;
+}
+
+.fa-github,
+.fa-bus{
+  font-size: 35px
+}
+
+/* tricky  styles */
+
+.btn-group{
+  display: flex !important;
+}
+.btn-group .btn{
+  margin-left: 10px
+}
+
+
+
+
+

@@ -9,6 +9,7 @@
 		<ul class="all_options">
 
 		<li>
+<<<<<<< HEAD
 		  <input type="checkbox" id="Calendar" name="calendar" <%= "checked" if @user.preferences.calendar%> >
 			<label for="Calendar"><i class="fa fa-calendar fa-2x"></i><span> Makers Calendar</span></label>
 		</li>
@@ -28,17 +29,43 @@
 		<li>	
 			<input type="checkbox" id="TwitterData" name="twitter_data"<%= "checked" if @user.preferences.twitter_data%>>
 			<label for="TwitterData"><i class="fa fa-twitter fa-2x"></i> <span>Trending on Twitter</span></label>
+=======
+		  <input type="checkbox" id="Calendar" name="Calendar" <%=set_user_preferences[0]%> >
+			<label for="Calendar"><i class="fa fa-calendar fa-2x"></i><span>Makers Calendar</span></label>
+		</li>
+
+		<li>	
+			<input type="checkbox" id="Forecast" name="Forecast"<%=set_user_preferences[1]%>>
+			<label for="Forecast"><i class="fa fa-cloud fa-2x"></i><span>Forecast</span></label>  
+    	</li>
+		<li>	
+			<input type="checkbox" id="GithubData" name="GithubData"<%=set_user_preferences[2]%>>
+			<label for="GithubData"><i class="fa fa-github fa-2x"></i><span>GitHub stats</span></label>
+    </li>
+		<li>	
+			<input type="checkbox" id="TubeStatus" name="TubeStatus"<%=set_user_preferences[3]%>>
+			<label for="TubeStatus"><i class="fa fa-bus fa-2x"></i><span>Tube status</span></label>
+    </li>
+		<li>	
+			<input type="checkbox" id="TwitterData" name="TwitterData"<%=set_user_preferences[4]%>>
+			<label for="TwitterData"><i class="fa fa-twitter fa-2x"></i><span>Trending on Twitter</span></label>
+>>>>>>> f2cf457aa9c6f20af6efc6b1f9975e885666749c
     </li>	
     <li id="SearchTerm">
     	<input type="text" name="twitter_search_term" placeholder="Search Term">
     </li>
 		<li>	
+<<<<<<< HEAD
 			<input type="checkbox" id="GuardianNews"  name="guardian_news"<%= "checked" if @user.preferences.guardian_news%>>
 			<label for="GuardianNews"><i class="fa fa-newspaper-o fa-2x"></i> <span>Latest headlines</span></label>
+=======
+			<input type="checkbox" id="GuardianNews"  name="GuardianNews"<%=set_user_preferences[5]%>>
+			<label for="GuardianNews"><i class="fa fa-newspaper-o fa-2x"></i><span>Latest headlines</span></label>
+>>>>>>> f2cf457aa9c6f20af6efc6b1f9975e885666749c
     </li>	
 		</ul>
 
-			<button type="submit" class="btn btn-sm btn-info">Submit</button>
+			<button type="submit" name="checkbox_btn" class="btn btn-sm btn-info">Submit</button>
 			
 		</form>
 
@@ -56,11 +83,11 @@
 		
 			<% if @user %>
 	<div class="fake_printer">
-			<span class="total_count">Words left 96</span>
+			<span class="total_count">96 characters left</span>
 		<h3 class="send_message">Send message to a user <i class="fa fa-hand-o-right"></i></h3>
 		<form class="form_print" action="/messages/new" method="post">
 			<select name="receiver" class="message-receiver">
-				<option></option>
+				<option value="Receiver">Receiver</option>
 			<% @users.each do |user| %>
 				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
 			<%end%>
@@ -79,6 +106,9 @@
 			<button class="send-message" type="submit">send message</button>
 			<button type="submit" class="btn btn-sm btn-info">Send message</button>
 		</form> -->
+
+
+
 
 
 

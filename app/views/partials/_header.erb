@@ -1,33 +1,28 @@
-<div class="navbar navbar-default" role="navigation">
-		<div class="container">
-        <div class="navbar-header">
-          
-          <a class="navbar-brand" href="/"><i class="fa fa-print"></i>   Spark Printer</a>
-        </div>
-        <div class="navbar-collapse collapse">
-	        <div class="form-group">
-					<% if current_user %>
+<header class="container-fluid navbar">
+
+	<div class="container">
+ 	
+	<a class="navbar-brand" href="/"><i class="fa fa-print"></i>   Spark Printer</a>
+	
+	<div  class="btn-group pull-right">
+						<% if current_user %>
 
 						<form class="navbar-form navbar-right" role="form" action="/users" method="post">
 							<input type="hidden" name="_method" value="delete">
-							<button type="submit" class="btn btn-default">Log out</button>
+							<button type="submit" class="btn btn-sm btn-default">Log out</button>
 						</form>
-
-						<form class="navbar-form navbar-right">
-							<a href="/users/edit_user" class="btn btn-info">Edit account</a>
-						</form>
+						
+						<div class="navbar-form navbar-right">						
+							<a href="/users/edit_user" class="btn btn-sm btn-info">Edit account</a>
+						</div>
 
           <% else %>
-
-	          <form class="navbar-form navbar-right">
-		          <a href='/users/sign_in' class="btn btn-sm btn-info navbutton">Sign in</a>
-	          </form>
-	          <!-- <form class="navbar-form navbar-right">
-		          <a href='/users/sign_up' class="btn btn-sm btn-info navbutton">Sign up</a>
-	          </form> -->
-
+						<div class="navbar-form navbar-right">
+		          <a href='/users/sign_in' class="btn btn-sm btn-info">Sign in</a>
+            </div>
+	          
 					<% end %>
-					</div>	
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div>
+	</div>
+ </div>
+	
+</header>
