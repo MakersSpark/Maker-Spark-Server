@@ -37,7 +37,6 @@ module UserHelper
 		else
 			if user.save
 				session[:user_id] = user.id
-				puts "xxxxxx"*20
 				user_preferences = Preferences.create(user_id: user.id)
 				user_preferences.update(github_username: user.github_user)
 				user_flash_notice(cause)			
