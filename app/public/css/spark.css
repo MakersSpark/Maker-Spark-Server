@@ -12,6 +12,7 @@ body {
 body.dashboard_page{
   background: url(http://wallpaperest.com/wallpapers/wood-background-texture_780987.jpg) no-repeat center center fixed; 
   background-size: cover;
+  min-width: 620px;
 }
 
 .navbar-brand{
@@ -216,6 +217,10 @@ z-index: 10;
   height: 450px;
 }
 
+.hard_height button:first-of-type(){
+  margin-left:  15px
+}
+
 .header_format{
   color: whitesmoke;
   text-align: center;
@@ -252,13 +257,14 @@ textarea.form-control:focus{
 
 .send_message{
   position: relative;
-  top: -50px;
+  top: -90px;
+  left: -60px
 }
 
 select{
   position: relative;
-  top: -85px;
-  left: 250px;
+  top: -125px;
+  left: 230px;
 }
 
 .fake_printer{
@@ -268,21 +274,22 @@ select{
   width: 390px;
   height: 250px;
   position: relative;
-  top: -10px;
+  top: 30px;
   margin: 0 auto
 }
 
 .form_print button{
-  margin-left: 410px;
-  margin-top: 212px; 
+  position: relative; 
+  top: -85px;
+  left: 139px;
 }
 
 .total_count{
   color: green;
   position: relative;
-  top: 300px;
+  top: -25px;
   font-size: 20px;
-  left: -240px;
+  left: -145px;
 }
 
 
@@ -307,6 +314,8 @@ input[type=checkbox]:checked + label{
 
 ul.all_options {
   text-align: left;
+  width: 210px;
+  margin: 0 auto;
 }
 
 
@@ -342,6 +351,18 @@ ul.all_options {
   width: 32px;
   height: 32px;
 }
+
+/*@media screen and (max-width: 1000px){
+
+  ul.all_options {
+  text-align: center;
+  }
+
+  ul.all_options li {
+  text-align: left;
+  }
+}*/
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
