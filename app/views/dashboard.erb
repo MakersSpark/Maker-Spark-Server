@@ -60,7 +60,7 @@
 		<h3 class="send_message">Send message to a user <i class="fa fa-hand-o-right"></i></h3>
 		<form class="form_print" action="/messages/new" method="post">
 			<select name="receiver" class="message-receiver">
-				<option></option>
+				<option value="Receiver">Receiver</option>
 			<% @users.each do |user| %>
 				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
 			<%end%>
@@ -79,6 +79,18 @@
 			<button class="send-message" type="submit">send message</button>
 			<button type="submit" class="btn btn-sm btn-info">Send message</button>
 		</form> -->
+
+
+<!-- Small button group -->
+<div class="btn-group">
+  <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+    Small button <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li>potato</li>
+    <li>potato</li>
+  </ul>
+</div>
 
 
 

@@ -314,8 +314,9 @@ input[type=checkbox]:checked + label{
 
 ul.all_options {
   text-align: left;
-  width: 210px;
+  width: 170px;
   margin: 0 auto;
+  padding: 0px;
 }
 
 

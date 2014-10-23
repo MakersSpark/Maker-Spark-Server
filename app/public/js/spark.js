@@ -44,7 +44,7 @@ $(document).ready(function() {
   $('#SearchTerm').hide();
 
   $('#TwitterData').click(function() {
-  	$('#SearchTerm').fadeIn('slow').toggle(this.checked);
+  	$('#SearchTerm').fadeIn('slow').toggle(this.checked)
   });
 
 });
