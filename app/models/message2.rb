@@ -32,6 +32,11 @@ class Message2
 			{format: "CENTRE", text: formatter.shorten("http://spark-print-staging.herokuapp.com/users/sign_up_with/#{rfid_code}")}])
 	end
 
+	def add_user_message(content, sender)
+		add_lines([{format: "TEXT", text: "#{sender} sent:"}])
+		add_lines([{format: "TEXT", text: "#{content}"}])
+	end
+
 	def morning_time
 		Time.now.strftime('%H.%M').to_f < 12.30
 	end

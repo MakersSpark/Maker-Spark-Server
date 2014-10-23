@@ -39,6 +39,7 @@ class EventHandler2
 
 	def create_class_instance(print_key,options)
 		param = options[print_key]["option"]
+		puts param
 		if param 
 			eval("#{print_key}.new('#{param}')")
 		else 

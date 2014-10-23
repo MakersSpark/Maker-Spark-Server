@@ -48,6 +48,13 @@ describe User do
 							   password_confirmation: "oranges")}
 
 
+User.create(email: "benjamino@test.com",
+rfid_code: '123124',
+github_user: 'benjamintillett',
+password: "oranges", 
+password_confirmation: "oranges")
+
+
 	before do
 		stub_request(:any, "https://github.com/users/byverdu/contributions")
 		stub_request(:any, "https://github.com/users/benjamintillett/contributions")

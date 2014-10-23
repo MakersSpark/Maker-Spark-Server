@@ -4,7 +4,7 @@ describe TwitterData do
 
  stub_request(:get, "https://api.twitter.com/1.1/users/show.json?screen_name=byverdu").
  with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'OAuth oauth_consumer_key="ymoMOzQlG4OBX4bfSwX3gHSDa", oauth_nonce="45224b5499e9786d1fb874f2ac0bcb8d", oauth_signature="aOOzEFygRvfmSbalrCRtXY1zv%2BQ%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1414078260", oauth_token="223114717-b85z1pHpiB9Eg9raxUBRClQHJjYthslMhI3o8UWh", oauth_version="1.0"', 'User-Agent'=>'Twitter Ruby Gem 5.11.0'})
- let(:search_term) { "programming"  }
+ let(:search_term) { "news"  }
  let(:user1) { double :user, name: "Albertino"}
  let(:user2) { double :user, name: "BenjaminoTilleto"}
  let(:user3) { double :user, name: "vinzenzo"}
@@ -43,7 +43,7 @@ describe TwitterData do
 
 	  it "can find the most popular tweets for a specific search term" do 
 	 		expect(client).to receive(:search).with(search_term,options={result_type: 'popular'}).and_return(search_results)
-	 		twitter_data.search_popular_tweets("programming")
+	 		twitter_data.search_popular_tweets("news")
 	  end
 
 	  it "can grab the first 3 most popular tweets and put them in a hash" do
