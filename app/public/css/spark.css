@@ -172,8 +172,12 @@ body.holding-page .spark{
   min-width: 550px;
 }
 
-.dashboard_page button[name=checkbox_btn]{
+#checkbox_btn{
   margin-top:  30px;
+}
+
+input[placeholder*='Search']{
+  margin-bottom: 15px;
 }
 
 .header_format{
@@ -184,6 +188,9 @@ body.holding-page .spark{
 .header_format:not(h1){
   color: black
 }
+
+/* Textarea and fake_printer section */
+
 
 textarea{
   resize: none;
@@ -219,8 +226,14 @@ textarea.form-control:focus{
 select{
   position: relative;
   top: -125px;
-  left: 230px;
+  left: 248px;
+  width: 105px;
+  height: 29px;
 }
+
+
+
+
 
 .fake_printer{
   background-image: url(/images/printer.png);
@@ -250,7 +263,7 @@ select{
 
 
 
-/* Styling the select boxes */
+/* Styling the checkboxes */
 
 input[type=checkbox] {
 position: absolute;
@@ -271,7 +284,7 @@ input[type=checkbox]:checked + label i{
 
 ul.all_options {
   text-align: left;
-  width: 180px;
+  width: 185px;
   margin: 0 auto;
   padding: 0px;
 }
@@ -298,10 +311,10 @@ ul.all_options li label span{
 
 /* tricky  styles */
 
-.btn-group{
+header .btn-group{
   display: flex !important;
 }
-.btn-group .btn{
+header .btn-group .btn{
   margin-left: 10px
 }
 

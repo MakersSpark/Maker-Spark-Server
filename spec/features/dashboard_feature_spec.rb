@@ -44,7 +44,7 @@ feature "using the dashboard" do
 			visit '/'
 			expect(page).to have_selector('.message-receiver')
 			within(:css, '.message-receiver') {
-				expect(page).to have_content('byverdu')
+				expect(page).to have_content('Receiver')
 			}
 		end
 
