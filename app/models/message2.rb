@@ -1,4 +1,4 @@
-class Message2 
+class Message
 	attr_reader :lines, :formatter
 
 	def initialize

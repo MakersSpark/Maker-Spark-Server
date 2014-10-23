@@ -59,18 +59,18 @@ feature "using the dashboard" do
 		end
 
 		scenario "the user sees an unchecked boxes for all the possible preferences" do
-			find(:css, "input[name='Calendar']"   ).set(false)
-			find(:css, "input[name='Forecast']"   ).set(false)
-			find(:css, "input[name='GithubData']" ).set(false)
-			find(:css, "input[name='TwitterData']").set(false)
-			find(:css, "input[name='TubeStatus']" ).set(false)
+			find(:css, "input[name='calendar']"   ).set(false)
+			find(:css, "input[name='forecast']"   ).set(false)
+			find(:css, "input[name='github_data']" ).set(false)
+			find(:css, "input[name='twitter_data']").set(false)
+			find(:css, "input[name='tube_status']" ).set(false)
 		end
 
 		scenario "a user checks the makers calendar and submits, he returns to the page and finds the makers calendar ckecked" do 
-			find(:css, "input[name='Calendar']"   ).set(true)
+			find(:css, "input[name='calendar']"   ).set(true)
 			click_button('Submit')
 			visit '/dashboard'
-			expect(find("input[name='Calendar']")).to be_checked 
+			expect(find("input[name='calendar']")).to be_checked 
 		end
 	
 	end

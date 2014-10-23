@@ -2,6 +2,7 @@ class EventHandler2
 
 	attr_accessor :rfid_data, :message, :user, :user_messages
 
+
 	def initialize(my_json, user)
 		@rfid_data = my_json
 		@user = user

@@ -6,27 +6,6 @@ feature "Users changing their print settings" do
 		sign_in
 	end
 
-	xscenario "checking all the boxes and press submit changes that user's database entry" do
-		visit '/dashboard'
-		check 'Calendar'
-		check 'Forecast'
-		check 'GithubData'
-		check 'TubeStatus'
-		check 'TwitterData'
-		check 'GuardianNews'
-		click_button 'Submit'
-		expect(User.first.options).to eq(
-			{Calendar: {print: true, option: nil},
-			 Twitter: {print: true, option: nil}, 
-			 Forecast: {print: true, option: nil}, 
-			 GithubData: {print: true, option: nil}, 
-			 TubeStatus: {print: true, option: nil}, 
-			 TwitterData: {print: true, option: nil}, 
-			 GuardianNews: {print: true, option: nil},
-			 order: [:Calendar, :Forecast, :GitHubData, :TubeStatus, :TwitterData, :GuardianNews]}
-			 )
-	end
-
 	scenario "unchecking all the boxes and press submit changes that user's database entry" do
 		visit '/dashboard'
 		uncheck 'Calendar'
@@ -36,16 +15,10 @@ feature "Users changing their print settings" do
 		check 'TwitterData'
 		check 'GuardianNews'
 		click_button 'Submit'
-		# p page.body
-		expect(Preferences.first.options_hash).to eq(
-			{"Calendar" => {"print" => false, "option" => nil},
-			 "Forecast" => {"print" => false, "option" => nil}, 
-			 "GithubData" => {"print" => false, "option" => "byverdu"}, 
-			 "TubeStatus" => {"print" => false, "option" => nil}, 
-			 "TwitterData" => {"print" => true, "option" => nil}, 
-			 "GuardianNews" => {"print" =>true, "option" => nil},
-			 "order" => ["Calendar", "Forecast", "GithubData", "TubeStatus", "TwitterData", "GuardianNews"]}
-			 )
+		expect(Preferences.first.twitter_data).to eq true
+		expect(Preferences.first.guardian_news).to eq true
+		expect(Preferences.first.tube_status).to eq false
+
 	end
 
 	xscenario "a user presses submit and sees a message confirming their options have been saved" do
