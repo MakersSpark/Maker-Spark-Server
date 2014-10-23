@@ -51,7 +51,7 @@ class EventHandler2
 		user_messages = UserMessage.all(user_id: user.id)
 		user_messages.each do |user_message|
 			sender= User.get(user_message.sender_id)
-			message.add_user_message(user_message.content,sender)
+			message.add_user_message(user_message.content,sender.github_user)
 		end
 		message.add_lines([{format: "CENTRE", text: "No messages today. Poor you!"}]) if user_messages == []
 		message.add_divider
