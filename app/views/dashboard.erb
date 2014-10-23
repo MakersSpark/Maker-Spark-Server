@@ -63,7 +63,9 @@
 			<select name="receiver" class="message-receiver">
 				<option value="Receiver">Receiver</option>
 			<% @users.each do |user| %>
-				<option value="<%= user.github_user%>" ><%= user.github_user%></option>
+				<% unless user == current_user %>
+					<option value="<%= user.github_user%>" ><%= user.github_user%></option>
+				<% end %>
 			<%end%>
 			<%end%>
 			</select>
