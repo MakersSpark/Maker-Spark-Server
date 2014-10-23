@@ -1,7 +1,8 @@
 class Formatter2
 	
 	def split_string(string)
-		string.chars.each_slice(32).map(&:join)
+		str_no_curly_quotes = replace_curly_quotes(string)
+		str_no_curly_quotes.chars.each_slice(32).map(&:join)
 	end
 
 	def format_line(array_of_hashes)
@@ -15,4 +16,9 @@ class Formatter2
 		ShortURL.shorten(url, :tinyurl)
 	end
 	
+	def replace_curly_quotes(string)
+		string.gsub(/[\u2018\u2019]/, "'")
+	end
 end
+
+# gsub(/[\u2018\u2019]/, "'")
