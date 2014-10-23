@@ -29,6 +29,11 @@ body.holding-page {
   filter: grayscale(100%);
 }
 
+body.holding-page .spark{
+  background: rgba(240,248,255,0.9);
+  color: black;
+}
+
 .spark-translucent {
   /*filter: blur(50px);*/
   opacity: 0.8;
@@ -152,7 +157,6 @@ body.holding-page {
   text-align: center;
   position: relative;
   border-radius: 5px;
-  /*background: rgba(240,248,255,0.4);*/
   background: rgba(0,0,0,0.2);
   box-shadow: 0 0 2px;
   color: whitesmoke;
