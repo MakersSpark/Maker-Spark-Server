@@ -10,9 +10,10 @@ body {
 }
 
 body.dashboard_page{
-  background: url(http://wallpaperest.com/wallpapers/wood-background-texture_780987.jpg) no-repeat center center fixed; 
+  background: url(/images/back_dash.jpg);
+    background-position: center center;
   background-size: cover;
-  min-width: 620px;
+  background-repeat:no-repeat; 
 }
 
 .navbar-brand{
@@ -35,10 +36,6 @@ body.holding-page {
   top:50%;
 }
 
-/*.container{
-  max-width: none !important;
-  width: 970px;
-}*/
 
 .progress_image{
   background-image:url('/images/Spark_core_bg.jpg');
@@ -155,8 +152,10 @@ body.holding-page {
   text-align: center;
   position: relative;
   border-radius: 5px;
-  background: rgba(240,248,255,0.6);
+  /*background: rgba(240,248,255,0.4);*/
+  background: rgba(0,0,0,0.2);
   box-shadow: 0 0 2px;
+  color: whitesmoke;
 }
 
 .navbutton{
@@ -181,13 +180,7 @@ body.holding-page {
   margin-top:0px;
 }
 
-/*.spark h2{
-  position: absolute;
-top: 60px;
-left: 290px;
-color: whitesmoke;
-z-index: 10;
-}*/
+      
 
 .spark ul,li{
   list-style: none;
@@ -217,8 +210,8 @@ z-index: 10;
   height: 450px;
 }
 
-.hard_height button:first-of-type(){
-  margin-left:  15px
+.dashboard_page button[name=checkbox_btn]{
+  margin-top:  30px;
 }
 
 .header_format{
@@ -257,7 +250,7 @@ textarea.form-control:focus{
 
 .send_message{
   position: relative;
-  top: -90px;
+  top: -88px;
   left: -60px
 }
 
@@ -274,7 +267,7 @@ select{
   width: 390px;
   height: 250px;
   position: relative;
-  top: 30px;
+  top: 60px;
   margin: 0 auto
 }
 
@@ -285,12 +278,14 @@ select{
 }
 
 .total_count{
-  color: green;
+  color: #80FF00; 
   position: relative;
   top: -25px;
   font-size: 20px;
   left: -145px;
 }
+
+
 
 
 /* Styling the select boxes */
@@ -301,68 +296,44 @@ top: -9999px;
 left: -9999px;
 }
 
-input[type=checkbox] + label{
+input[type=checkbox] + label i{
   
-  color: red
+  color: #999999;
 }
 
-input[type=checkbox]:checked + label{
+input[type=checkbox]:checked + label i{
 
-  color: green;  
+  color: #80FF00;  
   
 }
 
 ul.all_options {
   text-align: left;
-  width: 170px;
+  width: 180px;
   margin: 0 auto;
   padding: 0px;
 }
 
-
-/*.all_options li:nth-child(even) label{
-  float: left;
-  position: relative;
-  top: -30px;
-}
-
-.all_options li:nth-child(odd):first-child label{
-  position: relative;
-  left: 60px;
-}*/
-
-.icon-map {
-  width: 32px;
-  height: 32px;
-}
-.icon-calendar {
-  width: 32px;
-  height: 32px;
-  color: red
-}
-.icon-print {
-  width: 32px;
-  height: 32px;
-}
-.icon-cloud {
-  width: 32px;
-  height: 32px;
-}
-.icon-news {
-  width: 32px;
-  height: 32px;
-}
-
-/*@media screen and (max-width: 1000px){
-
-  ul.all_options {
-  text-align: center;
-  }
-
-  ul.all_options li {
+ul.all_options li label span{
+  margin-left: 15px;
   text-align: left;
-  }
-}*/
+  display: inline;
+}
+
+.fa-calendar,
+.fa-twitter {
+  font-size: 33px
+}
+
+.fa-newspaper{
+  font-size: 27px;
+}
+
+.fa-github,
+.fa-bus{
+  font-size: 35px
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
