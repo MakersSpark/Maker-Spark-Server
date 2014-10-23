@@ -225,7 +225,7 @@ DEPENDENCIES
   rest-client
   ri_cal
   rspec
-  service_disruption
+  service_disruption (~> 1.0.0)
   shorturl
   sinatra
   sinatra-flash
