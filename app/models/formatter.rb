@@ -1,4 +1,4 @@
-class Formatter2
+class Formatter
 	
 	def split_string(string)
 		str_no_curly_quotes = replace_curly_quotes(string)
@@ -19,6 +19,8 @@ class Formatter2
 	def replace_curly_quotes(string)
 		string.gsub(/[\u2018\u2019]/, "'")
 	end
-end
 
-# gsub(/[\u2018\u2019]/, "'")
+	def replace_html_tags(string)
+		CGI::unescapeHTML(string.gsub(/<\/?[^>]*>/," "))
+	end
+end

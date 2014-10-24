@@ -18,7 +18,5 @@ describe Printer do
 		printer.print(message)
 		expect(a_http_request("TEXT","hello")).to have_been_made
 		expect(a_http_request("BOLD","I love you")).to have_been_made
-	end
-
-	
+	end	
 end

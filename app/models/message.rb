@@ -1,9 +1,9 @@
-class Message2 
+class Message
 	attr_reader :lines, :formatter
 
 	def initialize
 		@lines = []
-		@formatter = Formatter2.new
+		@formatter = Formatter.new
 	end
 
 	def add_lines(array_of_lines)
@@ -30,6 +30,7 @@ class Message2
 		add_lines([{format: "CENTRE", text: "Please sign up at:"},
 			{format: "TEXT", text: " "},
 			{format: "CENTRE", text: formatter.shorten("http://spark-print-staging.herokuapp.com/users/sign_up_with/#{rfid_code}")}])
+		add_divider
 	end
 
 	def add_user_message(content, sender)
