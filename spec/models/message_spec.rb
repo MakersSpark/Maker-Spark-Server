@@ -18,7 +18,7 @@ describe Message do
 	end
 
 	it "should have an instance method of a formatter class" do 
-		expect(message.formatter).to be_a Formatter2
+		expect(message.formatter).to be_a Formatter
 	end
 
 	it "only adds texts smaller than 32 characters to lines" do 

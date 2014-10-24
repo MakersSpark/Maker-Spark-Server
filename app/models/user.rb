@@ -13,14 +13,7 @@ class User
 	property :github_user,		String		
 	property :rfid_code,        String
 	property :password_digest,  Text
-	property :options, 			Text, :lazy => false, :default => {Calendar: {print: true, option: nil},
-			 Forecast: {print: true, option: nil}, 
-			 GithubData: {print: true, option: nil }, 
-			 TubeStatus: {print: true, option: nil}, 
-			 TwitterData: {print: true, option: nil}, 
-			 GuardianNews: {print: true, option: nil},
-			 order: [:Calendar, :Forecast, :GithubData, :TubeStatus, :TwitterData, :GuardianNews]}.to_json
-
+	
 	has n, :UserMessages
 	has 1, :preferences
 	
@@ -62,17 +55,4 @@ class User
 	def destroy_all_user_messages
 		self.UserMessages.all.destroy
 	end
-
-	def options_hash
-		JSON.parse(options)
-	end
-
-	def options_hash=(hash)
-		self.options = hash.to_json
-	end
-
-
-
-
-
 end
