@@ -10,7 +10,7 @@ class EventHandler
 	end
 
 	def build_objects 
-	 	[
+	 	array = [
 		 (Calendar.new if user.preferences.calendar == true),
 		 (TwitterData.new(user.preferences.twitter_search_term) if user.preferences.twitter_data == true),
 		 (GithubData.new(user.github_user) if user.preferences.github_data == true),
@@ -19,6 +19,8 @@ class EventHandler
 		 (GuardianNews.new if user.preferences.guardian_news == true),
 		 (MyGoogleDirections.new(user.preferences.google_search_maps) if user.preferences.google_maps == true)
 		].compact
+		puts "--"*20
+		puts array 
 	end
 
 	def add_user_options
