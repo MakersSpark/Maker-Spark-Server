@@ -2,8 +2,7 @@ class Formatter
 	
 	def split_string(string)
 		str_no_curly_quotes = replace_curly_quotes(string)
-		replace_html_tags(str_no_curly_quotes)
-		replace_html_tags.chars.each_slice(32).map(&:join)
+		str_no_curly_quotes.chars.each_slice(32).map(&:join)
 	end
 
 	def format_line(array_of_hashes)
@@ -18,7 +17,8 @@ class Formatter
 	end
 	
 	def replace_curly_quotes(string)
-		string.gsub(/[\u2018\u2019]/, "'")
+		string_without_curly = string.gsub(/[\u2018\u2019]/, "'")
+		CGI::unescapeHTML(string_without_curly.gsub(/<\/?[^>]*>/," "))
 	end
 
 	def replace_html_tags(string)
