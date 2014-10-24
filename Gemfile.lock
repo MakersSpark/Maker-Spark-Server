@@ -187,6 +187,8 @@ GEM
       memoizable (~> 0.4.0)
       naught (~> 1.0)
       simple_oauth (~> 0.2.0)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
     uuidtools (2.1.5)
     warden (1.2.3)
       rack (>= 1.0)
@@ -227,5 +229,6 @@ DEPENDENCIES
   timecop
   twilio-ruby
   twitter
+  tzinfo
   warden
   webmock

@@ -13,8 +13,8 @@ require 'htmlentities'
 require 'shorturl'
 require 'service_disruption'
 require 'twilio-ruby'
-
 require "twitter"
+require 'tzinfo'
 
 
 
@@ -67,7 +67,7 @@ class SparkPrint < Sinatra::Base
     card_info = JsonHandler.get_user_info(params[:data]) 
     event = EventHandler.new(card_info)
     printer = Printer.new
-    event.build_message           
+    event.build_indiviual_print_out           
     event.print_message(printer)
     event.delete_user_messages(printer.response)
     "Ben is awesome!"

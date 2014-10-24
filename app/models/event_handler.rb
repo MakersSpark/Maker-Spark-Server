@@ -27,6 +27,10 @@ class EventHandler
 		end
 	end
 
+	def print_message(printer)
+		printer.print(message)
+	end
+
 	def build_indiviual_print_out
 		if user
 			message.add_greeting(user.github_user)

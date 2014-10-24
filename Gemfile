@@ -19,6 +19,7 @@ gem "twitter"
 gem "shorturl"
 gem "service_disruption", "0.1.0"
 gem 'twilio-ruby'
+gem 'tzinfo'
 
 
 group :development, :test do 
