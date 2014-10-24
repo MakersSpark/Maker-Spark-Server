@@ -22,7 +22,6 @@ gem 'twilio-ruby'
 gem 'google_directions'
 gem 'tzinfo'
 
-
 group :development, :test do 
   	gem 'database_cleaner'
   	gem 'dm-transactions'

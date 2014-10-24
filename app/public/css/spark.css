@@ -299,6 +299,15 @@ ul.all_options li label span{
   display: inline;
 }
 
+
+ul.all_options li label span[name=directions]{
+  margin-left: 26px
+}
+
+ul.all_options input[type=text]{
+  color: black
+}
+
 .fa-calendar,
 .fa-twitter {
   font-size: 33px
@@ -306,6 +315,10 @@ ul.all_options li label span{
 
 .fa-newspaper{
   font-size: 27px;
+}
+
+.fa-map-marker{
+  font-size: 40px;
 }
 
 .fa-github,

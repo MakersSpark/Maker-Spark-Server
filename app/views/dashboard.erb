@@ -37,6 +37,15 @@
 			<input type="checkbox" id="GuardianNews"  name="guardian_news"<%= "checked" if @user.preferences.guardian_news%>>
 			<label for="GuardianNews"><i class="fa fa-newspaper-o fa-2x"></i> <span>Latest headlines</span></label>
     </li>	
+		
+		<li>
+			<input type="checkbox" id="GoogleMaps" name="google_maps" <%= "checked" if @user.preferences.google_maps%>>
+			<label for="GoogleMaps"><i class="fa fa-map-marker fa-2x"></i><span name="directions">Directions</span></label>
+		</li>
+		<li id="SearchMap">
+			<input type="text" name="google_search_maps" placeholder="Search Direction">
+		</li>
+
 		</ul>
 
 			<button type="submit" id="checkbox_btn" class="btn btn-sm btn-info">Submit</button>
