@@ -43,9 +43,15 @@ $(document).ready(function() {
   // Collapsing input for search term
 
   $('#SearchTerm').hide();
+  $('#SearchMap').hide();
 
   $('#TwitterData').click(function() {
   	$('#SearchTerm').fadeIn('slow').toggle(this.checked)
+  });
+
+
+  $('#GoogleMaps').click(function() {
+  	$('#SearchMap').fadeIn('slow').toggle(this.checked)
   });
 
 });
