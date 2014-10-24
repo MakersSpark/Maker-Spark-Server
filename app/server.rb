@@ -16,7 +16,7 @@ require 'twilio-ruby'
 require 'google_directions'
 require "twitter"
 require 'tzinfo'
-require "CGI"
+require "cgi"
 
 
 
