@@ -12,7 +12,7 @@ require 'icalendar'
 require 'htmlentities'
 require 'shorturl'
 require 'service_disruption'
-
+require 'google_directions'
 require "twitter"
 
 
@@ -30,6 +30,7 @@ require_relative './models/json_handler'
 require_relative './models/guardian_news'
 require_relative './models/tube_status'
 require_relative './models/json_processor'
+require_relative './models/googledirections'
 
 require_relative './data_mapper_setup'
 

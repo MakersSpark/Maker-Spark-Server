@@ -12,6 +12,8 @@ require 'rack/test'
 require_relative 'factories.rb'
 require_relative './helpers/user_helpers.rb'
 require_relative './helpers/json_mock_helpers.rb'
+require_relative './helpers/xml_mock_helpers.rb'
+
 require_relative './helpers/webmock_helpers'
 require_relative '../app/server.rb'
 require_relative '../app/models/printer'

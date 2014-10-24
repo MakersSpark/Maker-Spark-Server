@@ -91,6 +91,8 @@ GEM
     google_calendar (0.3.1)
       addressable (>= 2.2.2)
       nokogiri (>= 1.4.4)
+    google_directions (0.1.6.2)
+      nokogiri (>= 1.4.1)
     hashie (3.3.1)
     htmlentities (4.3.2)
     http (0.6.2)
@@ -198,6 +200,7 @@ DEPENDENCIES
   forecast_io
   githubstats
   google_calendar
+  google_directions
   htmlentities
   ical
   icalendar

@@ -18,6 +18,7 @@ gem 'rest-client'
 gem "twitter"
 gem "shorturl"
 gem "service_disruption"
+gem 'google_directions'
 
 
 group :development, :test do 
