@@ -1,4 +1,4 @@
-class Formatter2
+class Formatter
 	
 	def split_string(string)
 		str_no_curly_quotes = replace_curly_quotes(string)

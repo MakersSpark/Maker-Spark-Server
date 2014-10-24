@@ -1,10 +1,10 @@
-describe Formatter2 do 
+describe Formatter do 
 
 	let(:long_string) { "This will be the calander and it is very long, because people don’t know how to write short texts"}
 	let(:alberts_messages) { [{format: "TEXT", text: "HI,there!"},{format: "TEXT", text: "ITse meee again! I am writing a veeery long message!"}] } 
 	let(:curly_quote_string) { "Albert’s curly quotes, wow!" }
 
-	let(:formatter) { Formatter2.new }
+	let(:formatter) { Formatter.new }
 
 	it "splits strings to a maximum length of 32 ch" do 
 		formatter.split_string(long_string)
