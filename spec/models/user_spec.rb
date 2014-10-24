@@ -31,6 +31,11 @@ describe User do
 							   password: "oranges", 
 							   password_confirmation: "oranges")}
 
+User.create(email: "beasdsado@test.com",
+rfid_code: '123124',
+github_user: 'byverdu',
+password: "oranges", 
+password_confirmation: "oranges")
 
 
 	before do

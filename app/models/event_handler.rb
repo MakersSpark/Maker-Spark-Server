@@ -22,6 +22,8 @@ class EventHandler
 	end
 
 	def add_user_options
+		puts "XXXXXXX"*10
+		puts build_objects
 		build_objects.each do |object|
 			message.add_lines(object.json)
 			message.add_divider
