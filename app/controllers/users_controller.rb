@@ -64,16 +64,24 @@ class UsersController < SparkPrint
 	end
 
 	post "/update" do
-		params.each { |key,value| params[key] = true   }
+		params.each { |key,value| params[key] = true if value == "on"  }
+		params.reject! { |key,value| value == ""}
 		user_preferences = Preferences.first(:user_id => current_user.id)
+		user_preferences.update(reset_preferences)
 		user_preferences.update(params)
 		flash[:notice] = "Thanks – your preferences have been saved."
 		redirect '/dashboard'
 	end
 
+	def reset_preferences
+		{:calendar => false,		
+		:forecast => false, 			
+		:github_data => false,
+		:twitter_data => false,
+		:tube_status => false,
+		:guardian_news => false,
+		:google_maps => false} 
+	end	
+
 end
-
-
-
-
 

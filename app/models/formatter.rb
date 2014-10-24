@@ -2,7 +2,8 @@ class Formatter
 	
 	def split_string(string)
 		str_no_curly_quotes = replace_curly_quotes(string)
-		str_no_curly_quotes.chars.each_slice(32).map(&:join)
+		replace_html_tags(str_no_curly_quotes)
+		replace_html_tags.chars.each_slice(32).map(&:join)
 	end
 
 	def format_line(array_of_hashes)

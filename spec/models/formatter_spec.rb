@@ -16,7 +16,6 @@ describe Formatter do
 	end
 
 	it "takes an array of hashes and returns hashes with texts of maximum 32 characters" do 
-
 		expect(formatter.format_line(alberts_messages)).to eq [{:format=>"TEXT", :text=>"HI,there!"}, {:format=>"TEXT", :text=>"ITse meee again! I am writing a "}, {:format=>"TEXT", :text=>"veeery long message!"}]
 	end
 	

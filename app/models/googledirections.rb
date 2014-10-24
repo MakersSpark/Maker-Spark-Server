@@ -11,6 +11,7 @@ class MyGoogleDirections
 	end
 
 	def directions_formatted
+		puts get_directions
 		get_directions["DirectionsResponse"]["route"]['leg']['step'].map do |direction|
 			direction['html_instructions']
 		end

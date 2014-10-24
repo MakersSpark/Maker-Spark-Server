@@ -72,7 +72,7 @@ class SparkPrint < Sinatra::Base
     printer = Printer.new
     event.build_indiviual_print_out           
     event.print_message(printer)
-    event.delete_user_messages(printer.response)
+    event.delete_user_messages(printer.response) if event.user
     "Ben is awesome!"
   end
 
