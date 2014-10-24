@@ -165,15 +165,16 @@ body.holding-page .spark{
 
 
 .hard_height{
-  height: 450px;
+  height: 500px;
 }
 
-.hard_height:nth-child(2){
-  min-width: 550px;
+.hard_height h2{
+  position: relative;
+  top: -40px;
 }
 
 #checkbox_btn{
-  margin-top:  30px;
+  margin-top:  15px;
 }
 
 input[placeholder*='Search']{
@@ -200,7 +201,7 @@ textarea{
   background-size: 260px 239px;
   background-position: center;
   font-family: 'Cutive Mono';
-  font-size: 18px !important;
+  font-size: 20px !important;
   position: absolute;
   top: 208px;
   left: 93px;
@@ -218,21 +219,24 @@ textarea.form-control:focus{
 }
 
 .send_message{
-  position: relative;
-  top: -88px;
-  left: -60px
+  top: -100px !important;
 }
 
 select{
   position: relative;
-  top: -125px;
-  left: 248px;
+  top: -86px;
+  left: -66px;
   width: 105px;
   height: 29px;
 }
 
 
 
+.form_print button{
+  position: relative; 
+  top: -85px;
+  left: 62px;
+}
 
 
 .fake_printer{
@@ -246,18 +250,12 @@ select{
   margin: 0 auto
 }
 
-.form_print button{
-  position: relative; 
-  top: -85px;
-  left: 139px;
-}
 
 .total_count{
-  color: #80FF00; 
   position: relative;
-  top: -25px;
-  font-size: 20px;
-  left: -125px;
+  top: 220px;
+  font-size: 25px;
+  left: -150px;
 }
 
 
@@ -283,10 +281,16 @@ input[type=checkbox]:checked + label i{
 }
 
 ul.all_options {
+  position: relative;
+  top: -20px;
   text-align: left;
   width: 185px;
   margin: 0 auto;
   padding: 0px;
+}
+
+ul.all_options li{
+  margin-bottom: 10px;
 }
 
 ul.all_options li label span{

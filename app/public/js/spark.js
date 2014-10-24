@@ -25,7 +25,7 @@ $(document).ready(function() {
         
     actual_count = (96-count);
 
-    total_count.text(actual_count + ' characters left');
+    total_count.text(actual_count);
 
     if(actual_count <= 10) total_count.css('color', 'red');
 
