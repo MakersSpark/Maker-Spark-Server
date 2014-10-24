@@ -5,7 +5,7 @@ class MyGoogleDirections
 
 	attr_accessor :destination, :start
 
-	def initialize(start='16 Epworth Street, Islington, London EC2A, UK',destination)
+	def initialize(destination, start='16 Epworth Street, Islington, London EC2A, UK')
 		@destination = destination
 		@start = start
 	end
