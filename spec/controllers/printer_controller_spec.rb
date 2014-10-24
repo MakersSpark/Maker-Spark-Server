@@ -3,7 +3,7 @@ def app
   PrinterController.new
 end
 
-xdescribe "PrinterController" do 
+describe "PrinterController" do 
 
 	let(:my_json) { {"data"=>"41d21cd", "ttl"=>"60", "published_at"=>"2014-10-16T11:35:27.137Z", "coreid"=>"50ff75065067545639190387"} }
 	let(:rfid_code) { "41d21cd" }
@@ -22,7 +22,7 @@ xdescribe "PrinterController" do
 	end
 
 	describe "POST /" do 
-		it "prints a message, if a user with the specific rfid_code exists" do
+		xit "prints a message, if a user with the specific rfid_code exists" do
 			allow(User).to receive(:first).with(:rfid_code => rfid_code).and_return(user)
 			allow(user).to receive(:id).and_return(1)
 			stub_afternoon_message(GithubData.new(user.github_user))
@@ -32,7 +32,7 @@ xdescribe "PrinterController" do
 			expect_afternoon_message_to_have_been_made
 		end
 
-		it "prints a url, if no user with that rfid_code exists" do
+		xit "prints a url, if no user with that rfid_code exists" do
 			stub_weather
 			stub_printer("CENTRE","Please sign up at:")
 			stub_printer("CENTRE", tiny_url)
@@ -43,7 +43,7 @@ xdescribe "PrinterController" do
 			expect(a_http_request("CENTRE",tiny_url)).to have_been_made
 		end
 
-		it "prints a usermessage, if a user received a message" do
+		xit "prints a usermessage, if a user received a message" do
 			allow(User).to receive(:first).with(:rfid_code => rfid_code).and_return(user)
 			allow(user).to receive(:id).and_return(1)
 			allow(UserMessage).to receive(:all).with(user_id: user.id).and_return([message])

@@ -19,11 +19,8 @@ gem "twitter"
 gem "shorturl"
 gem "service_disruption", "0.1.0"
 gem 'twilio-ruby'
-<<<<<<< HEAD
 gem 'google_directions'
-=======
 gem 'tzinfo'
->>>>>>> 16a0564601e6027efabbd245be2bf8d31b989f2c
 
 
 group :development, :test do 

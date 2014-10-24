@@ -19,12 +19,6 @@ feature "User sign in" do
 			expect(page).not_to have_content('Thank you for registering, byverdu@test.com')
 	end
 
-	xscenario "clicking on Home button leads to the home page" do
-			visit "/users/sign_in_with/aabbccdd"
-			expect(page).to have_link('Spark Printer')
-			click_link('Spark Printer')
-			expect(current_path).to eq('/')
-	end
 end
 
 feature "Users log out" do

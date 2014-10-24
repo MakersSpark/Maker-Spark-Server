@@ -21,13 +21,13 @@ feature "Users changing their print settings" do
 
 	end
 
-	xscenario "a user presses submit and sees a message confirming their options have been saved" do
+	scenario "a user presses submit and sees a message confirming their options have been saved" do
 		visit '/dashboard'
 		click_button 'Submit'
 		expect(page).to have_content("Thanks – your preferences have been saved.")
 	end
 
-	xscenario "a user presses submit and is taken back to the dashboard" do
+	scenario "a user presses submit and is taken back to the dashboard" do
 		visit '/dashboard'
 		click_button 'Submit'
 		expect(current_path).to eq('/dashboard')
