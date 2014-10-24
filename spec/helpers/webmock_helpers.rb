@@ -44,6 +44,10 @@ def stub_afternoon_message(github_object)
       stub_request(:get, "http://content.guardianapis.com/search?api-key=test&order-by=newest&section=uk-news").to_return(body: GUARDIANNEWS_JSON_RESPONSE, status: 200)
   end
 
+  def stub_directions
+      stub_request(:get, "http://maps.googleapis.com/maps/api/js/DirectionsService.Route?4b0&5m4&1m3&1m2&1d51.523137&2d-0.087035&5m2&1m1&2sTottenham%20Court%20Road&6e1&12sen-GB&100b0&102b0&callback=_xdc_._zia1l2&token=5147").to_return(body: GOOGLEDIRECTIONS_JSON_RESPONSE, status: 200)
+  end
+
   def stub_github(username)
     stub_request(:get, "https://github.com/users/#{username}/contributions")
   end

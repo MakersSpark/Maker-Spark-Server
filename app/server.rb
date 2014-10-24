@@ -13,7 +13,7 @@ require 'htmlentities'
 require 'shorturl'
 require 'service_disruption'
 require 'twilio-ruby'
-
+require 'google_directions'
 require "twitter"
 
 
@@ -34,6 +34,7 @@ require_relative './models/twitter'
 
 require_relative './models/tube_status'
 require_relative './models/json_processor'
+require_relative './models/googledirections'
 
 require_relative './data_mapper_setup'
 
