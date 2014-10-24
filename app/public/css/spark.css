@@ -165,7 +165,7 @@ body.holding-page .spark{
 
 
 .hard_height{
-  height: 500px;
+  height: 580px;
 }
 
 .hard_height h2{
@@ -174,7 +174,7 @@ body.holding-page .spark{
 }
 
 #checkbox_btn{
-  margin-top:  15px;
+  margin-top:  -20px;
 }
 
 input[placeholder*='Search']{
