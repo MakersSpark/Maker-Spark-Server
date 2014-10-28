@@ -16,6 +16,10 @@ Spark Printer has several distinct components which work together. The repos are
 * **[Spark Printer Firmware](https://github.com/MakersSpark/spark-printer-firmware)** – C++ code and libraries for Spark Core. When hooked up to the right hardware, this handles reading RFID cards, sending them to the server, receiving print requests and controlling the printer.
 * **[Spark Printer Push Server](https://github.com/MakersSpark/spark-rfid-push)** – a simple node.js app that listens for messages from the Spark Core (specifically, announcements of the ID of RFID cards it reads) and forwards them on to the Spark Printer Server for processing.
 
+## Collaboration
+
+Our team of five had twice-daily standups to keep everyone on the same page, regular code reviews and refactoring sessions, and tracked user stories and progress on a shared kanban (Trello).
+
 ## Technologies
 
 **Back-end**
